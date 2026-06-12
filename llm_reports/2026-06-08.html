@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大模型新论文周报 | 2026-06-08</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-light: #e8f0fe;
+            --accent: #d93025;
+            --accent-bg: #fce8e6;
+            --text: #202124;
+            --text-secondary: #5f6368;
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --border: #dadce0;
+            --success: #188038;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #4285f4 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0 0 8px; font-size: 2rem; }
+        header .meta { opacity: 0.9; font-size: 1rem; }
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .stat-item {
+            background: var(--card);
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 120px;
+        }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+        .toc {
+            background: var(--card);
+            padding: 20px 28px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .toc h2 { margin-top: 0; font-size: 1.1rem; }
+        .toc ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
+        .toc a { color: var(--primary); text-decoration: none; font-size: 0.95rem; }
+        .toc a:hover { text-decoration: underline; }
+        .section { margin-bottom: 40px; }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 12px 20px;
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .paper-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s;
+        }
+        .paper-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .paper-card.important {
+            border: 2px solid var(--accent);
+            background: linear-gradient(to right, var(--accent-bg) 0%, var(--card) 60%);
+        }
+        .paper-header { margin-bottom: 16px; }
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0 0 6px;
+            line-height: 1.4;
+        }
+        .paper-title a { color: var(--text); text-decoration: none; }
+        .paper-title a:hover { color: var(--primary); text-decoration: underline; }
+        .paper-meta { font-size: 0.85rem; color: var(--text-secondary); }
+        .important-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .paper-body { font-size: 0.95rem; }
+        .field { margin-bottom: 14px; }
+        .field-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .field-content { color: var(--text); }
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🧠 大模型新论文周报</h1>
+        <div class="meta">2026年6月8日 | 收集周期：2026.05.25 — 2026.06.07</div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item"><div class="stat-number">22</div><div class="stat-label">本周收集论文</div></div>
+        <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">研究方向</div></div>
+        <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">🔴 重点精读</div></div>
+    </div>
+
+    <div class="toc">
+        <h2>📑 目录导航</h2>
+        <ul>
+            <li><a href="#agentic">🤖 Agentic（5篇）</a></li>
+            <li><a href="#rag">🔍 生成式检索 / RAG（4篇）</a></li>
+            <li><a href="#pretraining">📊 预训练 / Pre-training（5篇）</a></li>
+            <li><a href="#posttraining">🎓 后训练 / Post-training（3篇）</a></li>
+            <li><a href="#rl">🎯 强化学习 / RL（2篇）</a></li>
+            <li><a href="#infra">⚙️ 基础架构创新（3篇）</a></li>
+        </ul>
+    </div>
+
+    <!-- Agentic -->
+    <div class="section" id="agentic">
+        <div class="section-title">🤖 Agentic（智能体、工具调用、多智能体协作、自主决策）</div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2606.05158" target="_blank">StreamMA：流式多智能体推理框架</a></div>
+                <div class="paper-meta">arXiv:2606.05158 | 2026-06-03 | Zhen Yang 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">打破传统"生成完再传输"的多Agent串行范式，提出步骤级流水线并行：每个推理步骤生成后立即推送给下游Agent，将端到端延迟从 O(depth) 降为 O(1)。意外发现流式传输同时提升准确率——早期推理步骤比晚期更可靠，避免错误末步误导下游。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">首次推导出 stream/serial/single 三种协议的效果排序、加速上界和成本比的闭合形式分析；发现"步骤级缩放律"——每个Agent分配更多步骤可同时提升效果和效率，与Agent数量缩放正交可叠加。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">在8个推理基准（数学/科学/代码）、Chain/Tree/Graph三种拓扑、Claude Opus 4.6和GPT-5.4上验证，平均+7.3pp，HMMT 2026最高+22.4pp。实验设计覆盖多种拓扑和模型，具有较强的说服力。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">目前仅在推理任务上验证，未涉及工具调用或长周期交互场景；流水线并行对Agent之间的接口契约要求较高，工程落地需要额外设计。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</b>：这是多Agent系统架构层面的重要创新，对需要低延迟的多Agent协作产品（如智能客服、研发助手）有直接借鉴价值。步骤级缩放律的发现为Agent系统的资源分配提供了新维度。落地难度中等，核心改动在通信层协议。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2606.05080" target="_blank">AutoLab：极长视野闭环优化Agent能力基准</a></div>
+                <div class="paper-meta">arXiv:2606.05080 | 2026-06-03 | Zichen Chen 等（UC San Diego / MIT等）</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">现有基准主要评估单轮或短轨迹Agent能力，AutoLab首次聚焦"持续迭代改进"这一真正的长周期挑战。包含36个专家设计任务，4个领域：系统优化、CUDA kernel优化、模型研发、谜题挑战。每个任务从"正确但次优"基线出发，在严格wall-clock预算内持续迭代提升。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">评估17个SOTA模型后发现：成功的关键因子不是初次尝试质量，而是持续 benchmark→edit→反馈 的迭代次数。多数模型提前停止或耗尽预算却进展极小；Claude-opus-4.6长视野优化能力最强。自主Agent的核心能力缺口 = 时间感知 + 持续迭代耐力。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">任务设计由领域专家策展，覆盖多个真实工程场景，评估指标包含最终性能和预算使用效率。对比17个模型（含多个闭源前沿模型）的系统性评估增强了结论的稳健性。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">任务数量36个仍相对有限；wall-clock预算设置可能因执行环境差异引入噪声；部分任务需要特定领域知识，通用Agent可能因知识缺失而非迭代能力不足而失败。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</b>：这是Agent评估领域的重要里程碑，直接戳中了当前"Demo惊艳、长周期拉胯"的行业痛点。对自动驾驶决策优化、代码重构、超参调优等需要持续迭代的产品团队有重要参考价值。落地难度低（可直接使用开源基准），但提升模型能力难度高。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2606.05872" target="_blank">EEA：基于熵的AI Agent行为评估框架</a></div>
+                <div class="paper-meta">arXiv:2606.05872 | 2026-06-04 | Olasimbo Arigbabu 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">提出用信息论熵度量Agent行为结构，而非仅关注任务成功率。引入行动熵、轨迹熵、工具熵、信息增益、探索效率、鲁棒性熵等6个新指标，刻画Agent是否过度探索、是否僵化重复、是否有效使用工具、是否随时间降低不确定性。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">传统评估指标（成功率、延迟、成本）会遗漏Agent行为的重要方面；两个Agent可能都解决了任务，但一个直接完成，另一个使用了不必要的工具调用和不稳定的推理路径。熵指标能有效区分这些行为模式。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">提供了与LangChain、Google ADK等框架集成的Python实现，展示了实际可用性。但论文中未展示大规模实验对比，更多是框架性贡献。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">尚未在大量真实Agent系统上验证各指标的预测效度；熵指标与最终任务成功率的关系尚未建立系统性关联；不同任务类型可能需要不同的熵阈值。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合Agent产品研发团队作为监控和A/B测试的补充指标体系，特别是对探索-利用平衡、工具使用效率有要求的场景（如智能运维、数据分析Agent）。落地难度低，可直接集成。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2606.04823" target="_blank">R-APS：受限设计的组合推理方法</a></div>
+                <div class="paper-meta">arXiv:2606.04823 | 2026-06-03 | João Gandarela 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">诊断出LLM Agent的三大结构性失败：错误无局部化、最坏情况扰动不评估、积累知识永不失效。根因在于多种推理模式（归纳/反绎/反事实/纠正/元归纳）共享单一context产生冲突。R-APS为每种推理模式分配独立context，跨三个时间尺度编排。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在平面机构合成任务上，R-APS的鲁棒性证书比均匀扰动基线紧3.5倍，首次准入迭代快46%，Chamfer距离降低2.1倍。4B推理专用模型在协议内可与70B通用模型竞争，说明结构化协议可部分抵消模型规模。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">所有候选方案均通过运动学求解器验证，确保评估客观性；32个目标轨迹覆盖多种机械设计场景；小模型vs大模型的对比实验设计巧妙。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">仅在机构合成领域验证，通用性待检验；需要领域特定的验证critic；无需微调的纯协议设计在不同模型上的迁移效果未充分测试。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对需要高可靠性、可验证输出的工程设计Agent（如CAD辅助设计、硬件设计）有参考价值。结构化推理协议的"小模型逆袭"思路对成本敏感的产品团队尤其有吸引力。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2606.06416" target="_blank">DataCOPE：数据 analytic Agent 的无监督技能发现</a></div>
+                <div class="paper-meta">arXiv:2606.06416 | 2026-06-04 | Shumin Deng 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">提出首个面向数据分析Agent的无监督verifier-guided技能发现框架，无需人工标注即可从探索轨迹中发现可复用的数据分析技能。核心创新是自适应校验器：报告类分析使用Adaptive Checklist Verifier，推理类分析使用Answer Agreement Verifier。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">DataCOPE在报告类和推理类任务上均持续提升held-out性能，平均提升9.71%和32.30%。对比学习式的技能蒸馏能有效从无监督探索中提取结构化知识。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">在Deep Data Research和DABStep两个数据集、四种模型设置上验证，实验较为系统。但对比基线数量相对有限。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">无监督Verifier的信号质量取决于探索轨迹的多样性，若Agent探索能力不足可能陷入局部最优；技能的可解释性和人类可读性未充分讨论。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合数据分析、BI报表生成等需要持续积累业务知识的Agent产品。无监督发现降低了技能维护成本。落地难度中等，需要搭建探索-验证-蒸馏的闭环 pipeline。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RAG -->
+    <div class="section" id="rag">
+        <div class="section-title">🔍 生成式检索 / Generative Retrieval（RAG、知识增强生成、记忆系统）</div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.09990" target="_blank">Merlin：面向RAG的确定性字节级精确去重与上下文优化</a></div>
+                <div class="paper-meta">arXiv:2605.09990 | 2026-05-11 | Sietse Schelpe 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">提出本地优先、模型无关的高吞吐去重引擎，使用SIMD优化的开放寻址flat hash set + xxHash3-64实现快速字节级精确去重。在保持绝对数据保真的前提下，显著减少RAG pipeline中的冗余上下文。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">输入量减少13.9%（低冗余数据集）至71%以上（高冗余pipeline）；处理速度高达8.7 GB/s；通过MCP协议实现与主流IDE和自主Agent的安全零网络拦截部署。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">在真实数据密集型应用场景中评估，覆盖了从低冗余到高冗余的多种场景；性能基准测试具体且可复现。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">字节级精确去重对语义相似但表述不同的内容无效；对短文本片段的去重收益有限；MCP集成生态依赖第三方工具支持。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合已有RAG系统的工程优化，特别是处理大量重复文档（如网页爬取、版本化文档）的场景。落地难度低，纯工程组件，可即插即用。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.26667" target="_blank">MemFail：LLM记忆系统失效模式压力测试</a></div>
+                <div class="paper-meta">arXiv:2605.26667 | 2026-05-26 | Ishir Garg 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">首次将记忆系统形式化为"摘要-存储-检索"三个原子操作的组合，并针对每个操作识别潜在失效模式。构建五个对抗性数据集覆盖四种任务，每个数据集专门测试记忆系统的特定操作。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">现有基准将记忆系统视为黑盒、仅报告聚合QA准确率，无法归因错误到具体失效模式。MemFail可诊断性地理解不同记忆系统架构的权衡。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">评估了4个SOTA记忆系统，实验设计具有对抗性和针对性。但论文篇幅较短，部分分析可更深入。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">任务类型主要围绕问答，未覆盖需要复杂记忆操作的长周期任务；对抗性数据集规模有限；对记忆系统的改进建议较少。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对构建长周期对话Agent、个人助手等需要长期记忆的产品团队有重要参考价值。可作为记忆系统选型和质量保障的测试工具。落地难度低。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2602.15856" target="_blank">SeleCom：查询条件化的RAG软压缩选择器</a></div>
+                <div class="paper-meta">arXiv:2602.15856 | 2026-01-25 (v2: 2026-03-21) | Zian Jia 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">揭示现有软压缩方法的两个根本局限：(I) 不可行性——全压缩与LLM下游生成行为冲突；(II) 非必要性——全压缩稀释任务相关信息密度。提出将编码器角色重新定义为"查询条件化信息选择器"，仅保留与查询相关的信息。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">SeleCom显著优于现有软压缩方法，达到与无压缩基线相当或更优的性能，同时减少33.8%~84.6%的计算和延迟。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">使用大规模多样化难度分级合成QA数据集和课程学习训练选择器，实验对比了多种压缩方法和无压缩基线。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">训练选择器需要大规模合成数据，数据构建成本较高；在需要全局理解的长文档任务上，选择性压缩可能遗漏跨段落关联信息。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合需要处理长文档RAG且对延迟敏感的产品（如法律文档分析、研报阅读助手）。落地难度中等，需要训练专用选择器模型。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.10114" target="_blank">SkillRAE：基于Agent技能的检索增强执行上下文编译</a></div>
+                <div class="paper-meta">arXiv:2605.10114 | 2026-05-11 | Shu Wang 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">现有RAE工作关注技能检索和任务执行，忽略了"如何有效组织选中技能证据"这一关键环节。SkillRAE提出两阶段RAE：离线构建多级技能图（社区-技能-子单元），在线执行技能排序检索+救援感知紧凑编译。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在SkillsBench上提升11.7% over SOTA；消融实验证明上下文编译是关键贡献，而非简单的prompt追加。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">两个公开基准+消融实验，验证了技能图构建、检索和编译各模块的贡献。但基准规模相对有限。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">技能图的构建需要预先定义技能社区结构，对动态演化的技能库适应性有限；在线编译的压缩率与信息保留之间的权衡未量化分析。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合拥有大量可复用技能/工具库的Agent平台（如办公自动化、低代码平台）。上下文编译思路对任何RAG系统的prompt工程都有参考价值。落地难度中等。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pre-training -->
+    <div class="section" id="pretraining">
+        <div class="section-title">📊 预训练 / Pre-training（数据筛选、Scaling Law、MoE、多模态预训练）</div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2605.18643" target="_blank">ZEDA：后训练静态MoE到动态MoE的无损转换</a></div>
+                <div class="paper-meta">arXiv:2605.18643 | 2026-05-18 | Xingtai Lv 等（清华 / 上海AI Lab / 微信AI / 快手）</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">现有动态MoE方法依赖从头预训练或任务特定适配，ZEDA首次实现后训练静态MoE到动态MoE的低成本转换。核心创新是注入无参数的零输出专家(zero-output experts)，通过两阶段自蒸馏（SFT + OPD在线rollout）稳定架构转换。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在Qwen3-30B-A3B和GLM-4.7-Flash上，ZEDA消除50%以上专家FLOPs，精度损失极小；比最强动态MoE基线分别高6.1和4.0分；端到端推理加速约1.20倍。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">11个基准覆盖数学、代码、指令遵循；与最强动态MoE基线直接对比；在两种不同模型族上复现结论，稳健性较好。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">自蒸馏需要原始MoE作为frozen teacher，对已有API-only模型不适用；零输出专家的初始化策略对最终效果的影响未深入分析；1.20倍加速在部分场景可能不够显著。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</b>：这是MoE推理优化领域极具工程价值的突破。对已部署的静态MoE模型（如DeepSeek-V3、Qwen3-MoE）可直接应用，无需重新预训练，节省巨额算力。适合推理成本敏感的大规模服务团队。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.27358" target="_blank">MobileMoE：端侧混合专家模型缩放</a></div>
+                <div class="paper-meta">arXiv:2605.27358 | 2026-05-26 | Yanbei Chen 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">首次系统探索MoE在sub-billion参数端侧部署的优势。提出端侧MoE缩放律，发现"适度稀疏+细粒度共享专家"是内存和计算双重最优的甜点。四阶段训练配方：预训练→中训练→指令微调→量化感知训练。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">MobileMoE在14个基准上匹配或超越领先端侧稠密LLM，推理FLOPs减少2-4倍；与SOTA MoE OLMoE-1B-7B相当但参数少60%；在智能手机上实现1.8-3.8倍prefill加速和2.2-3.4倍decode加速。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">首次在商品智能手机上完成全面的端侧MoE推理profiling；覆盖0.3-0.9B激活参数的模型家族；INT4量化下的真实设备性能数据。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">端侧MoE的router开销在小batch下可能不可忽视；专家加载的内存碎片问题在移动端更突出；仅使用开源数据集训练，与顶级闭源端侧模型尚有差距。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对手机端AI、边缘设备LLM部署有直接指导意义。MoE在端侧的Pareto前沿突破意味着未来手机NPU可能更高效地运行更大模型。适合端侧AI产品团队参考。落地难度中高（需端侧推理框架支持MoE）。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.08292" target="_blank">Hi-MoE：层次化混合专家的两阶段优化</a></div>
+                <div class="paper-meta">arXiv:2605.08292 | 2026-05-08 | Gleb Molodtsov 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">MoE路由器存在根本权衡：强负载均衡抑制专家特化，激进多样性导致路由崩溃。Hi-MoE将路由控制分解为两个耦合层级：(i) 组间均衡——强制专家组间流量公平；(ii) 组内特化——促进互补行为同时防止组内崩溃。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在NLP和视觉基准上持续优于近期稀疏路由和分组MoE基线；大规模预训练（58B tokens）中Hi-MoE-7B实现5.6%困惑度降低和40%专家均衡改善。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content"> scaling研究（模型大小、专家数量）和消融实验验证了方法鲁棒性；大规模预训练实验增强了结论的可信度。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">分组数量的超参选择未提供明确指导；组间均衡和组内特化的目标函数设计有较多手工成分；在超大规模（>100B）模型上的效果未验证。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对从头训练MoE模型的研究团队有参考价值，特别是受困于路由崩溃和专家特化不足的团队。层次化路由思想可迁移到多种MoE架构。落地难度中等（需修改路由逻辑）。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.17598" target="_blank">MoE低资源语言路由动力学分析</a></div>
+                <div class="paper-meta">arXiv:2605.17598 | 2026-05-17 | Sarel Weinberger 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">首次系统分析MoE在 low-resource 语言上的专家路由行为。发现"深层路由崩溃"现象：预训练模型在深层的使用熵急剧下降，token集中到少数专家，该模式在希伯来语和日语中一致出现，英语中几乎不存在。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">持续预训练(CPT)在平衡双语数据上可显著纠正崩溃，增加熵并推动路由向共享双语专家转移；SFT单独修正效果较弱。路由改善与下游基准提升一致。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨两种架构（纯Transformer和Mamba-Transformer hybrid）和两种语言验证，证明现象是预训练代表性不足的系统后果，而非语言内在属性。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">仅测试了两种low-resource语言；CPT的数据量和配比细节未充分披露；路由熵与下游性能之间的因果关系未完全确立。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对做多语言MoE模型（尤其是小语种）的团队有重要诊断价值。建议将"路由熵"和"专家特化模式"纳入多语言模型质量评估指标。落地难度低（纯分析工具）。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2603.07685" target="_blank">Megatron Core大规模MoE模型可扩展训练</a></div>
+                <div class="paper-meta">arXiv:2603.07685 | 2026-03-08 (v2: 2026-03-10) | Zijie Yan 等（NVIDIA）</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">NVIDIA官方发布的MoE训练系统优化技术报告。覆盖内存（细粒度重计算、卸载）、通信（优化dispatcher、重叠）、计算（Grouped GEMM、融合kernel、CUDA Graphs）三个维度的协同设计；提出Parallel Folding灵活多维并行。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在GB300/GB200上达到1,233/1,048 TFLOPS/GPU（DeepSeek-V3-685B）和974/919 TFLOPS/GPU（Qwen3-235B）；支持FP8/NVFP4低精度训练和长上下文训练。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">在真实GPU集群上达到接近理论峰值的利用率；已支持从十亿到万亿参数、数千GPU的工业级训练任务。技术细节详尽，包含trade-off分析。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">高度绑定NVIDIA硬件和Megatron生态；部分优化（如CUDA Graphs）对动态形状的适应性有限；对非Transformer架构（如Mamba-MoE hybrid）的支持未讨论。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">MoE训练的基础设施必读资料。对使用NVIDIA集群训练MoE的工程团队有直接操作指导价值。非NVIDIA环境可参考设计思想但无法直接复现。落地难度高（需深度系统优化能力）。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post-training -->
+    <div class="section" id="posttraining">
+        <div class="section-title">🎓 后训练 / Post-training（SFT、指令微调、对齐方法）</div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2605.12483" target="_blank">稀疏到稠密奖励的实证原则：LLM后训练数据分配策略</a></div>
+                <div class="paper-meta">arXiv:2605.12483 | 2026-05-12 | Yuanda Xu 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">提出奖励密度分配原则：稀疏序列级奖励最适合用于能探索发现更好行为的teacher模型，稠密token级teacher监督更适合将行为压缩到小型部署模型。核心洞见是避免将稀缺标注数据花在准备不足的策略上。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">固定Qwen3-1.7B学生模型下，RL改进的8B teacher经稠密桥接蒸馏 outperform 同模型直接GRPO（MATH 79.3% vs 75.9%；AIME 25.2% vs 19.8%）。teacher质量排序：原始teacher转移 < 直接GRPO < RL-teacher转移。该排序在Llama模型族上复现。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">四阶段pipeline的消融实验确认每阶段都是负载-bearing的：替换RL-improved teacher损失7.8 MATH点，移除forward-KL warmup损失1.7，移除OPD损失3.3。跨模型族复现增强了稳健性。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">仅在可验证数学任务上验证，对开放式生成任务的适用性未知；需要足够强的teacher模型，小模型闭环可能无法受益；四阶段pipeline增加了训练复杂度。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</b>：对后训练pipeline设计有重要指导意义，特别是对需要在有限标注预算下训练小部署模型的团队（如端侧模型、垂直领域模型）。"稀疏reward做发现，稠密监督做压缩"的原则简洁有力。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2605.04539" target="_blank">RLearner-LLM：融合NLI信号的Hybrid-DPO解决逻辑对齐鸿沟</a></div>
+                <div class="paper-meta">arXiv:2605.04539 | 2026-05-06 | Qiming Bao 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">发现标准DPO存在系统性冗长偏置（verbosity bias）：偏好信号奖励流畅性而非逻辑正确性，导致SFT模型在NLI蕴含上仅0.05-0.22。提出Hybrid-DPO，将DeBERTa-v3 NLI信号与verifier LLM分数融合，无需人工标注即可自动构建偏好对。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在生物学、医学、法学五个领域上，Hybrid-DPO实现最高6倍NLI提升（11/15单元格有增益）。Gemma 4 E4B-it（4.5B有效参数）上在4/5领域提升NLI。Qwen3-8B模型对SFT基线的成对比较胜率95%。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨三个架构、五个领域验证；通过GPT-4o-mini作为judge复现了冗长偏置（verbose SFT胜率69% vs Hybrid-DPO 5%），实验设计有自我验证意识。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">NLI模型（DeBERTa-v3）本身可能存在领域偏差；对非事实性生成任务（创意写作、对话）的适用性有限；Hybrid信号设计依赖超参调优。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对知识密集型生成任务（医疗问答、法律咨询、科研辅助）的后训练团队非常有价值。自动偏好构建降低了对昂贵人工标注的依赖。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2602.11596" target="_blank">MAPLE：多模态感知后训练与学习生态系统</a></div>
+                <div class="paper-meta">arXiv:2602.11596 | 2026-02-12 | Nikhil Verma 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">现有RL后训练对所有输入信号一视同仁，忽略了任务实际需要的模态组合。MAPLE包含：(1) MAPLE-bench——首个标注每任务最小信号组合的基准；(2) MAPO——模态感知策略优化，按模态需求分层batch以降低梯度方差；(3) 自适应加权和课程调度。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">MAPLE将单/多模态准确率差距缩小30.24%，收敛速度提升3.18倍，在信号缺失/增减的真实分布偏移下保持稳定。系统分析了损失聚合、裁剪、采样和课程设计的最优策略。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">完整的生态系统贡献（基准+方法+分析），消融实验系统。但基准的构建成本和标注规模未详细披露。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">模态组合的标注需要人工参与，扩展性受限；对超过3种模态（文本/音频/视频/触觉等）的适用性未验证；自适应加权的计算开销未量化。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对多模态模型（如视频理解、语音交互、具身智能）的后训练团队有直接参考价值。模态感知的batch stratification是即插即用的优化。落地难度中等。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RL -->
+    <div class="section" id="rl">
+        <div class="section-title">🎯 强化学习 / RL（RLHF、DPO、PPO、GRPO、在线/离线RL）</div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2606.05152" target="_blank">DistIL：富反馈RL超越RLVR——执行轨迹与工具输出不再是废信号</a></div>
+                <div class="paper-meta">arXiv:2606.05152 | 2026-06-03 | Rishabh Agrawal 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">RLVR仅用"最终答案对错"这1 bit反馈，丢弃了执行轨迹、工具输出、专家纠错等大量富信号。DistIL提出distributional DAgger变体：learner可本地访问expert策略访问过的状态分布上的expert分布。导出简单的前向交叉熵目标，将未来expert-student分歧反向传播到早期决策。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">理论上证明：基于reverse KL或Jensen-Shannon的自蒸馏目标不保证单调策略改进；前向CE保证单调改进+regret界。实证上在科学推理、代码、数学难题上全面优于RLVR和自蒸馏RL基线。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">理论证明+多领域实证的双重支撑；多个具有可验证奖励的领域增强了结论的稳健性；对失败案例的理论分析（reverse KL的缺陷）具有启发性。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">需要访问expert策略或其分布，在完全无专家的场景（如开放域探索）不适用；前向CE的梯度计算成本高于RLVR；对expert质量的依赖性较强。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</b>：这是RLVR范式的关键扩展，对任何能产生中间反馈的推理任务（代码生成、工具使用、科学计算）都有直接提升潜力。前向CE的理论保证为富反馈RL提供了可靠优化目标。适合已有RL pipeline的团队升级。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2604.10547" target="_blank">Agent² RL-Bench：LLM Agent能否自主设计RL后训练pipeline？</a></div>
+                <div class="paper-meta">arXiv:2604.10547 | 2026-04-12 (v2: 2026-05-13) | Weiqing Liu 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">首个评估Agent自主设计、实现、调试和执行RL后训练pipeline的诊断基准。每个运行从包含基础模型、任务数据、指令和评分API的隔离工作空间开始，Agent必须在固定预算内迭代训练模型并提交产物评估。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">Agent能偶尔工程化在线RL（ALFWorld从4.85提升至93.28），但稳定的Agent驱动RL后训练在固定预算下仍属罕见。大多数成功路径依赖监督pipeline；交互结果在不同Agent栈之间差异巨大。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">6个任务跨越3个层次（静态规则训练→基于judge的优化→闭环在线RL）；5个Agent系统+6个driver LLM的交叉评估；运行时记录和事后摘要两种诊断技能支持结构化分析。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">固定预算设置可能过于严格，掩盖了Agent在宽松预算下的潜力；部分任务难度梯度设计可能不够平滑；成功的Agent运行依赖特定初始条件。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对探索"AI自动训练AI"方向的研究团队有重要诊断价值。当前结论表明自主RL工程仍处于早期，短期更适合人机协作范式。可作为Agent能力评估工具。落地难度低（开源基准）。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Infrastructure -->
+    <div class="section" id="infra">
+        <div class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation（优化器、网络结构、注意力机制、推理加速、高效训练）</div>
+
+        <div class="paper-card important">
+            <div class="paper-header">
+                <div class="paper-title"><span class="important-badge">重点精读</span><a href="https://arxiv.org/abs/2606.05165" target="_blank">STRIDE：激活空间训练数据归因——13倍提速的稀疏恢复框架</a></div>
+                <div class="paper-meta">arXiv:2606.05165 | 2026-06-03 | Rishit Dagli 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">将训练数据归因(TDA)从参数空间（梯度追踪）迁移到激活空间（功能效应建模）。提出STRIDE框架，将TDA建模为压缩感知精神的稀疏恢复问题：学习轻量"steering operators"模拟数据子集的行为偏移，通过稀疏线性分解还原各训练样本影响力。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">比SOTA快13倍，同时达到更好的LLM预训练归因精度。在数据选择、数据污染检测和定性分析等下游任务上验证实用价值。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">速度提升和精度提升均有量化指标；下游应用场景丰富，证明了从基础研究到工具落地的转化能力。但对比的SOTA方法的具体名称和设置未详细说明。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">稀疏恢复的效果依赖steering operators的表达能力；对超大规模模型（>100B）的激活空间操作仍可能受内存限制；归因结果的因果解释性不如基于retraining的方法严谨。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">🔥 <b>强烈推荐</span>：数据归因是大模型可解释性和数据治理的关键基础设施。13倍提速使得大规模归因分析从"研究玩具"变为"工程可行"。对数据合规审查、训练数据质量分析、版权争议排查等场景有直接价值。落地难度中等。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2606.06447" target="_blank">NF-CoT：用标准化流建模隐式思维链</a></div>
+                <div class="paper-meta">arXiv:2606.06447 | 2026-06-04 | Xiangjun Fu 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">文本CoT强制每个推理步骤必须 verbalize 后才能继续，而隐式推理在紧凑连续状态中进行中间计算但牺牲了自回归模型的原生优势。NF-CoT用标准化流(normalizing flows)建模连续思维，在LLM骨干内实例化TARFlow式流，同时保持原生左到右生成、概率采样、KV-cache兼容和可处理似然估计。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在代码生成基准上，NF-CoT提升pass rates over 显式CoT和先前隐式推理基线，同时大幅降低中间推理成本。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">同时对比显式CoT和隐式推理基线，覆盖了效果-效率两个维度。但实验任务类型相对单一（代码生成）。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">标准化流的训练稳定性挑战；连续思维的语义可解释性弱于文本CoT；流模型的表达能力限制了可建模的推理复杂度；在不同模型规模上的scaling行为未探索。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对追求推理效率的代码生成、数学求解产品有吸引力。保持KV-cache兼容是关键工程优势。但可解释性牺牲可能限制在高风险场景的应用。落地难度中高（需修改模型架构和训练流程）。</div></div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="https://arxiv.org/abs/2606.06098" target="_blank">IR3DE：面向领域专家模型的轻量推理路由器</a></div>
+                <div class="paper-meta">arXiv:2606.06098 | 2026-06-04 | Eros Fanì 等</div>
+            </div>
+            <div class="paper-body">
+                <div class="field"><span class="field-label">创新点</span><div class="field-content">现有路由方法要么在弱到强通用模型间优化成本，要么需要大量训练支持领域专家路由。IR3DE基于岭回归实现廉价快速的逐prompt路由决策，支持动态增删领域专家而无需重新训练路由器。</div></div>
+                <div class="field"><span class="field-label">结论</span><div class="field-content">在线性路由器中达到与基线相当的CLM性能，在推理设置中超越基线（归一化性能98.4%）。增删专家无需重新训练的特性使动态LLM服务成为可能。</div></div>
+                <div class="field"><span class="field-label">结论支撑</span><div class="field-content">在CLM和推理两种设置下评估；动态专家增删实验验证了核心卖点。但基线方法的描述不够详细，对比的全面性有待加强。</div></div>
+                <div class="field"><span class="field-label">局限性</span><div class="field-content">岭回归的表达能力有限，对需要复杂非线性路由决策的任务可能不足；路由特征的设计依赖领域知识；在大量专家（>100）上的scalability未测试。</div></div>
+                <div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合部署多个垂直领域专家模型的平台（如MaaS平台、企业知识库），以轻量路由实现"一个入口、多个专家"的服务架构。动态增删特性对快速迭代的业务场景很有价值。落地难度低。</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        由 VTM 小助手自动生成 | 2026-06-08<br>
+        论文来源：arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI 等<br>
+        免责声明：本报告基于公开论文信息整理，点评仅代表技术视角分析，不构成学术评价
+    </footer>
+</div>
+</body>
+</html>

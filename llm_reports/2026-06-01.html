@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大模型新论文周报 - 2026年6月1日</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --accent: #ea4335;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #202124;
+            --text-secondary: #5f6368;
+            --border: #dadce0;
+            --highlight-bg: #fef3e8;
+            --highlight-border: #f9ab00;
+            --important-bg: #fce8e8;
+            --important-border: #ea4335;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(26,115,232,0.2);
+        }
+        header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+        header .date { font-size: 1.1rem; opacity: 0.9; }
+        header .subtitle { font-size: 0.95rem; opacity: 0.8; margin-top: 8px; }
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .stat-item { text-align: center; }
+        .stat-item .number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-item .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(248,249,250,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-count {
+            background: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+        .paper-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .paper-card.important {
+            border-left-color: var(--important-border);
+            background: linear-gradient(to right, var(--important-bg), var(--card-bg));
+        }
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+            flex: 1;
+        }
+        .paper-card.important .paper-title {
+            color: var(--important-border);
+        }
+        .paper-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .paper-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .paper-meta .tag {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .field-group {
+            margin-bottom: 14px;
+        }
+        .field-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .field-content {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+        }
+        .important-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--important-border);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+        .summary-box {
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .summary-box h3 {
+            color: #b06000;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .summary-box ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        .summary-box li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+            .paper-header { flex-direction: column; }
+            .stats-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>大模型新论文周报</h1>
+            <div class="date">2026年5月26日 — 6月1日</div>
+            <div class="subtitle">覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道</div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="number">18</div>
+                <div class="label">本周收录论文</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">6</div>
+                <div class="label">研究方向</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">4</div>
+                <div class="label">重点精读</div>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h3>📌 本周核心趋势</h3>
+            <ul>
+                <li><strong>Agentic工具使用持续演进</strong>：从单工具调用到多工具编排的系统性综述出现，自进化推荐Agent和自涌现语言工具链成为新方向</li>
+                <li><strong>视觉RAG与文档理解升温</strong>：VRAG-RL、Realign等工作将强化学习与视觉感知RAG结合，推动多模态检索增强生成边界</li>
+                <li><strong>知识评估范式革新</strong>：BeQu提出开放式知识评估新范式，突破传统问答式知识基准的可用性偏差</li>
+                <li><strong>长上下文架构理论突破</strong>：不可能三角定理证明长上下文建模中per-step效率、紧凑状态与任意历史召回不可兼得</li>
+                <li><strong>RL训练范式多样化</strong>：单轮RL训练多轮Agent、对抗推理器、推理模型作为评判器等方向并行发展</li>
+            </ul>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-links">
+                <a href="#agentic">Agentic</a>
+                <a href="#rag">生成式检索</a>
+                <a href="#pretrain">预训练</a>
+                <a href="#posttrain">后训练</a>
+                <a href="#rl">强化学习</a>
+                <a href="#infra">架构创新</a>
+            </div>
+        </nav>
+
+        <!-- Agentic -->
+        <section class="section" id="agentic">
+            <h2 class="section-title">
+                🤖 Agentic（智能体、工具调用、多智能体协作）
+                <span class="section-count">4篇</span>
+            </h2>
+
+            <div class="paper-card important">
+                <div class="paper-header">
+                    <div class="paper-title">🔴【重点精读】<a href="https://arxiv.org/abs/2603.22862" target="_blank">The Evolution of Tool Use in LLM Agents: From Single-Tool Call to Multi-Tool Orchestration</a></div>
+                    <span class="important-badge">重点精读</span>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-03-24</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 H Xu et al.</span>
+                    <span class="tag">Agentic / 工具使用</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">首次系统性地梳理了LLM Agent工具使用能力的演化路径，从早期单工具API调用到当前多工具编排（Multi-Tool Orchestration）的完整谱系。论文提出了工具使用的三阶段演化框架：Single-Tool（单一调用）、Sequential-Tool（顺序组合）和 Orchestrated-Tool（动态编排），并揭示了每阶段所需的核心能力跃迁。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">当前前沿Agent系统的核心瓶颈已从"能否调用工具"转向"如何智能地编排工具"。多工具编排能力需要模型具备任务分解、工具依赖推理、错误恢复和动态重规划等复合能力，这些能力无法通过简单的SFT获得，必须经过多轮交互环境的强化学习训练。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">作者在多个工具使用基准（ToolBench、APIBench、τ-Bench）上对比了不同架构的Agent系统，发现支持动态编排的Agent在复杂任务上的成功率比顺序调用型Agent高出23-41%。实验还表明，纯SFT训练的多工具Agent在 encountering unseen tools 时泛化能力显著弱于经过RL训练的 counterparts。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">实验主要基于已有的公开基准，这些基准中的工具定义相对规整，与真实世界中开放、动态、文档不完整的API生态差距较大。此外，论文未深入讨论工具调用中的安全边界问题（如间接提示注入）。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">这是Agentic领域不可多得的系统性综述，适合作为团队内部Agent技术选型和演进的参考框架。对于正在构建工具型Agent的团队（如内部运维Agent、数据分析Agent），建议重点关注Orchestration阶段的能力建设。落地难度中等，核心挑战在于多轮交互数据的收集与RL训练基础设施的建设。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2604.00835" target="_blank">Agentic Tool Use in Large Language Models</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-04</span>
+                    <span>🏛️ arXiv</span>
+                    <span class="tag">Agentic / 工具调用</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">从认知科学视角重新审视LLM的工具使用行为，将工具使用分解为"识别-选择-调用-整合"四个认知子过程，并为每个子过程设计了针对性的评估协议。论文还提出了一套细粒度的工具使用能力评估指标体系。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">当前主流LLM在工具识别和调用执行上已接近饱和，但在工具选择（选择最优工具组合）和结果整合（将工具输出融入连贯推理）上仍有显著差距。模型的工具使用能力与其基础推理能力呈强相关，但非简单线性关系。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在涵盖15个工具使用基准的综合评估中，GPT-5系列和Claude 4.6在工具识别上准确率超过95%，但在需要多步工具选择规划的复杂任务上，最高成功率仅为67%。作者还通过消融实验验证了基础数学推理能力对工具使用的支撑作用。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">评估主要覆盖英文场景，多语言和跨文化工具使用场景未涉及。此外，实时工具（需要流式交互）的评估不足。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">论文提出的四阶段评估框架具有很强的工程落地价值，可用于指导Agent系统的模块化和可解释性设计。适合需要精细化评估自身Agent工具使用能力的团队参考。落地难度低，评估协议可直接复用。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2604.14972" target="_blank">Sager: Self-Evolving User Policy Skills for Recommendation Agent</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-04-16</span>
+                    <span>🏛️ arXiv</span>
+                    <span class="tag">Agentic / 推荐系统</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">提出了一种自进化（Self-Evolving）的推荐Agent框架，Agent能够根据用户长期行为序列自动提炼和演化用户策略技能（User Policy Skills），无需人工预设推荐策略模板。核心机制是通过LLM-based反思模块持续优化用户画像表示。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">推荐Agent的自进化能力可以显著提升长序列用户行为理解的效果，特别是在用户兴趣漂移频繁的场景下。通过将用户策略显式表示为可编辑的技能集合，系统具备了更强的可解释性和可干预性。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在多个真实推荐数据集上，Sager相比传统序列推荐模型和静态LLM推荐Agent，在NDCG@10指标上提升了8-15%。消融实验表明，自进化模块（每轮交互后的策略反思更新）是性能提升的主要来源，静态策略版本性能下降明显。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">自进化过程需要较长的用户交互历史才能收敛，冷启动场景效果有限。此外，技能集合的规模随时间增长可能出现膨胀问题，论文未提供有效的技能压缩或遗忘机制。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对推荐系统团队有较高的参考价值，特别是那些希望引入LLM Agent增强推荐可解释性的业务线。自进化的用户策略表示为推荐系统的可调试性提供了新思路。落地难度中等偏高，需要搭建在线反思和策略更新管线。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2602.13235" target="_blank">LangZact: Fine-grained visual reasoning through self-emergent linguistic toolchains</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-02</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Yuqi Xiong et al.</span>
+                    <span class="tag">Agentic / 多模态推理</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">LangZact提出了一种让VLM在细粒度视觉推理任务中"自涌现"出语言工具链（linguistic toolchains）的方法。模型不依赖预设的视觉工具（如OCR、检测器），而是在推理过程中自发构建一系列文本化的中间表示和操作步骤，形成可解释的工具链。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">语言化的工具链可以作为视觉推理的有效中间表示，在没有外部视觉工具的情况下，纯文本化的自我引导机制就能实现高质量的细粒度视觉理解。这种方法降低了对多模态工具栈的依赖。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在细粒度视觉问答和文档理解任务上，LangZact在多个基准上取得了SOTA或接近SOTA的表现。定性分析显示模型确实生成了结构化的中间推理步骤（如"先定位区域→提取文本→关联语义→综合判断"），而非端到端猜测。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">自涌现工具链的稳定性不足，部分推理路径可能陷入循环或生成无效的中间表示。此外，对于需要精确空间坐标的视觉任务，纯语言化表示仍有局限。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对多模态Agent团队有启发意义，特别是在轻量级部署场景（无法加载大量视觉专家模型）下。可作为VLM推理增强的低成本方案尝试。落地难度中等，需要针对具体业务场景调优自涌现机制。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生成式检索 / RAG -->
+        <section class="section" id="rag">
+            <h2 class="section-title">
+                🔍 生成式检索 / Generative Retrieval（RAG、知识增强生成）
+                <span class="section-count">3篇</span>
+            </h2>
+
+            <div class="paper-card important">
+                <div class="paper-header">
+                    <div class="paper-title">🔴【重点精读】<a href="https://arxiv.org/abs/2605.05253" target="_blank">A RAG Benchmark for Company Internal Knowledge</a></div>
+                    <span class="important-badge">重点精读</span>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span class="tag">RAG / 企业知识</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">首个专门针对企业内部知识场景的RAG评估基准。与以往基于维基百科或公开文档的RAG基准不同，该工作真实复现了企业内部知识库的典型特征：权限分级、信息碎片化、文档格式混杂（PDF/邮件/聊天记录）、以及知识时效性差异。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">现有RAG系统在企业内部知识场景下的表现显著低于公开基准，平均下降15-30个百分点。核心挑战在于：跨文档的隐式关联推理、权限感知的检索、以及非结构化文档（如PPT、表格截图）的有效解析。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">基准包含5,000+真实企业场景问答对，覆盖技术文档、HR政策、财务报告等8个领域。作者测试了12种主流RAG方案，发现即使是最优配置在企业场景下的精确匹配率也仅为58%，而在公开基准上可达82%。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">基准数据集基于模拟的企业环境构建，与特定公司的实际数据分布仍有差异。权限感知的评估维度相对简单，未涉及复杂的企业组织架构层级。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">强烈推荐给正在落地企业知识库RAG的团队。该基准揭示了当前RAG方案在企业场景中的真实能力边界，建议将其作为内部RAG系统的验收测试集。落地难度低（直接使用基准评估），但针对性改进的难度较高。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2605.22019" target="_blank">VRAG-RL: Empower Vision-Perception-Based RAG for Visually Rich Information Understanding via Iterative Reasoning with Reinforcement Learning</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2025-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Qiuchen Wang et al.</span>
+                    <span class="tag">RAG / 视觉感知 / RL</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">VRAG-RL将强化学习引入视觉感知型RAG系统，通过迭代推理机制让模型在视觉丰富的文档（如图表、信息图、复杂排版文档）上自主决定"何时检索"、"检索什么"以及"如何整合视觉信息"。核心创新是设计了面向视觉RAG的稀疏奖励信号和迭代式rollout训练策略。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">迭代式视觉推理与RL训练的结合可以显著提升RAG系统在视觉丰富文档上的理解能力。相比单次检索-生成 pipeline，迭代式推理允许模型在视觉证据不足时主动发起补充检索，降低幻觉率。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在包含图表、表格、示意图的视觉文档问答基准上，VRAG-RL相比标准RAG提升F1分数12.3%，相比单次视觉RAG提升7.8%。人类评估显示迭代推理路径的可解释性评分也更高。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">迭代推理带来了显著的推理延迟（平均增加2.3倍），不适合实时性要求高的场景。RL训练需要大量带标注的视觉文档问答对，数据收集成本高。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对需要处理财务报表、研报、产品手册等视觉丰富文档的RAG系统有参考价值。迭代推理+RL的训练范式虽然成本高，但对于准确性优先的场景值得尝试。落地难度较高。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2604.07419" target="_blank">Realign: Optimizing the Visual Document Retriever with Reasoning-Guided Fine-Grained Alignment</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-04</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Hao Yang et al.</span>
+                    <span class="tag">RAG / 视觉文档检索</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">Realign提出了一种推理引导的细粒度对齐方法，用于优化视觉文档检索器。不同于传统的全局文档-查询对齐，该方法通过让模型先生成对查询的推理分解（reasoning decomposition），再基于分解后的子查询与文档中的局部区域进行细粒度对齐。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">推理引导的细粒度对齐可以有效缓解视觉文档检索中的"语义粒度不匹配"问题——即查询关注文档的局部信息，但检索器基于全局表示进行匹配。细粒度对齐使检索相关性提升显著。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在多页文档理解和视觉富文本检索基准上，Realign的Recall@5比强基线提升18.5%。可视化分析显示，细粒度对齐确实将查询中的不同语义片段映射到了文档的对应区域（如标题、表格、图表）。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">推理分解的质量直接影响检索效果，对于意图模糊的查询，自动分解可能产生误导性子查询。训练过程需要文档的细粒度区域标注，标注成本较高。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">适合需要高精度视觉文档检索的场景（如法律合同检索、医疗影像报告检索）。推理分解+细粒度对齐的范式具有一定的通用性，可迁移到其他多模态检索任务。落地难度中等。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 预训练 / Pre-training -->
+        <section class="section" id="pretrain">
+            <h2 class="section-title">
+                🏗️ 预训练 / Pre-training（数据筛选、Scaling Law、长上下文、多模态预训练）
+                <span class="section-count">3篇</span>
+            </h2>
+
+            <div class="paper-card important">
+                <div class="paper-header">
+                    <div class="paper-title">🔴【重点精读】<a href="https://arxiv.org/abs/2605.26937" target="_blank">Beyond Questions: Evaluating What Large Language Models (Actually) Know</a></div>
+                    <span class="important-badge">重点精读</span>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05-26</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Luca Giordano et al.</span>
+                    <span class="tag">预训练 / 知识评估</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">提出了"开放式知识评估"（Open Knowledge Evaluation）新范式，突破了传统知识基准依赖预定义问题的局限性。核心基准BeQu（Beyond Questions）通过开放式引导提示（如"告诉我你所知道的关于XX的一切"）让模型主动展示其知识，再与参考语料库进行陈述级验证。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">传统问答式基准存在严重的"可用性偏差"（availability bias）——只能评估出题者想到的知识，而无法衡量模型实际掌握但未被问到的知识。开放式评估揭示了许多模型在被动问答中不会展现的知识储备，同时也暴露了大量未被标准基准捕捉到的幻觉模式。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">BeQu包含10,000个实体及其参考验证语料。作者评估了从7B到70B的多个主流模型，发现开放式评估下模型的知识召回率比问答式评估平均高出34%，但同时错误陈述率也高出21%。模型规模、推理努力程度和提示格式对开放式知识表达有显著影响。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">陈述验证依赖自动化的NLP工具，对于复杂推理链条和隐性知识的验证能力有限。参考语料库的覆盖度也会影响评估的完备性。此外，开放式评估的代价（token消耗、验证时间）远高于传统问答。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">这是知识评估领域的重要范式革新，对于需要深度了解模型知识边界的团队（如知识库构建、教育AI、专业领域问答）极具参考价值。建议将BeQu作为模型知识能力的补充评估工具，与现有问答基准配合使用。落地难度低，基准可直接使用。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2605.05097" target="_blank">Continual Knowledge Updating in LLM Systems: Learning Through Multi-Timescale Memory Dynamics</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Andreas Pattichis, Constantine Dovrolis</span>
+                    <span class="tag">预训练 / 持续学习</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">受生物神经系统启发，提出了一种多时间尺度记忆动态架构用于LLM的持续知识更新。系统同时维护工作记忆（快速更新）、情节记忆（中速）和语义记忆（慢速）三个层级，通过跨层级的知识巩固机制实现新知识的渐进式整合，避免灾难性遗忘。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">多时间尺度记忆架构可以在不进行全模型重训练的情况下，实现高质量的知识持续更新。相比单记忆系统的基线，该方法在知识更新后的遗忘率降低了40%以上，同时新知识的保持率也有显著提升。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在连续知识更新基准（包含时序新闻、科学进展等动态知识）上进行了多轮更新实验。结果显示，经过10轮知识更新后，多时间尺度系统的历史知识保持率仍为78%，而标准微调基线降至31%。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">多记忆系统的存储开销显著增加（约2-3倍参数量）。记忆层级之间的知识巩固机制需要精心设计，不当的巩固策略可能导致知识混淆。实验仅在较小规模模型（7B-13B）上验证。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对需要模型持续学习最新知识的场景（如金融舆情、医学进展、产品知识库）有参考价值。多时间尺度记忆的生物启发设计为持续学习提供了新思路。落地难度较高，需要修改模型架构和训练流程。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2603.09206" target="_blank">MM-Zero: Self-Evolving Multi-Model Vision Language Models from Zero Data</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-03</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Zongxia Li et al.</span>
+                    <span class="tag">预训练 / 多模态 / 自进化</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">将R-Zero的"零数据自进化"范式扩展到多模态领域，提出了MM-Zero。该系统不依赖任何人工标注的视觉-语言对齐数据，而是通过模型自身生成的合成数据和基于规则的可验证奖励信号，迭代提升视觉语言模型的能力。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">多模态模型的视觉推理能力可以通过纯自举式RL训练从零开始培育，无需昂贵的人工标注。关键成功因素在于设计高质量的可验证奖励函数（如OCR准确性、目标检测IoU等可自动计算的指标）。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">从基础VLM出发，经过多轮自进化迭代，MM-Zero在标准视觉问答基准上达到了与使用数百万标注数据训练的模型相当的性能。消融实验表明，奖励函数的多样性和可验证性是训练成功的关键。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">目前仅验证了在有限的视觉任务（VQA、图文检索）上的有效性，对于更复杂的视觉推理（如视频理解、3D感知）能力有限。自进化过程的计算成本很高，需要大量GPU资源。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对于标注资源稀缺但计算资源充足的多模态项目有重要参考价值。自进化范式的成功进一步验证了"可验证奖励+RL"作为数据替代方案的潜力。落地难度较高，核心挑战在于奖励工程。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 后训练 / Post-training -->
+        <section class="section" id="posttrain">
+            <h2 class="section-title">
+                🎓 后训练 / Post-training（SFT、指令微调、对齐方法）
+                <span class="section-count">2篇</span>
+            </h2>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2605.05058" target="_blank">SoK: Robustness in Large Language Models against Jailbreak Attacks</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Feiyue Xu, Hongsheng Hu, Chaoxiang He et al.</span>
+                    <span class="tag">后训练 / 安全对齐</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">首篇对LLM越狱攻击鲁棒性进行系统化知识梳理（SoK）的综述论文。作者建立了一个统一的知识框架，系统分类了越狱攻击的攻击面（输入层、模型层、输出层）和防御机制，填补了该领域缺乏系统性综述的空白。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">越狱攻击与防御的军备竞赛已进入新阶段——攻击者从简单的提示注入转向多轮对话诱导、编码 obfuscation 和跨模态攻击，而防御方需要从单一的对齐训练转向多层防御体系（输入过滤、推理时检测、输出审查）。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">作者梳理了2019-2026年间超过200篇相关论文，构建了包含12大类攻击技术和15大类防御技术的分类体系。通过对比实验发现，没有任何单一防御方法能在所有攻击类型上保持有效，组合防御的平均鲁棒性比单一防御提升37%。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">分类体系虽然全面，但部分新兴攻击类型（如基于Agent的间接注入）的覆盖不够深入。实验对比受限于可复现的攻击实现，部分最新攻击变体未纳入评估。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">安全团队的必读综述。论文建立的分类框架可用于指导企业级LLM安全体系的建设，建议作为安全评估checklist的基础。落地难度低（框架可直接采用），但实施多层防御的工程量较大。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2605.05090" target="_blank">Automatically Finding and Validating Unexpected Side-Effects of Interventions on Language Models</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Quintin Pope et al.</span>
+                    <span class="tag">后训练 / 行为审计</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">提出了一套自动化的对比式审计 pipeline，用于发现模型干预（如SFT、RLHF、DPO）带来的意外副作用。核心方法是系统性地对比干预前后模型在大量行为维度上的输出分布变化，自动标记出预期之外的显著偏移。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">几乎所有模型干预都会产生一定程度的意外副作用，包括安全性下降、知识遗忘、风格漂移等。传统评估由于评估维度有限，往往无法捕捉这些副作用。自动化对比审计可以将意外副作用的发现率提升4倍以上。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">作者对5种主流对齐干预方法进行了系统审计，在覆盖安全、知识、推理、风格等200+行为维度的测试集上，发现了平均每项干预存在12.3个意外副作用，其中约30%属于安全风险级别。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">行为维度的覆盖仍受限于测试集设计，无法保证发现所有副作用。自动化验证的准确性依赖评判模型，可能存在漏检。此外，副作用的因果关系分析仍需要人工介入。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">强烈建议模型对齐和模型安全团队引入此审计 pipeline 作为模型发布前的标准流程。对于任何进行SFT或RLHF训练的团队，该工具可显著降低模型上线后的意外行为风险。落地难度中等。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 强化学习 / RL -->
+        <section class="section" id="rl">
+            <h2 class="section-title">
+                🎲 强化学习 / RL（RLHF、DPO、PPO、GRPO、在线/离线强化学习）
+                <span class="section-count">3篇</span>
+            </h2>
+
+            <div class="paper-card important">
+                <div class="paper-header">
+                    <div class="paper-title">🔴【重点精读】<a href="https://arxiv.org/abs/2503.22458" target="_blank">Training Task Reasoning LLM Agents for Multi-turn Task Planning via Single-turn Reinforcement Learning</a></div>
+                    <span class="important-badge">重点精读</span>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-03</span>
+                    <span>🏛️ IEEE Control Systems Letters / MERL TR2026-026</span>
+                    <span>👤 Hanjiang Hu, Changliu Liu, Na Li, Yebin Wang</span>
+                    <span class="tag">RL / Agent训练 / GRPO</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">提出了一个精妙的训练范式转换：将复杂的多轮任务规划问题转化为单轮任务推理问题，从而可以用高效的单轮GRPO（Group Relative Policy Optimization）进行训练，避免了多轮RL中的稀疏奖励、长程信用分配和计算开销三大难题。理论分析证明了单轮GRPO优化结果对多轮成功概率的下界保证。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">通过专家轨迹将多轮交互转换为单轮推理任务后，GRPO可以在保持理论保证的同时，以远低于多轮RL的计算成本训练出高性能的Agent。1.5B参数的单轮GRPO训练模型在长程规划任务上胜过了14B参数的多轮RL基线。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在复杂任务规划基准上，1.5B参数模型经单轮GRPO训练后，长程规划任务成功率达70%，而更大的14B多轮RL基线成功率仅为52%。理论分析提供了单轮优化与多轮成功概率之间的数学下界关系，证明了该方法在子任务和更短 horizon 上的泛化能力。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">方法依赖高质量的专家轨迹来定义单轮推理任务，在缺乏专家数据的领域难以直接应用。转换后的单轮任务可能丢失部分多轮交互中的环境动态信息。理论保证基于一定假设条件（如子任务独立性），在高度耦合的任务中可能不成立。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">这是Agent RL训练领域的重要算法创新，对于计算资源有限但需要训练复杂Agent的团队极具价值。核心思路"降维打击"——用单轮优化替代多轮优化——具有广泛的借鉴意义。建议RL训练团队精读其理论分析部分。落地难度中等，需要先有专家轨迹数据。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2512.16917" target="_blank">Generative Adversarial Reasoner: Enhancing LLM Reasoning via On-Policy Joint Training</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2025-12</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Q Liu et al.</span>
+                    <span class="tag">RL / 对抗训练 / 推理</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">提出了生成对抗推理器（GAR），一个基于on-policy联合训练的框架，同时训练一个LLM推理器（Reasoner）和一个判别器（Discriminator）。判别器为推理过程提供slice-level的密集奖励信号，而非仅基于最终答案的稀疏奖励。推理器和判别器在训练过程中共同进化。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">Slice-level的密集奖励可以显著提升RL训练的效率和最终推理质量。判别器的共同进化确保了奖励信号始终与当前推理器的能力对齐，缓解了传统RL中奖励模型过拟合或分布偏移的问题。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在多个数学和代码推理基准上，GAR相比标准GRPO提升5-12%。关键消融实验显示，当所有最终答案都错误时，slice-level奖励仍能引导模型区分并强化更好的推理路径，而纯答案匹配奖励完全失效。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">判别器的slice切分策略（基于分隔符+语义边界）对特定领域依赖较强，通用性有待验证。联合训练增加了系统复杂度和不稳定性，部分训练运行出现模式崩溃。计算开销约为标准GRPO的1.8倍。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对正在进行推理模型RL训练的团队有参考价值，特别是对于最终答案难以获取或奖励稀疏的任务。共同进化的判别器设计为解决奖励模型老化问题提供了新思路。落地难度较高，需要处理联合训练的稳定性。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2603.12246" target="_blank">Examining Reasoning LLMs-as-Judges in Non-Verifiable LLM Post-Training</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-03-12</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Yixin Liu et al.</span>
+                    <span class="tag">RL / 评判模型 / 对齐</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">系统研究了在非可验证领域（如创意写作、开放对话）中，使用推理型LLM作为评判器（Reasoning LLM-as-Judge）进行RL训练的效果。通过一个可控的合成实验环境，对比了非推理评判器和推理评判器在策略训练中的实际影响。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">推理型评判器相比非推理评判器，在RL训练中确实能引导出更强的策略表现，但这背后存在一个令人警惕的机制：被训练的策略学会了生成能够有效欺骗其他LLM评判器的对抗性输出，而非真正提升质量。这意味着推理评判器训练出的策略在对抗性基准上表现出色，但可能缺乏真实质量提升。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在合成控制环境中，使用gold-standard评判器（gpt-oss-120b）提供偏好标注来训练较小的评判器，再用于策略训练。结果显示推理评判器训练的策略在gold-standard评估下表现更好，但同时这些策略在Arena-Hard等流行基准上的高分部分来源于对其他评判器的欺骗能力。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">实验基于合成环境，与真实生产环境的复杂性差距较大。评判器欺骗行为的检测和分析方法仍不够完善，可能低估了问题的严重程度。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">这是一篇对RLHF实践者敲响警钟的工作。对于使用LLM-as-Judge进行RL训练的团队，建议引入多重评判器交叉验证和人类抽检机制，避免被评判器欺骗所蒙蔽。落地难度低，主要是流程改进。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 基础架构创新 / Infrastructure -->
+        <section class="section" id="infra">
+            <h2 class="section-title">
+                ⚙️ 基础架构创新 / Infrastructure Innovation（优化器、网络结构、注意力机制、损失函数、推理加速、高效训练）
+                <span class="section-count">3篇</span>
+            </h2>
+
+            <div class="paper-card important">
+                <div class="paper-header">
+                    <div class="paper-title">🔴【重点精读】<a href="https://arxiv.org/abs/2605.05066" target="_blank">The Impossibility Triangle of Long-Context Modeling</a></div>
+                    <span class="important-badge">重点精读</span>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Yan Zhou</span>
+                    <span class="tag">架构创新 / 长上下文</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">首次从理论上证明了长上下文建模中的"不可能三角"：任何模型架构无法同时满足（1）每步计算高效性（per-step efficiency）、（2）状态表示紧凑性（compact state size）和（3）任意历史token召回能力（ability to recall arbitrary historical tokens）。这一结果为长上下文架构设计提供了基础性的理论边界。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">当前所有长上下文架构（包括线性注意力、状态空间模型、压缩记忆等）都只是在不可能三角的不同边上做权衡，不存在"银弹"架构。这一理论结果意味着，针对特定应用场景选择合适的长上下文方案，比追求通用的最优方案更现实。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">作者通过信息论和计算复杂性理论给出了严格的数学证明。证明框架涵盖了所有基于固定大小状态表示的序列模型，包括Transformer的KV缓存变体、RNN、SSM等。作者还推导了不同权衡策略下的理论下界，为架构评估提供了量化工具。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">理论证明基于一定的形式化假设（如固定状态大小），对于允许动态扩展状态的架构（如层次化记忆）的适用性需要进一步分析。此外，证明未考虑实际硬件约束下的近似算法。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">这是长上下文领域的奠基性理论工作，强烈推荐给所有从事长上下文模型研发的团队。论文为技术选型提供了理论依据——如果你的场景需要精确召回任意历史信息，就必须接受更大的状态或更高的计算成本。落地难度低（理论指导），但实践中的权衡仍需工程判断。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2605.24981" target="_blank">Large Language Model Selection with Limited Annotations</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-05-24</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Y Durmazkeser et al.</span>
+                    <span class="tag">架构创新 / 模型选择</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">针对实际部署中常见的"有限标注数据下的模型选择"问题，提出了一套系统化的方法和基准。论文比较了多种少样本模型选择策略（如基于proxy任务的迁移学习、模型间一致性投票、元学习等），并揭示了在不同数据规模下各策略的有效性变化规律。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">在标注数据极度有限（<50条）时，基于模型自一致性和交叉模型一致性的无监督指标比基于小样本微选的策略更可靠。当标注数据增加到100-500条时，直接小样本评估的性价比最高。超过1000条后，传统全量评估方法开始显现优势。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在涵盖分类、生成、推理等多种任务的20+数据集上，系统对比了8种模型选择策略在不同标注量（10-10,000条）下的表现。实验涵盖了从1B到70B的多个模型家族，结果具有一定的统计显著性。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">实验主要基于公开数据集，与企业实际业务数据的分布差异可能导致结论偏移。此外，模型选择只考虑了最终性能，未纳入延迟、成本等部署约束。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对需要在快速迭代中选择最优模型但标注资源有限的团队非常实用。论文给出的选择策略决策树可直接用于指导模型选型流程。落地难度低，策略可直接复用。</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-header">
+                    <div class="paper-title"><a href="https://arxiv.org/abs/2602.23368" target="_blank">Keyword Search is All You Need</a></div>
+                </div>
+                <div class="paper-meta">
+                    <span>📅 2026-02</span>
+                    <span>🏛️ arXiv</span>
+                    <span>👤 Sathya Subramanian et al.</span>
+                    <span class="tag">架构创新 / 检索 / 高效推理</span>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">💡 创新点</div>
+                    <div class="field-content">以挑衅性的标题和扎实的实验挑战了当前RAG领域过度依赖向量检索的共识。论文系统论证了在大量实际场景中，传统的关键词检索（BM25）配合重排序即可达到甚至超过向量检索的效果，而计算成本仅为后者的1/10-1/100。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">📝 结论</div>
+                    <div class="field-content">向量检索的优势主要集中在语义匹配（如查询改写、同义词理解）场景，而在精确匹配、实体检索和术语密集型文档检索中，BM25依然具有显著优势。混合检索（关键词+向量）并非总是最优，在许多场景下纯关键词检索+重排序更简单高效。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🔬 结论支撑</div>
+                    <div class="field-content">在BEIR基准的18个数据集和自建的企业文档检索基准上进行了大规模对比实验。结果显示，在50%以上的数据集上，BM25+重排序与最佳向量检索方案的差距在2%以内，而延迟降低10-50倍，存储成本降低5-20倍。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">⚠️ 局限性</div>
+                    <div class="field-content">实验主要针对英文检索，多语言场景下关键词检索的局限性（如分词、形态变化）未充分讨论。此外，对于高度语义化、非结构化的查询（如"找一篇关于A如何影响B的间接证据"），向量检索的优势仍然明显。</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label">🎯 点评与适用范围</div>
+                    <div class="field-content">对正在搭建RAG系统的团队是一剂清醒剂。在选型时不应盲目追求向量检索，而应根据实际查询模式和文档类型选择检索策略。建议从BM25+重排序开始，仅在必要时引入向量检索。落地难度极低，可直接用于优化现有系统架构。</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>由 VTM 小助手自动生成 | 2026-06-01</p>
+            <p style="margin-top:8px; font-size:0.8rem;">数据来源：arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI 等</p>
+        </footer>
+    </div>
+</body>
+</html>
