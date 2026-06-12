@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VTM 大模型论文周报 - 索引</title>
+    <!--
+      索引页采用动态加载：
+        1. 通过 GitHub Contents API 自动列出当前目录下 YYYY-MM-DD.html 的所有报告；
+        2. 拉取每份报告 <head> 中的 <script type="application/json" id="report-meta"> 元数据；
+        3. 按日期倒序渲染卡片，最新一份自动打上"最新"徽章。
+
+      新增一份周报时无需修改本文件，只需：
+        - 新建 YYYY-MM-DD.html，在 <head> 中加入 <script type="application/json" id="report-meta">{...}</script>
+        - 推送到 GitHub 即可。
+    -->
     <style>
         :root {
             --primary: #1a1a2e;
@@ -107,6 +117,29 @@
             font-weight: 600;
             margin-left: 10px;
         }
+        .status {
+            text-align: center;
+            color: rgba(255,255,255,0.95);
+            padding: 40px 20px;
+            font-size: 1em;
+        }
+        .status.error {
+            background: rgba(255,255,255,0.95);
+            color: #b00020;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .spinner {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 14px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         footer {
             text-align: center;
             padding: 30px;
@@ -127,98 +160,154 @@
             <p>每周精选 arXiv 及业界重要论文，覆盖 Agentic、RAG、预训练、后训练、强化学习、架构创新等方向</p>
         </header>
 
-        <div class="card">
-            <a href="2026-06-08.html">
-                <div class="card-header">
-                    <div class="card-title">2026年5月25日 — 6月7日<span class="latest-badge">最新</span></div>
-                    <div class="card-date">第23周</div>
-                </div>
-                <div class="card-meta">
-                    覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>
-                    核心趋势：StreamMA 流式多智能体推理（延迟 O(depth)→O(1)）、AutoLab 长视野闭环优化 Agent 基准、ZEDA 静态 MoE 无损转动态 MoE、DistIL 富反馈 RL 超越 RLVR、STRIDE 激活空间训练数据归因 13×提速。
-                </div>
-                <div class="card-stats">
-                    <div class="card-stat"><span class="number">22</span> 篇论文</div>
-                    <div class="card-stat"><span class="number">6</span> 个方向</div>
-                    <div class="card-stat"><span class="number">6</span> 篇重点精读</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="card">
-            <a href="2026-06-01.html">
-                <div class="card-header">
-                    <div class="card-title">2026年5月26日 — 6月1日</div>
-                    <div class="card-date">第22周</div>
-                </div>
-                <div class="card-meta">
-                    覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>
-                    核心趋势：Agentic 工具使用演化综述、开放式知识评估新范式 BeQu、长上下文不可能三角定理、单轮 RL 训练多轮 Agent、关键词检索挑战向量检索共识。
-                </div>
-                <div class="card-stats">
-                    <div class="card-stat"><span class="number">18</span> 篇论文</div>
-                    <div class="card-stat"><span class="number">6</span> 个方向</div>
-                    <div class="card-stat"><span class="number">4</span> 篇重点精读</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="card">
-            <a href="2026-05-25.html">
-                <div class="card-header">
-                    <div class="card-title">2026年5月19日 — 5月25日</div>
-                    <div class="card-date">第21周</div>
-                </div>
-                <div class="card-meta">
-                    覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>
-                    核心趋势：Gemini Spark 24/7 Agent 发布、SubQ 12M 上下文窗口、AI 独立解决 80 年 Erdős 几何问题、Anthropic NLA 可解释性突破。
-                </div>
-                <div class="card-stats">
-                    <div class="card-stat"><span class="number">18</span> 篇论文</div>
-                    <div class="card-stat"><span class="number">6</span> 个方向</div>
-                    <div class="card-stat"><span class="number">5</span> 篇重点精读</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="card">
-            <a href="2026-05-18.html">
-                <div class="card-header">
-                    <div class="card-title">2026年5月11日 — 5月18日</div>
-                    <div class="card-date">第20周</div>
-                </div>
-                <div class="card-meta">
-                    覆盖 Agentic 搜索策略交互研究、多模态 RAG 元素级检索、低成本上下文窗口扩展 EndPrompt、CIPO 自我纠错 RL 训练等前沿方向。
-                </div>
-                <div class="card-stats">
-                    <div class="card-stat"><span class="number">20</span> 篇论文</div>
-                    <div class="card-stat"><span class="number">6</span> 个方向</div>
-                    <div class="card-stat"><span class="number">4</span> 篇重点精读</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="card">
-            <a href="2026-03-13.html">
-                <div class="card-header">
-                    <div class="card-title">2026年3月13日</div>
-                    <div class="card-date">第10周</div>
-                </div>
-                <div class="card-meta">
-                    本周共收集 20 篇大模型相关论文与技术报告。<br>
-                    重点关注：GPT-5.4 / Claude Opus 4.6 / Gemini 3.1 Pro 三大旗舰模型密集发布、AlphaEvolve 打破 56 年矩阵乘法纪录、ReVal 首次将 off-policy 价值函数引入 LLM 训练。
-                </div>
-                <div class="card-stats">
-                    <div class="card-stat"><span class="number">20</span> 篇论文</div>
-                    <div class="card-stat"><span class="number">6</span> 个方向</div>
-                    <div class="card-stat"><span class="number">5</span> 篇重点精读</div>
-                </div>
-            </a>
+        <div id="report-list">
+            <div class="status">
+                <div class="spinner"></div>
+                <div>正在加载报告列表…</div>
+            </div>
         </div>
 
         <footer>
             <p>VTM 大模型论文周报 | 由 VTM 小助手自动生成</p>
         </footer>
     </div>
+
+    <script>
+    (function () {
+        // 默认指向当前部署的仓库；如仓库改名，只需改这里一行即可。
+        const DEFAULT_REPO = 'yuanyuan25/yuanyuan25.github.io';
+        const DEFAULT_DIR = 'llm_reports';
+        const FILE_PATTERN = /^\d{4}-\d{2}-\d{2}\.html$/;
+        const listEl = document.getElementById('report-list');
+
+        // 部署在 <user>.github.io 时自动推断仓库；其它情况回退到默认值。
+        function detectRepoAndDir() {
+            const host = location.host;
+            const segs = location.pathname.split('/').filter(Boolean);
+            if (segs.length && /\.html?$/i.test(segs[segs.length - 1])) segs.pop();
+            const m = host.match(/^([^.]+)\.github\.io$/);
+            if (m) {
+                const user = m[1];
+                // 项目页：<user>.github.io/<repo>/... ；用户页：<user>.github.io/...
+                // 简单策略：路径首段当作仓库名优先尝试，失败再回退到用户页 / 默认值。
+                if (segs.length) {
+                    return [
+                        { repo: `${user}/${segs[0]}`, dir: segs.slice(1).join('/') },
+                        { repo: `${user}/${user}.github.io`, dir: segs.join('/') },
+                        { repo: DEFAULT_REPO, dir: DEFAULT_DIR },
+                    ];
+                }
+                return [
+                    { repo: `${user}/${user}.github.io`, dir: '' },
+                    { repo: DEFAULT_REPO, dir: DEFAULT_DIR },
+                ];
+            }
+            return [{ repo: DEFAULT_REPO, dir: DEFAULT_DIR }];
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+        }
+
+        // summary 内允许 <br>，其它一律转义
+        function safeSummary(str) {
+            return escapeHtml(str).replace(/&lt;br\s*\/?&gt;/gi, '<br>');
+        }
+
+        function showError(msg) {
+            listEl.innerHTML = `<div class="status error">${escapeHtml(msg)}</div>`;
+        }
+
+        async function listReportFiles() {
+            const candidates = detectRepoAndDir();
+            let lastErr = null;
+            for (const { repo, dir } of candidates) {
+                const url = `https://api.github.com/repos/${repo}/contents/${dir}`;
+                try {
+                    const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
+                    if (!res.ok) {
+                        lastErr = new Error(`HTTP ${res.status} @ ${repo}/${dir}`);
+                        continue;
+                    }
+                    const items = await res.json();
+                    if (!Array.isArray(items)) {
+                        lastErr = new Error(`非目录响应 @ ${repo}/${dir}`);
+                        continue;
+                    }
+                    const files = items
+                        .filter(it => it.type === 'file' && FILE_PATTERN.test(it.name))
+                        .map(it => it.name);
+                    if (files.length) return files;
+                    lastErr = new Error(`目录为空 @ ${repo}/${dir}`);
+                } catch (e) {
+                    lastErr = e;
+                }
+            }
+            throw lastErr || new Error('无法找到报告目录');
+        }
+
+        async function fetchMeta(filename) {
+            try {
+                const res = await fetch(filename, { cache: 'no-cache' });
+                if (!res.ok) return null;
+                const html = await res.text();
+                const m = html.match(/<script[^>]*id=["']report-meta["'][^>]*>([\s\S]*?)<\/script>/i);
+                if (!m) return null;
+                const meta = JSON.parse(m[1].trim());
+                meta.file = filename;
+                meta.date = meta.date || filename.replace(/\.html$/, '');
+                return meta;
+            } catch (e) {
+                console.warn(`解析 ${filename} 元数据失败：`, e);
+                return null;
+            }
+        }
+
+        function renderCard(meta, isLatest) {
+            const stats = (meta.stats || []).map(s =>
+                `<div class="card-stat"><span class="number">${escapeHtml(s.value)}</span> ${escapeHtml(s.label)}</div>`
+            ).join('');
+            const badge = isLatest ? '<span class="latest-badge">最新</span>' : '';
+            const week = meta.week ? `<div class="card-date">${escapeHtml(meta.week)}</div>` : '';
+            const summary = meta.summary ? `<div class="card-meta">${safeSummary(meta.summary)}</div>` : '';
+            return `
+                <div class="card">
+                    <a href="${escapeHtml(meta.file)}">
+                        <div class="card-header">
+                            <div class="card-title">${escapeHtml(meta.title || meta.date)}${badge}</div>
+                            ${week}
+                        </div>
+                        ${summary}
+                        <div class="card-stats">${stats}</div>
+                    </a>
+                </div>
+            `;
+        }
+
+        async function init() {
+            try {
+                const files = await listReportFiles();
+                if (!files.length) {
+                    showError('暂无报告。');
+                    return;
+                }
+                const metas = (await Promise.all(files.map(fetchMeta))).filter(Boolean);
+                if (!metas.length) {
+                    showError('未能从任何报告中解析到元数据。请确认报告 <head> 中包含 <script id="report-meta"> 块。');
+                    return;
+                }
+                metas.sort((a, b) => b.date.localeCompare(a.date));
+                listEl.innerHTML = metas.map((m, i) => renderCard(m, i === 0)).join('');
+            } catch (err) {
+                console.error(err);
+                showError(`加载失败：${err.message}。可能是 GitHub API 速率限制（每小时 60 次），请稍后重试。`);
+            }
+        }
+
+        init();
+    })();
+    </script>
 </body>
 </html>
