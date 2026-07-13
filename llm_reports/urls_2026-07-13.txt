@@ -1,0 +1,42 @@
+JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence | https://arxiv.org/abs/2606.14777
+MemSlides: A Hierarchical Memory Driven Agent Framework for Personalized Slide Generation with Multi-turn Local Revision | https://arxiv.org/abs/2606.17162
+In-Context World Modeling for Robotic Control | https://arxiv.org/abs/2606.26025
+NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers? | https://arxiv.org/abs/2606.24530
+Agentic Abstention: Do Agents Know When to Stop Instead of Act? | https://arxiv.org/abs/2606.28733
+Qwen-AgentWorld: Language World Models for General Agents | https://arxiv.org/abs/2606.24597
+Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories | https://arxiv.org/abs/2606.11176
+Are We Ready For An Agent-Native Memory System? | https://arxiv.org/abs/2606.24775
+Geometric Action Model for Robot Policy Learning | https://arxiv.org/abs/2606.17046
+From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI | https://arxiv.org/abs/2606.14502
+Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent | https://arxiv.org/abs/2606.30616
+PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems | https://arxiv.org/abs/2606.22388
+FastContext: Training Efficient Repository Explorer for Coding Agents | https://arxiv.org/abs/2606.14066
+Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale | https://arxiv.org/abs/2606.15079
+EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions | https://arxiv.org/abs/2606.23654
+RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation | https://arxiv.org/abs/2607.06558
+Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents | https://arxiv.org/abs/2606.06036
+DataClaw0: Agentic Tailoring Multimodal Data from Raw Streams | https://arxiv.org/abs/2606.21337
+UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning | https://arxiv.org/abs/2607.04425
+Orca: The World is in Your Mind | https://arxiv.org/abs/2606.30534
+Gemma 4 Technical Report | https://arxiv.org/abs/2607.02770
+Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning | https://arxiv.org/abs/2607.07708
+VibeThinker-3B: Exploring the Frontier of Verifiable Reasoning in Small Language Models | https://arxiv.org/abs/2606.16140
+Dockerless: Environment-Free Program Verifier for Coding Agents | https://arxiv.org/abs/2606.28436
+DOPD: Dual On-policy Distillation | https://arxiv.org/abs/2606.30626
+Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models | https://arxiv.org/abs/2606.19297
+Learning from the Self-future: On-policy Self-distillation for dLLMs | https://arxiv.org/abs/2606.18195
+Zone of Proximal Policy Optimization: Teacher in Prompts, Not Gradients | https://arxiv.org/abs/2606.18216
+The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning | https://arxiv.org/abs/2606.29526
+APPO: Agentic Procedural Policy Optimization | https://arxiv.org/abs/2606.12384
+Looped World Models | https://arxiv.org/abs/2606.18208
+LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling | https://arxiv.org/abs/2606.18023
+PerceptionDLM: Parallel Region Perception with Multimodal Diffusion Language Models | https://arxiv.org/abs/2606.19534
+Vidu S1: A Real-Time Interactive Video Generation Model | https://arxiv.org/abs/2607.03118
+Program-as-Weights: A Programming Paradigm for Fuzzy Functions | https://arxiv.org/abs/2607.02512
+Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models | https://arxiv.org/abs/2606.25041
+DreamX-World 1.0: A General-Purpose Interactive World Model | https://arxiv.org/abs/2606.16993
+Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention | https://arxiv.org/abs/2606.20945
+OpenRath: Session-Centered Runtime State for Agent Systems | https://arxiv.org/abs/2606.19409
+BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding | https://arxiv.org/abs/2606.31315
+OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers | https://arxiv.org/abs/2607.04033
+Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling | https://arxiv.org/abs/2607.02980

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大模型新论文周报 · 2026-07-13</title>
+  <script type="application/json" id="report-meta">{"title": "大模型新论文周报 · 2026-07-13", "date": "2026-07-13", "week": "近4周 (2026-06-15 ~ 2026-07-12)", "summary": "共收录 42 篇大模型相关论文，重点精读 28 篇，覆盖 Agentic、预训练、后训练、RL、基础架构创新等方向。", "stats": [{"label": "收录论文", "value": "42"}, {"label": "重点精读", "value": "28"}]}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; max-width: 960px; margin: 0 auto; padding: 24px; line-height: 1.6; color: #222; background: #fafafa; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    .meta { color: #666; margin-bottom: 24px; }
+    .toc { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+    .toc h2 { margin-top: 0; font-size: 18px; }
+    .toc ul { margin: 0; padding-left: 20px; }
+    .toc li { margin: 4px 0; }
+    .toc a { color: #0366d6; text-decoration: none; }
+    .category { margin-bottom: 36px; }
+    .category h2 { border-bottom: 2px solid #0366d6; padding-bottom: 6px; font-size: 22px; }
+    .paper { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+    .paper.highlight { border-left: 5px solid #d32f2f; background: #fff8f8; }
+    .paper h3 { margin-top: 0; font-size: 17px; line-height: 1.4; }
+    .paper h3 a { color: #d32f2f; text-decoration: none; }
+    .paper h3 a:hover { text-decoration: underline; }
+    .paper-meta { color: #666; font-size: 13px; margin-bottom: 10px; }
+    .field { margin: 8px 0; }
+    .field-label { font-weight: 600; color: #444; }
+    .empty { color: #888; font-style: italic; }
+    .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    .stat { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 14px; }
+    .highlight-section { background: #fff3f3; border: 1px solid #ffcdd2; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+    .highlight-section h2 { margin-top: 0; color: #d32f2f; font-size: 20px; }
+    .highlight-section ul { margin: 0; padding-left: 20px; }
+    .footer { color: #888; font-size: 13px; margin-top: 40px; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>大模型新论文周报 · 2026-07-13</h1>
+  <div class="meta">收录近 4 周 HuggingFace Daily Papers 中大模型相关论文，共 <strong>42</strong> 篇</div>
+  <div class="stats">
+    <div class="stat"><strong>Agentic</strong>: 19 篇</div>
+    <div class="stat"><strong>生成式检索 / Generative Retrieval</strong>: 0 篇</div>
+    <div class="stat"><strong>预训练 / Pre-training</strong>: 3 篇</div>
+    <div class="stat"><strong>后训练 / Post-training</strong>: 5 篇</div>
+    <div class="stat"><strong>强化学习 / RL</strong>: 3 篇</div>
+    <div class="stat"><strong>基础架构创新 / Infrastructure Innovation</strong>: 12 篇</div>
+  </div>
+  <div class="highlight-section">
+    <h2>🔴 重点精读</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2606.14777" target="_blank">JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence</a> — 首次将开放的视觉驱动主动交互模型、训练方案、数据和可部署系统完整结合，为 always-on 多模态 Agent 提供了可复现基线。</li>
+      <li><a href="https://arxiv.org/abs/2606.30534" target="_blank">Orca: The World is in Your Mind</a> — 以大规模视频和事件数据验证统一 Next-State-Prediction 预训练，并通过冻结骨干跨文本、图像和动作迁移，是通用世界基础模型方向的重要系统性探索。</li>
+      <li><a href="https://arxiv.org/abs/2606.18208" target="_blank">Looped World Models</a> — 把迭代潜深度确立为世界模型的新扩展维度，并报告显著参数效率，可能影响后续高效世界模型的架构设计。</li>
+      <li><a href="https://arxiv.org/abs/2606.18023" target="_blank">LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling</a> — 基于 18T-token 对照训练揭示循环深度的强非单调规律，并在 SWE-bench 类任务上取得大幅提升，为 looped Transformer 的设计和诊断提供了扎实证据。</li>
+      <li><a href="https://arxiv.org/abs/2606.24530" target="_blank">NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?</a> — 它以可复现的真实科研任务揭示了 coding agents 的能力边界，并用17.8%的结果量化了“完成科研任务”与“产生科学创新”之间的差距。</li>
+      <li><a href="https://arxiv.org/abs/2607.02770" target="_blank">Gemma 4 Technical Report</a> — Gemma 4同时覆盖开放权重、原生多模态、dense/MoE、统一 encoder-free 输入、thinking mode 和长上下文，对基础模型训练与部署具有较广泛影响。</li>
+      <li><a href="https://arxiv.org/abs/2606.18216" target="_blank">Zone of Proximal Policy Optimization: Teacher in Prompts, Not Gradients</a> — ZPPO针对小模型 RL 中“全错 rollout 无学习信号”的核心难题提出了兼顾教师辅助与 on-policy 训练的方案，并在31个语言、视觉和视频基准上展示了跨模态收益。</li>
+      <li><a href="https://arxiv.org/abs/2606.29526" target="_blank">The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning</a> — 揭示训练与推理引擎不一致造成的目标错位，并将 LLM RL 的优化对象直接对准实际部署的 inference policy。</li>
+      <li><a href="https://arxiv.org/abs/2606.28733" target="_blank">Agentic Abstention: Do Agents Know When to Stop Instead of Act?</a> — 首次系统研究多轮 Agent 应在何时停止，并以超过 28000 个任务证明及时拒绝是 Agent 可靠性和成本控制的核心能力。</li>
+      <li><a href="https://arxiv.org/abs/2606.24597" target="_blank">Qwen-AgentWorld: Language World Models for General Agents</a> — 以千万级真实交互轨迹构建语言世界模型，连接可扩展环境模拟、Agentic RL 和通用 Agent foundation model 训练。</li>
+      <li><a href="https://arxiv.org/abs/2606.24775" target="_blank">Are We Ready For An Agent-Native Memory System?</a> — 首次以较完整的数据管理框架系统比较大量Agent记忆方案，结论对长期Agent架构设计、成本控制和评测标准具有直接参考价值。</li>
+      <li><a href="https://arxiv.org/abs/2606.16140" target="_blank">VibeThinker-3B: Exploring the Frontier of Verifiable Reasoning in Small Language Models</a> — 若结果可独立复现，它展示了3B模型在可验证推理上的极高能力密度，并为小模型后训练及端侧推理路线提供了重要证据。</li>
+      <li><a href="https://arxiv.org/abs/2607.02512" target="_blank">Program-as-Weights: A Programming Paradigm for Fuzzy Functions</a> — 它提出了从“每次调用大模型”转向“让模型编译可复用轻量程序”的新范式，可能显著改变LLM能力的本地部署和规模化调用方式。</li>
+      <li><a href="https://arxiv.org/abs/2606.25041" target="_blank">Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models</a> — 将语言、音频和视频的双向流式交互统一到单一模型，并实现约 200 ms 模型侧响应延迟，对实时多模态交互具有基础设施意义。</li>
+      <li><a href="https://arxiv.org/abs/2606.16993" target="_blank">DreamX-World 1.0: A General-Purpose Interactive World Model</a> — 系统性整合几何相机控制、历史场景记忆、长 rollout 训练和推理优化，是交互式世界模型较完整的工程与方法组合。</li>
+      <li><a href="https://arxiv.org/abs/2606.28436" target="_blank">Dockerless: Environment-Free Program Verifier for Coding Agents</a> — 无需构建代码执行环境即可同时支持 SFT 数据筛选和 RL reward，显著降低大规模代码 Agent 后训练的基础设施成本。</li>
+      <li><a href="https://arxiv.org/abs/2606.30616" target="_blank">Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent</a> — 将Agent horizon明确提升为独立于参数规模的扩展维度，并给出了长轨迹数据、分阶段训练和多教师蒸馏的完整技术路径，对高性能可部署Agent具有较强启发性。</li>
+      <li><a href="https://arxiv.org/abs/2606.22388" target="_blank">PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems</a> — 覆盖1665个工具并系统引入运行时阻断，直观揭示领先模型在真实式故障环境中的性能坍塌，为长程Agent可靠性研究提供了重要诊断基准。</li>
+      <li><a href="https://arxiv.org/abs/2606.15079" target="_blank">Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale</a> — 将万亿参数模型架构、长上下文效率、token 效率、服务系统与环境交互式 Agent RL 统一设计，并开放完整模型系列，对可部署的大规模 Agent 研究具有较高参考价值。</li>
+      <li><a href="https://arxiv.org/abs/2607.07708" target="_blank">Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning</a> — 首次在蛋白质、小分子和晶体之间统一原生结构 token 与可检查推理证据，并在大范围科学 benchmark 上报告显著结果，代表多模态基础模型向结构化科学推理扩展的重要方向。</li>
+      <li><a href="https://arxiv.org/abs/2606.23654" target="_blank">EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions</a> — 少数基于真实企业工作会话构建的 Agent 基准，并明确推动从单一成功率转向产物质量、成本、运行时间和框架组合等多维评价。</li>
+      <li><a href="https://arxiv.org/abs/2606.12384" target="_blank">APPO: Agentic Procedural Policy Optimization</a> — 针对 Agentic RL 的关键难题——探索位置选择与长程信用分配——给出统一方法，并在 13 个基准上取得稳定且显著的提升。</li>
+      <li><a href="https://arxiv.org/abs/2607.06558" target="_blank">RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation</a> — 将实时生成式世界模型转化为可扩展的机器人数据采集基础设施，并展示纯合成数据的零样本 Sim2Real。</li>
+      <li><a href="https://arxiv.org/abs/2606.18195" target="_blank">Learning from the Self-future: On-policy Self-distillation for dLLMs</a> — 首次针对 diffusion LLM 设计 on-policy self-distillation，并以约 10% 的 RLVR 优化步骤取得更强推理表现。</li>
+      <li><a href="https://arxiv.org/abs/2606.06036" target="_blank">Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents</a> — 将 Agent Memory 从静态检索升级为推理驱动的主动重构，在长时程记忆任务上兼顾准确率与成本。</li>
+      <li><a href="https://arxiv.org/abs/2606.31315" target="_blank">BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding</a> — 提出低开销的实例级 block size 决策机制，并报告 Qwen3-4B 上 4.20 倍的无损推理加速。</li>
+      <li><a href="https://arxiv.org/abs/2606.21337" target="_blank">DataClaw0: Agentic Tailoring Multimodal Data from Raw Streams</a> — 提出可训练的 Agentic Data Tailoring 范式，并通过专用 benchmark 与下游后训练效果验证精炼数据价值。</li>
+      <li><a href="https://arxiv.org/abs/2607.02980" target="_blank">Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling</a> — 以端到端稀疏检索实现超过训练长度 64 倍的上下文外推，同时支持对已有全注意力模型进行轻量改造。</li>
+    </ul>
+  </div>
+  <div class="toc">
+    <h2>目录</h2>
+    <ul>
+      <li><a href="#Agentic">Agentic</a> (19 篇)</li>
+      <li><a href="#生成式检索-Generative-Retrieval">生成式检索 / Generative Retrieval</a> (0 篇)</li>
+      <li><a href="#预训练-Pre-training">预训练 / Pre-training</a> (3 篇)</li>
+      <li><a href="#后训练-Post-training">后训练 / Post-training</a> (5 篇)</li>
+      <li><a href="#强化学习-RL">强化学习 / RL</a> (3 篇)</li>
+      <li><a href="#基础架构创新-Infrastructure-Innovation">基础架构创新 / Infrastructure Innovation</a> (12 篇)</li>
+    </ul>
+  </div>
+  <div class="category" id="Agentic">
+    <h2>Agentic</h2>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.14777" target="_blank">JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence</a></h3>
+      <div class="paper-meta">arXiv: 2606.14777 | 👍 211 | Dingyu Yao, Junhao Zhou, Chenxu Yang, Chuanyu Qin, Haowen Hou | <a href="https://huggingface.co/papers/2606.14777" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将视觉语言模型从被动问答改造成持续感知的主动交互 Agent：模型按秒自主选择静默、响应或委派后台模型，并提供包含流式视频、ASR、TTS、记忆和外部 Agent 接口的完整开源系统。</div>
+      <div class="field"><span class="field-label">结论：</span>具备自主响应决策和时间感知能力的视觉交互模型，可以在真实连续场景中提供比传统轮次式视频助手更自然、更及时的交互。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在六类真实场景的人类偏好评测中，JoyAI-VL-Interaction 相比 Doubao 和 Gemini 的应用内视频助手获得明显更高的偏好；论文还展示了跨动态界面引导和基于幻灯片即兴讲解等未显式训练能力。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未披露评测样本规模、延迟、误触发率和漏响应率；持续视频处理带来的算力及隐私成本也未量化。与商业系统的比较可能受到系统配置和接口差异影响。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于实时视频助手、安防监控、直播、电商导购和屏幕操作指导。其核心价值是主动交互范式与完整工程闭环，而非单纯提升静态 VQA 精度。</div>
+      <div class="field"><span class="field-label">重点理由：</span>首次将开放的视觉驱动主动交互模型、训练方案、数据和可部署系统完整结合，为 always-on 多模态 Agent 提供了可复现基线。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.17162" target="_blank">MemSlides: A Hierarchical Memory Driven Agent Framework for Personalized Slide Generation with Multi-turn Local Revision</a></h3>
+      <div class="paper-meta">arXiv: 2606.17162 | 👍 176 | Ye Jin, Yangyang Xu, Jun Zhu, Yibo Yang | <a href="https://huggingface.co/papers/2606.17162" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出面向演示文稿 Agent 的分层记忆架构，将长期记忆细分为用户画像记忆和工具记忆，并以工作记忆承载会话约束；同时采用最小影响范围的 slide-local revision，避免局部修改时重复生成整套幻灯片。</div>
+      <div class="field"><span class="field-label">结论：</span>将稳定用户偏好、会话级约束和工具执行经验分别管理，有助于提升个性化生成、多轮偏好保持以及局部编辑的可靠性。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>受控实验显示，用户画像记忆提高了多角色、多意图条件下的 persona alignment；工具记忆在 matched-pair 诊断中改善闭环修改行为；定性案例展示了工作记忆对偏好的跨轮次保持。</div>
+      <div class="field"><span class="field-label">局限性：</span>工作记忆效果主要由定性案例支撑，摘要未报告端到端幻灯片质量、长期记忆污染、错误偏好遗忘以及大规模用户环境下的量化结果。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>该设计可迁移到文档、网页、代码等需要长期个性化和局部修改的创作 Agent。它更偏 Agent memory 与工作流设计，而非基础模型能力创新。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.26025" target="_blank">In-Context World Modeling for Robotic Control</a></h3>
+      <div class="paper-meta">arXiv: 2606.26025 | 👍 63 | Siyin Wang, Junhao Shi, Senyu Fei, Zhaoyang Fu, Li Ji | <a href="https://huggingface.co/papers/2606.26025" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出 In-Context World Modeling，将机器人系统辨识转化为上下文适应问题。模型利用执行任务前的短序列自主、任务无关交互推断相机视角、机器人形态和动力学等系统变量，无需更新参数。</div>
+      <div class="field"><span class="field-label">结论：</span>在上下文中显式建模“系统如何运作”，能够提高 VLA 策略面对未见配置时的泛化能力，尤其适用于相机视角变化。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文在仿真环境和真实机器人平台上进行了实验；在新相机视角设置中，ICWM 显著优于仅依赖当前观测与语言指令的标准 VLA 基线。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要主要报告了相机视角变化下的收益，对机器人形态、复杂动力学变化和长时间交互的实证覆盖尚不明确；方法还需要先执行一段探索性交互，可能增加部署时延和安全风险。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合需要快速适配新相机、设备或执行环境的具身 Agent。其价值在于把上下文窗口从“任务示例容器”扩展为“系统辨识通道”，但在安全敏感的真实机器人场景中需要约束探索行为。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.24530" target="_blank">NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?</a></h3>
+      <div class="paper-meta">arXiv: 2606.24530 | 👍 62 | Yuru Wang, Lejun Cheng, Yuxin Zuo, Sihang Zeng, Bingxiang He | <a href="https://huggingface.co/papers/2606.24530" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>构建包含90个跨学科真实科研任务的 NatureBench，并通过 NatureGym 自动从论文生成标准化、容器化的逐任务环境，同时引入维护方复现机制，提升科研 Agent 评测的可重复性。</div>
+      <div class="field"><span class="field-label">结论：</span>当前前沿 coding agents 距离稳定超越已发表科研 SOTA 仍有明显差距；现有成功更多来自将问题转化为熟悉的监督学习范式，而非真正的方法创新。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在禁用 Web 搜索的严格协议下评测了10种前沿 Agent 配置；最强配置按照 g&gt;0.1 标准仅在17.8%的任务上超越 SOTA。失败分析显示，主要问题是方法选择错误和计算预算不足，而非任务理解失败。</div>
+      <div class="field"><span class="field-label">局限性：</span>任务来源限定于可被容器化的90篇 Nature 系论文，可能偏向具备明确代码、数据和量化指标的问题；禁用 Web 搜索有利于控制变量，但与真实科研 Agent 的工具使用方式存在差异。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合评估科研 coding agent、自动实验系统和方法搜索能力。该工作尤其适合作为反对“单一代码修复榜单即可代表科研能力”的校准基准，但不应把榜单成绩直接等同于开放式科学发现能力。</div>
+      <div class="field"><span class="field-label">重点理由：</span>它以可复现的真实科研任务揭示了 coding agents 的能力边界，并用17.8%的结果量化了“完成科研任务”与“产生科学创新”之间的差距。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.28733" target="_blank">Agentic Abstention: Do Agents Know When to Stop Instead of Act?</a></h3>
+      <div class="paper-meta">arXiv: 2606.28733 | 👍 147 | Han Luo, Bingbing Wen, Lucy Lu Wang | <a href="https://huggingface.co/papers/2606.28733" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>首次将 Agent 的拒绝行为形式化为序列决策问题：每一轮均需在回答、停止和继续获取信息之间选择。论文还提出 CONVOLVE，将完整交互轨迹压缩为可复用的停止规则，无需更新模型参数。</div>
+      <div class="field"><span class="field-label">结论：</span>当前 Agent 的主要问题不只是能否拒绝不可完成的任务，而是能否及时拒绝；更大的模型或更强的推理能力并不必然带来更好的停止判断。CONVOLVE 能显著改善及时拒绝能力。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在 WebShop、终端和问答环境中评测了 13 个 LLM Agent、2 种 Agent scaffold 和超过 28000 个任务。WebShop 上，CONVOLVE 将 Llama-3.3-70B 的 timely recall 从 26.7 提升至 57.4。</div>
+      <div class="field"><span class="field-label">局限性：</span>披露的显著提升主要来自 WebShop，跨环境迁移效果仍需验证；及时召回率不能完整反映误拒绝、任务成功率和工具成本之间的权衡；停止规则可能依赖训练轨迹的覆盖范围，并增加上下文长度。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合用于高成本、不可逆或环境信息不完整的 Agent 系统，可作为工具调用预算控制和安全停止机制。实际部署时应联合评估误拒绝率、任务成功率与平均交互步数。</div>
+      <div class="field"><span class="field-label">重点理由：</span>系统定义了 Agentic Abstention 这一重要但长期被忽视的问题，并通过大规模跨环境评测证明“何时停止”是独立于模型能力的关键 Agent 可靠性指标。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.24597" target="_blank">Qwen-AgentWorld: Language World Models for General Agents</a></h3>
+      <div class="paper-meta">arXiv: 2606.24597 | 👍 146 | Yuxin Zuo, Zikai Xiao, Li Sheng, Fei Huang, Jianhong Tu | <a href="https://huggingface.co/papers/2606.24597" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>构建面向通用 Agent 的语言世界模型 Qwen-AgentWorld，通过 CPT、SFT 和 RL 三阶段训练学习环境状态转移与长链推演；同时探索将世界模型作为独立环境模拟器和 Agent foundation model 训练预热器的两种路径，并提出 AgentWorldBench。</div>
+      <div class="field"><span class="field-label">结论：</span>语言世界模型既能低成本模拟大量 Agent 环境、扩展 Agentic RL，也能通过世界模型预训练提升统一 Agent 在下游任务上的表现。论文报告其模拟能力优于现有前沿模型，模拟环境训练的收益可超过仅使用真实环境训练。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>训练数据包含七个领域、超过 1000 万条真实环境交互轨迹；AgentWorldBench 基于 5 个前沿模型在 9 个既有基准上的真实交互构建；世界模型预热在 7 个 Agent 基准上取得下游增益。</div>
+      <div class="field"><span class="field-label">局限性：</span>模型规模和数据成本较高；论文摘要未给出各基准的具体增益与模拟成本；世界模型误差可能在长轨迹中累积，并使 Agent 学会利用模拟器偏差；七个训练领域能否覆盖开放世界交互仍不确定。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合真实环境调用昂贵、速度慢或难以大规模并发的 Agent RL 场景。使用模拟轨迹训练时应持续进行真实环境校准，并监控 simulator exploitation 和分布外状态。</div>
+      <div class="field"><span class="field-label">重点理由：</span>将大规模语言世界模型、环境模拟和 Agentic RL 打通，提供了减少真实环境交互成本、扩大 Agent 训练规模的一条系统性路线。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.11176" target="_blank">Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories</a></h3>
+      <div class="paper-meta">arXiv: 2606.11176 | 👍 130 | Kevin Qinghong Lin, Batu EI, Yuhong Shi, Pan Lu, Philip Torr | <a href="https://huggingface.co/papers/2606.11176" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出端到端多 Agent 虚拟编辑部 Data2Story，由不同角色协作完成数据分析、选题、叙事和多模态页面制作；Inspector 为数字、观点和素材建立到数据、代码或外部来源的证据链，并通过代码重执行验证部分陈述。</div>
+      <div class="field"><span class="field-label">结论：</span>多 Agent 系统可以生成具有竞争力且可审计的多媒体数据报道，在透明度和可验证性方面表现突出，但人类记者在编辑视角、创意设计和呈现质量上仍占优势，更适合作为协作工具而非替代者。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>对 18 篇 Agent 文章及对应的人类专家文章进行配对评估；包含 53 名参与者的五维量表评价、角度覆盖分析、computer-use Agent 阅读代理评估，以及基于代码重执行和外部引用检查的可验证性测试。</div>
+      <div class="field"><span class="field-label">局限性：</span>样本仅有 18 篇文章，题材覆盖和统计稳定性有限；Agent judge 只是人类阅读行为的近似代理；引用存在并不等同于来源可靠；系统成本、延迟、失败恢复及真实新闻编辑流程中的长期表现尚未充分验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于数据报告、研究传播和需要审计链的内容生产。面对公共传播或高风险主题，仍需人工负责选题判断、来源可信度核验、叙事偏差检查和最终发布。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.24775" target="_blank">Are We Ready For An Agent-Native Memory System?</a></h3>
+      <div class="paper-meta">arXiv: 2606.24775 | 👍 126 | Wei Zhou, Xuanhe Zhou, Shaokun Han, Hongming Xu, Guoliang Li | <a href="https://huggingface.co/papers/2606.24775" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>从数据管理系统视角拆解 Agent Memory，将其划分为表示与存储、信息抽取、检索与路由、维护四个模块，并建立覆盖效果、更新正确性、长期稳定性和运行成本的细粒度评测框架。</div>
+      <div class="field"><span class="field-label">结论：</span>不存在适用于所有场景的单一最优记忆架构；系统效果主要取决于记忆结构与具体工作负载瓶颈是否匹配。相比全局重组，局部维护通常具有更好的成本效益。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>作者评测了12种代表性记忆系统和2个基线，覆盖5类工作负载与11个数据集，并通过模块消融量化表示保真度、检索精度、更新正确性及长时稳定性。</div>
+      <div class="field"><span class="field-label">局限性：</span>评测仍可能受底层LLM、提示词和数据集分布影响；摘要未说明对多模态记忆、多Agent共享记忆、隐私安全和超大规模并发场景的覆盖程度。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合用于设计和选型生产级Agent记忆系统，也为RAG从静态检索走向可更新、可治理的长期记忆提供了方法论。它更像系统评测基准，而非一种包打天下的新记忆算法。</div>
+      <div class="field"><span class="field-label">重点理由：</span>首次以较完整的数据管理框架系统比较大量Agent记忆方案，结论对长期Agent架构设计、成本控制和评测标准具有直接参考价值。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.17046" target="_blank">Geometric Action Model for Robot Policy Learning</a></h3>
+      <div class="paper-meta">arXiv: 2606.17046 | 👍 117 | Jisang Han, Seonghu Jeon, Jaewoo Jung, René Zurbrügg, Honggyu An | <a href="https://huggingface.co/papers/2606.17046" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将预训练几何基础模型直接改造为统一的感知、未来状态预测与动作解码骨干，在中间层插入因果未来预测器，并联合语言、机器人本体状态和动作历史预测未来几何Token。</div>
+      <div class="field"><span class="field-label">结论：</span>在机器人策略中显式保留并利用3D几何先验，可以弥补传统VLA主要依赖2D表示的不足，同时提升接触式操作的准确性、鲁棒性与执行效率。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>作者报告GAM在多项仿真和真实机器人操作基准上，相较现有基础模型规模的基线更准确、更鲁棒，同时模型更轻、速度更快。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未给出具体任务数量、成功率、跨机器人迁移结果及真实环境失败模式；对开放世界长程规划、安全约束和语言歧义的处理能力仍不明确。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于需要精细空间关系和接触推理的具身Agent，如抓取、装配和工具使用。它主要解决感知—预测—动作接口问题，不能单独替代高层任务规划与长期记忆模块。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.14502" target="_blank">From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI</a></h3>
+      <div class="paper-meta">arXiv: 2606.14502 | 👍 116 | Yongheng Zhang, Ziang Liu, Jiaxuan Zhu, Shuai Wang, Xiangqi Chen | <a href="https://huggingface.co/papers/2606.14502" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出从 Chatbot 向 Digital Colleague 演进的双层框架：认知层通过 inference-time computation、反思、过程监督和 RL 获得审慎推理能力；执行层通过持久化 Workspace、可复用 Skill、验证闭环和治理机制，将一次性工具调用升级为持续工作。进一步指出训练数据应从指令回答对转向 State-Action-Observation 轨迹，评测应转向可审计的沙箱环境。</div>
+      <div class="field"><span class="field-label">结论：</span>具备推理和工具调用能力并不足以形成真正的数字同事；持续状态、程序复用、任务闭环、经验积累和治理机制才是 LLM Agent 从对话系统走向自主工作系统的关键。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>摘要主要通过系统化梳理现有推理增强、过程监督、强化学习、工具调用和工作区机制建立概念框架，未披露定量实验、统一基准或真实长期部署结果，因此结论支撑以方法论归纳为主。</div>
+      <div class="field"><span class="field-label">局限性：</span>属于范式和系统框架型工作，摘要没有给出可复现实现、组件消融、长期任务成功率、成本、安全性或治理效果数据。对“自我进化生态”的可靠性及风险边界也缺少实证验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合用于 Agent 平台路线规划、训练轨迹设计和评测体系建设，也能帮助团队区分“会调用工具”与“能持续完成工作”。不宜将其直接视为某种 Agent 架构已经取得性能突破的证据。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.30616" target="_blank">Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent</a></h3>
+      <div class="paper-meta">arXiv: 2606.30616 | 👍 98 | Lei Bai, Zongsheng Cao, Yang Chen, Zhiyao Cui, Shangheng Du | <a href="https://huggingface.co/papers/2606.30616" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出“扩展Agent horizon”路线，构建平均长度45K tokens的知识—动作轨迹基础设施，并通过多教师领域路由on-policy蒸馏及显著词表对齐，将六个领域的能力汇聚到一个35B模型中。</div>
+      <div class="field"><span class="field-label">结论：</span>在依赖长程规划、外部知识和连续工具交互的任务上，扩大轨迹长度和能力覆盖范围可能比扩大模型参数量更具部署性价比。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>Agents-A1在SEAL-0、IFBench、HiPhO、FrontierScience-Olympiad和MolBench-Bind上分别取得56.4、80.6、46.4、79.0和56.8，并在SciCode、HLE及BrowseComp上接近所比较的万亿参数模型。</div>
+      <div class="field"><span class="field-label">局限性：</span>性能结论主要来自特定Agent benchmark；与万亿参数模型的比较可能受到工具配置、推理预算和轨迹长度差异影响。45K-token训练轨迹、多领域教师及外部验证器仍具有较高的数据和计算成本。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合关注小型可部署Agent、长程任务训练及多领域能力蒸馏的团队。其核心价值是提供新的scaling axis，但“达到万亿参数性能”不宜泛化为所有语言与知识任务上的等价。</div>
+      <div class="field"><span class="field-label">重点理由：</span>将Agent horizon明确提升为独立于参数规模的扩展维度，并给出了长轨迹数据、分阶段训练和多教师蒸馏的完整技术路径，对高性能可部署Agent具有较强启发性。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.22388" target="_blank">PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems</a></h3>
+      <div class="paper-meta">arXiv: 2606.22388 | 👍 95 | Jiayu Liu, Qihan Lin, Cheng Qian, Rui Wang, Emre Can Acikgoz | <a href="https://huggingface.co/papers/2606.22388" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>把大规模工具检索、隐式子目标发现、证据驱动的连续调用和运行时路径恢复统一到交互式评测中；阻断机制还能区分显式报错与静默失败下的适应能力。</div>
+      <div class="field"><span class="field-label">结论：</span>当前领先LLM在大规模、不完美工具生态中的长程规划仍十分脆弱，尤其难以处理无显式错误信号的失败以及需要更长替代路径的恢复任务。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>十个模型的实验显示，GPT-5.4在无阻断条件下准确率为51.90%，在最严重阻断条件下降至11.36%；分析进一步定位了静默失败和长恢复路径两个主要薄弱点。</div>
+      <div class="field"><span class="field-label">局限性：</span>评测集中于327个零售任务，领域覆盖和真实生产环境代表性有限；最终结果也可能受到工具检索器、调用协议、提示模板及推理预算影响。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于评估企业工具Agent、工作流自动化和动态API环境。相比只统计最终成功率，该基准更适合诊断检索、规划和恢复环节，但不应单独作为通用Agent能力排名。</div>
+      <div class="field"><span class="field-label">重点理由：</span>覆盖1665个工具并系统引入运行时阻断，直观揭示领先模型在真实式故障环境中的性能坍塌，为长程Agent可靠性研究提供了重要诊断基准。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.14066" target="_blank">FastContext: Training Efficient Repository Explorer for Coding Agents</a></h3>
+      <div class="paper-meta">arXiv: 2606.14066 | 👍 93 | Shaoqiu Zhang, Maoquan Wang, Yuling Shi, Yuhang Wang, Xiaodong Gu | <a href="https://huggingface.co/papers/2606.14066" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>把repository exploration建模为可独立训练和调用的子Agent，并结合强模型轨迹冷启动与任务奖励，分别优化首轮广泛搜索、多轮证据收集和精确代码引用。</div>
+      <div class="field"><span class="field-label">结论：</span>代码定位不必由昂贵的主求解模型承担；使用专门的小型探索模型可以同时提高任务解决率并显著降低主Agent的token消耗。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在SWE-bench Multilingual、SWE-bench Pro和SWE-QA上，接入Mini-SWE-Agent后，端到端解决率最高提升5.5%，编码Agent token消耗最高降低60%，额外开销较小。</div>
+      <div class="field"><span class="field-label">局限性：</span>结果主要基于Mini-SWE-Agent和若干软件工程基准，向其他Agent框架及超大型私有仓库迁移的效果尚不明确；只返回文件与行号也可能遗漏跨文件语义和架构背景。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>工程实用性较强，适合上下文成本敏感的coding agent。它体现了Agent模块专业化的价值，但需要结合仓库语言、索引方式和主模型能力评估实际收益。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.15079" target="_blank">Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale</a></h3>
+      <div class="paper-meta">arXiv: 2606.15079 | 👍 87 | Ang Li, Ben Liu, Bin Han, Bin Hu, Bin Jing | <a href="https://huggingface.co/papers/2606.15079" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>面向万亿参数 Agent 模型进行端到端协同设计：以 Ling-2.6 服务低延迟响应、Ring-2.6 服务深度推理与复杂工作流；通过 Lightning Attention 与 MLA 组成混合线性注意力，并结合 Evolutionary CoT、Linguistic Unit Policy Optimization、双向偏好对齐和最短正确回答蒸馏提升单位输出 token 的能力。KPop 则通过异步调度代码、搜索、工具调用和工作流环境，扩展环境交互式强化学习。</div>
+      <div class="field"><span class="field-label">结论：</span>从已有基座进行架构迁移预训练和大规模后训练，可以在不从零训练的前提下，同时提升长上下文效率、推理能力、Agent 能力和部署效率，为开放的万亿参数 Agent 系统提供可行路线。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文以 Ling-2.6 与 Ring-2.6 的差异化模型设计、混合线性注意力、多个 token 效率优化方法及 KPop 环境强化学习框架作为支撑，并声称已在编码、搜索、工具使用和工作流执行等环境中实现大规模异步训练；全系列 checkpoint 开源也有利于后续复现验证。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未给出具体 benchmark、延迟、吞吐、训练成本及相对基线数据，难以判断各项收益的实际幅度；众多训练与系统技术同时引入，也增加了归因和独立复现难度。万亿参数训练与部署仍需要极高算力，KPop 在开放环境中的稳定性、安全性和跨环境泛化能力尚待验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于研究大规模 Agent 后训练、长上下文高效推理、工具调用 RL 和低延迟服务系统的团队。其价值主要在完整技术栈和开放权重，而非单一算法；资源有限的团队应优先验证混合注意力、短答案蒸馏及异步 Agent RL 能否在较小模型上复现收益。</div>
+      <div class="field"><span class="field-label">重点理由：</span>将万亿参数模型架构、长上下文效率、token 效率、服务系统与环境交互式 Agent RL 统一设计，并开放完整模型系列，对可部署的大规模 Agent 研究具有较高参考价值。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.23654" target="_blank">EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions</a></h3>
+      <div class="paper-meta">arXiv: 2606.23654 | 👍 79 | Jincheng Zhong, Weizhi Wang, Che Jiang, Kai Tian, Zhenzhao Yuan | <a href="https://huggingface.co/papers/2606.23654" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将真实企业 Agent 会话转化为可重复执行的任务，并建立覆盖模型与执行框架组合、产物交付、视觉质量、成本、运行时间和技能迁移的多维评价协议。</div>
+      <div class="field"><span class="field-label">结论：</span>当前企业级 Agent 的可靠性仍然不足；即使最强配置也仅取得 0.663，因此不能用单一分数概括 Agent 的实际工作能力。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>基准包含 852 个任务；Codex 与 GPT-5.5 的最佳组合得分为 0.663。实验还比较了不同执行框架、模型和技能迁移表现。</div>
+      <div class="field"><span class="field-label">局限性：</span>由于企业隐私，基准数据没有公开，第三方难以完整复现实验；任务恢复和提示词改写可能引入选择偏差；结论也可能受到特定执行框架影响。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合企业 Agent 选型、回归测试和执行框架评估。其核心价值是评价协议和真实任务建模方法，而非一个可直接下载使用的数据集。</div>
+      <div class="field"><span class="field-label">重点理由：</span>少数基于真实企业工作会话构建的 Agent 基准，并明确推动从单一成功率转向产物质量、成本、运行时间和框架组合等多维评价。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2607.06558" target="_blank">RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation</a></h3>
+      <div class="paper-meta">arXiv: 2607.06558 | 👍 76 | Haoyu Zhao, Xingyue Zhao, Hangyu Li, Biao Gong, Kehan Li | <a href="https://huggingface.co/papers/2607.06558" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出数字遥操作范式，以动作条件生成式世界模型替代真实机器人采集环境；结合深度感知骨架条件、Video Diffusion Transformer 渐进式人到机器人训练以及流式自回归蒸馏，将视频生成压缩为单次推理。</div>
+      <div class="field"><span class="field-label">结论：</span>生成式世界模型可以解除机器人轨迹采集与实体硬件、场地和操作时间的绑定，并产生可用于模仿学习和跨本体迁移的高质量状态—动作数据。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>系统在单张 H100 上实现超过 40 FPS；完全使用合成数据训练的策略可完成多种灵巧双臂任务的零样本 Sim2Real 迁移，向真实数据加入数字遥操作样本后成功率也持续提高。</div>
+      <div class="field"><span class="field-label">局限性：</span>实验摘要未说明与真实遥操作数据的成本—质量等量对比，也未覆盖生成模型失真、长时序误差累积和分布外场景的安全风险；实时运行仍依赖 H100 级硬件。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于具身 Agent 数据生成、机器人模仿学习和低成本扩充真实轨迹。核心价值在数据引擎而非通用 LLM 推理，落地时需要严格验证合成视觉与物理动力学的一致性。</div>
+      <div class="field"><span class="field-label">重点理由：</span>将实时生成式世界模型直接转化为机器人数据采集基础设施，并展示纯合成数据的零样本 Sim2Real，具有明显的范式创新潜力。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.06036" target="_blank">Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents</a></h3>
+      <div class="paper-meta">arXiv: 2606.06036 | 👍 75 | Shuo Ji, Yibo Li, Bryan Hooi | <a href="https://huggingface.co/papers/2606.06036" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将 Agent Memory 从静态的“先检索、后推理”改造成推理驱动的主动重构过程，并使用 Cue-Tag-Content 关联图连接细粒度线索、语义标签和记忆内容。</div>
+      <div class="field"><span class="field-label">结论：</span>让 LLM 在推理过程中依据中间证据动态探索和剪枝记忆路径，比一次性静态检索更适合长交互历史上的复杂推理。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在 LoCoMo 和 LongMemEval 上相对强基线最高提升 23%，同时降低 token 消耗和运行时间；受控剪枝也用于抑制图搜索的组合爆炸。</div>
+      <div class="field"><span class="field-label">局限性：</span>证据集中于两个长记忆 benchmark；摘要未说明记忆图的构建维护成本、错误关联的传播影响，以及在真实开放式、多用户或持续更新环境中的稳定性。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>特别适合长期个人助理、客服 Agent 和多轮任务执行。它不是简单替换向量数据库，而是把检索策略纳入推理闭环；实际部署需重点控制图更新质量和 LLM 搜索调用成本。</div>
+      <div class="field"><span class="field-label">重点理由：</span>把记忆访问重新定义为可随推理证据动态变化的主动重构，为长时程 LLM Agent Memory 提供了具有普适性的设计方向。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.21337" target="_blank">DataClaw0: Agentic Tailoring Multimodal Data from Raw Streams</a></h3>
+      <div class="paper-meta">arXiv: 2606.21337 | 👍 74 | Cong Wan, Zeyu Guo, Zijian Cai, Jiangyang Li, SongLin Dong | <a href="https://huggingface.co/papers/2606.21337" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将多模态数据处理从被动标注升级为可学习的 Agentic Data Tailoring 能力；通过 Factual Anchors 约束生成式语义合成，构建跨五类物理与数字领域的数据，并结合 SFT、GRPO 训练 9B 模型，同时提出专门评估数据精炼能力的 DataClaw0-val。</div>
+      <div class="field"><span class="field-label">结论：</span>面向下游意图主动精炼的多模态数据，比通用、被动的数据标注方式更有潜力生成高信息密度训练样本，并帮助模型在有限数据条件下适配新任务。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文在视频生成、真实世界 VQA 和 GUI 导航三类下游任务中，以实际后训练效果作为数据质量验证依据；摘要报告其精炼数据能够提升有限数据场景下的模型适配效率。</div>
+      <div class="field"><span class="field-label">局限性：</span>数据覆盖仅限五类领域，摘要未给出各下游任务的具体增益、数据处理成本和与强数据筛选基线的量化比较；合成语义仍可能继承生成模型偏差，Factual Anchors 对开放世界复杂过程的覆盖能力也有待验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合多模态后训练数据治理、轨迹提炼和低数据适配场景。其核心价值在于把数据工程变成模型能力，但它更接近数据精炼 Agent，而非能够独立规划并执行开放任务的通用 Agent。</div>
+      <div class="field"><span class="field-label">重点理由：</span>提出了可训练的 Agentic Data Tailoring 新范式，并以专用 benchmark 和跨任务后训练效果闭环验证数据价值，对多模态训练数据生产方式具有潜在基础性影响。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2607.04425" target="_blank">UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning</a></h3>
+      <div class="paper-meta">arXiv: 2607.04425 | 👍 68 | Niu Lian, Alan Chen, Zhehao Yu, Chengzhen Duan, Fazhan Liu | <a href="https://huggingface.co/papers/2607.04425" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>构建跨平台 GUI 交互数据集 Uni-GUI，并将多教师 on-policy distillation 引入 GUI Agent 的持续学习；系统根据当前平台动态选择专属教师，通过平台条件蒸馏向统一策略传递不同交互习惯。</div>
+      <div class="field"><span class="field-label">结论：</span>平台专属教师与 on-policy 数据相结合，可以缓解统一 GUI Agent 在持续学习中的行为模式混淆和灾难性遗忘，在保留旧平台能力的同时适配新平台。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在 OSWorld 和 MobileWorld 上分别取得 38.2% 和 12.0% 的任务成功率；实验被用于验证跨平台能力保留与新平台适配之间的平衡。</div>
+      <div class="field"><span class="field-label">局限性：</span>MobileWorld 的绝对成功率仍较低，实验范围主要覆盖桌面和移动端两个 benchmark；方法依赖可用且质量较高的平台专属教师，教师数量增加后的训练成本、错误迁移及更长平台序列下的遗忘情况尚不清楚。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合拥有多个专属策略、希望逐步合并成统一 GUI Agent 的团队。它解决的是跨平台持续学习问题，不应直接视为开放环境泛化或长程 GUI 任务可靠性已经成熟。</div>
+    </div>
+  </div>
+  <div class="category" id="生成式检索-Generative-Retrieval">
+    <h2>生成式检索 / Generative Retrieval</h2>
+    <div class="empty">本周暂无新论文</div>
+  </div>
+  <div class="category" id="预训练-Pre-training">
+    <h2>预训练 / Pre-training</h2>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.30534" target="_blank">Orca: The World is in Your Mind</a></h3>
+      <div class="paper-meta">arXiv: 2606.30534 | 👍 312 | Yihao Wang, Yuheng Ji, Mingyu Cao, Yanqing Shen, Runze Xiao | <a href="https://huggingface.co/papers/2606.30534" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>以 Next-State-Prediction 统一文本、视觉和动作的状态转移学习，并结合从连续视频学习稠密自然变化的“无意识学习”与从语言事件和 VQA 学习稀疏语义变化的“有意识学习”，构建统一世界潜空间。</div>
+      <div class="field"><span class="field-label">结论：</span>大规模多模态状态转移预训练可以形成可迁移的世界表征；冻结统一骨干后，仅训练轻量模态解码器即可支持文本生成、图像预测和具身动作生成。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>模型使用约 12.5 万小时视频和 1.6 亿条事件标注预训练；在冻结骨干的条件下，三个不同下游 readout 均随世界潜空间能力增强而改善，并超过同规模专项基线。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未给出数据构成、具体基准、绝对性能、计算成本和复杂交互环境中的长期预测结果。轻量 readout 的成功能否证明潜空间具有因果世界模型能力，仍需干预实验验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合关注多模态统一预训练、具身智能和 world foundation model 的研究。其意义在于尝试以状态转移取代割裂的 next-token、next-frame 和 next-action 目标，但真实世界规划能力仍不能仅由下游解码性能推断。</div>
+      <div class="field"><span class="field-label">重点理由：</span>以大规模视频和事件数据验证统一 Next-State-Prediction 预训练，并通过冻结骨干跨文本、图像和动作迁移，是通用世界基础模型方向的重要系统性探索。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2607.02770" target="_blank">Gemma 4 Technical Report</a></h3>
+      <div class="paper-meta">arXiv: 2607.02770 | 👍 62 | Gemma Team, Sherif El Abd, Vaibhav Aggarwal, Robin Algayres, Alek Andreev | <a href="https://huggingface.co/papers/2607.02770" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>推出覆盖2.3B至31B参数的原生多模态开放权重模型族，同时提供 dense 与 MoE 架构。12B版本采用统一的 encoder-free 设计直接处理原始音频和图像 patch，并集成 thinking mode、长上下文及推理效率优化。</div>
+      <div class="field"><span class="field-label">结论：</span>通过联合改进模型架构、多模态输入、推理模式和计算效率，中等规模开放模型可以在 STEM、多模态、长上下文及人工评测中接近更大规模的前沿开放模型。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>报告称 Gemma 4 在 STEM、多模态和长上下文基准上取得显著提升，并在人工评测任务中可匹敌更大的前沿开放模型；模型族覆盖多个规模和两类主干架构，便于比较效率与能力。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未给出具体基准分数、训练数据组成、计算预算及与闭源模型的系统比较；thinking mode 的可靠性、推理成本以及统一 encoder-free 架构相对专用编码器的收益仍需结合正文验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>这是面向研究和部署的重要开放权重基础模型报告。小模型适合端侧或低成本推理，MoE版本适合追求容量与激活计算平衡的场景，12B统一架构则对原生全模态建模研究更具参考价值。</div>
+      <div class="field"><span class="field-label">重点理由：</span>Gemma 4同时覆盖开放权重、原生多模态、dense/MoE、统一 encoder-free 输入、thinking mode 和长上下文，对基础模型训练与部署具有较广泛影响。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2607.07708" target="_blank">Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning</a></h3>
+      <div class="paper-meta">arXiv: 2607.07708 | 👍 85 | Chen Tang, Yizhou Wang, Jianyu Wu, Lintao Wang, Shixiang Tang | <a href="https://huggingface.co/papers/2607.07708" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出跨蛋白质、小分子和无机晶体的统一结构感知词表，将坐标、拓扑关系和周期连接离散化为可被模型直接引用的 structural tokens，使多模态基础模型能够把原生结构单元作为推理证据，而不只是将结构压缩为不可解释的向量。</div>
+      <div class="field"><span class="field-label">结论：</span>统一的原生结构表示可以同时改善生命科学、化学和材料科学中的结构—性质预测，并生成与具体结构证据对应、可供专家检查的推理过程，从而兼顾预测准确率与科学可解释性。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在同源性受控的蛋白质 Cellular Component 预测中，F-max 从 0.42 提升至 0.55；单步逆合成准确率从 0.63 提升至 0.72，并能输出片段断键和前体校验轨迹；在材料任务上可区分元素相、化合物相及不同带隙区间。模型在 86 个 benchmark 中有 67 个达到 SOTA，双盲专家评估中有 98% 的推理轨迹不弱于或优于前沿 LLM。</div>
+      <div class="field"><span class="field-label">局限性：</span>结构离散化可能损失连续几何细节，并受到坐标精度、构象质量和词表分辨率影响。摘要只展示部分代表性指标，尚无法判断 86 项任务的基线一致性、数据泄漏控制和跨数据分布泛化情况；专家对推理轨迹的偏好也不能直接证明生成解释具有完整的因果或机理正确性。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合需要联合建模序列、三维结构和科学文本的蛋白质功能预测、逆合成及材料性质研究。统一 token 化思路具有较强迁移价值，但对高精度能量、动力学或连续几何敏感任务，仍应结合等变网络、物理模拟或连续结构编码器，而不宜只依赖离散结构推理。</div>
+      <div class="field"><span class="field-label">重点理由：</span>首次在蛋白质、小分子和晶体之间统一原生结构 token 与可检查推理证据，并在大范围科学 benchmark 上报告显著结果，代表多模态基础模型向结构化科学推理扩展的重要方向。</div>
+    </div>
+  </div>
+  <div class="category" id="后训练-Post-training">
+    <h2>后训练 / Post-training</h2>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.16140" target="_blank">VibeThinker-3B: Exploring the Frontier of Verifiable Reasoning in Small Language Models</a></h3>
+      <div class="paper-meta">arXiv: 2606.16140 | 👍 122 | Sen Xu, Shixi Liu, Wei Wang, Jixin Min, Yingwei Dai | <a href="https://huggingface.co/papers/2606.16140" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出面向小模型可验证推理的组合后训练流程，将课程式SFT、多领域RL、离线自蒸馏和声明级测试时扩展结合，并提出“参数压缩—覆盖假说”解释小模型推理能力与开放域知识容量的差异。</div>
+      <div class="field"><span class="field-label">结论：</span>在数学和代码等可自动验证的任务上，3B稠密模型通过针对性后训练可以达到甚至超过部分超大旗舰模型，同时维持较好的指令遵循能力；但这不等价于全面的通用智能能力。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>报告结果包括AIME26得分94.3，声明级测试时扩展后为97.1；LiveCodeBench v6 Pass@1为80.2；近期未见LeetCode竞赛接受率为96.1%；IFEval得分为93.4。</div>
+      <div class="field"><span class="field-label">局限性：</span>结果主要集中在可验证任务，难以直接外推到开放域知识、事实可靠性和主观任务；模型对比可能受到测试时算力、数据污染、评测配置及训练数据差异影响。摘要也未披露完整训练成本和消融结果。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>对端侧推理模型、数学代码专用模型和低成本Agent执行器很有价值。部署选型时应将其视为能力高度密集的专项推理核心，而非对大模型知识覆盖面的完整替代。</div>
+      <div class="field"><span class="field-label">重点理由：</span>若结果可独立复现，它展示了3B模型在可验证推理上的极高能力密度，并为小模型后训练及端侧推理路线提供了重要证据。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.28436" target="_blank">Dockerless: Environment-Free Program Verifier for Coding Agents</a></h3>
+      <div class="paper-meta">arXiv: 2606.28436 | 👍 109 | Wenhao Zeng, Yuling Shi, Xiaodong Gu, Chao Hu, Chaofan Wang | <a href="https://huggingface.co/papers/2606.28436" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出无需安装依赖或执行测试的代码补丁验证器，通过 Agent 主动探索仓库、收集上下文证据并判断补丁正确性。该验证器同时用于筛选 SFT 轨迹和生成 RL reward，形成完整的 environment-free 后训练流程。</div>
+      <div class="field"><span class="field-label">结论：</span>在缺少可执行仓库环境时，基于 Agent 仓库探索的验证器仍可提供有效的训练信号，并使代码模型达到接近环境执行式后训练的水平，大幅降低逐仓库构建 Docker 环境的成本。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>验证器基准上相较最强开源基线提升 14.3 个 AUC 点；训练后的模型在 SWE-bench Verified、Multilingual 和 Pro 上分别取得 62.0%、50.0% 和 35.2% resolve rate，相比 Qwen3.5-9B 基线分别提升 2.4、8.7 和 2.9 个百分点，并与环境式后训练结果相当。</div>
+      <div class="field"><span class="field-label">局限性：</span>不实际执行代码意味着运行时行为、依赖冲突、并发问题和隐蔽副作用可能无法被发现。将同类判断器直接作为 RL reward 还可能带来 verifier bias 或 reward hacking。摘要未披露推理成本、误判类型及跨仓库泛化分析。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>特别适合大规模代码 Agent 数据筛选、缺少 Docker 镜像或环境构建成本过高的训练场景。对于生产发布、关键基础设施或安全敏感代码，仍应把真实构建与测试作为最终验证层。</div>
+      <div class="field"><span class="field-label">重点理由：</span>它直接移除了代码 Agent 后训练中昂贵的环境构建瓶颈，并同时展示了验证器指标和 SWE-bench 端到端收益，具有明显的规模化训练价值。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.30626" target="_blank">DOPD: Dual On-policy Distillation</a></h3>
+      <div class="paper-meta">arXiv: 2606.30626 | 👍 104 | Xinlei Yu, Gen Li, Qingyi Si, Guibin Zhang, Yuqi Xu | <a href="https://huggingface.co/papers/2606.30626" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>首次明确区分可迁移的能力差距与无法复制的信息不对称差距，并为不同token动态选择教师监督或学生自监督，同时调整监督强度、目标及策略，以突出少量关键能力token。</div>
+      <div class="field"><span class="field-label">结论：</span>在存在特权信息的蒸馏场景中，动态选择可信监督来源比统一模仿特权教师更能稳定地迁移能力，并降低学生对不可获得信息的错误依赖。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文报告DOPD在LLM和VLM实验中持续优于Vanilla OPD及其他对照方法，并通过稳定性、鲁棒性、持续学习和分布外任务实验验证其优势。</div>
+      <div class="field"><span class="field-label">局限性：</span>方法依赖特权教师或特权学生策略、token级优势估计和动态路由，训练复杂度较高；摘要未给出模型规模、具体增益、额外计算成本及优势估计误差的敏感性结果。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合拥有额外标注、答案、视觉信息或工具反馈，但部署时学生无法访问这些信息的蒸馏场景。若特权信息与部署输入基本一致，其复杂路由机制的边际收益可能有限。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.19297" target="_blank">Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models</a></h3>
+      <div class="paper-meta">arXiv: 2606.19297 | 👍 77 | Nikita Kachaev, Andrey Moskalenko, Matvey Skripkin, Nikita Kurlaev, Daria Pugacheva | <a href="https://huggingface.co/papers/2606.19297" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将 VLM 知识问答转换为动作式回答，减少低层控制能力对知识测评的干扰；同时使用逐层意图探针定位知识信号在 VLM 主干和动作头中的变化。</div>
+      <div class="field"><span class="field-label">结论：</span>VLA 对简单概念保留较好，但在复杂语义知识上明显落后于源 VLM；联合 VQA 训练与更好的知识保留相关，答案信号通常在中间层最强、到高层逐渐衰减。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>研究系统比较了 7 个 VLA 模型和 9 个 VLM 基线，并在多类常识及世界知识任务上进行动作成功率评估和逐层表征探测。</div>
+      <div class="field"><span class="field-label">局限性：</span>单步桌面物体放置无法代表完整的机器人交互能力；候选答案形式可能降低任务开放性；VQA 联合训练与知识保留之间仅体现相关性，不能直接证明因果关系。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合诊断 VLM 向 VLA 后训练过程中的知识遗忘和动作头信息损失，但不能替代长程规划、复杂操作或开放环境中的机器人能力评测。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.18195" target="_blank">Learning from the Self-future: On-policy Self-distillation for dLLMs</a></h3>
+      <div class="paper-meta">arXiv: 2606.18195 | 👍 76 | Yifu Luo, Zeyu Chen, Haoyu Wang, Xinhao Hu, Yuxuan Zhang | <a href="https://huggingface.co/papers/2606.18195" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出首个面向 diffusion LLM 的 on-policy self-distillation 框架 d-OPSD：用模型自生成答案进行 suffix conditioning，引入“self future-experience”，并将监督粒度从 token-level 改为与去噪过程一致的 step-level。</div>
+      <div class="field"><span class="field-label">结论：</span>针对 dLLM 的非自回归生成结构重新设计自蒸馏后训练机制，可以在推理任务上优于 SFT 和 RLVR，并显著减少优化步骤。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在四个推理 benchmark 上均超过 RLVR 与 SFT 基线，且只需要约为 RLVR 10% 的优化步骤，显示出较高的样本和训练效率。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未披露模型规模、绝对性能增益、训练算力和不同 dLLM 架构上的泛化结果；自生成 suffix 可能固化模型已有错误或造成能力上限受 teacher 自身约束。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合 diffusion LLM 的低成本推理后训练，尤其适用于 RLVR 成本过高或奖励设计困难的场景。若用于事实性、安全性或开放域能力增强，仍需配合外部高质量监督和错误过滤。</div>
+      <div class="field"><span class="field-label">重点理由：</span>首次系统解决自回归 OPSD 与 diffusion LLM 任意顺序生成之间的结构冲突，并报告了相对 RLVR 显著的训练效率优势。</div>
+    </div>
+  </div>
+  <div class="category" id="强化学习-RL">
+    <h2>强化学习 / RL</h2>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.18216" target="_blank">Zone of Proximal Policy Optimization: Teacher in Prompts, Not Gradients</a></h3>
+      <div class="paper-meta">arXiv: 2606.18216 | 👍 63 | Byung-Kwan Lee, Ximing Lu, Shizhe Diao, Minki Kang, Saurav Muralidharan | <a href="https://huggingface.co/papers/2606.18216" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出 ZPPO，把教师知识放入 prompt 而非直接注入 policy gradient，从而保留学生 rollout 的 on-policy 属性。方法通过 BCQ 让学生辨别教师正确答案与自身错误答案，通过 NCQ 聚合错误轨迹暴露共同失误，并使用 prompt replay buffer 反复训练处于学生当前能力边界的问题。</div>
+      <div class="field"><span class="field-label">结论：</span>对小参数学生模型而言，以提示重构方式提供教师支架，比直接模仿教师 logits、混入教师轨迹或标准 GRPO 更稳定有效，且模型越小收益越明显。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>实验覆盖 Qwen3.5 系列0.8B至9B的四种学生规模、27B教师，以及31个基准，包括16个 VLM、10个 LLM 和5个视频基准；ZPPO整体优于 off-policy/on-policy distillation 与 GRPO，并在最小模型上取得最大增益。</div>
+      <div class="field"><span class="field-label">局限性：</span>方法仍依赖强教师生成正确候选，会增加训练成本并继承教师错误；BCQ可能被模型通过表面特征完成而非真正掌握推理过程。当前证据集中于单一模型家族，跨架构和超大规模模型的泛化性仍待验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>特别适合训练 rollout 大量全错、标准 RL 无法获得有效优势信号的小模型。它不是无教师 RL，而是一种保持策略更新相对干净的教师辅助 RL方案；教师调用成本和候选质量是部署时的关键变量。</div>
+      <div class="field"><span class="field-label">重点理由：</span>ZPPO针对小模型 RL 中“全错 rollout 无学习信号”的核心难题提出了兼顾教师辅助与 on-policy 训练的方案，并在31个语言、视觉和视频基准上展示了跨模态收益。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.29526" target="_blank">The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning</a></h3>
+      <div class="paper-meta">arXiv: 2606.29526 | 👍 161 | Jing Liang, Hongyao Tang, Yi Ma, Yancheng He, Weixun Wang | <a href="https://huggingface.co/papers/2606.29526" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将 LLM RL 的目标从稳定或改善训练引擎中的 policy，重新定义为单调改善实际生成和部署所使用的 inference policy。基于 MIPI 原则提出 MIPU：先构造以 sampler 为参考的候选更新，再依据 inference-side gap proxy 选择性接受同步后的候选模型。</div>
+      <div class="field"><span class="field-label">结论：</span>在训练与推理引擎存在明显概率偏差时，仅优化训练 policy 不能保证部署侧 policy 变好；直接约束 inference policy 的改善能同时提高平均推理性能和训练稳定性。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文在两个模型规模和高 mismatch 设置下进行实验，观察到 MIPU 在平均 reasoning performance 与训练稳定性上均有提升，从而支持 inference-side objective 比单纯修正训练侧 off-policy 更直接。</div>
+      <div class="field"><span class="field-label">局限性：</span>实验仅覆盖两个模型规模及高 mismatch 场景，低 mismatch、不同 RL 算法和更多任务上的收益尚不明确；候选更新筛选可能增加同步和推理评估成本；效果依赖 inference-side gap proxy 与真实部署收益的相关性。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>特别适合训练与采样分别使用不同引擎、精度或 kernel 的大规模 RLHF/RLVR 系统。若训练和推理概率高度一致，额外的候选筛选成本可能抵消收益，应先量化 mismatch。</div>
+      <div class="field"><span class="field-label">重点理由：</span>指出了 LLM RL 工程栈中普遍存在的目标错位：训练侧 policy 变好并不等于部署侧 policy 变好，并给出了直接面向 inference policy 的优化框架。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.12384" target="_blank">APPO: Agentic Procedural Policy Optimization</a></h3>
+      <div class="paper-meta">arXiv: 2606.12384 | 👍 79 | Xucong Wang, Ziyu Ma, Yong Wang, Yuxiang Ji, Shidong Yang | <a href="https://huggingface.co/papers/2606.12384" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>设计结合 token 不确定性与后续轨迹策略似然增益的 Branching Score，筛选真正影响结果的决策点；进一步采用过程级优势缩放，在分支轨迹间进行更细粒度的信用分配。</div>
+      <div class="field"><span class="field-label">结论：</span>细粒度决策点探索和过程级信用分配能够稳定提升多轮工具调用 Agent 的强化学习效果，同时保持较高的工具调用效率和行为可解释性。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>先导分析发现关键决策点分散在整个生成序列中，且 token 熵无法可靠反映其最终影响；在 13 个基准上的实验相对强 Agentic RL 基线平均提升接近 4 分。</div>
+      <div class="field"><span class="field-label">局限性：</span>分支采样和后续轨迹评估会增加训练计算量；方法依赖策略似然与终局反馈的质量；尚未证明其在长期运行、动态工具集和真实生产环境中的稳定性。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>尤其适用于奖励稀疏、决策链较长的工具调用与多轮交互 Agent。对于短链路或奖励密集任务，额外的分支计算成本可能抵消收益。</div>
+      <div class="field"><span class="field-label">重点理由：</span>针对 Agentic RL 的关键难题——探索位置选择与长程信用分配——给出统一方法，并在 13 个基准上取得稳定且显著的提升。</div>
+    </div>
+  </div>
+  <div class="category" id="基础架构创新-Infrastructure-Innovation">
+    <h2>基础架构创新 / Infrastructure Innovation</h2>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.18208" target="_blank">Looped World Models</a></h3>
+      <div class="paper-meta">arXiv: 2606.18208 | 👍 478 | Hongyuan Adam Lu, Z. L. Victor Wei, Qun Zhang, Jinrui Zeng, Bowen Cao | <a href="https://huggingface.co/papers/2606.18208" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>首次将 looped architecture 系统用于世界模型，通过重复调用参数共享的 Transformer block 迭代细化环境潜状态，并以 adaptive computation 为不同预测步骤动态分配计算深度。</div>
+      <div class="field"><span class="field-label">结论：</span>世界模型可以通过增加迭代潜深度而非持续增加参数量来提升长程模拟能力，形成与模型规模和数据规模正交的新扩展轴。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>摘要报告相对常规架构最高约 100 倍的参数效率，并称动态计算深度可以根据单步预测复杂度调整计算量。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未说明 100 倍效率的计算口径、任务和基线，也未报告 wall-clock latency、训练稳定性及长程误差曲线。参数共享减少模型大小，但重复循环未必降低 FLOPs 或实际延迟。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于参数存储受限、样本步骤复杂度差异明显的世界模拟任务。判断其工程价值时应同时考察参数量、循环次数、总 FLOPs、延迟和误差累积，不能只看参数效率。</div>
+      <div class="field"><span class="field-label">重点理由：</span>把迭代潜深度确立为世界模型的新扩展维度，并报告显著参数效率，可能影响后续高效世界模型的架构设计。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.18023" target="_blank">LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling</a></h3>
+      <div class="paper-meta">arXiv: 2606.18023 | 👍 209 | Jian Yang, Shawn Guo, Wei Zhang, Tianyu Zheng, Yaxin Du | <a href="https://huggingface.co/papers/2606.18023" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>通过 Parallel Loop Transformer、cross-loop position offsets 和共享 KV 的门控滑窗注意力降低循环计算开销，并提出循环收益与位置偏移成本的统一分析框架，用于选择最优 loop count。</div>
+      <div class="field"><span class="field-label">结论：</span>循环次数并非越多越好：两次循环能够提供主要表征细化收益，而三次及以上循环会因收益递减、更新振荡、表征多样性下降和位置失配成本而退化。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>研究从头训练多组 7B 模型，使用 18T tokens，并进行匹配的指令微调。两循环模型将 SWE-bench Verified 从 43.0 提升至 64.4，将 Multi-SWE 从 14.0 提升至 31.0；诊断实验显示后续循环产生振荡更新和更低的表征多样性。</div>
+      <div class="field"><span class="field-label">局限性：</span>结论主要来自 7B 代码模型及特定 PLT/CLP 实现，尚不能直接推广到通用语言、多模态模型或其他参数规模。两循环带来的真实吞吐、训练成本和 KV-cache 节省仍需结合部署硬件评估。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>对代码模型、软件工程 Agent 和 test-time latent computation 很有参考价值。论文最实用的启示是将循环深度视为需要验证的超参数，并通过表征诊断寻找收益饱和点。</div>
+      <div class="field"><span class="field-label">重点理由：</span>基于 18T-token 对照训练揭示循环深度的强非单调规律，并在 SWE-bench 类任务上取得大幅提升，为 looped Transformer 的设计和诊断提供了扎实证据。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.19534" target="_blank">PerceptionDLM: Parallel Region Perception with Multimodal Diffusion Language Models</a></h3>
+      <div class="paper-meta">arXiv: 2606.19534 | 👍 64 | Yueyi Sun, Yuhao Wang, Jason Li, Ye Tian, Tao Zhang | <a href="https://huggingface.co/papers/2606.19534" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>利用 diffusion language model 的非自回归并行解码能力，通过高效 prompting 和结构化 attention mask，同时处理多个图像区域，并在序列级和 token 级并行生成区域描述；同时提出 ParaDLC-Bench 联合评估描述质量与推理效率。</div>
+      <div class="field"><span class="field-label">结论：</span>多模态扩散语言模型可以在保持有竞争力的区域描述质量时，显著提升多区域视觉感知的推理速度，突破自回归 MLLM 逐区域处理的效率瓶颈。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>作者在扩展为单图多区域掩码的 ParaDLC-Bench 上同时评估质量和速度；实验显示 PerceptionDLM 在区域描述性能保持竞争力的同时，相比顺序处理方法获得显著加速。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未披露具体加速倍数、扩散迭代步数和计算开销；评测集中于区域描述，尚不能证明该并行机制可直接推广到开放式视觉问答、复杂空间推理或跨区域依赖较强的任务。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合检测后描述、图像密集标注和多目标解析等可并行拆分的视觉任务。若任务要求区域间严格因果依赖或长文本连贯生成，扩散式并行解码的优势可能减弱。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2607.03118" target="_blank">Vidu S1: A Real-Time Interactive Video Generation Model</a></h3>
+      <div class="paper-meta">arXiv: 2607.03118 | 👍 128 | Jintao Zhang, Kai Jiang, Jintao Chen, Xu Wang, Yang Luo | <a href="https://huggingface.co/papers/2607.03118" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将TurboDiffusion与TurboServe结合，实现可被语音指令实时干预的流式视频生成，并面向长时间连续生成处理模糊、漂移和视觉失真问题。</div>
+      <div class="field"><span class="field-label">结论：</span>交互式视频生成可以在普通消费级GPU上达到实时速度，报告性能为540p、最高42 FPS，并支持自定义角色图像与持续语音控制。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文报告系统在全部测试指标上取得最佳表现，同时达到实时推理要求；其核心工程指标是消费级GPU上的540p、最高42 FPS输出。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要未披露硬件型号、延迟分解、基线、训练数据及具体质量指标；“无限长度”和无漂移的结论需要更长时间、多场景独立测试。当前540p分辨率也限制了高质量制作场景。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合数字人直播、虚拟陪伴、互动娱乐和低延迟内容生产。其主要贡献在多模态生成与推理系统，而非LLM推理或Agent规划能力。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2607.02512" target="_blank">Program-as-Weights: A Programming Paradigm for Fuzzy Functions</a></h3>
+      <div class="paper-meta">arXiv: 2607.02512 | 👍 118 | Wentao Zhang, Liliana Hotsko, Woojeong Kim, Pengyu Nie, Stuart Shieber | <a href="https://huggingface.co/papers/2607.02512" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出“模糊函数编程”范式：用4B编译器将自然语言函数规范编译成参数高效Adapter，再由冻结的0.6B解释器本地执行，使大模型从逐请求求解器转变为一次编译、重复使用的工具构建器。</div>
+      <div class="field"><span class="field-label">结论：</span>对于一类边界模糊但可重复调用的任务，将自然语言规范编译为权重程序，能够显著降低推理显存、在线API依赖和长期调用成本，同时保持接近大型模型直接Prompt的效果。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在包含1000万样本的FuzzyBench训练后，0.6B Qwen3解释器执行PAW程序可匹配Qwen3-32B直接Prompt，推理显存约为其五十分之一，并可在MacBook M3上达到30 tokens/s。</div>
+      <div class="field"><span class="field-label">局限性：</span>效果可能依赖FuzzyBench覆盖范围；每个函数需要独立编译和Adapter管理。对复杂组合逻辑、分布外输入、可解释性、安全审计及编译错误检测的能力仍需验证。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>特别适合日志分类、格式修复、意图排序和企业规则判断等高频、稳定、隐私敏感任务；不适合需求频繁变化、只调用一次或要求严格形式正确性的函数。</div>
+      <div class="field"><span class="field-label">重点理由：</span>它提出了从“每次调用大模型”转向“让模型编译可复用轻量程序”的新范式，可能显著改变LLM能力的本地部署和规模化调用方式。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.25041" target="_blank">Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models</a></h3>
+      <div class="paper-meta">arXiv: 2606.25041 | 👍 115 | Lianghua Huang, Zhifan Wu, Wei Wang, Yupeng Shi, Mengyang Feng | <a href="https://huggingface.co/papers/2606.25041" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>在单个 Transformer 中统一建模语言、音频和视频的双向输入输出，以交错多模态 token 和 block-causal attention 实现增量生成；同时将编码器、解码器和 token 调度全部改造成因果流式结构，使感知、推理、响应时机、轮次管理及跨模态同步能够端到端联合学习。</div>
+      <div class="field"><span class="field-label">结论：</span>原生流式的统一多模态模型可以绕开 VAD、ASR、LLM、TTS 和视频生成等级联系统带来的延迟及误差累积，实现亚秒级全双工音视频交互。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>模型支持短至 160 ms 的流式单元和 25 fps 输出；模型侧响应延迟约为 200 ms，在双向网络延迟为 350 ms 的条件下，总交互延迟约为 550 ms。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要主要报告延迟，没有给出语言能力、语音自然度、视频质量、唇形同步、打断处理和长对话稳定性的对比结果，也未披露模型规模、训练数据、运行硬件及并发吞吐。端到端统一模型还可能放大训练复杂度和故障耦合。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适用于实时数字人、远程陪伴、智能座舱和具身交互等对延迟高度敏感的场景。实际选型不能只看 200 ms 延迟，还需联合评估生成质量、可控性、并发成本及弱网表现。</div>
+      <div class="field"><span class="field-label">重点理由：</span>它将原生流式全双工能力下沉到统一多模态模型架构，并报告约 200 ms 模型侧响应延迟，是实时多模态交互基础设施的重要进展。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.16993" target="_blank">DreamX-World 1.0: A General-Purpose Interactive World Model</a></h3>
+      <div class="paper-meta">arXiv: 2606.16993 | 👍 113 | DreamX Team, Yancheng Bai, Rui Chen, Xiangxiang Chu, Rujing Dang | <a href="https://huggingface.co/papers/2606.16993" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将双向视频生成器通过 causal forcing、DMD-style distillation 和长 rollout 训练转化为少步自回归世界模型；提出轻量级 E-PRoPE 保留投影相机几何，并以基于相机几何的历史视图检索和 residual recycling 增强场景持久性。系统还结合事件指令微调、RL alignment、VAE 剪枝和异步流水线并行。</div>
+      <div class="field"><span class="field-label">结论：</span>结合显式相机几何、历史场景记忆、自生成长上下文训练和系统级加速，可以在多个视觉域中实现具有镜头导航、区域重访及可控事件的长时交互式视频世界模型。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在论文自定义的 5 秒基础评测中，camera-control score 为 73.75、overall score 为 84.76，后者超过 HY-WorldPlay 1.5 的 80.79 和 LingBot-World 的 80.45；在八张 RTX 5090 上最高达到 16 FPS。</div>
+      <div class="field"><span class="field-label">局限性：</span>核心定量结果来自自定义的 5 秒评测，对“长时”一致性的支撑仍有限。16 FPS 依赖八张高端 GPU，部署成本较高；摘要也没有披露物理一致性、动作响应准确率、记忆容量、长 rollout 退化曲线及公开基准上的结果。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合交互式内容生成、游戏原型、虚拟场景导航和视频预演。它更接近可控视觉模拟器，而非能够进行通用规划和因果推理的 Agent 世界模型；用于机器人训练前还需验证动作动力学与真实世界一致性。</div>
+      <div class="field"><span class="field-label">重点理由：</span>该工作同时处理了自回归世界模型的镜头控制、历史场景重访、长 rollout 漂移和推理吞吐问题，形成了较完整的交互式世界模型技术栈。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.20945" target="_blank">Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention</a></h3>
+      <div class="paper-meta">arXiv: 2606.20945 | 👍 79 | Vishesh Tripathi, Abhay Kumar | <a href="https://huggingface.co/papers/2606.20945" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>将 MoE 条件计算引入 GQA 的 query heads，在保留 GQA KV cache 优势的同时，减少每个 token 实际激活的 query head 数量。</div>
+      <div class="field"><span class="field-label">结论：</span>在给定训练设置下，仅激活一半 query heads 的 GQE 可以达到全激活 GQA 基线相当的下游准确率，说明注意力头存在可利用的条件稀疏性。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>在 250M 参数规模和固定 30B token 训练预算下，GQE 使用一半活跃 query heads，仍匹配全激活 GQA 的下游精度。</div>
+      <div class="field"><span class="field-label">局限性：</span>实验仅覆盖 250M 参数规模，尚未验证在十亿至百亿参数模型上的扩展性；摘要未提供长上下文下的实际吞吐、延迟、显存收益及路由开销。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合探索长上下文模型的注意力条件计算，但其工程价值取决于路由和稀疏 kernel 能否转化为真实硬件加速，而不仅是理论 FLOPs 降低。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2606.19409" target="_blank">OpenRath: Session-Centered Runtime State for Agent Systems</a></h3>
+      <div class="paper-meta">arXiv: 2606.19409 | 👍 77 | Fukang Wen, Zhijie Wang, Ruilin Xu | <a href="https://huggingface.co/papers/2606.19409" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>Session 同时具备分支、检查、回放、后端感知和组合能力，使 fork、merge 和 replay 成为显式运行时操作；Selector 则将工作流控制决策纳入可审计的运行记录。</div>
+      <div class="field"><span class="field-label">结论：</span>统一且一等化的 Session 状态可以提升多 Agent、多会话系统的可组合性、可审计性和可复现性，减少从分散日志中重建执行状态的需要。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文给出了编程模型、系统架构、经审计的实现里程碑和证据协议，并将受控运行时属性作为当前主要验证目标。</div>
+      <div class="field"><span class="field-label">局限性：</span>缺乏与现有 Agent 框架的广泛定量比较；尚未充分评估真实模型服务质量、运行性能、可选后端兼容性和长期记忆质量。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合需要分支执行、故障回放、合规审计和多 Agent 编排的平台。当前更像值得关注的运行时设计范式，生产成熟度仍需后续基准验证。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2606.31315" target="_blank">BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding</a></h3>
+      <div class="paper-meta">arXiv: 2606.31315 | 👍 76 | Hao Zhang, Yiming Hu, Yong Wang, Mingqiao Mo, Xin Xiao | <a href="https://huggingface.co/papers/2606.31315" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>发现 diffusion speculative decoding 的最优 block size 具有显著样本依赖性和围绕训练块大小的局部结构，并利用 prefilling representation 一次性预测每个输入的最优块大小。</div>
+      <div class="field"><span class="field-label">结论：</span>按实例自适应选择 block size 能在保持无损生成的前提下提高 speculative decoding 效率，且只需极低的额外决策开销。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>方法可即插即用，仅在 prefill 后预测一次；在 Qwen3-4B、温度 T=1 的设置下达到 5.92 的 acceptance length 和 4.20 倍推理加速。</div>
+      <div class="field"><span class="field-label">局限性：</span>摘要突出的是单一模型和特定采样温度下的最佳结果，尚不能确认在更大模型、长输出、不同硬件、batch size 和服务负载下是否保持同等收益；还需要计入 draft、验证及策略模型的端到端资源成本。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合已有 diffusion draft speculative decoding 栈的在线推理服务。方法改动小、工程吸引力强，但实际选型应以端到端吞吐、首 token 延迟、显存和不同请求分布下的尾延迟为准。</div>
+      <div class="field"><span class="field-label">重点理由：</span>把固定解码超参数转化为低开销的实例级决策，并给出 4.20 倍无损加速结果，对 dLLM 推理系统具有直接工程价值。</div>
+    </div>
+    <div class="paper">
+      <h3><a href="https://arxiv.org/abs/2607.04033" target="_blank">OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers</a></h3>
+      <div class="paper-meta">arXiv: 2607.04033 | 👍 74 | Siyuan Li, Jiabao Pan, Yumou Liu, Zhuoli Ouyang, Xin Jin | <a href="https://huggingface.co/papers/2607.04033" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>通过五阶段优化更新元流水线与基于范数约束 linear minimization oracle 的几何视角统一百余种优化器，并建立“机制家族—效果目标”双维分类及跨模型、跨训练范式 benchmark。</div>
+      <div class="field"><span class="field-label">结论：</span>大型模型训练中的优化器不存在脱离算力、显存、调参预算和任务目标的统一最优选择；结构化分类与统一测评能将优化器选择转化为显式权衡问题。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>论文将完整 taxonomy 落地为统一 benchmark，覆盖代表性优化器、不同模型规模，以及从语言模型预训练到图像分类的多种训练制度，并按多个效果目标比较方法家族。</div>
+      <div class="field"><span class="field-label">局限性：</span>这是一项横跨多个领域的 survey 与 benchmark，未必能完整复现超大规模 LLM 训练中的分布式通信、低精度数值稳定性及长周期收敛行为；摘要也未给出具体优化器排名或成本数据。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合用于 LLM 预训练基础设施选型、优化器研究和实验设计。其主要价值是统一分析坐标系而非提供一个可直接替换 AdamW 的新优化器，具体结论仍需在目标模型和集群上复验。</div>
+    </div>
+    <div class="paper highlight">
+      <h3>🔴 <a href="https://arxiv.org/abs/2607.02980" target="_blank">Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling</a></h3>
+      <div class="paper-meta">arXiv: 2607.02980 | 👍 70 | Xiang Hu, Xinyu Wei, Hao Gu, Minshen Zhang, Tian Liang | <a href="https://huggingface.co/papers/2607.02980" target="_blank">HF</a></div>
+      <div class="field"><span class="field-label">创新点：</span>提出 HiLS 分层地标稀疏注意力，将 chunk 检索分数直接纳入前向注意力计算，使 chunk 选择能够由语言建模损失端到端优化；每个查询分别提取各检索 chunk 的信息，再按检索分数融合，并支持将已有全注意力模型通过轻量 continued pretraining 转换为稀疏模型。</div>
+      <div class="field"><span class="field-label">结论：</span>端到端学习 chunk 选择能够显著改善稀疏注意力的检索精度，使模型在保持域内性能的同时获得远超训练长度的上下文外推能力，并减少 KV 访问与注意力计算。</div>
+      <div class="field"><span class="field-label">结论支撑：</span>摘要报告 HiLS 在训练长度范围内达到与全注意力相当、部分情况下更优的性能；上下文长度可外推至训练长度的 64 倍以上，并保持 90% 的检索准确率；已有全注意力模型经轻量继续预训练后可保留域内性能并获得超长上下文能力。</div>
+      <div class="field"><span class="field-label">局限性：</span>标题中的“无限上下文”属于方向性表述，实验只验证了有限的 64 倍以上外推；检索准确率不能完全代表端到端任务质量。摘要也未披露不同模型规模、硬件环境下的实际吞吐、延迟和显存收益，错误 chunk 选择仍可能造成不可恢复的信息丢失。</div>
+      <div class="field"><span class="field-label">点评与适用范围：</span>适合长文档理解、代码库分析、长会话和大规模上下文检索，尤其适用于希望改造现有全注意力模型的场景。落地前仍需验证具体任务的端到端准确率、稀疏算子支持和真实 wall-clock 收益。</div>
+      <div class="field"><span class="field-label">重点理由：</span>同时覆盖稀疏注意力质量、超长上下文外推和已有模型低成本改造，若完整实验能支撑摘要中的结果，将对长上下文 LLM 的训练与推理架构产生较高价值。</div>
+    </div>
+  </div>
+  <div class="footer">由 VTM 小助手自动生成 | 2026-07-13</div>
+</body>
+</html>
