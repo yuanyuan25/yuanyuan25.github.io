@@ -1,0 +1,124 @@
+[
+  {
+    "title": "大模型新论文周报 · 2026-07-13",
+    "date": "2026-07-13",
+    "week": "近4周 (2026-06-15 ~ 2026-07-12)",
+    "summary": "共收录 42 篇大模型相关论文，重点精读 28 篇，覆盖 Agentic、预训练、后训练、RL、基础架构创新等方向。",
+    "stats": [
+      {
+        "label": "收录论文",
+        "value": "42"
+      },
+      {
+        "label": "重点精读",
+        "value": "28"
+      }
+    ],
+    "file": "2026-07-13.html"
+  },
+  {
+    "date": "2026-06-08",
+    "title": "2026年5月25日 — 6月7日",
+    "week": "第23周",
+    "summary": "覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>核心趋势：StreamMA 流式多智能体推理（延迟 O(depth)→O(1)）、AutoLab 长视野闭环优化 Agent 基准、ZEDA 静态 MoE 无损转动态 MoE、DistIL 富反馈 RL 超越 RLVR、STRIDE 激活空间训练数据归因 13×提速。",
+    "stats": [
+      {
+        "label": "篇论文",
+        "value": 22
+      },
+      {
+        "label": "个方向",
+        "value": 6
+      },
+      {
+        "label": "篇重点精读",
+        "value": 6
+      }
+    ],
+    "file": "2026-06-08.html"
+  },
+  {
+    "date": "2026-06-01",
+    "title": "2026年5月26日 — 6月1日",
+    "week": "第22周",
+    "summary": "覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>核心趋势：Agentic 工具使用演化综述、开放式知识评估新范式 BeQu、长上下文不可能三角定理、单轮 RL 训练多轮 Agent、关键词检索挑战向量检索共识。",
+    "stats": [
+      {
+        "label": "篇论文",
+        "value": 18
+      },
+      {
+        "label": "个方向",
+        "value": 6
+      },
+      {
+        "label": "篇重点精读",
+        "value": 4
+      }
+    ],
+    "file": "2026-06-01.html"
+  },
+  {
+    "date": "2026-05-25",
+    "title": "2026年5月19日 — 5月25日",
+    "week": "第21周",
+    "summary": "覆盖 arXiv、OpenAI、Anthropic、Google DeepMind、Meta AI、CSDN、机器之心等渠道。<br>核心趋势：Gemini Spark 24/7 Agent 发布、SubQ 12M 上下文窗口、AI 独立解决 80 年 Erdős 几何问题、Anthropic NLA 可解释性突破。",
+    "stats": [
+      {
+        "label": "篇论文",
+        "value": 18
+      },
+      {
+        "label": "个方向",
+        "value": 6
+      },
+      {
+        "label": "篇重点精读",
+        "value": 5
+      }
+    ],
+    "file": "2026-05-25.html"
+  },
+  {
+    "date": "2026-05-18",
+    "title": "2026年5月11日 — 5月18日",
+    "week": "第20周",
+    "summary": "覆盖 Agentic 搜索策略交互研究、多模态 RAG 元素级检索、低成本上下文窗口扩展 EndPrompt、CIPO 自我纠错 RL 训练等前沿方向。",
+    "stats": [
+      {
+        "label": "篇论文",
+        "value": 20
+      },
+      {
+        "label": "个方向",
+        "value": 6
+      },
+      {
+        "label": "篇重点精读",
+        "value": 4
+      }
+    ],
+    "file": "2026-05-18.html"
+  },
+  {
+    "date": "2026-03-13",
+    "title": "2026年3月13日",
+    "week": "第10周",
+    "summary": "本周共收集 20 篇大模型相关论文与技术报告。<br>重点关注：GPT-5.4 / Claude Opus 4.6 / Gemini 3.1 Pro 三大旗舰模型密集发布、AlphaEvolve 打破 56 年矩阵乘法纪录、ReVal 首次将 off-policy 价值函数引入 LLM 训练。",
+    "stats": [
+      {
+        "label": "篇论文",
+        "value": 20
+      },
+      {
+        "label": "个方向",
+        "value": 6
+      },
+      {
+        "label": "篇重点精读",
+        "value": 5
+      }
+    ],
+    "file": "2026-03-13.html"
+  }
+]

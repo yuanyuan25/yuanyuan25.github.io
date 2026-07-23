@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VTM 大模型论文周报 - 索引</title>
     <!--
-      索引页采用动态加载：
-        1. 通过 GitHub Contents API 自动列出当前目录下 YYYY-MM-DD.html 的所有报告；
-        2. 拉取每份报告 <head> 中的 <script type="application/json" id="report-meta"> 元数据；
-        3. 按日期倒序渲染卡片，最新一份自动打上"最新"徽章。
+      索引页采用静态清单加载：
+        1. 读取同目录下的 reports.json（由 build_index.py 生成）；
+        2. 按日期倒序渲染卡片，最新一份自动打上"最新"徽章。
 
-      新增一份周报时无需修改本文件，只需：
+      新增一份周报时：
         - 新建 YYYY-MM-DD.html，在 <head> 中加入 <script type="application/json" id="report-meta">{...}</script>
-        - 推送到 GitHub 即可。
+        - 运行 python3 build_index.py 重新生成 reports.json
+        - 一并推送到 GitHub 即可（无需依赖 GitHub API，也不受限流影响）。
     -->
     <style>
         :root {
@@ -174,36 +174,8 @@
 
     <script>
     (function () {
-        // 默认指向当前部署的仓库；如仓库改名，只需改这里一行即可。
-        const DEFAULT_REPO = 'yuanyuan25/yuanyuan25.github.io';
-        const DEFAULT_DIR = 'llm_reports';
-        const FILE_PATTERN = /^\d{4}-\d{2}-\d{2}\.html$/;
+        const MANIFEST = 'reports.json';
         const listEl = document.getElementById('report-list');
-
-        // 部署在 <user>.github.io 时自动推断仓库；其它情况回退到默认值。
-        function detectRepoAndDir() {
-            const host = location.host;
-            const segs = location.pathname.split('/').filter(Boolean);
-            if (segs.length && /\.html?$/i.test(segs[segs.length - 1])) segs.pop();
-            const m = host.match(/^([^.]+)\.github\.io$/);
-            if (m) {
-                const user = m[1];
-                // 项目页：<user>.github.io/<repo>/... ；用户页：<user>.github.io/...
-                // 简单策略：路径首段当作仓库名优先尝试，失败再回退到用户页 / 默认值。
-                if (segs.length) {
-                    return [
-                        { repo: `${user}/${segs[0]}`, dir: segs.slice(1).join('/') },
-                        { repo: `${user}/${user}.github.io`, dir: segs.join('/') },
-                        { repo: DEFAULT_REPO, dir: DEFAULT_DIR },
-                    ];
-                }
-                return [
-                    { repo: `${user}/${user}.github.io`, dir: '' },
-                    { repo: DEFAULT_REPO, dir: DEFAULT_DIR },
-                ];
-            }
-            return [{ repo: DEFAULT_REPO, dir: DEFAULT_DIR }];
-        }
 
         function escapeHtml(str) {
             return String(str).replace(/[&<>"']/g, c => ({
@@ -218,51 +190,6 @@
 
         function showError(msg) {
             listEl.innerHTML = `<div class="status error">${escapeHtml(msg)}</div>`;
-        }
-
-        async function listReportFiles() {
-            const candidates = detectRepoAndDir();
-            let lastErr = null;
-            for (const { repo, dir } of candidates) {
-                const url = `https://api.github.com/repos/${repo}/contents/${dir}`;
-                try {
-                    const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
-                    if (!res.ok) {
-                        lastErr = new Error(`HTTP ${res.status} @ ${repo}/${dir}`);
-                        continue;
-                    }
-                    const items = await res.json();
-                    if (!Array.isArray(items)) {
-                        lastErr = new Error(`非目录响应 @ ${repo}/${dir}`);
-                        continue;
-                    }
-                    const files = items
-                        .filter(it => it.type === 'file' && FILE_PATTERN.test(it.name))
-                        .map(it => it.name);
-                    if (files.length) return files;
-                    lastErr = new Error(`目录为空 @ ${repo}/${dir}`);
-                } catch (e) {
-                    lastErr = e;
-                }
-            }
-            throw lastErr || new Error('无法找到报告目录');
-        }
-
-        async function fetchMeta(filename) {
-            try {
-                const res = await fetch(filename, { cache: 'no-cache' });
-                if (!res.ok) return null;
-                const html = await res.text();
-                const m = html.match(/<script[^>]*id=["']report-meta["'][^>]*>([\s\S]*?)<\/script>/i);
-                if (!m) return null;
-                const meta = JSON.parse(m[1].trim());
-                meta.file = filename;
-                meta.date = meta.date || filename.replace(/\.html$/, '');
-                return meta;
-            } catch (e) {
-                console.warn(`解析 ${filename} 元数据失败：`, e);
-                return null;
-            }
         }
 
         function renderCard(meta, isLatest) {
@@ -288,21 +215,19 @@
 
         async function init() {
             try {
-                const files = await listReportFiles();
-                if (!files.length) {
+                const res = await fetch(MANIFEST, { cache: 'no-cache' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const metas = await res.json();
+                if (!Array.isArray(metas) || !metas.length) {
                     showError('暂无报告。');
                     return;
                 }
-                const metas = (await Promise.all(files.map(fetchMeta))).filter(Boolean);
-                if (!metas.length) {
-                    showError('未能从任何报告中解析到元数据。请确认报告 <head> 中包含 <script id="report-meta"> 块。');
-                    return;
-                }
-                metas.sort((a, b) => b.date.localeCompare(a.date));
+                metas.forEach(m => { m.date = m.date || (m.file || '').replace(/\.html$/, ''); });
+                metas.sort((a, b) => String(b.date).localeCompare(String(a.date)));
                 listEl.innerHTML = metas.map((m, i) => renderCard(m, i === 0)).join('');
             } catch (err) {
                 console.error(err);
-                showError(`加载失败：${err.message}。可能是 GitHub API 速率限制（每小时 60 次），请稍后重试。`);
+                showError(`加载失败：${err.message}。请确认 reports.json 存在（运行 build_index.py 生成）。`);
             }
         }
 
