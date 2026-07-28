@@ -1,0 +1,4 @@
+# 2026-07-28 周报原文链接
+# 本周（2026-W30）50 篇论文中 49 篇已收录于 2026-07-27 周报（见 urls_2026-07-27.txt），无新增大模型论文。
+# 唯一未重复论文为非大模型方向，未收录：
+Color Pass-Through via Camera-Display Coupling | https://arxiv.org/abs/2607.12746
