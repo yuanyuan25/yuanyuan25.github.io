@@ -1,0 +1,50 @@
+Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory | https://arxiv.org/abs/2608.07169
+AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses | https://arxiv.org/abs/2608.12307
+AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design | https://arxiv.org/abs/2608.13560
+Business Arena: Benchmarking LLM Agents in a Realistic Marketplace | https://arxiv.org/abs/2608.08621
+Can LLM Agents Stick to the Script? A Benchmark for Long-Horizon Consistency in Interactive Narratives | https://arxiv.org/abs/2608.08160
+Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design | https://arxiv.org/abs/2608.10299
+ComBodied Agents: a New Paradigm of Human-Centric Agentic AI | https://arxiv.org/abs/2608.10915
+DarwinX: Evolving Agent Harnesses Through Natural Selection | https://arxiv.org/abs/2608.07545
+Evo-Bench: Can Language Models Improve Agent Harness? | https://arxiv.org/abs/2608.09096
+Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA | https://arxiv.org/abs/2608.09819
+MatrAIx: Simulating the World with 8.3 Billion Persona Agents | https://arxiv.org/abs/2608.04205
+Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence | https://arxiv.org/abs/2608.12036
+Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution | https://arxiv.org/abs/2608.07645
+OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution | https://arxiv.org/abs/2608.00677
+Ouroboros: A Self-Developing Frontier Coding Agent with Reviewed Core Evolution | https://arxiv.org/abs/2608.08311
+PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives | https://arxiv.org/abs/2608.13552
+SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries | https://arxiv.org/abs/2608.05604
+Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill | https://arxiv.org/abs/2608.11924
+Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence | https://arxiv.org/abs/2608.12743
+SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring | https://arxiv.org/abs/2608.09802
+VibeLifeBench: Can Your Life Agent Be Proactive and Persistent in a Living World? | https://arxiv.org/abs/2608.10875
+Intern-S2-Preview: Scientific Agentic Foundation Model | https://arxiv.org/abs/2608.13505
+Motif 3: Technical Report | https://arxiv.org/abs/2608.09119
+DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation | https://arxiv.org/abs/2608.13489
+Scaling Inherently Interpretable Language Models | https://arxiv.org/abs/2608.07594
+Sci-VBench: Evaluating Knowledge- and Reasoning-Intensive Video Generation in Science Domains | https://arxiv.org/abs/2608.09873
+On-Policy Self-Distillation without Any Supervision | https://arxiv.org/abs/2608.06296
+Stealing Reasoning Traces from Proprietary LLM APIs | https://arxiv.org/abs/2608.09867
+DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds | https://arxiv.org/abs/2608.06113
+Small Foundation Models of Human Cognition and Behaviour | https://arxiv.org/abs/2608.05224
+When Activation Oracles Learn Not to Read: Concept-Specific Blind Spots in Fine-Tuned Oracles | https://arxiv.org/abs/2607.23379
+YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family | https://arxiv.org/abs/2608.07051
+SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs | https://arxiv.org/abs/2608.03573
+Beyond Simply Environment Scaling: Designing Effective Environment Distributions for Multimodal Agent Learning | https://arxiv.org/abs/2608.03571
+How Can Rhetoric Reward-Hack AI Reviewers? Dissecting Rhetorical Sensitivity in AI-Based Peer Review | https://arxiv.org/abs/2608.08975
+SimWAM: A Simple World Action Model for End-to-End Autonomous Driving | https://arxiv.org/abs/2608.07468
+What to Edit Next: Visually Aligned Image-Editing Follow-Up Suggestions in Conversational Systems | https://arxiv.org/abs/2608.07565
+BDH-CQ: In-Context Learning with Recurrent Latent Reasoning | https://arxiv.org/abs/2608.09888
+Full-bandwidth transformer | https://arxiv.org/abs/2608.08888
+OasisKV: Scaling In-Decode KV Cache Beyond HBM with Lookahead Sparse Prefetching | https://arxiv.org/abs/2608.08097
+AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss | https://arxiv.org/abs/2608.11205
+Alaya-EVOKE: From Linear-Scaling Supervision to Endless World | https://arxiv.org/abs/2608.13546
+Articulated Object Reconstruction from Rest-State Observation | https://arxiv.org/abs/2607.27749
+Beyond Pixels: From Video Priors to 4D Worlds | https://arxiv.org/abs/2608.10744
+Beyond Starry Night: Shortcut-Aware Control-State Planning for Artist-Grounded Text to Image Generation | https://arxiv.org/abs/2608.06751
+LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time | https://arxiv.org/abs/2608.11745
+LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers | https://arxiv.org/abs/2608.06867
+Massive Activations in Hybrid Linear Attention Large Language Models: Pre-Attention Spikes and Inter-Spike Plateaus | https://arxiv.org/abs/2608.12149
+StateFlow: Building, Evolving, and Accessing 3D World States for Previsualization | https://arxiv.org/abs/2608.12314
+UniSwap: Streaming Audio-Visual Identity Swapping for Talking Videos | https://arxiv.org/abs/2608.11752

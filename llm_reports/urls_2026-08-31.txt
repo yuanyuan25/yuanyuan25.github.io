@@ -1,0 +1,50 @@
+VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning | https://arxiv.org/abs/2608.26105
+Apodex 1.1: Scaling Agentic Intelligence for Complex Work | https://arxiv.org/abs/2608.23283
+Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models | https://arxiv.org/abs/2608.25518
+VGI-Bench: Probing Visual Intelligence in Video Generation Models | https://arxiv.org/abs/2608.19583
+VoiceMem: Streaming Dual-Brain Memory for Real-Time Interaction | https://arxiv.org/abs/2608.26005
+FrontierChallenge: Evaluating Scientific Workflow Completion | https://arxiv.org/abs/2608.24979
+WarpSAC: Towards the Pinnacle of Scalable Off-policy RL by Rethinking Exploration and Exploitation | https://arxiv.org/abs/2608.24479
+PAWBench: How Far Are We from Probabilistically Aligned World Modeling? | https://arxiv.org/abs/2608.27345
+JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution | https://arxiv.org/abs/2608.25593
+Annotations as Rollouts: Efficient and Scalable Reinforcement Learning for Video MLLMs | https://arxiv.org/abs/2608.20492
+GigaBrain-0.7: Scaling Embodied Foundation Models to Emergent Capabilities with a Three-System Architecture | https://arxiv.org/abs/2608.15875
+UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City | https://arxiv.org/abs/2608.27456
+EchoWM: Open and Enterable Omnimodal World Models | https://arxiv.org/abs/2608.23189
+TTPO: Test-Time Policy Optimization | https://arxiv.org/abs/2608.27448
+Self-OPD: On-Policy Distillation for Flow Matching Models without Teacher | https://arxiv.org/abs/2608.26872
+WeMM-Embedding: WeChat Multi-Modal Embedding Technical Report | https://arxiv.org/abs/2608.24053
+DiffusionOPSD: On-Policy Self-Distillation in Diffusion Models | https://arxiv.org/abs/2608.24646
+AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces | https://arxiv.org/abs/2608.23041
+Graph Engineering in the Era of LLM Agents: From Individual Intelligence to System Intelligence | https://arxiv.org/abs/2608.21156
+What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents | https://arxiv.org/abs/2608.27260
+TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming | https://arxiv.org/abs/2608.20958
+Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision | https://arxiv.org/abs/2608.16812
+Let's Scale Step by Step: Compute-Efficient Hyperparameter Transfer for Large-Scale Mixture-of-Experts | https://arxiv.org/abs/2608.20061
+Prime Agent: A Self-Improving RLM Harness | https://arxiv.org/abs/2608.23552
+Training Agents to Evolve with Their Harness: TaoLive Digital Avatar Agent Technical Report | https://arxiv.org/abs/2608.15763
+GameWAM: A World Action Model for Video Games | https://arxiv.org/abs/2608.26200
+MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks | https://arxiv.org/abs/2608.23035
+InfinityEdit: Infinite Video Editing with a Lightweight Edit-Ignition Adapter | https://arxiv.org/abs/2608.20910
+ParaTempo: Efficient Parallel Reasoning via Temporal Confidence | https://arxiv.org/abs/2608.16425
+Beyond Correctness: Benchmarking and Aligning Response Behaviors in Hybrid-Thinking MLLMs | https://arxiv.org/abs/2608.12781
+CyberFactory: Scaling Cyber Security Capabilities with Instances from the Wild | https://arxiv.org/abs/2608.23181
+Block3D: Efficient Text-to-3D Generation via Block-Wise Diffusion | https://arxiv.org/abs/2608.19567
+The Mask Is Not the Model: Auditing Prefix Invariance in Attention, State-Space, and Hybrid Sequence Models | https://arxiv.org/abs/2608.22876
+Code World Model: Coding Agent as World Brain | https://arxiv.org/abs/2608.25927
+OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs | https://arxiv.org/abs/2608.21360
+PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents | https://arxiv.org/abs/2608.26530
+Towards a Densing Law for User Representation Learning at Billion-Scale Capacity | https://arxiv.org/abs/2608.23392
+RISE: Adaptive Imagination for World Action Models | https://arxiv.org/abs/2608.20430
+Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses | https://arxiv.org/abs/2608.24876
+Agent-G^2: Gaussian Guidance for Agentic Reinforcement Learning | https://arxiv.org/abs/2608.23318
+D^3-MOPD: Adaptive Dynamic Domain ScheDuling for Efficient Multi-Teacher Distillation | https://arxiv.org/abs/2608.24987
+ReWorld: An Interactive World Model with Long-Horizon Memory | https://arxiv.org/abs/2608.23565
+Is Next-Chunk Reasoning RL Really Better than SFT? Revisiting Training Strategies under no-CoT Data | https://arxiv.org/abs/2608.23256
+Open-MOPD: Diagnosing and Fixing Capability Imbalance in Multi-Teacher On-Policy Distillation | https://arxiv.org/abs/2608.19098
+Zero-WAM: In-Context World-Action Modeling from Human Videos for Open-Ended Task Generalization | https://arxiv.org/abs/2608.26103
+StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models | https://arxiv.org/abs/2608.26067
+WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution | https://arxiv.org/abs/2608.27454
+GameXpert-Bench: How Far Are Coding Agents from Expert Game Development? | https://arxiv.org/abs/2608.21833
+Best Practice Critic Optimization | https://arxiv.org/abs/2608.23566
+On-policy Distillation with Verifiable Reward | https://arxiv.org/abs/2608.24696
