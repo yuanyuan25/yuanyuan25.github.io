@@ -1,0 +1,50 @@
+Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills | https://arxiv.org/abs/2609.02749
+StudentSim: Training LLM-based Student Simulators | https://arxiv.org/abs/2609.01591
+Qwen-Drive-1.0: An Initial Step towards a Vision-Language Foundation Model for Autonomous Driving | https://arxiv.org/abs/2609.00111
+Compile by Training: Turning Natural-Language Specifications into Local Neural Functions | https://arxiv.org/abs/2609.04199
+Terminal-Universe: Turning Agent Trajectories into Scalable Terminal Environments | https://arxiv.org/abs/2609.04148
+HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness? | https://arxiv.org/abs/2609.01437
+LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes | https://arxiv.org/abs/2609.03796
+Aspire: Can Models Self-Evolve from Vague Goals? | https://arxiv.org/abs/2608.31111
+Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning | https://arxiv.org/abs/2609.03430
+Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training | https://arxiv.org/abs/2608.26730
+Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement | https://arxiv.org/abs/2608.31046
+SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models | https://arxiv.org/abs/2609.02886
+RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning | https://arxiv.org/abs/2609.03199
+EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction | https://arxiv.org/abs/2609.02783
+Lucida: Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling | https://arxiv.org/abs/2608.30821
+LatentPress: Context Compression Beyond Text and Vision | https://arxiv.org/abs/2609.01507
+DreamX-Creator: Democratizing Native Audio-Video Generation at 2K Resolution | https://arxiv.org/abs/2608.31106
+SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers | https://arxiv.org/abs/2609.01343
+Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Action Models | https://arxiv.org/abs/2608.27550
+DART-SD: Diamond-topology Aware Retrieval and Tuning for Self-Distillation of Multi-Turn Tool-Calling Agents | https://arxiv.org/abs/2608.18524
+Rethinking On-Policy Distillation of Large Language Models II: One Training Example | https://arxiv.org/abs/2609.04172
+Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM | https://arxiv.org/abs/2609.04098
+It Takes Two to Match: Co-Evolving Generative Retriever with Reinforcement Learning | https://arxiv.org/abs/2609.00638
+GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling | https://arxiv.org/abs/2608.29335
+Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States | https://arxiv.org/abs/2609.04196
+Agentic Artifact Creation: Systems, Evaluation, Principles, and Opportunities | https://arxiv.org/abs/2608.28122
+Language Models Can Control Their Own Attention | https://arxiv.org/abs/2609.02737
+UI-Venus-2 Technical Report | https://arxiv.org/abs/2609.00028
+On the Design of Qwen3.8-Next Architecture: Evaluation, Efficiency, and Training Stability | https://arxiv.org/abs/2608.30320
+ZimaBlue: Evolving Generalizable World Action Models through Scalable Video Pre-training | https://arxiv.org/abs/2609.00188
+Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning | https://arxiv.org/abs/2608.27549
+Normalized Low-Rank Adaptation | https://arxiv.org/abs/2608.31036
+H3-World: Turning Language Understanding into World Control | https://arxiv.org/abs/2609.01560
+Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction | https://arxiv.org/abs/2609.04201
+J-Zero: Unified Challenger–Solver–Judge Co-Evolution from Zero Data | https://arxiv.org/abs/2608.26582
+Editable Visual Design | https://arxiv.org/abs/2609.04034
+StarHarness: Evolving Harnesses with Stratified Search for Enterprise Environments | https://arxiv.org/abs/2608.24804
+PaperGym: Rubric-Centered Evolution for Research-Plan Generation | https://arxiv.org/abs/2608.31119
+Puro-2B: Poor Lab's Qwen2-1.5B Trained on RTX 5090 within $5090 | https://arxiv.org/abs/2608.27370
+S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement? | https://arxiv.org/abs/2608.31100
+Hi-Q: Hierarchical Evidence-guided Query Refinement for Multi-Hop Question Answering | https://arxiv.org/abs/2608.30468
+Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction | https://arxiv.org/abs/2608.27529
+From Production Traffic to Post-Training: Building a Self-Hosted LLM That Covers the Corporate Request Mix | https://arxiv.org/abs/2609.01572
+On the Design Fundamentals of Pixel Text Representation Learning | https://arxiv.org/abs/2609.01147
+Fast Weight Attention for Continual Learning | https://arxiv.org/abs/2608.27763
+Act with Intent: Distilling Behavior Intent for Vision-Language-Action Models | https://arxiv.org/abs/2608.23478
+LightNav-0: Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation | https://arxiv.org/abs/2608.30935
+CogEvol: Towards Efficient and Reliable Learning Environment Generation | https://arxiv.org/abs/2608.30968
+WHALE: A Simple Recipe for Joint Harness-Weight Optimization | https://arxiv.org/abs/2609.00196
+Beyond Retrieval: Progressive Latent Memory Evolution for Streaming Video Understanding | https://arxiv.org/abs/2609.04131
