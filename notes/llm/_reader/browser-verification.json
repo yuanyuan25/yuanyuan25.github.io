@@ -1,7 +1,7 @@
 {
   "date": "2026-10-08",
   "passed": true,
-  "mode": "file:// offline, external requests blocked",
+  "mode": "Local HTTP with external requests blocked",
   "browser": "153.0.8010.53",
   "viewports": [
     1500,
@@ -11,7 +11,7 @@
   "functions": [
     "Full-text search and result navigation",
     "Table of contents anchor scroll",
-    "Copy formula via local-file clipboard fallback",
+    "Copy formula via clipboard fallback",
     "Original figure expansion and image zoom",
     "Mobile navigation drawer",
     "Search keyboard shortcuts"
@@ -29,7 +29,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/DPO.html",
@@ -41,7 +42,8 @@
       "rawDollars": false,
       "formulas": 189,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/PPO.html",
@@ -53,7 +55,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/GRPO.html",
@@ -65,7 +68,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/GXPO.html",
@@ -77,7 +81,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/pair-grpo-family.html",
@@ -89,7 +94,8 @@
       "rawDollars": false,
       "formulas": 96,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/MTP.html",
@@ -101,7 +107,8 @@
       "rawDollars": false,
       "formulas": 48,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/SD-Zero.html",
@@ -113,7 +120,8 @@
       "rawDollars": false,
       "formulas": 20,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/transformer结构.html",
@@ -125,7 +133,8 @@
       "rawDollars": false,
       "formulas": 83,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/激活函数.html",
@@ -137,7 +146,8 @@
       "rawDollars": false,
       "formulas": 28,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/MLA.html",
@@ -149,7 +159,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/混合精度.html",
@@ -161,7 +172,8 @@
       "rawDollars": false,
       "formulas": 14,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-数据并行.html",
@@ -173,7 +185,8 @@
       "rawDollars": false,
       "formulas": 42,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-模型并行.html",
@@ -185,7 +198,8 @@
       "rawDollars": false,
       "formulas": 114,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-流水线并行.html",
@@ -197,7 +211,8 @@
       "rawDollars": false,
       "formulas": 45,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/显存分析.html",
@@ -209,7 +224,8 @@
       "rawDollars": false,
       "formulas": 228,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/Flash_attention.html",
@@ -221,7 +237,8 @@
       "rawDollars": false,
       "formulas": 85,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "revision-notes.html",
@@ -233,7 +250,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "index.html",
@@ -245,7 +263,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/DPO.html",
@@ -257,7 +276,8 @@
       "rawDollars": false,
       "formulas": 189,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/PPO.html",
@@ -269,7 +289,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/GRPO.html",
@@ -281,7 +302,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/GXPO.html",
@@ -293,7 +315,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/pair-grpo-family.html",
@@ -305,7 +328,8 @@
       "rawDollars": false,
       "formulas": 96,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/MTP.html",
@@ -317,7 +341,8 @@
       "rawDollars": false,
       "formulas": 48,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "post-training/SD-Zero.html",
@@ -329,7 +354,8 @@
       "rawDollars": false,
       "formulas": 20,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/transformer结构.html",
@@ -341,7 +367,8 @@
       "rawDollars": false,
       "formulas": 83,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/激活函数.html",
@@ -353,7 +380,8 @@
       "rawDollars": false,
       "formulas": 28,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/MLA.html",
@@ -365,7 +393,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/混合精度.html",
@@ -377,7 +406,8 @@
       "rawDollars": false,
       "formulas": 14,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-数据并行.html",
@@ -389,7 +419,8 @@
       "rawDollars": false,
       "formulas": 42,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-模型并行.html",
@@ -401,7 +432,8 @@
       "rawDollars": false,
       "formulas": 114,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/分布式训练-流水线并行.html",
@@ -413,7 +445,8 @@
       "rawDollars": false,
       "formulas": 45,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/显存分析.html",
@@ -425,7 +458,8 @@
       "rawDollars": false,
       "formulas": 228,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "infra/Flash_attention.html",
@@ -437,7 +471,8 @@
       "rawDollars": false,
       "formulas": 85,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     },
     {
       "file": "revision-notes.html",
@@ -449,7 +484,8 @@
       "rawDollars": false,
       "formulas": 0,
       "mathErrors": [],
-      "inconsistentTables": []
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
     }
   ]
 }

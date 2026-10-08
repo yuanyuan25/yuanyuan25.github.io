@@ -45,7 +45,7 @@ cd yuan-notes
 python3 -m http.server 8000
 ```
 
-访问 http://localhost:8000/ 。本地 HTTP 服务与 GitHub Pages 都能完整展示网站，无需先发布。导航明确指向 `index.html`，直接双击文件也能定位到页面；但浏览器通常会限制 `file://` 页面读取报告 JSON 清单，因此检查完整网站时请使用 HTTP 预览。
+访问 http://localhost:8000/ 。网站以 GitHub Pages 的展示与路由为准，栏目使用 `/`、`/llm_reports/`、`/notes/` 等目录地址，由服务器提供目录中的 `index.html`。本地调试使用 HTTP 服务，不提供双击 HTML 文件的 `file://` 兼容处理。
 
 ## 新增大模型报告
 
@@ -83,7 +83,7 @@ npm --prefix tools/notes-reader run verify
 
 大模型页面是「学习笔记」的子栏目，使用网站公共 `assets/site.css`。生成器直接复用首页的品牌、主导航与页脚，并将学习笔记标为当前栏目；分类侧栏和公式阅读工具由专用样式补充。更新主站页头或导航后，重新构建笔记即可同步。卡片摘要在 `catalog.mjs` 中维护，文章正文仍完整来自 Markdown。
 
-阅读入口为 [notes/llm/index.html](notes/llm/index.html)，支持直接双击离线阅读；站点首页的报告清单仍建议通过 HTTP 预览。浏览器验证方法和原稿保全规则见 [生成工具说明](tools/notes-reader/README.md)。提交时包含更新的 Markdown、HTML、图片和 `_reader/`；依赖目录不提交。
+线上阅读入口为 [大模型笔记](https://yuanyuan25.github.io/notes/llm/)。浏览器验证方法和原稿保全规则见 [生成工具说明](tools/notes-reader/README.md)。提交时包含更新的 Markdown、HTML、图片和 `_reader/`；依赖目录不提交。
 
 ## 新增其他学习笔记、文档总结或实践记录
 

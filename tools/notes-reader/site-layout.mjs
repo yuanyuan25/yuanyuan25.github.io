@@ -15,7 +15,7 @@ export function siteLayout(output){
   const [file,hash]=href.split('#');
   let target=path.resolve(siteRoot,file.replace(/^\//,''));
   if(fs.statSync(target).isDirectory())target=path.join(target,'index.html');
-  const relative=path.relative(path.dirname(output),target).split(path.sep).map(encodeURIComponent).join('/');
+  const relative=path.relative(path.dirname(output),target).split(path.sep).map(encodeURIComponent).join('/').replace(/index\.html$/,'')||'./';
   const active=target===path.join(siteRoot,'notes/index.html');
   return `href="${relative}${hash?'#'+hash:''}"${active?' aria-current="page"':''}`;
  });

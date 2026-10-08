@@ -1,19 +1,21 @@
 // Optional visual QA: set PLAYWRIGHT_MODULE and CHROME_EXECUTABLE for your environment.
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import assert from 'node:assert/strict';
 import {root} from './paths.mjs';
+import {startPreview} from './preview-server.mjs';
 const modulePath=process.env.PLAYWRIGHT_MODULE;
 if(!modulePath)throw new Error('Set PLAYWRIGHT_MODULE to the installed Playwright index.mjs');
 const {chromium}=await import(pathToFileURL(modulePath));
 const build=JSON.parse(fs.readFileSync(path.join(root,'_reader/build-report.json')));
 const files=['index.html',...build.entries.map(e=>e.output)];
+const {base,close}=await startPreview();
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_EXECUTABLE?{executablePath:process.env.CHROME_EXECUTABLE}:{})});
 const errors=[],external=[],pages=[],functions=[];
 const context=await browser.newContext();
-await context.route(/^https?:/,route=>{external.push(route.request().url());return route.abort();});
+await context.route(/^https?:/,route=>{if(route.request().url().startsWith(base+'/'))return route.continue();external.push(route.request().url());return route.abort();});
 const page=await context.newPage();
 page.on('pageerror',e=>errors.push(String(e)));
 page.on('requestfailed',r=>errors.push(r.url()+' '+r.failure()?.errorText));
-const url=file=>pathToFileURL(path.join(root,file)).href;
+const url=file=>base+'/notes/llm/'+file.split('/').map(encodeURIComponent).join('/');
 try{
  for(const viewport of [{width:1500,height:1000},{width:390,height:844}]){
   await page.setViewportSize(viewport);
@@ -30,13 +32,21 @@ try{
     const prose=document.querySelector('article')?.cloneNode(true);prose?.querySelectorAll('.katex,pre,code,.copy-formula').forEach(e=>e.remove());const rawDollars=prose?.textContent.includes('$')||false;
     const thCounts=[...document.querySelectorAll('table')].map(t=>[...t.rows].map(r=>r.cells.length));
     const inconsistentTables=thCounts.filter(counts=>counts.some(n=>n!==counts[0]));
-    return {pageWidth:document.documentElement.scrollWidth,viewportWidth:innerWidth,images:imgs.length,badImages,rawDollars,formulas:formulas.length,mathErrors,inconsistentTables};
+    const formulaAlignmentErrors=[...document.querySelectorAll('.formula')].flatMap((box,i)=>{
+     const math=box.querySelector('.katex-html').getBoundingClientRect(),frame=box.getBoundingClientRect(),style=getComputedStyle(box);
+     const fits=math.width<=box.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+     const centered=Math.abs((math.left+math.right-frame.left-frame.right)/2)<2;
+     const leadingEdgeVisible=math.left>=frame.left-1;
+     return (fits&&!centered)||!leadingEdgeVisible?[{formula:i,fits,centered,leadingEdgeVisible}]:[];
+    });
+    return {pageWidth:document.documentElement.scrollWidth,viewportWidth:innerWidth,images:imgs.length,badImages,rawDollars,formulas:formulas.length,mathErrors,inconsistentTables,formulaAlignmentErrors};
    });
    assert.equal(result.pageWidth,result.viewportWidth,'Page overflows: '+file+' '+viewport.width);
    assert.deepEqual(result.badImages,[],'Image decode failure: '+file);
    assert.deepEqual(result.mathErrors,[],'Math error: '+file);
    assert.equal(result.rawDollars,false,'Unrendered math delimiter: '+file);
    assert.deepEqual(result.inconsistentTables,[],'Table column mismatch: '+file);
+   assert.deepEqual(result.formulaAlignmentErrors,[],'Formula centering or clipped leading edge: '+file);
    const expected=build.entries.find(e=>e.output===file)?.formulas||0;
    assert.equal(result.formulas,expected,'Formula count: '+file);
    pages.push({file,viewport:viewport.width,...result});
@@ -50,19 +60,20 @@ try{
  assert.match(await page.locator('.search-results').textContent(),/DPO/);
  await page.locator('.search-results a').filter({has:page.locator('strong',{hasText:'DPO：偏好'})}).click();
  assert.ok(decodeURIComponent(page.url()).endsWith('/post-training/DPO.html'));functions.push('Full-text search and result navigation');
+ await page.locator('.toc summary').click();
  const toc=page.locator('.toc nav a').filter({hasText:'8. 隐式奖励'});await toc.click();
  await page.waitForFunction(()=>{const id=decodeURIComponent(location.hash.slice(1));const offset=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop);return Math.abs(document.getElementById(id).getBoundingClientRect().top-offset)<5;});
  functions.push('Table of contents anchor scroll');
  await page.screenshot({path:'/tmp/notes-dpo-formula-final.png'});
- // Force file:// clipboard fallback and observe the actual copy event payload.
+ // Force the clipboard fallback and observe the actual copy event payload.
  await page.evaluate(()=>{
   Object.defineProperty(navigator,'clipboard',{value:{writeText:()=>Promise.reject(new Error('Exercise fallback'))},configurable:true});
   document.addEventListener('copy',e=>{window.__copiedFormula=document.activeElement?.value||'';});
  });
  const copy=page.locator('.copy-formula').first();const tex=await copy.getAttribute('data-tex');await copy.click();
  await page.waitForFunction(()=>window.__copiedFormula?.length>0);
- assert.equal(await page.evaluate(()=>window.__copiedFormula),tex);functions.push('Copy formula via local-file clipboard fallback');
- const detail=page.locator('article details').first();await detail.locator('summary').click();assert.ok(await detail.getAttribute('open')!==null);
+ assert.equal(await page.evaluate(()=>window.__copiedFormula),tex);functions.push('Copy formula via clipboard fallback');
+ const detail=page.locator('article details:has(img)').first();await detail.locator('summary').click();assert.ok(await detail.getAttribute('open')!==null);
  await detail.locator('img').click();await page.waitForFunction(()=>document.querySelector('#image-dialog').open);
  assert.ok(await page.locator('#image-dialog img').evaluate(i=>i.naturalWidth>0));
  await page.screenshot({path:'/tmp/notes-image-final.png'});await page.locator('#image-dialog .close-dialog').click();functions.push('Original figure expansion and image zoom');
@@ -73,7 +84,7 @@ try{
  await page.locator('.menu-toggle').click();await page.keyboard.press('/');assert.ok(await page.locator('#search-dialog').evaluate(d=>d.open));
  await page.keyboard.press('Escape');assert.equal(await page.locator('#search-dialog').evaluate(d=>d.open),false);functions.push('Search keyboard shortcuts');
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
- const result={date:'2026-10-08',passed:true,mode:'file:// offline, external requests blocked',browser:await browser.version(),viewports:[1500,390],pageChecks:pages.length,functions,errors,externalRequests:external,pages};
+ const result={date:'2026-10-08',passed:true,mode:'Local HTTP with external requests blocked',browser:await browser.version(),viewports:[1500,390],pageChecks:pages.length,functions,errors,externalRequests:external,pages};
  fs.writeFileSync(path.join(root,'_reader/browser-verification.json'),JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({passed:true,pageChecks:pages.length,functions,errors,externalRequests:external},null,2));
-}finally{await browser.close();}
+}finally{await browser.close();await close();}
