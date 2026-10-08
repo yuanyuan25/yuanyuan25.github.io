@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>知行手记</title>
+  <rect width="64" height="64" rx="15" fill="#285849"/>
+  <g fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M19 16l-5 10m3-5h13M13 32h18M23 21v10c0 8-4 14-10 18m10-13 8 10"/>
+    <path d="M36 21h15v25H36z"/>
+  </g>
+</svg>

@@ -7,6 +7,7 @@ import {siteRoot} from './paths.mjs';
 const homepage=fs.readFileSync(path.join(siteRoot,'index.html'),'utf8');
 const header=homepage.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
 const footer=homepage.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0];
+const icons=(homepage.match(/<link\b[^>]*\brel="(?:icon|apple-touch-icon)"[^>]*>/g)||[]).join('');
 if(!header||!footer)throw new Error('Site homepage must contain site-header and site-footer');
 
 export function siteLayout(output){
@@ -19,5 +20,5 @@ export function siteLayout(output){
   const active=target===path.join(siteRoot,'notes/index.html');
   return `href="${relative}${hash?'#'+hash:''}"${active?' aria-current="page"':''}`;
  });
- return {header:adapt(header),footer:adapt(footer)};
+ return {header:adapt(header),footer:adapt(footer),icons:adapt(icons)};
 }

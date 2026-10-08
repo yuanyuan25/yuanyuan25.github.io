@@ -19,6 +19,7 @@ const chromeSnapshot=()=>{
  return {
   brand:document.querySelector('.brand').textContent.replace(/\s+/g,' ').trim(),
   footer:document.querySelector('.site-footer').textContent.replace(/\s+/g,' ').trim(),
+  icons:[...document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]')].map(e=>[e.rel,new URL(e.href).pathname,e.sizes.value]),
   links:[...document.querySelectorAll('.site-header nav a')].map(a=>[a.textContent.trim(),new URL(a.href).pathname.replace(/index\.html$/,'')]),
   colors:[style.backgroundColor,style.color,brand.backgroundColor],
   typography:[style.fontFamily,style.lineHeight,brand.width,brand.height],
