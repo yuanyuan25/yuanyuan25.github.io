@@ -29,10 +29,11 @@ DPO（Direct Preference Optimization）直接用偏好对训练策略，标准�
 Bradley–Terry 模型把这个关系写成下面的偏好概率。$\sigma(z)=1/(1+e^{-z})$ 是 sigmoid，它把任意实数差值转换到 0 与 1 之间：
 
 $$
-P(y_w\succ y_l\mid x)
-=\frac{e^{r(x,y_w)}}{e^{r(x,y_w)}+e^{r(x,y_l)}}
-=\frac{1}{1+e^{r(x,y_l)-r(x,y_w)}}
-=\sigma\bigl(r(x,y_w)-r(x,y_l)\bigr).
+\begin{aligned}
+P(y_w\succ y_l\mid x) &=\frac{e^{r(x,y_w)}}{e^{r(x,y_w)}+e^{r(x,y_l)}}\\
+&=\frac{1}{1+e^{r(x,y_l)-r(x,y_w)}}\\
+&=\sigma\bigl(r(x,y_w)-r(x,y_l)\bigr).
+\end{aligned}
 $$
 
 当两个回答得分相等时，模型给出各一半的偏好概率；当 $r(x,y_w)>r(x,y_l)$ 时，选择 $y_w$ 的概率大于一半。公式第一步给两个奖励取指数作为正权重，第二步将分子、分母同时除以 $e^{r(x,y_w)}$，于是只剩下奖励差。
@@ -58,9 +59,10 @@ $$
 单条样本被标为 chosen 胜出的概率为 $p_i=\sigma(\Delta r_i)$。在样本条件独立的建模假设下，观察到整组偏好的概率是各项之积：
 
 $$
-\mathcal L_{\rm likelihood}(\phi)
-=\prod_{i=1}^N P_\phi(y_{w,i}\succ y_{l,i}\mid x_i)
-=\prod_{i=1}^N\sigma(\Delta r_i).
+\begin{aligned}
+\mathcal L_{\rm likelihood}(\phi) &=\prod_{i=1}^N P_\phi(y_{w,i}\succ y_{l,i}\mid x_i)\\
+&=\prod_{i=1}^N\sigma(\Delta r_i).
+\end{aligned}
 $$
 
 ### 3.2 取对数：乘积变求和
@@ -81,8 +83,10 @@ $$
 因为 log 严格递增，取对数不改变最大化解：
 
 $$
-\phi^*=\arg\max_\phi\mathcal L_{\rm likelihood}(\phi)
-=\arg\max_\phi\log\mathcal L_{\rm likelihood}(\phi).
+\begin{aligned}
+\phi^* &=\arg\max_\phi\mathcal L_{\rm likelihood}(\phi)\\
+&=\arg\max_\phi\log\mathcal L_{\rm likelihood}(\phi).
+\end{aligned}
 $$
 
 ### 3.3 极大似然变成最小化负对数损失
@@ -92,9 +96,10 @@ $$
 给整个目标乘 $-1$ 后，最大化改成最小化：
 
 $$
-\mathcal L_{\rm RM,sum}(\phi)
-=-\log\mathcal L_{\rm likelihood}(\phi)
-=-\sum_{i=1}^N\log\sigma(\Delta r_i),
+\begin{aligned}
+\mathcal L_{\rm RM,sum}(\phi) &=-\log\mathcal L_{\rm likelihood}(\phi)\\
+&=-\sum_{i=1}^N\log\sigma(\Delta r_i),
+\end{aligned}
 $$
 
 $$
@@ -179,9 +184,10 @@ $$
 例如，若 $P$ 给两个结果的概率为 0.8 和 0.2，而 $Q$ 都给 0.5，那么 $U$ 分别以 0.8、0.2 的概率取值 $\log(0.8/0.5)$、$\log(0.2/0.5)$。它的期望就是这两个数按出现概率加权的平均值。一般地，按照离散随机变量的期望定义：
 
 $$
-\mathbb E_{Z\sim P}[U]
-=\sum_{z\in\mathcal Z}P(z)g(z)
-=\sum_{z\in\mathcal Z}P(z)\log\frac{P(z)}{Q(z)}.
+\begin{aligned}
+\mathbb E_{Z\sim P}[U] &=\sum_{z\in\mathcal Z}P(z)g(z)\\
+&=\sum_{z\in\mathcal Z}P(z)\log\frac{P(z)}{Q(z)}.
+\end{aligned}
 $$
 
 第一步枚举 $Z$ 的每种取值：取到 $z$ 的概率是 $P(z)$，这时 $U$ 的数值是 $g(z)$，所以两者相乘后求和。第二步只是把 $g(z)$ 换回刚才定义的对数比，没有新增假设。
@@ -269,14 +275,20 @@ $$
 这些权重相加未必等于 1，所以还不能直接叫概率。为了把它们构造成分布，我们定义**配分函数** $Z(x)$，也就是这个问题下所有回答权重的总和：
 
 $$
-Z(x)=\sum_y w_x(y)=\sum_y\pi_{\rm ref}(y\mid x)e^{r(x,y)/\beta}.
+\begin{aligned}
+Z(x) &=\sum_y w_x(y)\\
+&=\sum_y\pi_{\rm ref}(y\mid x)e^{r(x,y)/\beta}.
+\end{aligned}
 $$
 
 这里的 $Z(x)$ 是依赖问题 $x$ 的归一化常数，与上一节用大写 $Z$ 表示的随机变量是不同对象；后面都按函数 $Z(x)$ 使用。在 $0<Z(x)<\infty$ 的条件下，将每个权重除以同一个总和，定义新的回答分布 $\pi^*$：
 
 $$
-\pi^*(y\mid x)=\frac{w_x(y)}{Z(x)},\qquad
-\sum_y\pi^*(y\mid x)=\frac{\sum_yw_x(y)}{Z(x)}=1.
+\begin{aligned}
+\pi^*(y\mid x) &=\frac{w_x(y)}{Z(x)},\\[4pt]
+\sum_y\pi^*(y\mid x) &=\frac{\sum_yw_x(y)}{Z(x)}\\
+&=1.
+\end{aligned}
 $$
 
 式子右侧的求和验证了新分布的概率之和确实为 1。此时星号只是给这个候选分布起名；下一步把它代回目标，才证明它为什么最优。
@@ -310,9 +322,11 @@ $$
 KL 非负，且在两个分布相同时为零，因此：
 
 $$
-\arg\max_\pi J_r(\pi\mid x)
-=\arg\min_\pi D_{\rm KL}(\pi\Vert\pi^*)=\pi^*,
-\qquad \max_\pi J_r(\pi\mid x)=\beta\log Z(x).
+\begin{aligned}
+\arg\max_\pi J_r(\pi\mid x) &=\arg\min_\pi D_{\rm KL}(\pi\Vert\pi^*)\\
+&=\pi^*,\\[4pt]
+\max_\pi J_r(\pi\mid x) &=\beta\log Z(x).
+\end{aligned}
 $$
 
 再对固定 prompt 分布取期望，只把常数换成 $\beta\mathbb E_x\log Z(x)$；逐 prompt 的最优分布不变。这是分布空间中的理想解，有限模型、有限数据与优化误差仍可能使实际训练结果偏离它。
@@ -449,7 +463,11 @@ $$
 进一步定义价值基线 $V(x)$ 为策略在问题 $x$ 上的预期回报，优势 $A(x,y)=r(x,y)-V(x)$ 表示“这条回答比通常预期好多少”。给所有回答的奖励都减去同一个 $c(x)$，准确的价值基线也会同步减去它。因此，把整段回答视为一个动作时：
 
 $$
-\hat A(x,y)=[r(x,y)-c(x)]-[V(x)-c(x)]=r(x,y)-V(x)=A(x,y).
+\begin{aligned}
+\hat A(x,y) &=[r(x,y)-c(x)]-[V(x)-c(x)]\\
+&=r(x,y)-V(x)\\
+&=A(x,y).
+\end{aligned}
 $$
 
 实际 token 级 PPO 的 GAE、价值估计误差、奖励预处理等会影响训练轨迹；不能据此声称两种奖励下每一步更新都数值相同。上述常数不变性针对固定 prompt、未额外引入长度相关折扣的响应级目标。
@@ -461,9 +479,10 @@ $$
 3. PPO 用当前策略与采样旧策略的 token 概率比执行 clipped 更新：
 
 $$
-\rho_t(\psi)=\frac{\pi_\psi(y_t\mid x,y_{<t})}{\pi_{\rm old}(y_t\mid x,y_{<t})},
-\qquad
-J_{\rm clip}=\mathbb E_t\min\left(\rho_t A_t,\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)A_t\right).
+\begin{aligned}
+\rho_t(\psi) &=\frac{\pi_\psi(y_t\mid x,y_{<t})}{\pi_{\rm old}(y_t\mid x,y_{<t})},\\[4pt]
+J_{\rm clip} &=\mathbb E_t\min\left(\rho_t A_t,\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)A_t\right).
+\end{aligned}
 $$
 
 这里 $\psi$ 是正在训练的 PPO 策略参数，$\pi_{\rm old}$ 是采样这批回答时的旧策略，$A_t$ 是 token 位置 $t$ 的优势估计，$\epsilon$ 是裁剪范围。$\rho_t$ 衡量“同一个已采样 token 在更新前后变得多容易出现”；clipping 限制一次更新偏离旧策略过远。

@@ -11,8 +11,10 @@
 对于进入一个 Transformer block 的 token 表示，我们记作 $X$。以 pre-norm 结构为例：先对 $X$ 做归一化，交给 Attention 聚合其他位置的信息，再加回输入得到中间表示 $U$；然后对 $U$ 归一化，交给 MLP 变换特征，再加回 $U$ 得到输出 $Y$：
 
 $$
-U=X+\operatorname{Attention}(\operatorname{Norm}_1(X)),
-\qquad Y=U+\operatorname{MLP}(\operatorname{Norm}_2(U)).
+\begin{aligned}
+U &=X+\operatorname{Attention}(\operatorname{Norm}_1(X)),\\[4pt]
+Y &=U+\operatorname{MLP}(\operatorname{Norm}_2(U)).
+\end{aligned}
 $$
 
 这里 $\operatorname{Norm}_1,\operatorname{Norm}_2$ 是两个子层各自的归一化操作。Attention 负责跨 token 交互，MLP 通常逐 token 运算；两次加法都是残差连接，保留已有表示并叠加新的变换结果。

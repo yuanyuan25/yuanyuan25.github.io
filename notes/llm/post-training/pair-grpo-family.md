@@ -85,13 +85,19 @@ $$
 其中：
 
 $$
-\rho(s,a)=\frac{\pi_\theta(a\mid s)}{\pi_{\rm old}(a\mid s)},\qquad A_i=\frac{R(a_i)-\mu_R}{\sigma_R}
+\begin{aligned}
+\rho(s,a) &=\frac{\pi_\theta(a\mid s)}{\pi_{\rm old}(a\mid s)},\\[4pt]
+A_i &=\frac{R(a_i)-\mu_R}{\sigma_R}
+\end{aligned}
 $$
 
 为了看清理论主线，可以先忽略 clipping 和 KL penalty，只看局部一阶梯度。因为在 `theta = theta_old` 附近：
 
 $$
-\left.\rho\right|_{\theta=\theta_{\rm old}}=1,\qquad\nabla_\theta\rho=\rho\nabla_\theta\log\pi_\theta(a\mid s)
+\begin{aligned}
+\left.\rho\right|_{\theta=\theta_{\rm old}} &=1,\\[4pt]
+\nabla_\theta\rho &=\rho\nabla_\theta\log\pi_\theta(a\mid s)
+\end{aligned}
 $$
 
 所以局部 policy-gradient 形式是：
@@ -171,13 +177,21 @@ $$
 为了缩短式子，记 $R_p=R(a_p)$、$R_r=R(a_r)$。两点分别位于均值上方、下方 $\Delta R/2$，因此若使用二点总体标准差：
 
 $$
-\sigma_R=\sqrt{\frac{(R_p-\mu_R)^2+(R_r-\mu_R)^2}{2}}=\frac{|\Delta R|}{2}
+\begin{aligned}
+\sigma_R &=\sqrt{\frac{(R_p-\mu_R)^2+(R_r-\mu_R)^2}{2}}\\
+&=\frac{|\Delta R|}{2}
+\end{aligned}
 $$
 
 于是：
 
 $$
-A_p=\frac{\Delta R/2}{\Delta R/2}=+1,\qquad A_r=\frac{-\Delta R/2}{\Delta R/2}=-1
+\begin{aligned}
+A_p &=\frac{\Delta R/2}{\Delta R/2}\\
+&=+1,\\[4pt]
+A_r &=\frac{-\Delta R/2}{\Delta R/2}\\
+&=-1
+\end{aligned}
 $$
 
 因此在这个最简单情形下：
@@ -289,7 +303,10 @@ Soft: advantage fixed as +1/-1
 但论文给出的严格证明并不充分。补充材料写：
 
 $$
-g=g_p-g_r,\qquad\operatorname{Var}(g)=\operatorname{Var}(g_p)+\operatorname{Var}(g_r)-2\operatorname{Cov}(g_p,g_r)
+\begin{aligned}
+g &=g_p-g_r,\\[4pt]
+\operatorname{Var}(g) &=\operatorname{Var}(g_p)+\operatorname{Var}(g_r)-2\operatorname{Cov}(g_p,g_r)
+\end{aligned}
 $$
 
 然后说 Soft-Pair 中 `Cov(g_p, g_r) < 0`，所以方差降低。
@@ -773,10 +790,11 @@ $$
 一个更窄、可证明的示例是固定方向 $h$，权重受到独立零均值噪声 $\varepsilon$：
 
 $$
-\widehat g=(a+\varepsilon)h,\quad
-\mathbb E[\varepsilon]=0,\quad
-\operatorname{tr}\operatorname{Cov}(\widehat g)
-=\operatorname{Var}(\varepsilon)\lVert h\rVert^2.
+\begin{aligned}
+\widehat g &=(a+\varepsilon)h,\\[4pt]
+\mathbb E[\varepsilon] &=0,\\[4pt]
+\operatorname{tr}\operatorname{Cov}(\widehat g) &=\operatorname{Var}(\varepsilon)\lVert h\rVert^2.
+\end{aligned}
 $$
 
 去掉这一噪声项可降低该条件模型的方差。但 GRPO 的组内均值、标准差与 pair 筛选会让权重和方向相关，偏好标签本身也可能有噪声，因此这不是 Soft-Pair 严格优于 GRPO 的普遍定理。

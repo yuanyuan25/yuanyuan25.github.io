@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "baselineCommit": "26939d0bedeffe78889ec964ab3a6003f3803546",
+  "notes": 11,
+  "formulasReformatted": 42,
+  "checks": [
+    {
+      "file": "notes/llm/infra/Flash_attention.md",
+      "reformatted": 4,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/transformer结构.md",
+      "reformatted": 1,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-数据并行.md",
+      "reformatted": 1,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-模型并行.md",
+      "reformatted": 3,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-流水线并行.md",
+      "reformatted": 2,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/显存分析.md",
+      "reformatted": 10,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/混合精度.md",
+      "reformatted": 3,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/infra/激活函数.md",
+      "reformatted": 1,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/post-training/DPO.md",
+      "reformatted": 10,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/post-training/MTP.md",
+      "reformatted": 1,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    },
+    {
+      "file": "notes/llm/post-training/pair-grpo-family.md",
+      "reformatted": 6,
+      "proseUnchanged": true,
+      "mathTokensPreservedIgnoringLayout": true
+    }
+  ]
+}

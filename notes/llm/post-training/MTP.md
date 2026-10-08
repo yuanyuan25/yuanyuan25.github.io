@@ -44,9 +44,10 @@ $$
 $$
 
 $$
-h_{1:T-k}^{(k)}=\operatorname{Transformer}_k(\tilde h_{1:T-k}^{(k)}),
-\qquad
-p_i^{(k)}=\operatorname{Softmax}(W_{\rm out}h_i^{(k)}).
+\begin{aligned}
+h_{1:T-k}^{(k)} &=\operatorname{Transformer}_k(\tilde h_{1:T-k}^{(k)}),\\[4pt]
+p_i^{(k)} &=\operatorname{Softmax}(W_{\rm out}h_i^{(k)}).
+\end{aligned}
 $$
 
 第二个式子把融合后的整个有效序列交给第 $k$ 个 Transformer 模块，得到表示 $h^{(k)}$；共享输出矩阵 $W_{\rm out}$ 将它变成词表分数，softmax 后的 $p_i^{(k)}$ 是该位置的 token 预测分布。这里采用列向量记号。该模块的预测目标为 $x_{i+k+1}$，损失仅在 $i+k+1\le T$ 的有效位置计算，末端越界目标需屏蔽。训练时使用移位后的真实 token（teacher forcing）；通过因果掩码维持因果依赖。多个模块共享主模型的 embedding 和 output head。

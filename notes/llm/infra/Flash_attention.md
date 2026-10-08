@@ -43,17 +43,19 @@ f_j(s)=e^{s_j-m(s)},\qquad
 $$
 
 $$
-\operatorname{Softmax}(s)_j
-=\frac{e^{s_j}}{\sum_k e^{s_k}}
-=\frac{f_j(s)}{\ell(s)}.
+\begin{aligned}
+\operatorname{Softmax}(s)_j &=\frac{e^{s_j}}{\sum_k e^{s_k}}\\
+&=\frac{f_j(s)}{\ell(s)}.
+\end{aligned}
 $$
 
 **这一步为什么等价：** 分子、分母同时除以 $e^m$：
 
 $$
-\frac{e^{s_j}}{\sum_ke^{s_k}}
-=\frac{e^m e^{s_j-m}}{e^m\sum_ke^{s_k-m}}
-=\frac{e^{s_j-m}}{\sum_ke^{s_k-m}}.
+\begin{aligned}
+\frac{e^{s_j}}{\sum_ke^{s_k}} &=\frac{e^m e^{s_j-m}}{e^m\sum_ke^{s_k-m}}\\
+&=\frac{e^{s_j-m}}{\sum_ke^{s_k-m}}.
+\end{aligned}
 $$
 
 这里 $f$ 还不是概率；只有将每个 $f_j$ 除以共同的 $\ell$，才得到总和为 1 的概率。后面分块时，正是分别维护“分子采用的最大值基准”和“分母的总和”。
@@ -86,10 +88,12 @@ $$
 对于任意一块 $b\in\{1,2\}$，我们先只用块内分数，定义局部最大值 $m_b$、局部指数权重 $f_j^{(b)}$、局部分母 $\ell_b$ 和局部概率 $p_j^{(b)}$：
 
 $$
-m_b=\max_{j\in B_b}s_j,\quad
-f_j^{(b)}=e^{s_j-m_b},\quad
-\ell_b=\sum_{j\in B_b}f_j^{(b)},\quad
-p_j^{(b)}=\frac{f_j^{(b)}}{\ell_b}.
+\begin{aligned}
+m_b &=\max_{j\in B_b}s_j,\\[4pt]
+f_j^{(b)} &=e^{s_j-m_b},\\[4pt]
+\ell_b &=\sum_{j\in B_b}f_j^{(b)},\\[4pt]
+p_j^{(b)} &=\frac{f_j^{(b)}}{\ell_b}.
+\end{aligned}
 $$
 
 这里先假设每个块至少有一个有效的有限分数；完全被 mask 的块按零贡献处理，实现时需避免对负无穷作未定义的相减。
@@ -195,8 +199,10 @@ $$
 也可以选择维护已经归一化的局部输出 $O_1=u_1/\ell_1$、$O_2=u_2/\ell_2$，则用 $u_b=\ell_bO_b$ 代入：
 
 $$
-O=\frac{\alpha u_1+\gamma u_2}{\alpha\ell_1+\gamma\ell_2}
-=\frac{\alpha\ell_1O_1+\gamma\ell_2O_2}{\alpha\ell_1+\gamma\ell_2}.
+\begin{aligned}
+O &=\frac{\alpha u_1+\gamma u_2}{\alpha\ell_1+\gamma\ell_2}\\
+&=\frac{\alpha\ell_1O_1+\gamma\ell_2O_2}{\alpha\ell_1+\gamma\ell_2}.
+\end{aligned}
 $$
 
 这说明合并两个局部输出不能简单取平均：需要先用各自的 $\ell_b$ 恢复未归一化加权和，按 $\alpha,\gamma$ 换到同一个基准，再除以合并后的分母。对于多个 query 行，每行都有自己的最大值、分母和输出累加器；批量计算时分别沿行应用这套规则。
