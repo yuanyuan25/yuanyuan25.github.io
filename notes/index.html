@@ -11,30 +11,42 @@
   <a class="skip-link" href="#main">跳到正文</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="../" aria-label="知行手记首页">
+      <a class="brand" href="../index.html" aria-label="知行手记首页">
         <span class="brand-mark" aria-hidden="true">知</span>
         <span><span class="brand-name">知行手记</span><span class="brand-subtitle">Yuan’s Notes</span></span>
       </a>
       <nav aria-label="主导航">
-        <a href="../">首页</a>
-        <a href="../llm_reports/">大模型报告</a>
-        <a href="../notes/" aria-current="page">学习笔记</a>
-        <a href="../summaries/">文档总结</a>
-        <a href="../practice/">实践记录</a>
+        <a href="../index.html">首页</a>
+        <a href="../llm_reports/index.html">大模型报告</a>
+        <a href="../notes/index.html" aria-current="page">学习笔记</a>
+        <a href="../summaries/index.html">文档总结</a>
+        <a href="../practice/index.html">实践记录</a>
       </nav>
     </div>
   </header>
   <main id="main" class="shell">
     <header class="page-heading">
-      <p class="breadcrumb"><a href="../">首页</a> / 学习笔记</p>
+      <p class="breadcrumb"><a href="../index.html">首页</a> / 学习笔记</p>
       <p class="eyebrow">LEARNING NOTES</p>
       <h1>学习笔记</h1>
       <p class="intro">记录概念理解、课程学习与阅读过程。用自己的语言梳理知识，在回顾与修订中逐步加深理解。</p>
     </header>
-    <section class="empty-state" aria-labelledby="empty-title">
-      <h2 id="empty-title">第一篇学习笔记，正在等待落笔。</h2>
-      <p>这里将收录课程笔记、概念梳理与阅读心得。目前还没有发布内容，可以先看看已经整理的大模型报告。</p>
-      <a class="button" href="../llm_reports/">浏览大模型报告 <span aria-hidden="true">↗</span></a>
+    <section class="section" aria-labelledby="llm-title">
+      <div class="section-heading"><h2 id="llm-title">大模型</h2><a class="text-link" href="llm/index.html">进入全部笔记 ↗</a></div>
+      <p class="intro">从目标函数与数学推导，到模型计算与系统实现。公式可复制，原图可展开对照；尚未完成的笔记标为「待补」。</p>
+      <div class="recent-list">
+        <a class="recent-item" href="llm/index.html#collection-post-training">
+          <span class="eyebrow recent-label">POST-TRAINING</span>
+          <div><h3>后训练</h3><p>偏好与策略优化：DPO、Pair-GRPO；预测与自蒸馏：MTP、SD-Zero。</p></div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="recent-item" href="llm/index.html#collection-infra">
+          <span class="eyebrow recent-label">INFRA</span>
+          <div><h3>模型与系统基础设施</h3><p>模型基础、训练与并行、推理与性能；后续扩展集群与调度。</p></div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <p><a class="text-link" href="llm/revision-notes.html">查看修订与公式核对记录 →</a></p>
     </section>
   </main>
   <footer class="site-footer"><div class="shell footer-inner"><p>知行手记 · Yuan’s Notes</p><p>记录所学，沉淀所思。</p></div></footer>

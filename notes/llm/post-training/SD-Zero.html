@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>SD-Zero 精读 | 知行手记 · Yuan’s Notes</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../_reader/katex/katex.min.css"><link rel="stylesheet" href="../_reader/reader.css"><script defer src="../_reader/search-data.js"></script><script defer src="../_reader/reader.js"></script></head>
+<body data-root="../" class="notes-reader article-page"><a class="skip-link" href="#main">跳到正文</a><div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../../index.html" aria-label="知行手记首页">
+        <span class="brand-mark" aria-hidden="true">知</span>
+        <span><span class="brand-name">知行手记</span><span class="brand-subtitle">Yuan’s Notes</span></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../llm_reports/index.html">大模型报告</a>
+        <a href="../../index.html" aria-current="page">学习笔记</a>
+        <a href="../../../summaries/index.html">文档总结</a>
+        <a href="../../../practice/index.html">实践记录</a>
+      </nav>
+    </div>
+  </header>
+<div class="reader-toolbar"><div class="shell reader-toolbar-inner"><button class="menu-toggle" type="button" aria-label="打开笔记导航" aria-controls="note-navigation" aria-expanded="false"><span aria-hidden="true">☰</span><span>目录</span></button><nav class="reader-breadcrumb" aria-label="当前位置"><a href="../../index.html">学习笔记</a><span aria-hidden="true">/</span><a href="../index.html">大模型</a><span aria-hidden="true">/</span><a href="../index.html#collection-post-training">后训练</a></nav><button class="search-trigger" type="button" aria-label="搜索全部笔记"><span>搜索笔记</span><kbd aria-hidden="true">/</kbd></button></div></div>
+<div class="reader-layout reading-shell">
+<aside id="note-navigation" class="sidebar" aria-label="笔记导航"><a class="overview"  href="../index.html">大模型笔记 <span>16 篇</span></a><section class="nav-section nav-post-training" aria-labelledby="nav-post-training"><div class="nav-section-heading"><h2 id="nav-post-training">后训练</h2><span>7 篇</span></div><div class="nav-group"><h3>偏好与策略优化</h3><div class="nav-items"><a  href="DPO.html">DPO：偏好、奖励与 PPO</a><a  href="PPO.html">PPO<span class="pending-dot" title="待补">待补</span></a><a  href="GRPO.html">GRPO<span class="pending-dot" title="待补">待补</span></a><a  href="GXPO.html">GXPO<span class="pending-dot" title="待补">待补</span></a><a  href="pair-grpo-family.html">Pair-GRPO 精读</a></div></div><div class="nav-group"><h3>预测与自蒸馏</h3><div class="nav-items"><a  href="MTP.html">MTP 多 token 预测</a><a aria-current="page" href="SD-Zero.html">SD-Zero 精读</a></div></div></section><section class="nav-section nav-infra" aria-labelledby="nav-infra"><div class="nav-section-heading"><h2 id="nav-infra">Infra</h2><span>9 篇</span></div><div class="nav-group"><h3>模型基础</h3><div class="nav-items"><a  href="../infra/transformer%E7%BB%93%E6%9E%84.html">Transformer 与 RoPE</a><a  href="../infra/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.html">激活函数与 SwiGLU</a><a  href="../infra/MLA.html">MLA<span class="pending-dot" title="待补">待补</span></a></div></div><div class="nav-group"><h3>训练与并行</h3><div class="nav-items"><a  href="../infra/%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6.html">混合精度</a><a  href="../infra/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83-%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C.html">数据并行、ZeRO 与 FSDP</a><a  href="../infra/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83-%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%A1%8C.html">TP、EP、SP 与 CP</a><a  href="../infra/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%B9%B6%E8%A1%8C.html">流水线并行</a></div></div><div class="nav-group"><h3>推理与性能</h3><div class="nav-items"><a  href="../infra/%E6%98%BE%E5%AD%98%E5%88%86%E6%9E%90.html">参数量、显存与计算量</a><a  href="../infra/Flash_attention.html">FlashAttention</a></div></div></section><div class="sidebar-foot"><a href="../revision-notes.html">修订与公式核对 ↗</a><p>Infra 预留：集群与调度</p></div></aside>
+<main id="main" class="document"><div class="article-meta"><span>后训练 · 预测与自蒸馏</span><span class="note-status ">笔记</span></div><div class="article-tools"><a href="SD-Zero.md">Markdown 源文</a><a href="../archive/post-training/SD-Zero.md">修订前原稿</a><button type="button" class="print-button">打印 / PDF</button></div><article><h1 id="self-distillation-zero-精读">Self-Distillation Zero 精读</h1>
+<p>阅读日期：2026-04-29<br>
+论文标题：Self-Distillation Zero: Self-Revision Turns Binary Rewards into Dense Supervision<br>
+作者：Yinghui He, Simran Kaur, Adithya Bhaskar, Yongjin Yang, Jiarui Liu, Narutatsu Ri, Liam Fowl, Abhishek Panigrahi, Danqi Chen, Sanjeev Arora<br>
+arXiv：2604.12002v1, 2026-04-13<br>
+链接：<a href="http://arxiv.org/abs/2604.12002" target="_blank" rel="noopener noreferrer">arXiv Abs</a>，<a href="https://arxiv.org/pdf/2604.12002" target="_blank" rel="noopener noreferrer">PDF</a><br>
+资料版本：arXiv PDF，SHA256 <code>7042d4d43e7b9e4858fc127a353d39fae91b29d302a054d3e2c7de4e30ac8d36</code></p>
+<p>资料中的 PDF 哈希为阅读时留存。下文按论文 v1 的设定，分别说明模型角色、条件输入、训练目标与实验范围。</p>
+<h2 id="一图看懂-sd-zero">一图看懂 SD-Zero</h2>
+<p><img src="pic/sd-zero-algorithm.png" alt="SD-Zero algorithm" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="放大图片：SD-Zero algorithm"></p>
+<details>
+<summary>架构图的适用范围</summary>
+<p>图中的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> 在 teacher 上下文里简写了对错提示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">P_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>；“RLVR 只有 0/1 奖励”等比较限于本文基线设置。Teacher 还需要额外前向计算，图中没有展示这部分成本。</p>
+</details>
+<h2 id="一句话结论">一句话结论</h2>
+<p>SD-Zero 的核心想法是：不要只拿最终答案对错做 RL，也不要依赖外部 teacher 或高质量解题过程，而是先训练模型学会“看着自己的初稿和二元对错信号进行修订”，再把这个修订器在 token 级给出的分布蒸馏回生成器。这样，原本稀疏的 binary reward 被模型自己转化成稠密 token-level supervision。</p>
+<p>我对这篇论文的判断是：</p>
+<ol>
+<li><strong>最有价值的点是把“错误尝试”保留下来。</strong> RFT/STaR 类方法通常过滤掉错误样本，只学正确 trace；SD-Zero 反过来把错误初稿作为条件，让模型学会从错误到正确的转化。</li>
+<li><strong>它不是纯 self-correction prompt，而是把 self-revision 写进参数。</strong> Phase 1 训练模型显式修订，Phase 2 再把显式修订蒸馏成更短、更主动的单次生成。</li>
+<li><strong>它把 RLVR 的 sparse reward 和 distillation 的 dense supervision 接上了。</strong> 本文基线主要使用整条回答的二元 outcome reward；SD-Zero 的 Reviser 提供 token 级分布差异。RLVR 本身并不限于二元奖励，分布差异也不等同于可靠的逐步正确性标注。</li>
+<li><strong>实验结果比较干净。</strong> 在 Qwen3-4B-Instruct 和 Olmo-3-7B-Instruct 上，SD-Zero 在同样问题集和近似 sample budget 下超过 SFT、RFT、GRPO、SDFT。</li>
+<li><strong>边界也明确。</strong> 当前只在 math/code 这种可验证任务上成立；对 thinking model 和不可验证任务如何扩展，论文只给了初步观察。</li>
+</ol>
+<h2 id="1-背景-为什么需要-sd-zero">1. 背景：为什么需要 SD-Zero</h2>
+<p>可验证任务的后训练大致有两类路线：</p>
+<ol>
+<li><strong>本文采用的 RLVR / GRPO 设置</strong>：使用 binary outcome reward，例如最终答案对不对。优点是信号便宜、适用广；缺点是信号稀疏，不知道哪个中间步骤错了，需要大量 rollout 比较。</li>
+<li><strong>Distillation / SFT / SDFT</strong>：能提供 token 级稠密监督。优点是样本效率高；缺点是通常依赖外部 teacher、高质量 demonstrations 或 gold reasoning traces。</li>
+</ol>
+<p>SD-Zero 问的是：</p>
+<blockquote>
+<p>能不能只用模型自己的初稿和最终对错信号，让模型自己产生 token 级监督？</p>
+</blockquote>
+<p>答案是用一个模型扮演两个角色：</p>
+<ol>
+<li><strong>Generator</strong>：先对题目生成一个初始回答。</li>
+<li><strong>Reviser</strong>：看到题目、初始回答、以及这个回答是否正确后，生成修订后的回答。</li>
+</ol>
+<p>然后把 Reviser 的 token 分布作为 teacher signal，蒸馏回 Generator。</p>
+<h2 id="2-算法主线">2. 算法主线</h2>
+<p>SD-Zero 分两个阶段：</p>
+<ol>
+<li><strong>Phase 1：Self-Revision Training, SRT</strong></li>
+<li><strong>Phase 2：On-policy Self-Distillation via Revision Feedback</strong></li>
+</ol>
+<h3 id="2-1-基本设定">2.1 基本设定</h3>
+<p>训练数据是：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\mathcal D=\{(x_i,a_i)\}_{i=1}^{n}" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">D</mi><mo>=</mo><mo stretchy="false">{</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false">)</mo><msubsup><mo stretchy="false">}</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">\mathcal D=\{(x_i,a_i)\}_{i=1}^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0278em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span></div>
+<p>其中：</p>
+<ol>
+<li><code>x_i</code> 是题目。</li>
+<li><code>a_i</code> 是最终答案。</li>
+<li>没有 gold solution。</li>
+<li>有一个 binary verifier：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="r(y,a)\in\{0,1\}" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">r(y,a)\in\{0,1\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">}</span></span></span></span></span></div>
+<p>如果模型回答 <code>y</code> 的最终答案匹配 <code>a</code>，奖励为 1，否则为 0。</p>
+<h3 id="2-2-phase-1-srt-让模型学会修订">2.2 Phase 1：SRT，让模型学会修订</h3>
+<p>对每个题目 <code>x</code>，先从当前模型采样初始回答：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="y_{\rm init}\sim\pi_\theta(\cdot\mid x)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>∼</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y_{\rm init}\sim\pi_\theta(\cdot\mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></div>
+<p>然后用 verifier 得到：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="r=r(y_{\rm init},a)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>r</mi><mo>=</mo><mi>r</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r=r(y_{\rm init},a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></span></div>
+<p>将数值结果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> 转成给模型看的文本提示，我们把这段提示定义为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">P_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。它告诉 Reviser 刚才的回答是否正确，作为额外上下文，而不是一段标准解题过程。根据结果构造：</p>
+<pre><code class="language-text">if r = 1:
+    &quot;Let me rephrase the above solution.&quot;
+if r = 0:
+    &quot;Wait, this response is not correct, let me start over.&quot;
+</code></pre>
+<p>让同一个模型生成修订回答：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="y_{\rm revised}\sim\pi_\theta(\cdot\mid x,y_{\rm init},P_r)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>y</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi></mrow></msub><mo>∼</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y_{\rm revised}\sim\pi_\theta(\cdot\mid x,y_{\rm init},P_r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revised</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>只保留修订后正确的 trace：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="(x,y_{\rm init},P_r,y_{\rm revised}),\quad r(y_{\rm revised},a)=1" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi></mrow></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="1em"/><mi>r</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi></mrow></msub><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(x,y_{\rm init},P_r,y_{\rm revised}),\quad r(y_{\rm revised},a)=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revised</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revised</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></div>
+<p>这里最关键的是：错误初稿没有被丢掉，而是作为 Reviser 的上下文。模型学到的不是“模仿正确答案”，而是“基于我刚才错在哪里，重新生成一个正确答案”。</p>
+<h3 id="2-3-srt-训练目标">2.3 SRT 训练目标</h3>
+<p>SRT 同时训练两个能力。</p>
+<p><strong>Revision loss</strong></p>
+<p>给定 <code>x, y_init, P_r</code>，生成 <code>y_revised</code>：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\mathcal L_{\rm revision}=-\log\pi_\theta(y_{\rm revised}\mid x,y_{\rm init},P_r)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>=</mo><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi></mrow></msub><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal L_{\rm revision}=-\log\pi_\theta(y_{\rm revised}\mid x,y_{\rm init},P_r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revision</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revised</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>这里上下文已经给出题目、初稿与对错提示，损失只要求模型提高正确修订回答的条件概率。序列 log-prob 是回答 token 的条件 log-prob 之和，所以它提供逐 token 的训练信号，让模型学会当 Reviser。</p>
+<p><strong>Generation loss</strong></p>
+<p>给定 <code>x</code>，生成整个自修订 trace：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\mathcal L_{\rm generation}=-\log\pi_\theta([y_{\rm init},P_r,y_{\rm revised}]\mid x)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>=</mo><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo stretchy="false">[</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi></mrow></msub><mo stretchy="false">]</mo><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal L_{\rm generation}=-\log\pi_\theta([y_{\rm init},P_r,y_{\rm revised}]\mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">generation</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">([</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">init</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revised</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></div>
+<p>它把修订行为也写入 standalone generation，让模型在只看到题目时也能主动检查和修正。</p>
+<p>总目标：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\mathcal L_{\rm SRT}=\mathcal L_{\rm revision}+\mathcal L_{\rm generation}" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">R</mi><mi mathvariant="normal">T</mi></mrow></msub><mo>=</mo><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>+</mo><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal L_{\rm SRT}=\mathcal L_{\rm revision}+\mathcal L_{\rm generation}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">SRT</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">revision</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">generation</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></div>
+<p>论文的 ablation 显示这两个 loss 互补：</p>
+<ol>
+<li>只用 <code>L_generation</code>，生成能力还行，但修订能力弱。</li>
+<li>只用 <code>L_revision</code>，first-attempt 准确率为 62.1%，低于完整 SRT 的 66.7%，但仍高于 base 的 59.6%；不能说它相对 base 下降。</li>
+<li>两者联合在该消融中表现更好；单独目标也能高于 base，不能把联合目标说成获得任何提升的必要条件。</li>
+</ol>
+<h3 id="2-4-phase-2-把-reviser-蒸馏回-generator">2.4 Phase 2：把 Reviser 蒸馏回 Generator</h3>
+<p>Phase 1 后得到一个 SRT model。它已经会显式自修订，但有一个问题：回答变长，常出现 “Wait, this is wrong. Let me start over.” 这样的显式回退。</p>
+<p>Phase 2 的目标是把这种显式修订内化成一次性生成能力。</p>
+<p>设：</p>
+<ol>
+<li>Student / Generator 是当前训练中的模型 <code>πθ</code>。</li>
+<li>Teacher / Reviser 是冻结的 SRT model <code>πθSRT</code>。</li>
+</ol>
+<p>对每个题目：</p>
+<ol>
+<li>Student 先生成 on-policy 回答：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="y\sim\pi_\theta(\cdot\mid x)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>∼</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y\sim\pi_\theta(\cdot\mid x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></div>
+<ol start="2">
+<li>Verifier 给出 binary reward：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="r=r(y,a)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>r</mi><mo>=</mo><mi>r</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r=r(y,a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></span></div>
+<ol start="3">
+<li>Teacher Reviser 看到 <code>x, y, P_r</code>，输出 token 分布：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\pi_T(\cdot\mid x,y,P_r,y_{&lt;t})" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>π</mi><mi>T</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi_T(\cdot\mid x,y,P_r,y_{&lt;t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<ol start="4">
+<li>Student 只看到正常生成上下文，输出：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\pi_S(\cdot\mid x,y_{&lt;t})" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>π</mi><mi>S</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi_S(\cdot\mid x,y_{&lt;t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<ol start="5">
+<li>用 KL 让 Student 匹配 Teacher：</li>
+</ol>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="\mathcal L_{\rm SD}=\mathbb E_{(x,a)\sim\mathcal D,\,y\sim\pi_S(\cdot\mid x)}\left[\sum_{t=1}^{|y|}D_{\rm KL}\!\left(\pi_S(\cdot\mid x,y_{&lt;t})\,\Vert\,\pi_T(\cdot\mid x,y,P_{r(y,a)},y_{&lt;t})\right)\right]" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">D</mi></mrow></msub><mo>=</mo><msub><mi mathvariant="double-struck">E</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mo>∼</mo><mi mathvariant="script">D</mi><mo separator="true">,</mo><mtext> </mtext><mi>y</mi><mo>∼</mo><msub><mi>π</mi><mi>S</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msub><mrow><mo fence="true">[</mo><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi mathvariant="normal">∣</mi><mi>y</mi><mi mathvariant="normal">∣</mi></mrow></munderover><msub><mi>D</mi><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">L</mi></mrow></msub><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><msub><mi>π</mi><mi>S</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mtext> </mtext><mi mathvariant="normal">∥</mi><mtext> </mtext><msub><mi>π</mi><mi>T</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><msub><mi>P</mi><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></msub><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mathcal L_{\rm SD}=\mathbb E_{(x,a)\sim\mathcal D,\,y\sim\pi_S(\cdot\mid x)}\left[\sum_{t=1}^{|y|}D_{\rm KL}\!\left(\pi_S(\cdot\mid x,y_{&lt;t})\,\Vert\,\pi_T(\cdot\mid x,y,P_{r(y,a)},y_{&lt;t})\right)\right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">SD</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.6em;vertical-align:-1.55em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">a</span><span class="mclose mtight">)</span><span class="mrel mtight">∼</span><span class="mord mathcal mtight" style="margin-right:0.0278em;">D</span><span class="mpunct mtight">,</span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span><span class="mrel mtight">∼</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="katex-sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mtight">⋅</span><span class="mrel mtight">∣</span><span class="mord mathnormal mtight">x</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.05em;"><span class="pstrut" style="height:5.6em;"></span><span style="width:0.667em;height:3.6em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.667em" height="3.6em" viewBox="0 0 667 3600"><path d="M403 1759 V84 H666 V0 H319 V1759 v0 v1759 v84 h347 v-84
+H403z M403 1759 V0 H319 V1759 v0 v1759 v84 h84z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.961em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.386em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">KL</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0576em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∥</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">a</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.05em;"><span class="pstrut" style="height:5.6em;"></span><span style="width:0.667em;height:3.6em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.667em" height="3.6em" viewBox="0 0 667 3600"><path d="M347 1759 V0 H0 V84 H263 V1759 v0 v1759 H0 v84 H347z
+M347 1759 V0 H263 V1759 v0 v1759 h84z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55em;"><span></span></span></span></span></span></span></span></span></span></span></span></div>
+<p>这就是论文说的：</p>
+<blockquote>
+<p>binary reward -&gt; dense token-level self-supervision</p>
+</blockquote>
+<p>这里 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">y_{&lt;t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span> 是同一条 student 已采样回答的前缀；teacher 在这些前缀上做 teacher-forced 分布评估，主流程不需要额外自回归生成一整条 revision。该 KL 的方向为 student 到 teacher，优化时 teacher 与已采样 token 序列停止梯度。</p>
+<p>Teacher 的额外上下文是“学生刚才答了什么、对还是错”。Student 最终没有这些额外上下文，但通过 KL 蒸馏学会把修订能力内化到普通生成里。</p>
+<h3 id="2-5-teacher-synchronization-迭代自进化">2.5 Teacher Synchronization：迭代自进化</h3>
+<p>论文还做了一个进一步实验：Phase 2 训练后，学生模型不仅生成变强，revision capability 也变强。于是可以把新的学生同步成新的 teacher，继续下一轮 self-distillation。</p>
+<p>流程是：</p>
+<pre><code class="language-text">SRT model as teacher
+-&gt; train student with self-distillation
+-&gt; student improves as generator and reviser
+-&gt; sync teacher = improved student
+-&gt; continue self-distillation
+</code></pre>
+<p>OpenR1-Math 上，第一轮 Self-Distillation 到约 400 step 后趋于平台；同步 teacher 后第二阶段又带来至少 3 个百分点提升，说明这个闭环有继续自举的可能。</p>
+<h2 id="3-和已有方法的关系">3. 和已有方法的关系</h2>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>On-policy</th>
+<th>Dense supervision</th>
+<th>Teacher</th>
+<th>Teacher 能否看错误尝试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SFT / 普通蒸馏</td>
+<td>否</td>
+<td>是</td>
+<td>外部 teacher / gold demo</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>On-policy Distillation</td>
+<td>是</td>
+<td>是</td>
+<td>外部 teacher</td>
+<td>通常不看</td>
+</tr>
+<tr>
+<td>本文 RLVR / GRPO</td>
+<td>是</td>
+<td>二元 outcome reward</td>
+<td>无</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>本文 SDFT 基线</td>
+<td>是</td>
+<td>是</td>
+<td>self</td>
+<td>使用 demonstration 作为 privileged context</td>
+</tr>
+<tr>
+<td>SDPO</td>
+<td>是</td>
+<td>是</td>
+<td>self</td>
+<td>可使用运行错误等 rich feedback，不能概括为只看高质量 demo</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td>是</td>
+<td>是</td>
+<td>self</td>
+<td>是</td>
+</tr>
+</tbody>
+</table></div>
+<p>SD-Zero 的突出设计是用 SRT 训练修订能力，再让 teacher condition on wrong attempt 与二元反馈。但“利用错误尝试”并非它独占：<a href="https://arxiv.org/abs/2601.20802" target="_blank" rel="noopener noreferrer">SDPO 原论文</a>也让 self-teacher 利用反馈理解失败，不应把它与 demonstration-only 方法混为一谈。它不是让模型直接模仿某个更强 teacher 的正确答案，而是让模型看见自己错过的轨迹，然后学习“怎样改”。</p>
+<p>这也是它和 RFT 的关键区别：</p>
+<ol>
+<li>RFT 只保留正确 self-generation。</li>
+<li>SD-Zero 保留错误初稿，并要求模型把错误初稿修成正确答案。</li>
+</ol>
+<h2 id="4-实验设置">4. 实验设置</h2>
+<h3 id="4-1-模型">4.1 模型</h3>
+<p>论文主要使用两个 instruct model：</p>
+<ol>
+<li>Qwen3-4B-Instruct</li>
+<li>Olmo-3-7B-Instruct</li>
+</ol>
+<p>训练采样：</p>
+<ol>
+<li>temperature = 0.7</li>
+<li>训练阶段 16K token limit</li>
+<li>评测阶段 32K token limit</li>
+<li>结果报告 avg@8</li>
+</ol>
+<h3 id="4-2-数据">4.2 数据</h3>
+<p>分别在 math 和 code 两个领域训练：</p>
+<ol>
+<li><strong>OpenR1-Math</strong>：选 15K competition / olympiad level math problems。</li>
+<li><strong>Codeforces</strong>：cpp subset 7.5K + Python subset 7.5K。</li>
+</ol>
+<p>Phase 分配：</p>
+<ol>
+<li>SRT：6K self-revision traces。</li>
+<li>Self-Distillation：9K additional question-answer pairs。</li>
+</ol>
+<h3 id="4-3-评测">4.3 评测</h3>
+<p>评测包含 8 个 benchmark：</p>
+<ol>
+<li>AIME24</li>
+<li>AIME25</li>
+<li>HMMT25</li>
+<li>AMOBench</li>
+<li>OpenR1-Math</li>
+<li>MATH</li>
+<li>Codeforces</li>
+<li>LiveCodeBench</li>
+</ol>
+<h3 id="4-4-baselines">4.4 Baselines</h3>
+<p>所有 baseline 使用相同 15K question set：</p>
+<ol>
+<li>SFT：用 DeepSeek-R1 高质量 demonstrations。</li>
+<li>RFT：rejection fine-tuning，只训练正确 self-generated traces。</li>
+<li>GRPO / DAPO：二元 correctness reward。</li>
+<li>SDFT：on-policy self-distillation，用高质量 demonstrations 作为 privileged context。</li>
+</ol>
+<h2 id="5-主结果">5. 主结果</h2>
+<h3 id="5-1-avg-8">5.1 Avg@8</h3>
+<p>Qwen3-4B-Instruct：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">49.8</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td style="text-align:right">50.0</td>
+</tr>
+<tr>
+<td>RFT</td>
+<td style="text-align:right">54.3</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">53.1</td>
+</tr>
+<tr>
+<td>SDFT</td>
+<td style="text-align:right">51.2</td>
+</tr>
+<tr>
+<td>SRT</td>
+<td style="text-align:right">57.6</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">60.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Olmo-3-7B-Instruct：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">41.1</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td style="text-align:right">42.4</td>
+</tr>
+<tr>
+<td>RFT</td>
+<td style="text-align:right">46.7</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">44.8</td>
+</tr>
+<tr>
+<td>SDFT</td>
+<td style="text-align:right">43.4</td>
+</tr>
+<tr>
+<td>SRT</td>
+<td style="text-align:right">50.3</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">51.5</td>
+</tr>
+</tbody>
+</table></div>
+<p>解读：</p>
+<ol>
+<li>Phase 1 SRT 已经超过所有 baseline。</li>
+<li>Phase 2 Self-Distillation 在 SRT 基础上继续提升。</li>
+<li>相比 base，Qwen 提升 <code>+10.5</code>，Olmo 提升 <code>+10.4</code>。</li>
+<li>相比最强 baseline RFT，Qwen 提升 <code>+6.0</code>，Olmo 提升 <code>+4.8</code>。</li>
+</ol>
+<h3 id="5-2-哪些-benchmark-提升最大">5.2 哪些 benchmark 提升最大</h3>
+<p>Qwen3-4B-Instruct 上：</p>
+<ol>
+<li>HMMT25：Base 26.7 -&gt; SD-Zero 45.4</li>
+<li>AIME25：45.8 -&gt; 60.0</li>
+<li>LiveCodeBench：61.8 -&gt; 82.6</li>
+<li>AMOBench：9.8 -&gt; 16.0</li>
+</ol>
+<p>Olmo-3-7B-Instruct 上：</p>
+<ol>
+<li>HMMT25：25.0 -&gt; 40.4</li>
+<li>LiveCodeBench：32.4 -&gt; 57.8</li>
+<li>AIME25：42.1 -&gt; 53.8</li>
+<li>AMOBench：1.3 -&gt; 5.5</li>
+</ol>
+<p>这说明 SD-Zero 特别适合“模型会尝试，但中间容易走错”的任务。它不是单纯记答案，而是在训练过程中学会更有效地定位和修复推理错误。</p>
+<h3 id="5-3-pass-8">5.3 Pass@8</h3>
+<p>论文附录还给出 math Pass@8：</p>
+<p>Qwen3-4B-Instruct：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">66.7</td>
+</tr>
+<tr>
+<td>RFT</td>
+<td style="text-align:right">69.8</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">65.4</td>
+</tr>
+<tr>
+<td>SRT</td>
+<td style="text-align:right">70.4</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">72.5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Olmo-3-7B-Instruct：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">62.3</td>
+</tr>
+<tr>
+<td>RFT</td>
+<td style="text-align:right">65.7</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">63.1</td>
+</tr>
+<tr>
+<td>SRT</td>
+<td style="text-align:right">68.4</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">70.8</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pass@8 提升说明在该采样设置下，8 次采样至少答对一次的概率更高；它支持正确答案覆盖改善，但仅凭这一指标不能证明“获得新推理能力”、排除偶然性，或完全分离分布变尖与探索变化。</p>
+<h2 id="6-为什么-srt-有效">6. 为什么 SRT 有效</h2>
+<p>SRT 的数据结构是：</p>
+<pre><code class="language-text">错误或正确初稿 -&gt; 对错信号 -&gt; 修订后正确答案
+</code></pre>
+<p>它比 RFT 多了一个关键监督：</p>
+<ol>
+<li>RFT 学的是“正确答案长什么样”。</li>
+<li>SRT 学的是“我这类错误应该怎么改成正确答案”。</li>
+</ol>
+<p>论文的 Generate-then-Revise 实验很直观：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">First Attempt Acc</th>
+<th style="text-align:right">Revised Attempt Acc</th>
+<th style="text-align:right">Correction Rate</th>
+<th style="text-align:right">First Tokens</th>
+<th style="text-align:right">Revised Tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">59.6</td>
+<td style="text-align:right">60.7</td>
+<td style="text-align:right">2.7</td>
+<td style="text-align:right">3708</td>
+<td style="text-align:right">5098</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">65.2</td>
+<td style="text-align:right">66.9</td>
+<td style="text-align:right">4.9</td>
+<td style="text-align:right">4432</td>
+<td style="text-align:right">5499</td>
+</tr>
+<tr>
+<td>SDFT</td>
+<td style="text-align:right">63.3</td>
+<td style="text-align:right">64.7</td>
+<td style="text-align:right">3.8</td>
+<td style="text-align:right">3630</td>
+<td style="text-align:right">5099</td>
+</tr>
+<tr>
+<td>SRT</td>
+<td style="text-align:right">66.7</td>
+<td style="text-align:right">71.7</td>
+<td style="text-align:right">15.0</td>
+<td style="text-align:right">8458</td>
+<td style="text-align:right">8137</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">68.3</td>
+<td style="text-align:right">73.6</td>
+<td style="text-align:right">16.7</td>
+<td style="text-align:right">3518</td>
+<td style="text-align:right">3314</td>
+</tr>
+</tbody>
+</table></div>
+<p>SRT 让模型的修订能力明显增强：Correction Rate 从 base 的 2.7% 到 15.0%。但 SRT 的 first attempt 很长，说明模型学会了显式 backtracking。</p>
+<p>SD-Zero 的 Phase 2 把这个显式 backtracking 压回生成器：Correction Rate 继续升到 16.7%，同时 first attempt token 从 SRT 的 8458 降到 3518。</p>
+<h2 id="7-self-distillation-如何产生-token-级监督">7. Self-Distillation 如何产生 token 级监督</h2>
+<p>论文把 Self-Distillation 的 KL 拆成 token-wise terms：</p>
+<div class="formula" tabindex="0"><button class="copy-formula" type="button" data-tex="D_{\rm KL}^{(t)}=D_{\rm KL}\!\left(\pi_\theta(\cdot\mid x,y_{&lt;t})\,\Vert\,\pi_{\theta_{\rm SRT}}(\cdot\mid x,y,P_r,y_{&lt;t})\right)" aria-label="复制 LaTeX 公式">复制公式</button><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>D</mi><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">L</mi></mrow><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></msubsup><mo>=</mo><msub><mi>D</mi><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">L</mi></mrow></msub><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><msub><mi>π</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mtext> </mtext><mi mathvariant="normal">∥</mi><mtext> </mtext><msub><mi>π</mi><msub><mi>θ</mi><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">R</mi><mi mathvariant="normal">T</mi></mrow></msub></msub><mo stretchy="false">(</mo><mo>⋅</mo><mo>∣</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><msub><mi>P</mi><mi>r</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mrow><mo>&lt;</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_{\rm KL}^{(t)}=D_{\rm KL}\!\left(\pi_\theta(\cdot\mid x,y_{&lt;t})\,\Vert\,\pi_{\theta_{\rm SRT}}(\cdot\mid x,y,P_r,y_{&lt;t})\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.3383em;vertical-align:-0.2935em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4065em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">KL</span></span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2935em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0003em;vertical-align:-0.2503em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">KL</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∥</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0278em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="katex-sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">SRT</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2503em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></span></div>
+<p>当 <code>r = 0</code>，也就是初始回答错了，Reviser 的分布会在少数关键 token 上和 Generator 拉开很大距离。论文案例中这些位置可能对应：</p>
+<ol>
+<li>错误的几何/代数假设。</li>
+<li>错误的分支选择。</li>
+<li>应该改用另一种解法的转折处。</li>
+</ol>
+<p>当 <code>r = 1</code>，也就是初始回答正确，Reviser 的信号更平滑，更多是在保持答案、压缩冗余、重述正确逻辑。</p>
+<p>据此可把 Reviser 信号解释为以下两种作用，但它不是错误定位的形式化保证：</p>
+<ol>
+<li><strong>localize error</strong>：定位哪些 token 附近是错误关键点。</li>
+<li><strong>redirect probability</strong>：把概率质量转向更合理的后续推理。</li>
+</ol>
+<p>这有点像不用训练单独 PRM，就从同一个模型的 Reviser 中获得隐式 process-level / token-level reward。</p>
+<h2 id="8-为什么-phase-2-重要">8. 为什么 Phase 2 重要</h2>
+<p>只看准确率，SRT 已经很强。但 Phase 2 仍然是 SD-Zero 的关键，因为它解决两个问题。</p>
+<h3 id="8-1-推理效率">8.1 推理效率</h3>
+<p>SRT 模型会显式自我修正，回答非常长。Phase 2 后：</p>
+<ol>
+<li>平均 response length 大约减半。</li>
+<li>显式 self-revision keywords 比例下降。</li>
+<li>准确率继续提升。</li>
+</ol>
+<p>论文的解释是：模型从“显式说出 Wait, this is wrong”变成“提前避开这个坑”。</p>
+<h3 id="8-2-训练样本效率">8.2 训练样本效率</h3>
+<p>SRT 构造数据很贵，因为需要多次采样和过滤：</p>
+<ol>
+<li>10K 初始回答。</li>
+<li>约 5K correct + 5K incorrect。</li>
+<li>每个初稿生成 3 个 revision。</li>
+<li>过滤后得到 6K 正确 revision traces。</li>
+</ol>
+<p>Phase 2 则每题只需要一个 on-policy response，再由 frozen Reviser 给 token 分布监督。论文给的 generation budget：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">questions</th>
+<th style="text-align:right">generations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFT</td>
+<td style="text-align:right">15K</td>
+<td style="text-align:right">60K</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td style="text-align:right">15K</td>
+<td style="text-align:right">60K</td>
+</tr>
+<tr>
+<td>SDFT</td>
+<td style="text-align:right">15K</td>
+<td style="text-align:right">60K</td>
+</tr>
+<tr>
+<td>SRT phase</td>
+<td style="text-align:right">6K retained</td>
+<td style="text-align:right">40K generated</td>
+</tr>
+<tr>
+<td>Self-Distillation phase</td>
+<td style="text-align:right">9K</td>
+<td style="text-align:right">9K</td>
+</tr>
+<tr>
+<td>SD-Zero total</td>
+<td style="text-align:right">15K</td>
+<td style="text-align:right">49K</td>
+</tr>
+</tbody>
+</table></div>
+<p>token budget 也与 RFT/GRPO 近似同量级：</p>
+<ol>
+<li>RFT/GRPO 约 222M sampling tokens。</li>
+<li>SD-Zero 总 sampling tokens 上界约 224.5M。</li>
+<li>SD-Zero training forward tokens 上界约 219M。</li>
+</ol>
+<p>在论文报告的近似采样预算下，SD-Zero 得到更强表现。但 sampling tokens、training forward tokens 不等于 FLOPs 或墙钟时间；teacher 的额外前向、较长条件前缀和反向开销都需计入，不能据此宣称严格等算力比较。</p>
+<h2 id="9-关键消融">9. 关键消融</h2>
+<h3 id="9-1-两个-srt-loss-在该实验中互补">9.1 两个 SRT loss 在该实验中互补</h3>
+<p>Qwen3-4B-Instruct：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Average Generation Acc</th>
+<th style="text-align:right">First Attempt</th>
+<th style="text-align:right">Revised Attempt</th>
+<th style="text-align:right">Correction Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">49.8</td>
+<td style="text-align:right">59.6</td>
+<td style="text-align:right">60.7</td>
+<td style="text-align:right">2.7</td>
+</tr>
+<tr>
+<td>SRT full</td>
+<td style="text-align:right">57.6</td>
+<td style="text-align:right">66.7</td>
+<td style="text-align:right">71.7</td>
+<td style="text-align:right">15.0</td>
+</tr>
+<tr>
+<td>SRT, only L_generation</td>
+<td style="text-align:right">56.4</td>
+<td style="text-align:right">65.4</td>
+<td style="text-align:right">67.9</td>
+<td style="text-align:right">7.2</td>
+</tr>
+<tr>
+<td>SRT, only L_revision</td>
+<td style="text-align:right">52.2</td>
+<td style="text-align:right">62.1</td>
+<td style="text-align:right">66.7</td>
+<td style="text-align:right">12.1</td>
+</tr>
+</tbody>
+</table></div>
+<p>结论：</p>
+<ol>
+<li><code>L_revision</code> 负责让模型真的会改。</li>
+<li><code>L_generation</code> 负责保留和提升直接生成能力。</li>
+<li>只学修订相对完整 SRT 的 first attempt 较低，但仍高于 base；这支持联合目标更好，不足以推出“不能作为生成器”。</li>
+</ol>
+<h3 id="9-2-该实验中跳过-srt-后收益较小">9.2 该实验中跳过 SRT 后收益较小</h3>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg Generation Acc</th>
+<th style="text-align:right">First Attempt</th>
+<th style="text-align:right">Revised Attempt</th>
+<th style="text-align:right">Correction Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">49.8</td>
+<td style="text-align:right">59.6</td>
+<td style="text-align:right">60.7</td>
+<td style="text-align:right">2.7</td>
+</tr>
+<tr>
+<td>SD-Zero, Phase 2 Only</td>
+<td style="text-align:right">51.4</td>
+<td style="text-align:right">61.2</td>
+<td style="text-align:right">62.2</td>
+<td style="text-align:right">2.6</td>
+</tr>
+<tr>
+<td>Full SD-Zero</td>
+<td style="text-align:right">60.3</td>
+<td style="text-align:right">68.3</td>
+<td style="text-align:right">73.6</td>
+<td style="text-align:right">16.7</td>
+</tr>
+</tbody>
+</table></div>
+<p>直接对 base model 做 Phase 2 的收益小于完整流程。这支持先训练 Reviser 的做法；“base 的修订能力不足”是解释性假设，不意味着任意模型都必须经过相同 SRT 阶段。</p>
+<h3 id="9-3-该预算下-6k-9k-的数据分配更好">9.3 该预算下 6K/9K 的数据分配更好</h3>
+<p>固定总数据预算，调整 SRT / Self-Distillation 分配：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:right">SRT</th>
+<th style="text-align:right">Self-Distillation</th>
+<th style="text-align:right">SRT Model</th>
+<th style="text-align:right">SD-Zero Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">6K</td>
+<td style="text-align:right">9K</td>
+<td style="text-align:right">57.6</td>
+<td style="text-align:right">60.3</td>
+</tr>
+<tr>
+<td style="text-align:right">9K</td>
+<td style="text-align:right">6K</td>
+<td style="text-align:right">57.8</td>
+<td style="text-align:right">59.1</td>
+</tr>
+<tr>
+<td style="text-align:right">7.5K</td>
+<td style="text-align:right">7.5K</td>
+<td style="text-align:right">57.8</td>
+<td style="text-align:right">59.8</td>
+</tr>
+</tbody>
+</table></div>
+<p>更多 SRT 数据会让 SRT model 稍微变强，但最终 SD-Zero 反而不如 6K/9K。解释是：只要 SRT 足以解锁修订能力，更多数据更应该用于 Phase 2，把修订行为蒸馏成更强生成。</p>
+<h3 id="9-4-该设置下-sdft-两种监督形式提升都有限">9.4 该设置下 SDFT 两种监督形式提升都有限</h3>
+<p>Qwen3-4B-Instruct math：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align:right">48.1</td>
+</tr>
+<tr>
+<td>SDFT</td>
+<td style="text-align:right">49.7</td>
+</tr>
+<tr>
+<td>SDFT, final answers only</td>
+<td style="text-align:right">49.5</td>
+</tr>
+<tr>
+<td>SD-Zero</td>
+<td style="text-align:right">57.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>SDFT 的 49.7 与 final-answer-only 的 49.5 只差 0.2 个百分点；这张表显示两种 SDFT 设置在该实验里收益都有限，SD-Zero 更高。它不能证明高质量 reasoning trace 是 SDFT 有效的必要条件；还缺少误差条和更广的任务比较。</p>
+<h2 id="10-对-thinking-model-的限制">10. 对 thinking model 的限制</h2>
+<p>论文专门讨论了 thinking model。直觉上，长 chain-of-thought 里常有 false start、探索、回退和局部自纠错，不一定都是坏事。因此很难简单判断哪段 token 应该被修正。</p>
+<p>作者用 Qwen3-4B 做 SDFT 实验：</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">AIME24</th>
+<th style="text-align:right">AIME25</th>
+<th style="text-align:right">HMMT25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-4B</td>
+<td style="text-align:right">0.735</td>
+<td style="text-align:right">0.647</td>
+<td style="text-align:right">0.458</td>
+</tr>
+<tr>
+<td>SDFT, enable_thinking=True</td>
+<td style="text-align:right">0.637</td>
+<td style="text-align:right">0.539</td>
+<td style="text-align:right">0.375</td>
+</tr>
+<tr>
+<td>SDFT, enable_thinking=False</td>
+<td style="text-align:right">0.733</td>
+<td style="text-align:right">0.616</td>
+<td style="text-align:right">0.466</td>
+</tr>
+</tbody>
+</table></div>
+<p>训练时开启 thinking 反而明显下降。论文认为，把 SD-Zero 扩展到 thinking model 是重要但不平凡的后续方向。</p>
+<p>我的理解是：SD-Zero 适合“短而明确的初稿 -&gt; 明确对错 -&gt; 修订”的 setting；而 thinking model 的长推理轨迹里，错误、探索和自我检查混在一起，binary reward 到 token-level credit assignment 的映射更难。</p>
+<h2 id="11-和-grpo-rlvr-的关系">11. 和 GRPO / RLVR 的关系</h2>
+<p>GRPO 的优势：</p>
+<ol>
+<li>不需要 gold solution。</li>
+<li>只要 binary verifier。</li>
+<li>能通过 group relative advantage 做策略优化。</li>
+</ol>
+<p>GRPO 的短板：</p>
+<ol>
+<li>每题要多个 rollouts。</li>
+<li>final answer reward 太稀疏。</li>
+<li>很难知道错误发生在哪一步。</li>
+</ol>
+<p>SD-Zero 的优势是把 binary reward 用 Reviser “放大”为 token-level dense signal。它不是替代所有 RLVR，而是可以看作一种把 verifier 信号转成 process-like supervision 的方法。</p>
+<p>论文附录还尝试了 self-revision 作为 RL initialization，在 Countdown 上发现 self-revised targets + GRPO 对 OOD benchmark 更好。这暗示 self-revision 和 RL 可以组合：</p>
+<pre><code class="language-text">先用 self-revision 初始化一个更会纠错的模型
+再用 GRPO / RLVR 继续优化
+</code></pre>
+<h2 id="12-批判性分析">12. 批判性分析</h2>
+<h3 id="12-1-值得学习的地方">12.1 值得学习的地方</h3>
+<p><strong>第一，错误样本不是垃圾，而是监督。</strong> SD-Zero 的核心 insight 是保留错误尝试，并让模型学习如何从错误转正。对于 reasoning 任务，这比只过滤正确答案更接近人类学习过程。</p>
+<p><strong>第二，binary reward 可以通过上下文条件化变稠密。</strong> 原始 verifier 只有 0/1，但 Reviser 看到 <code>x, y_init, r</code> 后，能在 token 分布上表达“哪些地方该改”。这是一种很聪明的 reward densification。</p>
+<p><strong>第三，Phase 2 解决了显式自修订的成本。</strong> 只训练 self-correction 会让模型在推理时反复 backtrack，token 很长。蒸馏回 generator 后，模型变成更主动、更短地避错。</p>
+<p><strong>第四，teacher synchronization 暗示可持续自举。</strong> 如果学生提升后也变成更好的 reviser，那么 self-distillation 不一定是一轮用完；它可以迭代。</p>
+<h3 id="12-2-主要风险">12.2 主要风险</h3>
+<p><strong>第一，依赖可验证 reward。</strong> 没有 final answer verifier 的开放任务，例如写作、研究、长程 agent，当前算法不能直接使用。</p>
+<p><strong>第二，SRT 需要正确修订样本。</strong> Phase 1 只保留 revision 后正确的 trace；如果任务很难，模型很少能自修订成功，SRT 数据会很稀缺。</p>
+<p><strong>第三，Reviser 仍然可能教错。</strong> Phase 2 的 teacher 是 SRT model，不是外部强 teacher。它的分布信号可能带有偏见或错误定位。</p>
+<p><strong>第四，实验规模还偏小。</strong> 当前主要是 4B/7B instruct model，math/code 两个领域。更大模型、thinking model、agent 任务上是否保持优势，还没有证明。</p>
+<p><strong>第五，和强 RL 长训练不完全等价比较。</strong> 论文匹配的是单 epoch / sample budget；GRPO 可能通过更多 epoch 和更复杂 reward shaping 继续提升。</p>
+<h2 id="13-实用启发">13. 实用启发</h2>
+<p>如果我要复用这个思路，会优先考虑这些场景：</p>
+<ol>
+<li>有可靠 verifier，但没有高质量过程标注。</li>
+<li>模型已经有一定基础能力，能偶尔自修订成功。</li>
+<li>任务的错误通常是局部推理错误，而不是完全不会。</li>
+<li>希望比 GRPO 更省 rollout。</li>
+<li>希望最终推理保持单次生成，不想部署多轮 self-correction。</li>
+</ol>
+<p>一个可执行 recipe：</p>
+<pre><code class="language-text">1. 用 base model 对题目采样初稿
+2. 用 verifier 判断对错
+3. 让同一模型基于初稿 + 对错提示进行 revision
+4. 只保留 revision 后正确的 trace
+5. 训练 SRT：revision loss + generation loss
+6. 冻结 SRT 作为 Reviser teacher
+7. 当前 student on-policy 生成
+8. Reviser 看 student 回答和 reward，输出 token 分布
+9. Student 用 KL 匹配 Reviser
+10. 可选：学生变强后同步为新 teacher，继续迭代
+</code></pre>
+<h2 id="14-和现有后训练笔记的关系">14. 和现有后训练笔记的关系</h2>
+<ol>
+<li><strong>相对 SFT</strong>：SFT 学高质量答案；SD-Zero 学“自己的错误如何修”。</li>
+<li><strong>相对 RFT</strong>：RFT 丢弃错误样本；SD-Zero 把错误样本变成修订上下文。</li>
+<li><strong>相对 GRPO</strong>：GRPO 直接优化 sparse reward；SD-Zero 先把 sparse reward 转成 dense token supervision。</li>
+<li><strong>相对本文 SDFT 基线</strong>：该基线使用 demonstration 作为额外上下文；SD-Zero 用自身修订轨迹和 verifier，不依赖外部 gold reasoning trace。</li>
+<li><strong>相对 PRM</strong>：SD-Zero 没有单独训练过程奖励模型；Reviser 分布提供 token-level signal，但这不是经过程标签校准的逐步奖励。</li>
+</ol>
+<h2 id="15-关键词索引">15. 关键词索引</h2>
+<ul>
+<li>SD-Zero：Self-Distillation Zero。</li>
+<li>SRT：Self-Revision Training，Phase 1。</li>
+<li>Generator：模型正常生成初稿的角色。</li>
+<li>Reviser：模型基于初稿和二元奖励进行修订的角色。</li>
+<li>Binary reward：最终答案正确与否。</li>
+<li>Dense supervision：token 级 KL 监督。</li>
+<li>Token-level self-localization：Reviser 在 token 层定位错误位置的现象。</li>
+<li>Teacher synchronization：把训练后的学生同步为新 Reviser teacher，继续自进化。</li>
+</ul>
+</article><footer class="article-footer"><a href="../index.html">← 返回全部笔记</a><span>2026-10-08 修订 · 公式可复制 · 图片可放大</span></footer></main><aside class="toc" aria-label="本文目录"><span class="eyebrow">本文目录</span><nav aria-label="本篇章节"><a class="toc-level-2" href="#%E4%B8%80%E5%9B%BE%E7%9C%8B%E6%87%82-sd-zero">一图看懂 SD-Zero</a><a class="toc-level-2" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA">一句话结论</a><a class="toc-level-2" href="#1-%E8%83%8C%E6%99%AF-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-sd-zero">1. 背景：为什么需要 SD-Zero</a><a class="toc-level-2" href="#2-%E7%AE%97%E6%B3%95%E4%B8%BB%E7%BA%BF">2. 算法主线</a><a class="toc-level-3" href="#2-1-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E5%AE%9A">2.1 基本设定</a><a class="toc-level-3" href="#2-2-phase-1-srt-%E8%AE%A9%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%BC%9A%E4%BF%AE%E8%AE%A2">2.2 Phase 1：SRT，让模型学会修订</a><a class="toc-level-3" href="#2-3-srt-%E8%AE%AD%E7%BB%83%E7%9B%AE%E6%A0%87">2.3 SRT 训练目标</a><a class="toc-level-3" href="#2-4-phase-2-%E6%8A%8A-reviser-%E8%92%B8%E9%A6%8F%E5%9B%9E-generator">2.4 Phase 2：把 Reviser 蒸馏回 Generator</a><a class="toc-level-3" href="#2-5-teacher-synchronization-%E8%BF%AD%E4%BB%A3%E8%87%AA%E8%BF%9B%E5%8C%96">2.5 Teacher Synchronization：迭代自进化</a><a class="toc-level-2" href="#3-%E5%92%8C%E5%B7%B2%E6%9C%89%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB">3. 和已有方法的关系</a><a class="toc-level-2" href="#4-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE">4. 实验设置</a><a class="toc-level-3" href="#4-1-%E6%A8%A1%E5%9E%8B">4.1 模型</a><a class="toc-level-3" href="#4-2-%E6%95%B0%E6%8D%AE">4.2 数据</a><a class="toc-level-3" href="#4-3-%E8%AF%84%E6%B5%8B">4.3 评测</a><a class="toc-level-3" href="#4-4-baselines">4.4 Baselines</a><a class="toc-level-2" href="#5-%E4%B8%BB%E7%BB%93%E6%9E%9C">5. 主结果</a><a class="toc-level-3" href="#5-1-avg-8">5.1 Avg@8</a><a class="toc-level-3" href="#5-2-%E5%93%AA%E4%BA%9B-benchmark-%E6%8F%90%E5%8D%87%E6%9C%80%E5%A4%A7">5.2 哪些 benchmark 提升最大</a><a class="toc-level-3" href="#5-3-pass-8">5.3 Pass@8</a><a class="toc-level-2" href="#6-%E4%B8%BA%E4%BB%80%E4%B9%88-srt-%E6%9C%89%E6%95%88">6. 为什么 SRT 有效</a><a class="toc-level-2" href="#7-self-distillation-%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F-token-%E7%BA%A7%E7%9B%91%E7%9D%A3">7. Self-Distillation 如何产生 token 级监督</a><a class="toc-level-2" href="#8-%E4%B8%BA%E4%BB%80%E4%B9%88-phase-2-%E9%87%8D%E8%A6%81">8. 为什么 Phase 2 重要</a><a class="toc-level-3" href="#8-1-%E6%8E%A8%E7%90%86%E6%95%88%E7%8E%87">8.1 推理效率</a><a class="toc-level-3" href="#8-2-%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E6%95%88%E7%8E%87">8.2 训练样本效率</a><a class="toc-level-2" href="#9-%E5%85%B3%E9%94%AE%E6%B6%88%E8%9E%8D">9. 关键消融</a><a class="toc-level-3" href="#9-1-%E4%B8%A4%E4%B8%AA-srt-loss-%E5%9C%A8%E8%AF%A5%E5%AE%9E%E9%AA%8C%E4%B8%AD%E4%BA%92%E8%A1%A5">9.1 两个 SRT loss 在该实验中互补</a><a class="toc-level-3" href="#9-2-%E8%AF%A5%E5%AE%9E%E9%AA%8C%E4%B8%AD%E8%B7%B3%E8%BF%87-srt-%E5%90%8E%E6%94%B6%E7%9B%8A%E8%BE%83%E5%B0%8F">9.2 该实验中跳过 SRT 后收益较小</a><a class="toc-level-3" href="#9-3-%E8%AF%A5%E9%A2%84%E7%AE%97%E4%B8%8B-6k-9k-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E6%9B%B4%E5%A5%BD">9.3 该预算下 6K/9K 的数据分配更好</a><a class="toc-level-3" href="#9-4-%E8%AF%A5%E8%AE%BE%E7%BD%AE%E4%B8%8B-sdft-%E4%B8%A4%E7%A7%8D%E7%9B%91%E7%9D%A3%E5%BD%A2%E5%BC%8F%E6%8F%90%E5%8D%87%E9%83%BD%E6%9C%89%E9%99%90">9.4 该设置下 SDFT 两种监督形式提升都有限</a><a class="toc-level-2" href="#10-%E5%AF%B9-thinking-model-%E7%9A%84%E9%99%90%E5%88%B6">10. 对 thinking model 的限制</a><a class="toc-level-2" href="#11-%E5%92%8C-grpo-rlvr-%E7%9A%84%E5%85%B3%E7%B3%BB">11. 和 GRPO / RLVR 的关系</a><a class="toc-level-2" href="#12-%E6%89%B9%E5%88%A4%E6%80%A7%E5%88%86%E6%9E%90">12. 批判性分析</a><a class="toc-level-3" href="#12-1-%E5%80%BC%E5%BE%97%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9C%B0%E6%96%B9">12.1 值得学习的地方</a><a class="toc-level-3" href="#12-2-%E4%B8%BB%E8%A6%81%E9%A3%8E%E9%99%A9">12.2 主要风险</a><a class="toc-level-2" href="#13-%E5%AE%9E%E7%94%A8%E5%90%AF%E5%8F%91">13. 实用启发</a><a class="toc-level-2" href="#14-%E5%92%8C%E7%8E%B0%E6%9C%89%E5%90%8E%E8%AE%AD%E7%BB%83%E7%AC%94%E8%AE%B0%E7%9A%84%E5%85%B3%E7%B3%BB">14. 和现有后训练笔记的关系</a><a class="toc-level-2" href="#15-%E5%85%B3%E9%94%AE%E8%AF%8D%E7%B4%A2%E5%BC%95">15. 关键词索引</a></nav><a class="back-top" href="#main">回到顶部 ↑</a></aside>
+</div><footer class="site-footer"><div class="shell footer-inner"><p>知行手记 · Yuan’s Notes</p><p>记录所学，沉淀所思。</p></div></footer>
+<dialog id="search-dialog" aria-label="搜索笔记"><div class="search-head"><label for="search-input" class="sr-only">输入关键词</label><input id="search-input" type="search" placeholder="搜索标题、正文、公式关键词…" autocomplete="off"><button class="close-dialog" type="button" aria-label="关闭搜索">关闭</button></div><p class="search-hint" aria-live="polite">支持全文检索 · Esc 关闭</p><ul class="search-results"></ul></dialog>
+<dialog id="image-dialog" aria-label="原图预览"><div class="image-controls"><a class="original-image" target="_blank" rel="noopener">打开原图 ↗</a><button class="close-dialog" type="button">关闭</button></div><img alt=""><p class="image-caption"></p></dialog><div class="toast" role="status"></div></body></html>

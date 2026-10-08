@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-08",
+  "pages": 18,
+  "notes": 16,
+  "reviewed": 12,
+  "pending": 4,
+  "totalFormulas": 992,
+  "entries": [
+    {
+      "file": "post-training/DPO.md",
+      "output": "post-training/DPO.html",
+      "formulas": 189,
+      "displayFormulas": 30,
+      "headings": 26,
+      "status": "revised"
+    },
+    {
+      "file": "post-training/PPO.md",
+      "output": "post-training/PPO.html",
+      "formulas": 0,
+      "displayFormulas": 0,
+      "headings": 0,
+      "status": "pending"
+    },
+    {
+      "file": "post-training/GRPO.md",
+      "output": "post-training/GRPO.html",
+      "formulas": 0,
+      "displayFormulas": 0,
+      "headings": 0,
+      "status": "pending"
+    },
+    {
+      "file": "post-training/GXPO.md",
+      "output": "post-training/GXPO.html",
+      "formulas": 0,
+      "displayFormulas": 0,
+      "headings": 0,
+      "status": "pending"
+    },
+    {
+      "file": "post-training/pair-grpo-family.md",
+      "output": "post-training/pair-grpo-family.html",
+      "formulas": 96,
+      "displayFormulas": 47,
+      "headings": 42,
+      "status": "revised"
+    },
+    {
+      "file": "post-training/MTP.md",
+      "output": "post-training/MTP.html",
+      "formulas": 48,
+      "displayFormulas": 4,
+      "headings": 5,
+      "status": "revised"
+    },
+    {
+      "file": "post-training/SD-Zero.md",
+      "output": "post-training/SD-Zero.html",
+      "formulas": 20,
+      "displayFormulas": 15,
+      "headings": 37,
+      "status": "revised"
+    },
+    {
+      "file": "infra/transformer结构.md",
+      "output": "infra/transformer结构.html",
+      "formulas": 83,
+      "displayFormulas": 12,
+      "headings": 10,
+      "status": "revised"
+    },
+    {
+      "file": "infra/激活函数.md",
+      "output": "infra/激活函数.html",
+      "formulas": 28,
+      "displayFormulas": 5,
+      "headings": 4,
+      "status": "revised"
+    },
+    {
+      "file": "infra/MLA.md",
+      "output": "infra/MLA.html",
+      "formulas": 0,
+      "displayFormulas": 0,
+      "headings": 0,
+      "status": "pending"
+    },
+    {
+      "file": "infra/混合精度.md",
+      "output": "infra/混合精度.html",
+      "formulas": 14,
+      "displayFormulas": 3,
+      "headings": 7,
+      "status": "revised"
+    },
+    {
+      "file": "infra/分布式训练-数据并行.md",
+      "output": "infra/分布式训练-数据并行.html",
+      "formulas": 42,
+      "displayFormulas": 4,
+      "headings": 11,
+      "status": "revised"
+    },
+    {
+      "file": "infra/分布式训练-模型并行.md",
+      "output": "infra/分布式训练-模型并行.html",
+      "formulas": 114,
+      "displayFormulas": 15,
+      "headings": 12,
+      "status": "revised"
+    },
+    {
+      "file": "infra/分布式训练-流水线并行.md",
+      "output": "infra/分布式训练-流水线并行.html",
+      "formulas": 45,
+      "displayFormulas": 8,
+      "headings": 5,
+      "status": "revised"
+    },
+    {
+      "file": "infra/显存分析.md",
+      "output": "infra/显存分析.html",
+      "formulas": 228,
+      "displayFormulas": 28,
+      "headings": 19,
+      "status": "revised"
+    },
+    {
+      "file": "infra/Flash_attention.md",
+      "output": "infra/Flash_attention.html",
+      "formulas": 85,
+      "displayFormulas": 13,
+      "headings": 11,
+      "status": "revised"
+    },
+    {
+      "file": "revision-notes.md",
+      "output": "revision-notes.html",
+      "formulas": 0,
+      "displayFormulas": 0,
+      "headings": 7,
+      "status": "revised"
+    }
+  ]
+}

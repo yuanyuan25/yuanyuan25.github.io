@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-08",
+  "passed": true,
+  "originalFilesVerified": 113,
+  "unchangedCurrentAssets": 97,
+  "originalImageReferences": 90,
+  "currentUniqueNoteImageReferences": 89,
+  "htmlPages": 18,
+  "localLinksVerified": 992,
+  "fontResourcesVerified": 60,
+  "compiledFormulas": 992,
+  "math": {
+    "checks": [
+      {
+        "name": "Qwen2.5-7B parameter shapes",
+        "passed": true,
+        "evidence": {
+          "block": 233057792,
+          "total": 7615616512
+        }
+      },
+      {
+        "name": "GQA versus MHA KV cache",
+        "passed": true,
+        "evidence": {
+          "GQA_MiB": 112,
+          "MHA_MiB": 784
+        }
+      },
+      {
+        "name": "Teaching activation estimate",
+        "passed": true,
+        "evidence": {
+          "bytes": 23429382144,
+          "GB": 23.429382144,
+          "GiB": 21.8203125,
+          "microbatch128_GB": 2998.960914432
+        }
+      },
+      {
+        "name": "ZeRO state memory",
+        "passed": true,
+        "evidence": {
+          "GB": [
+            120,
+            31.40625,
+            16.640625,
+            1.875
+          ],
+          "ideal_reduction": 64
+        }
+      },
+      {
+        "name": "Gb/s conversion",
+        "passed": true,
+        "evidence": {
+          "large_N_seconds": 1.92
+        }
+      },
+      {
+        "name": "Executed FLOPs time estimate",
+        "passed": true,
+        "evidence": {
+          "days": 21.639561570117127
+        }
+      },
+      {
+        "name": "FlashAttention blocked normalization",
+        "passed": true,
+        "evidence": {
+          "max_error": 4.440892098500626e-16
+        }
+      },
+      {
+        "name": "FlashAttention normalized output recurrence",
+        "passed": true,
+        "evidence": {
+          "max_error": 4.440892098500626e-16
+        }
+      },
+      {
+        "name": "Vocabulary TP cross entropy and gradients",
+        "passed": true,
+        "evidence": {
+          "loss_error": 0,
+          "gradient_max_error": 3.514318835939889e-10
+        }
+      },
+      {
+        "name": "DPO objective identity and offset",
+        "passed": true,
+        "evidence": {
+          "identity_error": 2.220446049250313e-16,
+          "reward_offset": 1.878821080356668
+        }
+      },
+      {
+        "name": "RoPE dot identity",
+        "passed": true,
+        "evidence": {
+          "error": 2.220446049250313e-16
+        }
+      },
+      {
+        "name": "Column TP input gradients",
+        "passed": true,
+        "evidence": {
+          "max_error": 1.7207962832443968e-10
+        }
+      },
+      {
+        "name": "Pair-GRPO common term",
+        "passed": true,
+        "evidence": {
+          "gradient": [
+            1.5,
+            3
+          ],
+          "pair_difference_only": [
+            -1.5,
+            2.25
+          ]
+        }
+      },
+      {
+        "name": "Soft-Pair shared-parameter counterexample",
+        "passed": true,
+        "evidence": {
+          "preferred": 0.33299938927909717,
+          "rejected": 0.3326665563340267,
+          "logratio_increase": 0.001000000000000043
+        }
+      },
+      {
+        "name": "Hard-Pair irrelevant logit is generally nonzero",
+        "passed": true,
+        "evidence": {
+          "irrelevant_logit_gradient": -0.000817912742610236
+        }
+      },
+      {
+        "name": "Pipeline ideal bubble",
+        "passed": true,
+        "evidence": {
+          "K4_M16_bubble": 0.15789473684210525
+        }
+      }
+    ],
+    "passed": 16
+  },
+  "failures": []
+}

@@ -1,0 +1,577 @@
+{
+  "date": "2026-10-08",
+  "passed": true,
+  "sourceProject": "MyKnowledgeBase",
+  "destinationProject": "yuan-notes",
+  "sourceFilesCheckedBeforeCleanup": 325,
+  "currentSourceAndAssetFiles": 113,
+  "markdownChanges": "Full copy verified before subsequent readability edits; entries record imported source/assets at copy time.",
+  "legacyLocation": "Original Markdown, HTML, assets and build tools restored; independent copies, no links or synchronization.",
+  "entries": [
+    {
+      "from": "大模型/后训练/GRPO.md",
+      "to": "notes/llm/post-training/GRPO.md",
+      "sha256": "f0ecaf587395aa081135c70715ab4c238e93e02e008c182296ecdacc0817a33e"
+    },
+    {
+      "from": "大模型/后训练/MTP.md",
+      "to": "notes/llm/post-training/MTP.md",
+      "sha256": "0a63f782b5b172d9678329899d3d8f3687cb9bb742f6ab3ecadcb0002490952f"
+    },
+    {
+      "from": "大模型/后训练/DPO.md",
+      "to": "notes/llm/post-training/DPO.md",
+      "sha256": "2199e7d76c472fbbfe04b5f4583570737039eb7604e13c61976bdb3293c8e145"
+    },
+    {
+      "from": "大模型/后训练/GXPO.md",
+      "to": "notes/llm/post-training/GXPO.md",
+      "sha256": "fc98f36e54eb0571584832b805e763efcb73a048c9736122d176eb2a569e5844"
+    },
+    {
+      "from": "大模型/后训练/PPO.md",
+      "to": "notes/llm/post-training/PPO.md",
+      "sha256": "afeee5155d8a5a56e55124a8877c1e2b9584730b0544185d1ee802717f1cdd48"
+    },
+    {
+      "from": "大模型/后训练/SD-Zero.md",
+      "to": "notes/llm/post-training/SD-Zero.md",
+      "sha256": "934d2077e50660fcd0b1e16c374a2d95d9cbe34210063d202db5412db34d3269"
+    },
+    {
+      "from": "大模型/后训练/pair-grpo-family.md",
+      "to": "notes/llm/post-training/pair-grpo-family.md",
+      "sha256": "bb5b5e1d717e44130a19b80a8d39d12f61f47b2cc86a441ceb3672524a0cfc76"
+    },
+    {
+      "from": "大模型/后训练/pic/RM_Loss_e.png",
+      "to": "notes/llm/post-training/pic/RM_Loss_e.png",
+      "sha256": "cca71f68a31c894680ac67490fdec1df8b3a6d8879282a83f54be2e3ad49eb88"
+    },
+    {
+      "from": "大模型/后训练/pic/RM_L.png",
+      "to": "notes/llm/post-training/pic/RM_L.png",
+      "sha256": "09fd18cbadd2d8a56444a9211e8d8467c420c8d3cd4fa0865bd00a4aa4a20fdd"
+    },
+    {
+      "from": "大模型/后训练/pic/KL_E.png",
+      "to": "notes/llm/post-training/pic/KL_E.png",
+      "sha256": "2a4e4c1b6918375a4e1b985c4f32f0c98e850c6d41be3291fc27b9a444a1f8ba"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_trans_RM.png",
+      "to": "notes/llm/post-training/pic/DPO_trans_RM.png",
+      "sha256": "75d183f8d0f2edb5dcec3377f12977a1eb3fc8bcab48f34a6147ea7d2bbf78f7"
+    },
+    {
+      "from": "大模型/后训练/pic/sd-zero-algorithm.png",
+      "to": "notes/llm/post-training/pic/sd-zero-algorithm.png",
+      "sha256": "008264eb326c9242c8ee4f5da6a46822d406dfd03eb902ceff749c1fdc8e9e09"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_Z.png",
+      "to": "notes/llm/post-training/pic/DPO_Z.png",
+      "sha256": "ce861a70f824ed3286c6926208bd6bbf18cb52d1cf01d6d75b178b0621f2f98a"
+    },
+    {
+      "from": "大模型/后训练/pic/RM_L_log.png",
+      "to": "notes/llm/post-training/pic/RM_L_log.png",
+      "sha256": "e1a23ede9c91fb2fe24834226f91297d2329a766cdb0a49f347213ef6613ef8d"
+    },
+    {
+      "from": "大模型/后训练/pic/RM_Loss.png",
+      "to": "notes/llm/post-training/pic/RM_Loss.png",
+      "sha256": "346ea7a10ad366aff60255cbd0a7c3e00b6f3a2710c152a1faefb8ca5d3887e5"
+    },
+    {
+      "from": "大模型/后训练/pic/MTP.png",
+      "to": "notes/llm/post-training/pic/MTP.png",
+      "sha256": "9fc24fc744db00c72946f6918a870caa4a891cb91bda7ee1414ee5ec58eaf89d"
+    },
+    {
+      "from": "大模型/后训练/pic/MTP_DeepSeek.png",
+      "to": "notes/llm/post-training/pic/MTP_DeepSeek.png",
+      "sha256": "27a6b514e61d9821251130341a9dc2495ebede351cd2bd6f33795da1379334d7"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_RL_trans_1.png",
+      "to": "notes/llm/post-training/pic/DPO_RL_trans_1.png",
+      "sha256": "2afcad6546ae07eb27dcdb828a596f32d6f4d54b10c03c825814bd092cd4d4d3"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_trans_R.png",
+      "to": "notes/llm/post-training/pic/DPO_trans_R.png",
+      "sha256": "540188dc277bca89990da0027f7deb321a8e8e1e41087caf830ae79362e5c39d"
+    },
+    {
+      "from": "大模型/后训练/pic/MTP_Meta.png",
+      "to": "notes/llm/post-training/pic/MTP_Meta.png",
+      "sha256": "7ab7350ca2725ffada27a66487192d422a03556f0e9a0ea896384f9fb1232343"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_RL_trans_2.png",
+      "to": "notes/llm/post-training/pic/DPO_RL_trans_2.png",
+      "sha256": "1221adc1f5623e885f552fcd3626529a5c5d12f48d67d5db90f87b2c4b2121da"
+    },
+    {
+      "from": "大模型/后训练/pic/sd-zero-algorithm.svg",
+      "to": "notes/llm/post-training/pic/sd-zero-algorithm.svg",
+      "sha256": "daf1f3a4d1ef4fdde0f0cd82a019f072a7d8c33f432633ac42840401a5324e37"
+    },
+    {
+      "from": "大模型/后训练/pic/RM_argmax.png",
+      "to": "notes/llm/post-training/pic/RM_argmax.png",
+      "sha256": "d980190b6442c664710a0682020618b34584e7b5febc9bbd3960ccaf6db5da46"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_RM_Loss.png",
+      "to": "notes/llm/post-training/pic/DPO_RM_Loss.png",
+      "sha256": "d3ccfe3e826510db3f6336813227bd0e1004cfad0ff7751237f1d08dc7680a1c"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_RL_Loss.png",
+      "to": "notes/llm/post-training/pic/DPO_RL_Loss.png",
+      "sha256": "608d99e4446f3daf51dd3027d13ad98b9bb92e85c8eaa32e068bf1f0cec35f60"
+    },
+    {
+      "from": "大模型/后训练/pic/KL_SUM.png",
+      "to": "notes/llm/post-training/pic/KL_SUM.png",
+      "sha256": "23727e3c25fd7cd47dddfb769f5b9120317d465b3c98485ad471f94969ed6a2a"
+    },
+    {
+      "from": "大模型/后训练/pic/KL_to_E.png",
+      "to": "notes/llm/post-training/pic/KL_to_E.png",
+      "sha256": "dc668407afe9f93664f002a4cb666f607193d6b3d69445eb1bedbc64b228d08f"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_trans_RM_pai.png",
+      "to": "notes/llm/post-training/pic/DPO_trans_RM_pai.png",
+      "sha256": "cf91f1277e1e5e46264448bbe7727cea69f4ac9481c817d9c74111f03ca8f318"
+    },
+    {
+      "from": "大模型/后训练/pic/KL_Y.png",
+      "to": "notes/llm/post-training/pic/KL_Y.png",
+      "sha256": "1ad6d68e06565eea425070506c7ba15c43dc11be44cc4b94c4c5c779c85613be"
+    },
+    {
+      "from": "大模型/后训练/pic/DPO_pai*.png",
+      "to": "notes/llm/post-training/pic/DPO_pai*.png",
+      "sha256": "5b81ed326edbfbf2f5b568a194b337eb3e57fe66306fc189f8f0437f12cbe41e"
+    },
+    {
+      "from": "大模型/后训练/pic/Bradley-Terry.png",
+      "to": "notes/llm/post-training/pic/Bradley-Terry.png",
+      "sha256": "e1086b31e1a836973d9e90003cf5b4ab43f67a41f4ab35fb508ace1695045935"
+    },
+    {
+      "from": "大模型/Infra/Flash_attention.md",
+      "to": "notes/llm/infra/Flash_attention.md",
+      "sha256": "0be0ec4899986d24158a119b2eae5a0c27b668276950c99d06631dc95d52074d"
+    },
+    {
+      "from": "大模型/Infra/分布式训练-数据并行.md",
+      "to": "notes/llm/infra/分布式训练-数据并行.md",
+      "sha256": "6cb47dcbdef7eb6a02a75b97b069dc1b44cf3df63521038fa4f77db40d22b3d9"
+    },
+    {
+      "from": "大模型/Infra/transformer结构.md",
+      "to": "notes/llm/infra/transformer结构.md",
+      "sha256": "97bbfe12c9bed48d694d703594b144c07d6455b0ef33b60ca307d0c25b7f23bc"
+    },
+    {
+      "from": "大模型/Infra/MLA.md",
+      "to": "notes/llm/infra/MLA.md",
+      "sha256": "2463cba8f20c62e76830462f002b1811cb0e5dfc0891952db207ad70103d9d5a"
+    },
+    {
+      "from": "大模型/Infra/显存分析.md",
+      "to": "notes/llm/infra/显存分析.md",
+      "sha256": "d8554631e4b257e5efbb24668b44d97854b8256667d5094f709389ba524c8d5c"
+    },
+    {
+      "from": "大模型/Infra/激活函数.md",
+      "to": "notes/llm/infra/激活函数.md",
+      "sha256": "231e8d65d9111b01bac72e0939eaac22527886cf921ccd481380c37bfeca9ce0"
+    },
+    {
+      "from": "大模型/Infra/分布式训练-流水线并行.md",
+      "to": "notes/llm/infra/分布式训练-流水线并行.md",
+      "sha256": "43b9013b4b28d980bee3919c5a75b2281db504aaafffeca58fd17b7a990eb426"
+    },
+    {
+      "from": "大模型/Infra/分布式训练-模型并行.md",
+      "to": "notes/llm/infra/分布式训练-模型并行.md",
+      "sha256": "61714cc1498b9ed79d553a1c6efaa65ce6baae8b6890f4d6b0116c71e3b0ce8b"
+    },
+    {
+      "from": "大模型/Infra/混合精度.md",
+      "to": "notes/llm/infra/混合精度.md",
+      "sha256": "500a8c82d72dae484879d9ec53acb991599b54ae831f3859e0c02f837025fa62"
+    },
+    {
+      "from": "大模型/Infra/pic/pp_show.png",
+      "to": "notes/llm/infra/pic/pp_show.png",
+      "sha256": "a2eb9dc1018b51ca5565c4f5970d0cdb57a30b5a7defc18d04a3dda54b8aaaf2"
+    },
+    {
+      "from": "大模型/Infra/pic/image-9.png",
+      "to": "notes/llm/infra/pic/image-9.png",
+      "sha256": "bb519fff5274ddbb7e40b7d3e49e1ae1c5f92242198a7856cdc6630f8292729c"
+    },
+    {
+      "from": "大模型/Infra/pic/image-8.png",
+      "to": "notes/llm/infra/pic/image-8.png",
+      "sha256": "a97a2b96746001d529891d8dffb2bfbd4b669d4f7a930a7039c4bd9be219dc01"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-max-all.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-max-all.png",
+      "sha256": "38c053370a4bde24d879c5da7fc4c2ce48b310fa51ff11c4881a4c600fc2ad13"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_input_gradient.png",
+      "to": "notes/llm/infra/pic/tp_split_input_gradient.png",
+      "sha256": "4bb05e04ab84a0c5264bf5e45bf3fb067a35fcaaf1380693ff499ef32e284ac4"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-fenmu.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-fenmu.png",
+      "sha256": "3402ddb98d8d769b45e26879575c21da3a8386a1fbde7700ac59a3b40b8a3831"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_forward_x.png",
+      "to": "notes/llm/infra/pic/tp_row_split_forward_x.png",
+      "sha256": "3cdd52122e1a11c272db77f2a9cebec05057b83adb6cc33685fad5836453e221"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attetion-transformer-HBM.png",
+      "to": "notes/llm/infra/pic/flash-attetion-transformer-HBM.png",
+      "sha256": "cc6697f79101568c79d5657f13051cf724687d36c76482c9fda6d7f7fa1ae44d"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-l-all.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-l-all.png",
+      "sha256": "787c9b864b2b3bd32471b64133735ffd3c7ce4cac1347c7d055ff3f8f17bf33c"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_forward_backward.png",
+      "to": "notes/llm/infra/pic/tp_row_split_forward_backward.png",
+      "sha256": "a8495d67175aff490f3ec4fb66751a6a93574a3e4f6146d58871e8d1291ddbc8"
+    },
+    {
+      "from": "大模型/Infra/pic/GPU_bubble.png",
+      "to": "notes/llm/infra/pic/GPU_bubble.png",
+      "sha256": "5df26ec776db188ce74501981552dc62663da31f4450f60634cefc0e7c8728e6"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-2-cost.png",
+      "to": "notes/llm/infra/pic/ZeRO-2-cost.png",
+      "sha256": "8785b1ba184d01a93893d2dd7c435d33d44d5d0594f9f6d8e737d7144e3badc3"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-3-cost.png",
+      "to": "notes/llm/infra/pic/ZeRO-3-cost.png",
+      "sha256": "ea52abd046a99d6e0bf12e382b5cb7eb1a7da7075144e7ee7845010780ea84bb"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-fenzi.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-fenzi.png",
+      "sha256": "3c3d379cd1c524dc9b2353e1db11043ee369406564f0d2346714b0bd78e290d6"
+    },
+    {
+      "from": "大模型/Infra/pic/all-reduce.png",
+      "to": "notes/llm/infra/pic/all-reduce.png",
+      "sha256": "618569247bdba8d676839d2c2a3ed01e8c1af82be360a7c268157725dfbd1c76"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_self_attention.png",
+      "to": "notes/llm/infra/pic/tp_split_self_attention.png",
+      "sha256": "ff71cf75a6644774bb6d54a68be26099cd50bab8abfedb7ae3e438da1be2f74b"
+    },
+    {
+      "from": "大模型/Infra/pic/ep+dp+tp+pp.png",
+      "to": "notes/llm/infra/pic/ep+dp+tp+pp.png",
+      "sha256": "fa3fff90ad949ed5481a250d85f5189e4c489398bad8a44246c56edebe1634e6"
+    },
+    {
+      "from": "大模型/Infra/pic/ring_all_reduce.png",
+      "to": "notes/llm/infra/pic/ring_all_reduce.png",
+      "sha256": "65ac0a1e74cd198933ba7073cd93047e97f9a3c0d97955f8c6fd0ddbad0279db"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax.png",
+      "sha256": "e6e5317178f860e72b447bf169c6acadbc9587f8c1e21f87722e01195823c551"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_col_split.png",
+      "to": "notes/llm/infra/pic/tp_col_split.png",
+      "sha256": "0c5328f041ad7c82013c8c5fe1ab7fcc8e62439b153b2f92073eaef6fb155dab"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_output_layer.png",
+      "to": "notes/llm/infra/pic/tp_split_output_layer.png",
+      "sha256": "84582b3fbf0b249565b74af1027dc5b375bb96293b2cb74d424d302615dade82"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_gradient_2.png",
+      "to": "notes/llm/infra/pic/tp_row_split_gradient_2.png",
+      "sha256": "e456389ae2f0722f26cb92dfbd95812a48d757668ef3129c9d0260d0b62ec827"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-code.png",
+      "to": "notes/llm/infra/pic/flash-attention-code.png",
+      "sha256": "090814caeb388bba8a51576046195bd3ad82d5dcb5a97f60cb3d400286575398"
+    },
+    {
+      "from": "大模型/Infra/pic/decoder.png",
+      "to": "notes/llm/infra/pic/decoder.png",
+      "sha256": "22f55a354adafaf3167bb680de7b3468688d8b8fbd582827ccccdca483b40355"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_gradient.png",
+      "to": "notes/llm/infra/pic/tp_row_split_gradient.png",
+      "sha256": "e7091aa5307a7bd1a473b397308873d22c3a291868a3acd7e1f58e8b07c17315"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split.png",
+      "to": "notes/llm/infra/pic/tp_row_split.png",
+      "sha256": "dafc5d9850f41b6397ed3fe151b2087787bc23f316bdf47866073bebb583b1c4"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-f-all.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-f-all.png",
+      "sha256": "39273a2e1ddcb8254370c386e4d972eeffc7695ce604eb9910b675d51abe3c64"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-1-step1.png",
+      "to": "notes/llm/infra/pic/ZeRO-1-step1.png",
+      "sha256": "e50e5f1ee180d79b81af8b8993d7a16678b85295e22d089c5ed59e75613615d8"
+    },
+    {
+      "from": "大模型/Infra/pic/dp_tp_pp.png",
+      "to": "notes/llm/infra/pic/dp_tp_pp.png",
+      "sha256": "0eb4d79495b6f8b628afaeca05e4c9942fd990799c1065ff9a01ec53f5bd85fe"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_gradient_1.png",
+      "to": "notes/llm/infra/pic/tp_row_split_gradient_1.png",
+      "sha256": "9318cc16af810a54b1fd0b635d061cb473cf6868bcfbad4b26d1a3867cd3d57c"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO.png",
+      "to": "notes/llm/infra/pic/ZeRO.png",
+      "sha256": "d4c042f22c7bbb0a983326c6b52f1db2bb80d182e7e99344c4d6cc182b4d9dad"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-1-step2.png",
+      "to": "notes/llm/infra/pic/ZeRO-1-step2.png",
+      "sha256": "233dc943e849a0e2011303c5ff38d0b0a67eadbbee0daa683b3cc4170afa9ebc"
+    },
+    {
+      "from": "大模型/Infra/pic/Pasted Graphic 1.png",
+      "to": "notes/llm/infra/pic/Pasted Graphic 1.png",
+      "sha256": "efbb19f8760b8c999d146846a58ed6866b29f830d73f1747b0424a04226e4d07"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-1-cost.png",
+      "to": "notes/llm/infra/pic/ZeRO-1-cost.png",
+      "sha256": "2f894e36e2cee55dfd1fe192888c139be17a6a32367a049eda47c4f9513265a4"
+    },
+    {
+      "from": "大模型/Infra/pic/image-10.png",
+      "to": "notes/llm/infra/pic/image-10.png",
+      "sha256": "3dc08884539ebff54a0a123c5045e4db9adcba0cd9a49024770ab18a90ee82b8"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_input_layer.png",
+      "to": "notes/llm/infra/pic/tp_split_input_layer.png",
+      "sha256": "6e05f6c98f8ced2b6831bbeb4aeadaad8cfd1c046fa97c198775d8ddb21b6d5b"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-Offload.png",
+      "to": "notes/llm/infra/pic/ZeRO-Offload.png",
+      "sha256": "d4710c6d2db97c8422b3144810e0698fb395a1851e355e8f6ab0a98cf0397af3"
+    },
+    {
+      "from": "大模型/Infra/pic/image-11.png",
+      "to": "notes/llm/infra/pic/image-11.png",
+      "sha256": "d2be2b780607a5f58dc86b52f10a3c26b4733ce8ac3a76ab5f0c92c6d029ab30"
+    },
+    {
+      "from": "大模型/Infra/pic/Pasted Graphic 2.png",
+      "to": "notes/llm/infra/pic/Pasted Graphic 2.png",
+      "sha256": "bcfb021be58cb4858084cd101725366093777efdf2f59d3e989d8f913c5319ae"
+    },
+    {
+      "from": "大模型/Infra/pic/pp_train_step.png",
+      "to": "notes/llm/infra/pic/pp_train_step.png",
+      "sha256": "d1adde88c1b3d8ca898609a373c032e6e8bb037043effc92d0d8347185899f4c"
+    },
+    {
+      "from": "大模型/Infra/pic/forward.png",
+      "to": "notes/llm/infra/pic/forward.png",
+      "sha256": "31df1d011737faf54b38ace37ee18eda76201a0efb485dbbb8b2eaf46d542c29"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_output_layer_softmax.png",
+      "to": "notes/llm/infra/pic/tp_split_output_layer_softmax.png",
+      "sha256": "119bee3f46a92ba7310f134916d38fd96dfe9b1b159e579c6c84afb72e9c3a30"
+    },
+    {
+      "from": "大模型/Infra/pic/Pasted Graphic 3.png",
+      "to": "notes/llm/infra/pic/Pasted Graphic 3.png",
+      "sha256": "9a91c379593875eaca049a145009c3d87c2105cce09975ca73a893be06834d1e"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-2-step1.png",
+      "to": "notes/llm/infra/pic/ZeRO-2-step1.png",
+      "sha256": "696b58ad9be5a95c3575e69bf1ac9bf02f3dd718f7a125ac2cd38e4244bf033e"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_col_split_gradient_1.png",
+      "to": "notes/llm/infra/pic/tp_col_split_gradient_1.png",
+      "sha256": "2713ff33de937914fc685da620ea6c24590e4b3359695845c1fa27bf53f26e7f"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-x2.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-x2.png",
+      "sha256": "cf53dc9215490719542cf5bd2c6e5fe80eb1336b633dabd2889ba41cd78fd3f0"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-max.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-max.png",
+      "sha256": "6f4714c79d3de255bf990b2a04d8594f3cc08706a0016d05ef9ae1644e68ef1a"
+    },
+    {
+      "from": "大模型/Infra/pic/Pasted Graphic 4.png",
+      "to": "notes/llm/infra/pic/Pasted Graphic 4.png",
+      "sha256": "b500a5f60e7716fadb10b7a1c96ce1c670ff5a05b9bfb53b875079f03136bbad"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-2-step2.png",
+      "to": "notes/llm/infra/pic/ZeRO-2-step2.png",
+      "sha256": "40da8ccb825bdfaede40b6e2b8b2c06fc0eb8c5d142da3eb1d6709a994f94e6b"
+    },
+    {
+      "from": "大模型/Infra/pic/all-gather.png",
+      "to": "notes/llm/infra/pic/all-gather.png",
+      "sha256": "18da9ce906bcc323120c320f6c9020decaa0755664299d352d819562ababc1b9"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_dp.png",
+      "to": "notes/llm/infra/pic/tp_dp.png",
+      "sha256": "8cda892fc3f28da8128e468a98d08d3988296dbfa99991eecbdcd017241697e3"
+    },
+    {
+      "from": "大模型/Infra/pic/gpu_memory.png",
+      "to": "notes/llm/infra/pic/gpu_memory.png",
+      "sha256": "6bec8a8e33a866455eb35bbef9d45e2073d5c868531bb7f0bcb547edc37d5662"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_row_split_forward.png",
+      "to": "notes/llm/infra/pic/tp_row_split_forward.png",
+      "sha256": "6aceef5b1e35d90806b402db8f7032a13cad031bc454f24006ee191202c724e5"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-x1.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-x1.png",
+      "sha256": "e7d3a9557921112e36ba79ca3eb28ba572b2d793d0224a7771eaa26b3301c47a"
+    },
+    {
+      "from": "大模型/Infra/pic/Pasted Graphic.png",
+      "to": "notes/llm/infra/pic/Pasted Graphic.png",
+      "sha256": "5dd70b4fee3fc598def870a58dc44eb56bc90a66ad2396d49413e13e6009c9a7"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attention-softmax-stable.png",
+      "to": "notes/llm/infra/pic/flash-attention-softmax-stable.png",
+      "sha256": "a651ef116ee398b6d3067a4b2f98cb8b975dca4ac32b92e857b6bf6575e8c247"
+    },
+    {
+      "from": "大模型/Infra/pic/image-1.png",
+      "to": "notes/llm/infra/pic/image-1.png",
+      "sha256": "747cf991d57c5b2041f50b1dd24b0685ba92befa01c070b11829ae1a9ea90543"
+    },
+    {
+      "from": "大模型/Infra/pic/pipeline_parallelism.png",
+      "to": "notes/llm/infra/pic/pipeline_parallelism.png",
+      "sha256": "42529fd44b965d1e88d0de0a726e7942c913282d13be14c7a594d3bfe13e41c4"
+    },
+    {
+      "from": "大模型/Infra/pic/flash-attetion-gpu-mem.png",
+      "to": "notes/llm/infra/pic/flash-attetion-gpu-mem.png",
+      "sha256": "1f5218ca677ed4416dbd54c2cc5c85445828610dccb7a0f3b1ceb3b4d4bd0330"
+    },
+    {
+      "from": "大模型/Infra/pic/RoPE_apply.png",
+      "to": "notes/llm/infra/pic/RoPE_apply.png",
+      "sha256": "02f8e29e89c4134dde4da8a4476c6894108ad9d5fbb2c0b4704514245f11843b"
+    },
+    {
+      "from": "大模型/Infra/pic/image-3.png",
+      "to": "notes/llm/infra/pic/image-3.png",
+      "sha256": "24f39ad1d745e459d50959b5f53d665f73d30a69d503b1f1a75300a966ba6982"
+    },
+    {
+      "from": "大模型/Infra/pic/image-2.png",
+      "to": "notes/llm/infra/pic/image-2.png",
+      "sha256": "f8ab851009492fa7b8dd174167e75d43199289610c13db8f85f0aa7ffdf91630"
+    },
+    {
+      "from": "大模型/Infra/pic/Multi-Head Attention.png",
+      "to": "notes/llm/infra/pic/Multi-Head Attention.png",
+      "sha256": "c95ab3bd673456926c9a2a04eb9172a5f80663e9f10a64b348f53f83398bcbdf"
+    },
+    {
+      "from": "大模型/Infra/pic/ZeRO-3-step1.png",
+      "to": "notes/llm/infra/pic/ZeRO-3-step1.png",
+      "sha256": "d818b0a32a05b1f862d0b19f353ca7102ec3ed668b0b9037a0d4ae3758bab621"
+    },
+    {
+      "from": "大模型/Infra/pic/image-6.png",
+      "to": "notes/llm/infra/pic/image-6.png",
+      "sha256": "41eedc204e29b060e0eb642bd469c935eaf2c62bdb7e495768af3bda710198fa"
+    },
+    {
+      "from": "大模型/Infra/pic/image-7.png",
+      "to": "notes/llm/infra/pic/image-7.png",
+      "sha256": "264c80c6e2ab5ac48d12993dbf31301d985130830eb44a59c081b0956afc956f"
+    },
+    {
+      "from": "大模型/Infra/pic/train_time_cost.png",
+      "to": "notes/llm/infra/pic/train_time_cost.png",
+      "sha256": "9c3df446fcc52978c6378178cef88789bc85b2176f391a5ebf2cbc2c833454bb"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_whole.png",
+      "to": "notes/llm/infra/pic/tp_whole.png",
+      "sha256": "cceaac073eca106f1a84ab40ccf714a1f50e93415c1dabda60cfb7469777a73a"
+    },
+    {
+      "from": "大模型/Infra/pic/RoPE_cos_sin.png",
+      "to": "notes/llm/infra/pic/RoPE_cos_sin.png",
+      "sha256": "79733a8c64fc31a8b7581b9f9e781a6c47f49889bf9bbfc722b564a3f7c0e1bb"
+    },
+    {
+      "from": "大模型/Infra/pic/tp_split_MLP.png",
+      "to": "notes/llm/infra/pic/tp_split_MLP.png",
+      "sha256": "ede4b1d5178422370a7833eef7ca6edbd36da26acdab853726f78ad479d8463e"
+    },
+    {
+      "from": "大模型/Infra/pic/image.png",
+      "to": "notes/llm/infra/pic/image.png",
+      "sha256": "f2be69c787a6824624d3af118f9b96e88b71dd33738778576cbdf509f5cd592e"
+    },
+    {
+      "from": "大模型/Infra/pic/image-5.png",
+      "to": "notes/llm/infra/pic/image-5.png",
+      "sha256": "9d17409e4085df5ccf9e322772fd13448660deedfe22fe5382cba2e8deb231c0"
+    },
+    {
+      "from": "大模型/Infra/pic/image-4.png",
+      "to": "notes/llm/infra/pic/image-4.png",
+      "sha256": "588a98477be47de1afedf2842075700351932b6f4643bd80c5797a46db348f08"
+    }
+  ]
+}

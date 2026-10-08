@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "mode": "Complete repository copied to a fresh temporary directory; dependencies installed, HTML built, original/image/math checks passed using only the copied repository.",
+  "pages": 20,
+  "localLinksWithinCopy": 897,
+  "contentSymlinks": [],
+  "originalFilesRestoredAndMatched": 325
+}

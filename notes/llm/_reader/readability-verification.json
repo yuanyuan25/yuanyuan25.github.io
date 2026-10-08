@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "noteChecks": 16,
+  "chineseProsePhrases": 1486,
+  "scope": "Chinese prose phrases from current Markdown are present in generated article text; human review separately checks pedagogical completeness.",
+  "results": [
+    {
+      "file": "post-training/DPO.md",
+      "prosePhrasesChecked": 224,
+      "missing": []
+    },
+    {
+      "file": "post-training/PPO.md",
+      "prosePhrasesChecked": 1,
+      "missing": []
+    },
+    {
+      "file": "post-training/GRPO.md",
+      "prosePhrasesChecked": 0,
+      "missing": []
+    },
+    {
+      "file": "post-training/GXPO.md",
+      "prosePhrasesChecked": 3,
+      "missing": []
+    },
+    {
+      "file": "post-training/pair-grpo-family.md",
+      "prosePhrasesChecked": 208,
+      "missing": []
+    },
+    {
+      "file": "post-training/MTP.md",
+      "prosePhrasesChecked": 75,
+      "missing": []
+    },
+    {
+      "file": "post-training/SD-Zero.md",
+      "prosePhrasesChecked": 168,
+      "missing": []
+    },
+    {
+      "file": "infra/transformer结构.md",
+      "prosePhrasesChecked": 88,
+      "missing": []
+    },
+    {
+      "file": "infra/激活函数.md",
+      "prosePhrasesChecked": 35,
+      "missing": []
+    },
+    {
+      "file": "infra/MLA.md",
+      "prosePhrasesChecked": 2,
+      "missing": []
+    },
+    {
+      "file": "infra/混合精度.md",
+      "prosePhrasesChecked": 56,
+      "missing": []
+    },
+    {
+      "file": "infra/分布式训练-数据并行.md",
+      "prosePhrasesChecked": 147,
+      "missing": []
+    },
+    {
+      "file": "infra/分布式训练-模型并行.md",
+      "prosePhrasesChecked": 149,
+      "missing": []
+    },
+    {
+      "file": "infra/分布式训练-流水线并行.md",
+      "prosePhrasesChecked": 66,
+      "missing": []
+    },
+    {
+      "file": "infra/显存分析.md",
+      "prosePhrasesChecked": 146,
+      "missing": []
+    },
+    {
+      "file": "infra/Flash_attention.md",
+      "prosePhrasesChecked": 118,
+      "missing": []
+    }
+  ]
+}

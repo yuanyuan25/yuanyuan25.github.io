@@ -1,0 +1,341 @@
+{
+  "passed": true,
+  "mode": "Local HTTP with external requests blocked",
+  "pageChecks": 46,
+  "functions": [
+    "Shared site brand, navigation, footer, colors, typography and header geometry",
+    "Learning notes active in global navigation",
+    "Explicit index.html links from home to reports and back",
+    "Site home to learning notes",
+    "Topic anchors",
+    "Cross-section navigation",
+    "Search result paths",
+    "Return to site home on desktop and mobile",
+    "Existing recent reports still load"
+  ],
+  "errors": [],
+  "pages": [
+    {
+      "file": "index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "llm_reports/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "summaries/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "practice/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/DPO.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 189
+    },
+    {
+      "file": "notes/llm/post-training/PPO.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/GRPO.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/GXPO.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/pair-grpo-family.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 96
+    },
+    {
+      "file": "notes/llm/post-training/MTP.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 48
+    },
+    {
+      "file": "notes/llm/post-training/SD-Zero.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 20
+    },
+    {
+      "file": "notes/llm/infra/transformer结构.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 83
+    },
+    {
+      "file": "notes/llm/infra/激活函数.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 28
+    },
+    {
+      "file": "notes/llm/infra/MLA.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/infra/混合精度.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 14
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-数据并行.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 42
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-模型并行.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 114
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-流水线并行.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 45
+    },
+    {
+      "file": "notes/llm/infra/显存分析.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 228
+    },
+    {
+      "file": "notes/llm/infra/Flash_attention.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 85
+    },
+    {
+      "file": "notes/llm/revision-notes.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0
+    },
+    {
+      "file": "index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "llm_reports/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "summaries/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "practice/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/DPO.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 189
+    },
+    {
+      "file": "notes/llm/post-training/PPO.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/GRPO.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/GXPO.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/post-training/pair-grpo-family.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 96
+    },
+    {
+      "file": "notes/llm/post-training/MTP.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 48
+    },
+    {
+      "file": "notes/llm/post-training/SD-Zero.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 20
+    },
+    {
+      "file": "notes/llm/infra/transformer结构.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 83
+    },
+    {
+      "file": "notes/llm/infra/激活函数.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 28
+    },
+    {
+      "file": "notes/llm/infra/MLA.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    },
+    {
+      "file": "notes/llm/infra/混合精度.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 14
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-数据并行.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 42
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-模型并行.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 114
+    },
+    {
+      "file": "notes/llm/infra/分布式训练-流水线并行.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 45
+    },
+    {
+      "file": "notes/llm/infra/显存分析.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 228
+    },
+    {
+      "file": "notes/llm/infra/Flash_attention.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 85
+    },
+    {
+      "file": "notes/llm/revision-notes.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0
+    }
+  ]
+}
