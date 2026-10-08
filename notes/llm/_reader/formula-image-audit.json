@@ -139,13 +139,6 @@
     },
     {
       "note": "post-training/MTP.md",
-      "image": "post-training/pic/MTP.png",
-      "sha256": "9fc24fc744db00c72946f6918a870caa4a891cb91bda7ee1414ee5ec58eaf89d",
-      "originalBytesPreserved": true,
-      "review": "Prediction depth, shifted true-token inputs and model-head differences checked; original architecture assets retained."
-    },
-    {
-      "note": "post-training/MTP.md",
       "image": "post-training/pic/MTP_Meta.png",
       "sha256": "7ab7350ca2725ffada27a66487192d422a03556f0e9a0ea896384f9fb1232343",
       "originalBytesPreserved": true,
@@ -155,6 +148,13 @@
       "note": "post-training/MTP.md",
       "image": "post-training/pic/MTP_DeepSeek.png",
       "sha256": "27a6b514e61d9821251130341a9dc2495ebede351cd2bd6f33795da1379334d7",
+      "originalBytesPreserved": true,
+      "review": "Prediction depth, shifted true-token inputs and model-head differences checked; original architecture assets retained."
+    },
+    {
+      "note": "post-training/MTP.md",
+      "image": "post-training/pic/MTP.png",
+      "sha256": "9fc24fc744db00c72946f6918a870caa4a891cb91bda7ee1414ee5ec58eaf89d",
       "originalBytesPreserved": true,
       "review": "Prediction depth, shifted true-token inputs and model-head differences checked; original architecture assets retained."
     },
@@ -195,6 +195,13 @@
     },
     {
       "note": "infra/激活函数.md",
+      "image": "infra/pic/image-7.png",
+      "sha256": "264c80c6e2ab5ac48d12993dbf31301d985130830eb44a59c081b0956afc956f",
+      "originalBytesPreserved": true,
+      "review": "SiLU/SwiGLU equations and derivative checked; generic activation lookup screenshot qualified."
+    },
+    {
+      "note": "infra/激活函数.md",
       "image": "infra/pic/Pasted Graphic 4.png",
       "sha256": "b500a5f60e7716fadb10b7a1c96ce1c670ff5a05b9bfb53b875079f03136bbad",
       "originalBytesPreserved": true,
@@ -211,13 +218,6 @@
       "note": "infra/激活函数.md",
       "image": "infra/pic/image-6.png",
       "sha256": "41eedc204e29b060e0eb642bd469c935eaf2c62bdb7e495768af3bda710198fa",
-      "originalBytesPreserved": true,
-      "review": "SiLU/SwiGLU equations and derivative checked; generic activation lookup screenshot qualified."
-    },
-    {
-      "note": "infra/激活函数.md",
-      "image": "infra/pic/image-7.png",
-      "sha256": "264c80c6e2ab5ac48d12993dbf31301d985130830eb44a59c081b0956afc956f",
       "originalBytesPreserved": true,
       "review": "SiLU/SwiGLU equations and derivative checked; generic activation lookup screenshot qualified."
     },

@@ -1,458 +1,512 @@
 {
-  "created": "2026-10-08",
-  "description": "修订前逐文件 SHA256；old 目录保留原文件和图片。",
+  "date": "2026-10-08",
+  "scope": "Original asset hashes and required figure references; no archived Markdown content.",
   "files": {
-    "后训练/DPO.md": {
-      "sha256": "c747b0c8b2c45f776fed02fd36e17e5a53eec92a3f37702e0d992835205cfed9",
-      "bytes": 4211
-    },
-    "后训练/GRPO.md": {
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0
-    },
-    "后训练/GXPO.md": {
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0
-    },
-    "后训练/MTP.md": {
-      "sha256": "5c72fbfec2f79389a37f961f25c0174f997e1451a2df0c8fee2bd5ecce404465",
-      "bytes": 1264
-    },
-    "后训练/PPO.md": {
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0
-    },
-    "后训练/SD-Zero.md": {
-      "sha256": "d23bcdf639d7f6cfae1ddeb02234c5a290bab95a0000fc4d7d5ab65203ab79a6",
-      "bytes": 21094
-    },
-    "后训练/pair-grpo-family.md": {
-      "sha256": "2550864c0e14811333f710de08220461a05e0ac0759bb467c5c219013e960b49",
-      "bytes": 27337
-    },
-    "后训练/pic/Bradley-Terry.png": {
+    "post-training/pic/Bradley-Terry.png": {
       "sha256": "e1086b31e1a836973d9e90003cf5b4ab43f67a41f4ab35fb508ace1695045935",
       "bytes": 47596
     },
-    "后训练/pic/DPO_RL_Loss.png": {
+    "post-training/pic/DPO_RL_Loss.png": {
       "sha256": "608d99e4446f3daf51dd3027d13ad98b9bb92e85c8eaa32e068bf1f0cec35f60",
       "bytes": 16879
     },
-    "后训练/pic/DPO_RL_trans_1.png": {
+    "post-training/pic/DPO_RL_trans_1.png": {
       "sha256": "2afcad6546ae07eb27dcdb828a596f32d6f4d54b10c03c825814bd092cd4d4d3",
       "bytes": 81715
     },
-    "后训练/pic/DPO_RL_trans_2.png": {
+    "post-training/pic/DPO_RL_trans_2.png": {
       "sha256": "1221adc1f5623e885f552fcd3626529a5c5d12f48d67d5db90f87b2c4b2121da",
       "bytes": 62938
     },
-    "后训练/pic/DPO_RM_Loss.png": {
+    "post-training/pic/DPO_RM_Loss.png": {
       "sha256": "d3ccfe3e826510db3f6336813227bd0e1004cfad0ff7751237f1d08dc7680a1c",
       "bytes": 13331
     },
-    "后训练/pic/DPO_Z.png": {
+    "post-training/pic/DPO_Z.png": {
       "sha256": "ce861a70f824ed3286c6926208bd6bbf18cb52d1cf01d6d75b178b0621f2f98a",
       "bytes": 34156
     },
-    "后训练/pic/DPO_pai*.png": {
+    "post-training/pic/DPO_pai*.png": {
       "sha256": "5b81ed326edbfbf2f5b568a194b337eb3e57fe66306fc189f8f0437f12cbe41e",
       "bytes": 15191
     },
-    "后训练/pic/DPO_trans_R.png": {
+    "post-training/pic/DPO_trans_R.png": {
       "sha256": "540188dc277bca89990da0027f7deb321a8e8e1e41087caf830ae79362e5c39d",
       "bytes": 13176
     },
-    "后训练/pic/DPO_trans_RM.png": {
+    "post-training/pic/DPO_trans_RM.png": {
       "sha256": "75d183f8d0f2edb5dcec3377f12977a1eb3fc8bcab48f34a6147ea7d2bbf78f7",
       "bytes": 29617
     },
-    "后训练/pic/DPO_trans_RM_pai.png": {
+    "post-training/pic/DPO_trans_RM_pai.png": {
       "sha256": "cf91f1277e1e5e46264448bbe7727cea69f4ac9481c817d9c74111f03ca8f318",
       "bytes": 23115
     },
-    "后训练/pic/KL_E.png": {
+    "post-training/pic/KL_E.png": {
       "sha256": "2a4e4c1b6918375a4e1b985c4f32f0c98e850c6d41be3291fc27b9a444a1f8ba",
       "bytes": 34747
     },
-    "后训练/pic/KL_SUM.png": {
+    "post-training/pic/KL_SUM.png": {
       "sha256": "23727e3c25fd7cd47dddfb769f5b9120317d465b3c98485ad471f94969ed6a2a",
       "bytes": 22887
     },
-    "后训练/pic/KL_Y.png": {
+    "post-training/pic/KL_Y.png": {
       "sha256": "1ad6d68e06565eea425070506c7ba15c43dc11be44cc4b94c4c5c779c85613be",
       "bytes": 18801
     },
-    "后训练/pic/KL_to_E.png": {
+    "post-training/pic/KL_to_E.png": {
       "sha256": "dc668407afe9f93664f002a4cb666f607193d6b3d69445eb1bedbc64b228d08f",
       "bytes": 22044
     },
-    "后训练/pic/MTP.png": {
+    "post-training/pic/MTP.png": {
       "sha256": "9fc24fc744db00c72946f6918a870caa4a891cb91bda7ee1414ee5ec58eaf89d",
       "bytes": 159748
     },
-    "后训练/pic/MTP_DeepSeek.png": {
+    "post-training/pic/MTP_DeepSeek.png": {
       "sha256": "27a6b514e61d9821251130341a9dc2495ebede351cd2bd6f33795da1379334d7",
       "bytes": 281198
     },
-    "后训练/pic/MTP_Meta.png": {
+    "post-training/pic/MTP_Meta.png": {
       "sha256": "7ab7350ca2725ffada27a66487192d422a03556f0e9a0ea896384f9fb1232343",
       "bytes": 280455
     },
-    "后训练/pic/RM_L.png": {
+    "post-training/pic/RM_L.png": {
       "sha256": "09fd18cbadd2d8a56444a9211e8d8467c420c8d3cd4fa0865bd00a4aa4a20fdd",
       "bytes": 21607
     },
-    "后训练/pic/RM_L_log.png": {
+    "post-training/pic/RM_L_log.png": {
       "sha256": "e1a23ede9c91fb2fe24834226f91297d2329a766cdb0a49f347213ef6613ef8d",
       "bytes": 33004
     },
-    "后训练/pic/RM_Loss.png": {
+    "post-training/pic/RM_Loss.png": {
       "sha256": "346ea7a10ad366aff60255cbd0a7c3e00b6f3a2710c152a1faefb8ca5d3887e5",
       "bytes": 34353
     },
-    "后训练/pic/RM_Loss_e.png": {
+    "post-training/pic/RM_Loss_e.png": {
       "sha256": "cca71f68a31c894680ac67490fdec1df8b3a6d8879282a83f54be2e3ad49eb88",
       "bytes": 27631
     },
-    "后训练/pic/RM_argmax.png": {
+    "post-training/pic/RM_argmax.png": {
       "sha256": "d980190b6442c664710a0682020618b34584e7b5febc9bbd3960ccaf6db5da46",
       "bytes": 43160
     },
-    "后训练/pic/sd-zero-algorithm.png": {
+    "post-training/pic/sd-zero-algorithm.png": {
       "sha256": "008264eb326c9242c8ee4f5da6a46822d406dfd03eb902ceff749c1fdc8e9e09",
       "bytes": 377005
     },
-    "后训练/pic/sd-zero-algorithm.svg": {
+    "post-training/pic/sd-zero-algorithm.svg": {
       "sha256": "daf1f3a4d1ef4fdde0f0cd82a019f072a7d8c33f432633ac42840401a5324e37",
       "bytes": 10181
     },
-    "Infra/Flash_attention.md": {
-      "sha256": "0c609ee41454a5d46045e794ef807dafb0ea53e98fc123da44890b1c1245fb8e",
-      "bytes": 3544
-    },
-    "Infra/MLA.md": {
-      "sha256": "0d498d3eaf71ec8e0f84776dd513a5a225d163a060bc819f46751292c1ad66a1",
-      "bytes": 7
-    },
-    "Infra/pic/GPU_bubble.png": {
+    "infra/pic/GPU_bubble.png": {
       "sha256": "5df26ec776db188ce74501981552dc62663da31f4450f60634cefc0e7c8728e6",
       "bytes": 145668
     },
-    "Infra/pic/Multi-Head Attention.png": {
+    "infra/pic/Multi-Head Attention.png": {
       "sha256": "c95ab3bd673456926c9a2a04eb9172a5f80663e9f10a64b348f53f83398bcbdf",
       "bytes": 60462
     },
-    "Infra/pic/Pasted Graphic 1.png": {
+    "infra/pic/Pasted Graphic 1.png": {
       "sha256": "efbb19f8760b8c999d146846a58ed6866b29f830d73f1747b0424a04226e4d07",
       "bytes": 104203
     },
-    "Infra/pic/Pasted Graphic 2.png": {
+    "infra/pic/Pasted Graphic 2.png": {
       "sha256": "bcfb021be58cb4858084cd101725366093777efdf2f59d3e989d8f913c5319ae",
       "bytes": 86150
     },
-    "Infra/pic/Pasted Graphic 3.png": {
+    "infra/pic/Pasted Graphic 3.png": {
       "sha256": "9a91c379593875eaca049a145009c3d87c2105cce09975ca73a893be06834d1e",
       "bytes": 129446
     },
-    "Infra/pic/Pasted Graphic 4.png": {
+    "infra/pic/Pasted Graphic 4.png": {
       "sha256": "b500a5f60e7716fadb10b7a1c96ce1c670ff5a05b9bfb53b875079f03136bbad",
       "bytes": 71893
     },
-    "Infra/pic/Pasted Graphic.png": {
+    "infra/pic/Pasted Graphic.png": {
       "sha256": "5dd70b4fee3fc598def870a58dc44eb56bc90a66ad2396d49413e13e6009c9a7",
       "bytes": 41177
     },
-    "Infra/pic/RoPE_apply.png": {
+    "infra/pic/RoPE_apply.png": {
       "sha256": "02f8e29e89c4134dde4da8a4476c6894108ad9d5fbb2c0b4704514245f11843b",
       "bytes": 168563
     },
-    "Infra/pic/RoPE_cos_sin.png": {
+    "infra/pic/RoPE_cos_sin.png": {
       "sha256": "79733a8c64fc31a8b7581b9f9e781a6c47f49889bf9bbfc722b564a3f7c0e1bb",
       "bytes": 186673
     },
-    "Infra/pic/ZeRO-1-cost.png": {
+    "infra/pic/ZeRO-1-cost.png": {
       "sha256": "2f894e36e2cee55dfd1fe192888c139be17a6a32367a049eda47c4f9513265a4",
       "bytes": 113392
     },
-    "Infra/pic/ZeRO-1-step1.png": {
+    "infra/pic/ZeRO-1-step1.png": {
       "sha256": "e50e5f1ee180d79b81af8b8993d7a16678b85295e22d089c5ed59e75613615d8",
       "bytes": 324501
     },
-    "Infra/pic/ZeRO-1-step2.png": {
+    "infra/pic/ZeRO-1-step2.png": {
       "sha256": "233dc943e849a0e2011303c5ff38d0b0a67eadbbee0daa683b3cc4170afa9ebc",
       "bytes": 298555
     },
-    "Infra/pic/ZeRO-2-cost.png": {
+    "infra/pic/ZeRO-2-cost.png": {
       "sha256": "8785b1ba184d01a93893d2dd7c435d33d44d5d0594f9f6d8e737d7144e3badc3",
       "bytes": 151938
     },
-    "Infra/pic/ZeRO-2-step1.png": {
+    "infra/pic/ZeRO-2-step1.png": {
       "sha256": "696b58ad9be5a95c3575e69bf1ac9bf02f3dd718f7a125ac2cd38e4244bf033e",
       "bytes": 288467
     },
-    "Infra/pic/ZeRO-2-step2.png": {
+    "infra/pic/ZeRO-2-step2.png": {
       "sha256": "40da8ccb825bdfaede40b6e2b8b2c06fc0eb8c5d142da3eb1d6709a994f94e6b",
       "bytes": 406883
     },
-    "Infra/pic/ZeRO-3-cost.png": {
+    "infra/pic/ZeRO-3-cost.png": {
       "sha256": "ea52abd046a99d6e0bf12e382b5cb7eb1a7da7075144e7ee7845010780ea84bb",
       "bytes": 170507
     },
-    "Infra/pic/ZeRO-3-step1.png": {
+    "infra/pic/ZeRO-3-step1.png": {
       "sha256": "d818b0a32a05b1f862d0b19f353ca7102ec3ed668b0b9037a0d4ae3758bab621",
       "bytes": 299811
     },
-    "Infra/pic/ZeRO-Offload.png": {
+    "infra/pic/ZeRO-Offload.png": {
       "sha256": "d4710c6d2db97c8422b3144810e0698fb395a1851e355e8f6ab0a98cf0397af3",
       "bytes": 356944
     },
-    "Infra/pic/ZeRO.png": {
+    "infra/pic/ZeRO.png": {
       "sha256": "d4c042f22c7bbb0a983326c6b52f1db2bb80d182e7e99344c4d6cc182b4d9dad",
       "bytes": 125866
     },
-    "Infra/pic/all-gather.png": {
+    "infra/pic/all-gather.png": {
       "sha256": "18da9ce906bcc323120c320f6c9020decaa0755664299d352d819562ababc1b9",
       "bytes": 131514
     },
-    "Infra/pic/all-reduce.png": {
+    "infra/pic/all-reduce.png": {
       "sha256": "618569247bdba8d676839d2c2a3ed01e8c1af82be360a7c268157725dfbd1c76",
       "bytes": 132303
     },
-    "Infra/pic/decoder.png": {
+    "infra/pic/decoder.png": {
       "sha256": "22f55a354adafaf3167bb680de7b3468688d8b8fbd582827ccccdca483b40355",
       "bytes": 815526
     },
-    "Infra/pic/dp_tp_pp.png": {
+    "infra/pic/dp_tp_pp.png": {
       "sha256": "0eb4d79495b6f8b628afaeca05e4c9942fd990799c1065ff9a01ec53f5bd85fe",
       "bytes": 405649
     },
-    "Infra/pic/ep+dp+tp+pp.png": {
+    "infra/pic/ep+dp+tp+pp.png": {
       "sha256": "fa3fff90ad949ed5481a250d85f5189e4c489398bad8a44246c56edebe1634e6",
       "bytes": 832775
     },
-    "Infra/pic/flash-attention-code.png": {
+    "infra/pic/flash-attention-code.png": {
       "sha256": "090814caeb388bba8a51576046195bd3ad82d5dcb5a97f60cb3d400286575398",
       "bytes": 153783
     },
-    "Infra/pic/flash-attention-softmax-f-all.png": {
+    "infra/pic/flash-attention-softmax-f-all.png": {
       "sha256": "39273a2e1ddcb8254370c386e4d972eeffc7695ce604eb9910b675d51abe3c64",
       "bytes": 30729
     },
-    "Infra/pic/flash-attention-softmax-fenmu.png": {
+    "infra/pic/flash-attention-softmax-fenmu.png": {
       "sha256": "3402ddb98d8d769b45e26879575c21da3a8386a1fbde7700ac59a3b40b8a3831",
       "bytes": 3515
     },
-    "Infra/pic/flash-attention-softmax-fenzi.png": {
+    "infra/pic/flash-attention-softmax-fenzi.png": {
       "sha256": "3c3d379cd1c524dc9b2353e1db11043ee369406564f0d2346714b0bd78e290d6",
       "bytes": 6622
     },
-    "Infra/pic/flash-attention-softmax-l-all.png": {
+    "infra/pic/flash-attention-softmax-l-all.png": {
       "sha256": "787c9b864b2b3bd32471b64133735ffd3c7ce4cac1347c7d055ff3f8f17bf33c",
       "bytes": 11732
     },
-    "Infra/pic/flash-attention-softmax-max-all.png": {
+    "infra/pic/flash-attention-softmax-max-all.png": {
       "sha256": "38c053370a4bde24d879c5da7fc4c2ce48b310fa51ff11c4881a4c600fc2ad13",
       "bytes": 10902
     },
-    "Infra/pic/flash-attention-softmax-max.png": {
+    "infra/pic/flash-attention-softmax-max.png": {
       "sha256": "6f4714c79d3de255bf990b2a04d8594f3cc08706a0016d05ef9ae1644e68ef1a",
       "bytes": 9306
     },
-    "Infra/pic/flash-attention-softmax-stable.png": {
+    "infra/pic/flash-attention-softmax-stable.png": {
       "sha256": "a651ef116ee398b6d3067a4b2f98cb8b975dca4ac32b92e857b6bf6575e8c247",
       "bytes": 5679
     },
-    "Infra/pic/flash-attention-softmax-x1.png": {
+    "infra/pic/flash-attention-softmax-x1.png": {
       "sha256": "e7d3a9557921112e36ba79ca3eb28ba572b2d793d0224a7771eaa26b3301c47a",
       "bytes": 5944
     },
-    "Infra/pic/flash-attention-softmax-x2.png": {
+    "infra/pic/flash-attention-softmax-x2.png": {
       "sha256": "cf53dc9215490719542cf5bd2c6e5fe80eb1336b633dabd2889ba41cd78fd3f0",
       "bytes": 6937
     },
-    "Infra/pic/flash-attention-softmax.png": {
+    "infra/pic/flash-attention-softmax.png": {
       "sha256": "e6e5317178f860e72b447bf169c6acadbc9587f8c1e21f87722e01195823c551",
       "bytes": 5656
     },
-    "Infra/pic/flash-attetion-gpu-mem.png": {
+    "infra/pic/flash-attetion-gpu-mem.png": {
       "sha256": "1f5218ca677ed4416dbd54c2cc5c85445828610dccb7a0f3b1ceb3b4d4bd0330",
       "bytes": 174870
     },
-    "Infra/pic/flash-attetion-transformer-HBM.png": {
+    "infra/pic/flash-attetion-transformer-HBM.png": {
       "sha256": "cc6697f79101568c79d5657f13051cf724687d36c76482c9fda6d7f7fa1ae44d",
       "bytes": 50080
     },
-    "Infra/pic/forward.png": {
+    "infra/pic/forward.png": {
       "sha256": "31df1d011737faf54b38ace37ee18eda76201a0efb485dbbb8b2eaf46d542c29",
       "bytes": 122566
     },
-    "Infra/pic/gpu_memory.png": {
+    "infra/pic/gpu_memory.png": {
       "sha256": "6bec8a8e33a866455eb35bbef9d45e2073d5c868531bb7f0bcb547edc37d5662",
       "bytes": 174735
     },
-    "Infra/pic/image-1.png": {
+    "infra/pic/image-1.png": {
       "sha256": "747cf991d57c5b2041f50b1dd24b0685ba92befa01c070b11829ae1a9ea90543",
       "bytes": 299952
     },
-    "Infra/pic/image-10.png": {
+    "infra/pic/image-10.png": {
       "sha256": "3dc08884539ebff54a0a123c5045e4db9adcba0cd9a49024770ab18a90ee82b8",
       "bytes": 5796
     },
-    "Infra/pic/image-11.png": {
+    "infra/pic/image-11.png": {
       "sha256": "d2be2b780607a5f58dc86b52f10a3c26b4733ce8ac3a76ab5f0c92c6d029ab30",
       "bytes": 125410
     },
-    "Infra/pic/image-2.png": {
+    "infra/pic/image-2.png": {
       "sha256": "f8ab851009492fa7b8dd174167e75d43199289610c13db8f85f0aa7ffdf91630",
       "bytes": 68478
     },
-    "Infra/pic/image-3.png": {
+    "infra/pic/image-3.png": {
       "sha256": "24f39ad1d745e459d50959b5f53d665f73d30a69d503b1f1a75300a966ba6982",
       "bytes": 31497
     },
-    "Infra/pic/image-4.png": {
+    "infra/pic/image-4.png": {
       "sha256": "588a98477be47de1afedf2842075700351932b6f4643bd80c5797a46db348f08",
       "bytes": 24910
     },
-    "Infra/pic/image-5.png": {
+    "infra/pic/image-5.png": {
       "sha256": "9d17409e4085df5ccf9e322772fd13448660deedfe22fe5382cba2e8deb231c0",
       "bytes": 248131
     },
-    "Infra/pic/image-6.png": {
+    "infra/pic/image-6.png": {
       "sha256": "41eedc204e29b060e0eb642bd469c935eaf2c62bdb7e495768af3bda710198fa",
       "bytes": 315961
     },
-    "Infra/pic/image-7.png": {
+    "infra/pic/image-7.png": {
       "sha256": "264c80c6e2ab5ac48d12993dbf31301d985130830eb44a59c081b0956afc956f",
       "bytes": 421990
     },
-    "Infra/pic/image-8.png": {
+    "infra/pic/image-8.png": {
       "sha256": "a97a2b96746001d529891d8dffb2bfbd4b669d4f7a930a7039c4bd9be219dc01",
       "bytes": 10882
     },
-    "Infra/pic/image-9.png": {
+    "infra/pic/image-9.png": {
       "sha256": "bb519fff5274ddbb7e40b7d3e49e1ae1c5f92242198a7856cdc6630f8292729c",
       "bytes": 34350
     },
-    "Infra/pic/image.png": {
+    "infra/pic/image.png": {
       "sha256": "f2be69c787a6824624d3af118f9b96e88b71dd33738778576cbdf509f5cd592e",
       "bytes": 292035
     },
-    "Infra/pic/pipeline_parallelism.png": {
+    "infra/pic/pipeline_parallelism.png": {
       "sha256": "42529fd44b965d1e88d0de0a726e7942c913282d13be14c7a594d3bfe13e41c4",
       "bytes": 206060
     },
-    "Infra/pic/pp_show.png": {
+    "infra/pic/pp_show.png": {
       "sha256": "a2eb9dc1018b51ca5565c4f5970d0cdb57a30b5a7defc18d04a3dda54b8aaaf2",
       "bytes": 188929
     },
-    "Infra/pic/pp_train_step.png": {
+    "infra/pic/pp_train_step.png": {
       "sha256": "d1adde88c1b3d8ca898609a373c032e6e8bb037043effc92d0d8347185899f4c",
       "bytes": 83952
     },
-    "Infra/pic/ring_all_reduce.png": {
+    "infra/pic/ring_all_reduce.png": {
       "sha256": "65ac0a1e74cd198933ba7073cd93047e97f9a3c0d97955f8c6fd0ddbad0279db",
       "bytes": 493001
     },
-    "Infra/pic/tp_col_split.png": {
+    "infra/pic/tp_col_split.png": {
       "sha256": "0c5328f041ad7c82013c8c5fe1ab7fcc8e62439b153b2f92073eaef6fb155dab",
       "bytes": 94404
     },
-    "Infra/pic/tp_col_split_gradient_1.png": {
+    "infra/pic/tp_col_split_gradient_1.png": {
       "sha256": "2713ff33de937914fc685da620ea6c24590e4b3359695845c1fa27bf53f26e7f",
       "bytes": 36982
     },
-    "Infra/pic/tp_dp.png": {
+    "infra/pic/tp_dp.png": {
       "sha256": "8cda892fc3f28da8128e468a98d08d3988296dbfa99991eecbdcd017241697e3",
       "bytes": 59251
     },
-    "Infra/pic/tp_row_split.png": {
+    "infra/pic/tp_row_split.png": {
       "sha256": "dafc5d9850f41b6397ed3fe151b2087787bc23f316bdf47866073bebb583b1c4",
       "bytes": 95108
     },
-    "Infra/pic/tp_row_split_forward.png": {
+    "infra/pic/tp_row_split_forward.png": {
       "sha256": "6aceef5b1e35d90806b402db8f7032a13cad031bc454f24006ee191202c724e5",
       "bytes": 161416
     },
-    "Infra/pic/tp_row_split_forward_backward.png": {
+    "infra/pic/tp_row_split_forward_backward.png": {
       "sha256": "a8495d67175aff490f3ec4fb66751a6a93574a3e4f6146d58871e8d1291ddbc8",
       "bytes": 302714
     },
-    "Infra/pic/tp_row_split_forward_x.png": {
+    "infra/pic/tp_row_split_forward_x.png": {
       "sha256": "3cdd52122e1a11c272db77f2a9cebec05057b83adb6cc33685fad5836453e221",
       "bytes": 161354
     },
-    "Infra/pic/tp_row_split_gradient.png": {
+    "infra/pic/tp_row_split_gradient.png": {
       "sha256": "e7091aa5307a7bd1a473b397308873d22c3a291868a3acd7e1f58e8b07c17315",
       "bytes": 39698
     },
-    "Infra/pic/tp_row_split_gradient_1.png": {
+    "infra/pic/tp_row_split_gradient_1.png": {
       "sha256": "9318cc16af810a54b1fd0b635d061cb473cf6868bcfbad4b26d1a3867cd3d57c",
       "bytes": 9201
     },
-    "Infra/pic/tp_row_split_gradient_2.png": {
+    "infra/pic/tp_row_split_gradient_2.png": {
       "sha256": "e456389ae2f0722f26cb92dfbd95812a48d757668ef3129c9d0260d0b62ec827",
       "bytes": 7053
     },
-    "Infra/pic/tp_split_MLP.png": {
+    "infra/pic/tp_split_MLP.png": {
       "sha256": "ede4b1d5178422370a7833eef7ca6edbd36da26acdab853726f78ad479d8463e",
       "bytes": 319585
     },
-    "Infra/pic/tp_split_input_gradient.png": {
+    "infra/pic/tp_split_input_gradient.png": {
       "sha256": "4bb05e04ab84a0c5264bf5e45bf3fb067a35fcaaf1380693ff499ef32e284ac4",
       "bytes": 64321
     },
-    "Infra/pic/tp_split_input_layer.png": {
+    "infra/pic/tp_split_input_layer.png": {
       "sha256": "6e05f6c98f8ced2b6831bbeb4aeadaad8cfd1c046fa97c198775d8ddb21b6d5b",
       "bytes": 192595
     },
-    "Infra/pic/tp_split_output_layer.png": {
+    "infra/pic/tp_split_output_layer.png": {
       "sha256": "84582b3fbf0b249565b74af1027dc5b375bb96293b2cb74d424d302615dade82",
       "bytes": 107798
     },
-    "Infra/pic/tp_split_output_layer_softmax.png": {
+    "infra/pic/tp_split_output_layer_softmax.png": {
       "sha256": "119bee3f46a92ba7310f134916d38fd96dfe9b1b159e579c6c84afb72e9c3a30",
       "bytes": 241107
     },
-    "Infra/pic/tp_split_self_attention.png": {
+    "infra/pic/tp_split_self_attention.png": {
       "sha256": "ff71cf75a6644774bb6d54a68be26099cd50bab8abfedb7ae3e438da1be2f74b",
       "bytes": 183901
     },
-    "Infra/pic/tp_whole.png": {
+    "infra/pic/tp_whole.png": {
       "sha256": "cceaac073eca106f1a84ab40ccf714a1f50e93415c1dabda60cfb7469777a73a",
       "bytes": 410786
     },
-    "Infra/pic/train_time_cost.png": {
+    "infra/pic/train_time_cost.png": {
       "sha256": "9c3df446fcc52978c6378178cef88789bc85b2176f391a5ebf2cbc2c833454bb",
       "bytes": 121129
-    },
-    "Infra/transformer结构.md": {
-      "sha256": "06a231ebbc9d4e20ace607aaf57bcccfebc8401ab13538c43acbb2035107e7d0",
-      "bytes": 4424
-    },
-    "Infra/分布式训练-数据并行.md": {
-      "sha256": "554ebf77217f95c796aab40b68136a42f92390c694c1f5cc7ecec15c6e32b63f",
-      "bytes": 11611
-    },
-    "Infra/分布式训练-模型并行.md": {
-      "sha256": "270b87df8cdd05d72c3bfe01a823ff15516c5a23fa2a4222bd9d147fa934ffe8",
-      "bytes": 10809
-    },
-    "Infra/分布式训练-流水线并行.md": {
-      "sha256": "5b29cb834c5543fa70d62afa01b274144d42118e0145815b173b8823ba027ca1",
-      "bytes": 3771
-    },
-    "Infra/显存分析.md": {
-      "sha256": "058f5fedc7991de6d6ad56c5fedeecc18868d31ff011c628a5e095ce4ea0c1bd",
-      "bytes": 8921
-    },
-    "Infra/混合精度.md": {
-      "sha256": "1b473d49f59208d1848c9ad8a7c9cc574dfb457a39003eb914b5b4853a85160a",
-      "bytes": 1585
-    },
-    "Infra/激活函数.md": {
-      "sha256": "8c4fb27c6f3659a3e10def94a7a2efe9fd25ac8cb9e267bdf5e0cf27b526fa05",
-      "bytes": 1507
     }
+  },
+  "imageReferences": {
+    "post-training/DPO.md": [
+      "pic/Bradley-Terry.png",
+      "pic/DPO_RM_Loss.png",
+      "pic/RM_L.png",
+      "pic/RM_L_log.png",
+      "pic/RM_argmax.png",
+      "pic/RM_Loss.png",
+      "pic/RM_Loss_e.png",
+      "pic/DPO_RL_Loss.png",
+      "pic/KL_SUM.png",
+      "pic/KL_Y.png",
+      "pic/KL_E.png",
+      "pic/KL_to_E.png",
+      "pic/DPO_RL_Loss.png",
+      "pic/DPO_RL_trans_1.png",
+      "pic/DPO_Z.png",
+      "pic/DPO_pai*.png",
+      "pic/DPO_RL_trans_2.png",
+      "pic/DPO_trans_R.png",
+      "pic/DPO_trans_RM.png",
+      "pic/DPO_trans_RM_pai.png"
+    ],
+    "post-training/GRPO.md": [],
+    "post-training/GXPO.md": [],
+    "post-training/MTP.md": [
+      "pic/MTP.png",
+      "pic/MTP_Meta.png",
+      "pic/MTP_DeepSeek.png"
+    ],
+    "post-training/PPO.md": [],
+    "post-training/SD-Zero.md": [
+      "pic/sd-zero-algorithm.png"
+    ],
+    "post-training/pair-grpo-family.md": [],
+    "infra/Flash_attention.md": [
+      "pic/flash-attetion-gpu-mem.png",
+      "pic/flash-attetion-transformer-HBM.png",
+      "pic/flash-attention-softmax.png",
+      "pic/flash-attention-softmax-max.png",
+      "pic/flash-attention-softmax-fenzi.png",
+      "pic/flash-attention-softmax-fenmu.png",
+      "pic/flash-attention-softmax-stable.png",
+      "pic/flash-attention-softmax-x2.png",
+      "pic/flash-attention-softmax-max-all.png",
+      "pic/flash-attention-softmax-f-all.png",
+      "pic/flash-attention-softmax-l-all.png",
+      "pic/flash-attention-code.png"
+    ],
+    "infra/MLA.md": [],
+    "infra/transformer结构.md": [
+      "pic/decoder.png",
+      "pic/image-2.png",
+      "pic/RoPE_cos_sin.png",
+      "pic/RoPE_apply.png"
+    ],
+    "infra/分布式训练-数据并行.md": [
+      "pic/all-reduce.png",
+      "pic/all-gather.png",
+      "pic/ring_all_reduce.png",
+      "pic/train_time_cost.png",
+      "pic/gpu_memory.png",
+      "pic/ZeRO.png",
+      "pic/ZeRO-1-step1.png",
+      "pic/ZeRO-1-step2.png",
+      "pic/ZeRO-1-cost.png",
+      "pic/ZeRO-2-step1.png",
+      "pic/ZeRO-2-step2.png",
+      "pic/ZeRO-2-cost.png",
+      "pic/ZeRO-3-step1.png",
+      "pic/ZeRO-3-cost.png",
+      "pic/ZeRO-Offload.png"
+    ],
+    "infra/分布式训练-模型并行.md": [
+      "pic/forward.png",
+      "pic/tp_row_split.png",
+      "pic/tp_row_split_gradient.png",
+      "pic/tp_col_split.png",
+      "pic/tp_col_split_gradient_1.png",
+      "pic/tp_split_input_layer.png",
+      "pic/tp_split_output_layer.png",
+      "pic/tp_split_output_layer_softmax.png",
+      "pic/tp_split_input_gradient.png",
+      "pic/tp_split_self_attention.png",
+      "pic/tp_split_MLP.png",
+      "pic/tp_whole.png",
+      "pic/dp_tp_pp.png",
+      "pic/ep+dp+tp+pp.png"
+    ],
+    "infra/分布式训练-流水线并行.md": [
+      "pic/pp_show.png",
+      "pic/pp_train_step.png",
+      "pic/GPU_bubble.png",
+      "pic/pipeline_parallelism.png"
+    ],
+    "infra/显存分析.md": [
+      "pic/Multi-Head Attention.png",
+      "pic/Pasted Graphic 1.png",
+      "pic/Pasted Graphic 4.png",
+      "pic/Pasted Graphic 2.png",
+      "pic/Pasted Graphic 3.png",
+      "pic/Pasted Graphic.png",
+      "pic/image.png",
+      "pic/image-11.png",
+      "pic/image-8.png",
+      "pic/image-9.png",
+      "pic/image-10.png",
+      "pic/image-3.png",
+      "pic/image-4.png"
+    ],
+    "infra/混合精度.md": [],
+    "infra/激活函数.md": [
+      "pic/Pasted Graphic 4.png",
+      "pic/image-5.png",
+      "pic/image-6.png",
+      "pic/image-7.png"
+    ]
   }
 }

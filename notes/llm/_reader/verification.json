@@ -1,12 +1,11 @@
 {
   "date": "2026-10-08",
   "passed": true,
-  "originalFilesVerified": 113,
   "unchangedCurrentAssets": 97,
   "originalImageReferences": 90,
   "currentUniqueNoteImageReferences": 89,
   "htmlPages": 18,
-  "localLinksVerified": 1242,
+  "localLinksVerified": 1226,
   "fontResourcesVerified": 60,
   "compiledFormulas": 992,
   "math": {

@@ -28,7 +28,6 @@ yuan-notes/
 │       ├── index.html     # 阅读入口（自动生成）
 │       ├── post-training/ # 后训练：Markdown、HTML、pic/
 │       ├── infra/         # 模型与系统：Markdown、HTML、pic/
-│       ├── archive/       # 修订前原稿，保持不变
 │       ├── _reader/       # 本地公式、样式、搜索索引与校验清单
 │       └── revision-notes.md
 ├── tools/notes-reader/    # Markdown 转 HTML 与校验工具
@@ -60,11 +59,10 @@ python3 -m http.server 8000
 
 ## 维护后训练与 Infra 笔记
 
-这两组笔记从 MyKnowledgeBase 完整复制到本仓库，包含当前 Markdown、HTML、图片、修订前原稿与生成工具。两份目录彼此独立，没有软链接、跨仓库引用或自动同步；原目录保持保留，后续内容更新主要在这里进行。
+本仓库独立维护两组笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。
 
 - `notes/llm/post-training/`：偏好与策略优化、预测与自蒸馏。
 - `notes/llm/infra/`：模型基础、训练与并行、推理与性能；后续加入集群与调度。
-- `notes/llm/archive/post-training/`、`archive/infra/`：修订前原 Markdown 与依赖，原样保留。
 
 一级目录采用稳定的英文名称；二级主题在侧栏配置中维护，暂不继续拆分文件夹，避免笔记少时层级过深。文章标题与文件名可保持中文。图片与所属笔记一起维护于各目录的 `pic/`。
 
@@ -85,7 +83,7 @@ npm --prefix tools/notes-reader run verify
 
 大模型页面是「学习笔记」的子栏目，使用网站公共 `assets/site.css`。生成器直接复用首页的品牌、主导航与页脚，并将学习笔记标为当前栏目；分类侧栏和公式阅读工具由专用样式补充。更新主站页头或导航后，重新构建笔记即可同步。卡片摘要在 `catalog.mjs` 中维护，文章正文仍完整来自 Markdown。
 
-线上阅读入口为 [大模型笔记](https://yuanyuan25.github.io/notes/llm/)。浏览器验证方法和原稿保全规则见 [生成工具说明](tools/notes-reader/README.md)。提交时包含更新的 Markdown、HTML、图片和 `_reader/`；依赖目录不提交。
+线上阅读入口为 [大模型笔记](https://yuanyuan25.github.io/notes/llm/)。浏览器验证方法和图片校验规则见 [生成工具说明](tools/notes-reader/README.md)。提交时包含更新的 Markdown、HTML、图片和 `_reader/`；依赖目录不提交。
 
 ## 新增其他学习笔记、文档总结或实践记录
 

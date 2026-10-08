@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {here,root,asset,siteRoot,archivedPath} from './paths.mjs';
+import {here,root,asset,siteRoot} from './paths.mjs';
 import MarkdownIt from 'markdown-it';
 import katex from 'katex';
 import {siteLayout} from './site-layout.mjs';
@@ -111,9 +111,7 @@ const report=[];
 for(const e of entries){
  const env={file:e.file,formulas:[],headings:[]};
  const content=md.render(e.source,env);
- const archive=archivedPath(e.file);
- const old=e.file.includes('/')&&fs.existsSync(path.join(root,archive))?archive:null;
- const metadata=`<div class="article-meta"><span>${esc(e.group)}</span><span class="note-status ${e.pending?'draft':''}">${e.pending?'待补':'笔记'}</span></div><div class="article-tools"><a href="${relative(e.output,e.file)}">Markdown 源文</a>${old?`<a href="${relative(e.output,old)}">修订前原稿</a>`:''}<button type="button" class="print-button">打印 / PDF</button></div>`;
+ const metadata=`<div class="article-meta"><span>${esc(e.group)}</span><span class="note-status ${e.pending?'draft':''}">${e.pending?'待补':'笔记'}</span></div><div class="article-tools"><a href="${relative(e.output,e.file)}">Markdown 源文</a><button type="button" class="print-button">打印 / PDF</button></div>`;
  const footer=`<footer class="article-footer"><a href="${relative(e.output,'index.html')}">← 返回全部笔记</a><span>2026-10-08 修订 · 公式可复制 · 图片可放大</span></footer>`;
  const toc=env.headings.map(h=>`<a class="toc-level-${h.level}" href="#${encodeURIComponent(h.id)}">${esc(h.label)}</a>`).join('');
  const outline=toc?`<details class="toc toc-inline"><summary>本文目录 <span>${env.headings.length} 个章节 · 展开查看</span></summary><nav aria-label="本篇章节">${toc}</nav></details>`:'';
