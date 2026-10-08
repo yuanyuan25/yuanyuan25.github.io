@@ -1,177 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VTM 大模型论文周报 - 索引</title>
-    <!--
-      索引页采用静态清单加载：
-        1. 读取同目录下的 reports.json（由 build_index.py 生成）；
-        2. 按日期倒序渲染卡片，最新一份自动打上"最新"徽章。
-
-      新增一份周报时：
-        - 新建 YYYY-MM-DD.html，在 <head> 中加入 <script type="application/json" id="report-meta">{...}</script>
-        - 运行 python3 build_index.py 重新生成 reports.json
-        - 一并推送到 GitHub 即可（无需依赖 GitHub API，也不受限流影响）。
-    -->
-    <style>
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #667eea;
-            --text: #333;
-            --text-light: #666;
-            --bg: #f8f9fa;
-            --card-bg: #fff;
-            --border: #e0e0e0;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--text);
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-        }
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 12px;
-        }
-        header p {
-            font-size: 1.1em;
-            opacity: 0.85;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-        }
-        .card a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 12px;
-        }
-        .card-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .card-date {
-            background: var(--accent);
-            color: white;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        .card-meta {
-            color: var(--text-light);
-            font-size: 0.95em;
-            margin-bottom: 16px;
-        }
-        .card-stats {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .card-stat {
-            background: var(--bg);
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 0.9em;
-        }
-        .card-stat .number {
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .latest-badge {
-            display: inline-block;
-            background: #ea4335;
-            color: white;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        .status {
-            text-align: center;
-            color: rgba(255,255,255,0.95);
-            padding: 40px 20px;
-            font-size: 1em;
-        }
-        .status.error {
-            background: rgba(255,255,255,0.95);
-            color: #b00020;
-            border-radius: 12px;
-            padding: 24px;
-        }
-        .spinner {
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 14px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9em;
-        }
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8em; }
-            .card-header { flex-direction: column; }
-            .card-stats { gap: 10px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="知行手记的大模型论文报告归档，覆盖 Agent、RAG、预训练、后训练、强化学习与模型架构等方向。">
+  <title>大模型报告 | 知行手记 · Yuan’s Notes</title>
+  <link rel="stylesheet" href="../assets/site.css">
+  <!-- 运行 python3 llm_reports/build_index.py 更新 reports.json，目录按日期倒序展示。 -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>VTM 大模型论文周报</h1>
-            <p>每周精选 arXiv 及业界重要论文，覆盖 Agentic、RAG、预训练、后训练、强化学习、架构创新等方向</p>
-        </header>
-
-        <div id="report-list">
-            <div class="status">
-                <div class="spinner"></div>
-                <div>正在加载报告列表…</div>
-            </div>
-        </div>
-
-        <footer>
-            <p>VTM 大模型论文周报 | 由 VTM 小助手自动生成</p>
-        </footer>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../" aria-label="知行手记首页">
+        <span class="brand-mark" aria-hidden="true">知</span>
+        <span><span class="brand-name">知行手记</span><span class="brand-subtitle">Yuan’s Notes</span></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="../">首页</a>
+        <a href="../llm_reports/" aria-current="page">大模型报告</a>
+        <a href="../notes/">学习笔记</a>
+        <a href="../summaries/">文档总结</a>
+        <a href="../practice/">实践记录</a>
+      </nav>
     </div>
-
+  </header>
+  <main id="main" class="shell">
+    <header class="page-heading">
+      <p class="breadcrumb"><a href="../">首页</a> / 大模型报告</p>
+      <p class="eyebrow">RESEARCH REPORTS</p>
+      <h1>大模型报告</h1>
+      <p class="intro">论文周报、研究进展与重点精读。覆盖 Agent、RAG、预训练、后训练、强化学习与模型架构等方向。</p>
+    </header>
+    <div id="report-list" class="report-list" aria-live="polite">
+      <div class="status">正在加载报告列表…</div>
+    </div>
+    <noscript><p class="status">请启用 JavaScript 查看完整报告目录，也可以<a href="2026-09-07.html">阅读 2026-09-07 的报告</a>。</p></noscript>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><p>知行手记 · Yuan’s Notes</p><p>记录所学，沉淀所思。</p></div></footer>
     <script>
     (function () {
         const MANIFEST = 'reports.json';
