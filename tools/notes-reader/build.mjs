@@ -99,9 +99,10 @@ function shell(current,title,body,toc='',isHome=false){
 <body data-root="${relative(current,'index.html').replace(/index\.html$/,'')||'./'}" class="notes-reader ${isHome?'home':'article-page'}"><a class="skip-link" href="#main">跳到正文</a><div class="reading-progress" aria-hidden="true"></div>
 ${layout.header}
 <div class="reader-toolbar"><div class="shell reader-toolbar-inner"><button class="menu-toggle" type="button" aria-label="打开笔记导航" aria-controls="note-navigation" aria-expanded="false"><span aria-hidden="true">☰</span><span>目录</span></button><nav class="reader-breadcrumb" aria-label="当前位置">${breadcrumb}</nav><button class="search-trigger" type="button" aria-label="搜索全部笔记"><span>搜索笔记</span><kbd aria-hidden="true">/</kbd></button></div></div>
-<div class="reader-layout shell">
+<div class="reader-layout shell${toc?' has-toc':''}">
 <aside id="note-navigation" class="sidebar" aria-label="笔记导航"><a class="overview" ${isHome?'aria-current="page"':''} href="${relative(current,'index.html')}">大模型笔记 <span>${files.length-1} 篇</span></a>${nav(current)}<div class="sidebar-foot"><a href="${relative(current,'revision-notes.html')}">修订与公式核对 ↗</a><p>Infra 预留：集群与调度</p></div></aside>
 <main id="main" class="${isHome?'landing':'document'}">${body}</main>
+${toc?`<aside class="toc toc-rail" aria-label="本文目录"><p class="eyebrow">本文目录</p><nav aria-label="本篇章节">${toc}</nav><a class="back-top" href="#main">回到顶部 ↑</a></aside>`:''}
 </div>${layout.footer}
 <dialog id="search-dialog" aria-label="搜索笔记"><div class="search-head"><label for="search-input" class="sr-only">输入关键词</label><input id="search-input" type="search" placeholder="搜索标题、正文、公式关键词…" autocomplete="off"><button class="close-dialog" type="button" aria-label="关闭搜索">关闭</button></div><p class="search-hint" aria-live="polite">支持全文检索 · Esc 关闭</p><ul class="search-results"></ul></dialog>
 <dialog id="image-dialog" aria-label="原图预览"><div class="image-controls"><a class="original-image" target="_blank" rel="noopener">打开原图 ↗</a><button class="close-dialog" type="button">关闭</button></div><img alt=""><p class="image-caption"></p></dialog><div class="toast" role="status"></div></body></html>`;
@@ -115,7 +116,7 @@ for(const e of entries){
  const metadata=`<div class="article-meta"><span>${esc(e.group)}</span><span class="note-status ${e.pending?'draft':''}">${e.pending?'待补':'笔记'}</span></div><div class="article-tools"><a href="${relative(e.output,e.file)}">Markdown 源文</a>${old?`<a href="${relative(e.output,old)}">修订前原稿</a>`:''}<button type="button" class="print-button">打印 / PDF</button></div>`;
  const footer=`<footer class="article-footer"><a href="${relative(e.output,'index.html')}">← 返回全部笔记</a><span>2026-10-08 修订 · 公式可复制 · 图片可放大</span></footer>`;
  const toc=env.headings.map(h=>`<a class="toc-level-${h.level}" href="#${encodeURIComponent(h.id)}">${esc(h.label)}</a>`).join('');
- const outline=toc?`<details class="toc"><summary>本文目录 <span>${env.headings.length} 个章节 · 展开查看</span></summary><nav aria-label="本篇章节">${toc}</nav></details>`:'';
+ const outline=toc?`<details class="toc toc-inline"><summary>本文目录 <span>${env.headings.length} 个章节 · 展开查看</span></summary><nav aria-label="本篇章节">${toc}</nav></details>`:'';
  const article=content.replace('</h1>','</h1>'+outline);
  fs.writeFileSync(path.join(root,e.output),shell(e.output,e.title,metadata+`<article>${article}</article>`+footer,toc));
  report.push({file:e.file,output:e.output,formulas:env.formulas.length,displayFormulas:env.formulas.filter(f=>f.display).length,headings:env.headings.length,status:e.pending?'pending':'revised'});

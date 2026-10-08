@@ -46,14 +46,32 @@
  });
  $('.print-button')?.addEventListener('click',()=>window.print());
  const tocLinks=[...document.querySelectorAll('.toc nav a')];
- const headingEls=tocLinks.map(a=>document.getElementById(decodeURIComponent(a.hash.slice(1))));
+ const headings=[...new Map(tocLinks.map(a=>[a.hash,document.getElementById(decodeURIComponent(a.hash.slice(1)))])).entries()];
+ const tocRail=$('.toc-rail');
+ let previousHeading,previousRailVisible=false;
  function onScroll(){
    const toolbarBottom=toolbar.getBoundingClientRect().bottom;
    document.documentElement.style.setProperty('--drawer-top',Math.max(0,toolbarBottom)+'px');
    const range=document.documentElement.scrollHeight-innerHeight;
    $('.reading-progress').style.width=(range?100*scrollY/range:0)+'%';
-   let active=0;headingEls.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<toolbarBottom+40)active=i;});
-   tocLinks.forEach((a,i)=>a.classList.toggle('active',i===active));
+   let active=headings[0]?.[0];headings.forEach(([hash,h])=>{if(h&&h.getBoundingClientRect().top<toolbarBottom+40)active=hash;});
+   if(range>0&&scrollY>=range-2)active=headings.at(-1)?.[0];
+   tocLinks.forEach(a=>{
+     a.classList.toggle('active',a.hash===active);
+     if(a.hash===active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+   });
+   const railVisible=Boolean(tocRail?.offsetParent);
+   if(railVisible&&(active!==previousHeading||!previousRailVisible)){
+     const link=tocRail.querySelector('nav a.active');
+     if(link){
+       const bounds=tocRail.getBoundingClientRect(),item=link.getBoundingClientRect();
+       const top=bounds.top+tocRail.querySelector('.eyebrow').offsetHeight+8,bottom=bounds.bottom-12;
+       if(item.top<top)tocRail.scrollTop+=item.top-top;
+       else if(item.bottom>bottom)tocRail.scrollTop+=item.bottom-bottom;
+     }
+   }
+   previousHeading=active;
+   previousRailVisible=railVisible;
  }
  new ResizeObserver(()=>{
    document.documentElement.style.setProperty('--reader-offset',(toolbar.getBoundingClientRect().height+20)+'px');

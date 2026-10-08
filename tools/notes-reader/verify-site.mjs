@@ -42,10 +42,13 @@ try{
     const imgs=[...document.querySelectorAll('article img')];imgs.forEach(i=>i.loading='eager');
     await Promise.all(imgs.map(i=>i.decode()));
     const layout=document.querySelector('.reader-layout')?.getBoundingClientRect(),header=document.querySelector('.header-inner').getBoundingClientRect();
-    return {pageWidth:document.documentElement.scrollWidth,width:innerWidth,formulas:document.querySelectorAll('.katex').length,contentAligned:!layout||(Math.abs(layout.width-header.width)<1&&Math.abs(layout.left-header.left)<1)};
+    const rail=document.querySelector('.toc-rail'),railBox=rail?.getBoundingClientRect(),article=document.querySelector('.document')?.getBoundingClientRect();
+    const tocWithinLayout=!rail||!rail.offsetParent||(railBox.left>=article.right&&railBox.right<=layout.right+1);
+    return {pageWidth:document.documentElement.scrollWidth,width:innerWidth,formulas:document.querySelectorAll('.katex').length,contentAligned:!layout||(Math.abs(layout.width-header.width)<1&&Math.abs(layout.left-header.left)<1),tocWithinLayout};
    });
    assert.equal(result.pageWidth,width,file+' overflow');
    assert.equal(result.contentAligned,true,file+' must align with the shared site width');
+   assert.equal(result.tocWithinLayout,true,file+' right TOC must stay inside the shared width without overlapping the article');
    if(file.startsWith('notes/llm/')){
     assert.deepEqual(await page.evaluate(chromeSnapshot),siteChrome,file+' must share site branding, navigation, typography and header geometry');
     assert.equal(await page.locator('.site-header nav [aria-current="page"]').textContent(),'学习笔记');

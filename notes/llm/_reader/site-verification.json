@@ -21,7 +21,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "llm_reports/index.html",
@@ -29,7 +30,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/index.html",
@@ -37,7 +39,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "summaries/index.html",
@@ -45,7 +48,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "practice/index.html",
@@ -53,7 +57,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/index.html",
@@ -61,7 +66,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/DPO.html",
@@ -69,7 +75,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 189,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/PPO.html",
@@ -77,7 +84,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/GRPO.html",
@@ -85,7 +93,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/GXPO.html",
@@ -93,7 +102,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/pair-grpo-family.html",
@@ -101,7 +111,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 96,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/MTP.html",
@@ -109,7 +120,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 48,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/SD-Zero.html",
@@ -117,7 +129,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 20,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/transformer结构.html",
@@ -125,7 +138,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 83,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/激活函数.html",
@@ -133,7 +147,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 28,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/MLA.html",
@@ -141,7 +156,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/混合精度.html",
@@ -149,7 +165,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 14,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-数据并行.html",
@@ -157,7 +174,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 42,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-模型并行.html",
@@ -165,7 +183,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 114,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-流水线并行.html",
@@ -173,7 +192,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 45,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/显存分析.html",
@@ -181,7 +201,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 228,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/Flash_attention.html",
@@ -189,7 +210,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 85,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/revision-notes.html",
@@ -197,7 +219,8 @@
       "pageWidth": 1500,
       "width": 1500,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "index.html",
@@ -205,7 +228,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "llm_reports/index.html",
@@ -213,7 +237,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/index.html",
@@ -221,7 +246,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "summaries/index.html",
@@ -229,7 +255,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "practice/index.html",
@@ -237,7 +264,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/index.html",
@@ -245,7 +273,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/DPO.html",
@@ -253,7 +282,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 189,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/PPO.html",
@@ -261,7 +291,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/GRPO.html",
@@ -269,7 +300,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/GXPO.html",
@@ -277,7 +309,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/pair-grpo-family.html",
@@ -285,7 +318,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 96,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/MTP.html",
@@ -293,7 +327,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 48,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/post-training/SD-Zero.html",
@@ -301,7 +336,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 20,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/transformer结构.html",
@@ -309,7 +345,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 83,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/激活函数.html",
@@ -317,7 +354,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 28,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/MLA.html",
@@ -325,7 +363,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/混合精度.html",
@@ -333,7 +372,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 14,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-数据并行.html",
@@ -341,7 +381,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 42,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-模型并行.html",
@@ -349,7 +390,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 114,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/分布式训练-流水线并行.html",
@@ -357,7 +399,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 45,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/显存分析.html",
@@ -365,7 +408,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 228,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/infra/Flash_attention.html",
@@ -373,7 +417,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 85,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     },
     {
       "file": "notes/llm/revision-notes.html",
@@ -381,7 +426,8 @@
       "pageWidth": 390,
       "width": 390,
       "formulas": 0,
-      "contentAligned": true
+      "contentAligned": true,
+      "tocWithinLayout": true
     }
   ]
 }

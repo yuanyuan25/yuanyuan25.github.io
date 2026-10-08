@@ -10,9 +10,13 @@
   "pageChecks": 36,
   "functions": [
     "Full-text search and result navigation",
-    "Table of contents anchor scroll",
+    "Sticky right table of contents, anchor positioning and synchronized current chapter",
+    "Reading scroll keeps the current chapter visible inside the right TOC",
+    "Right TOC return to article top",
     "Copy formula via clipboard fallback",
     "Original figure expansion and image zoom",
+    "Responsive TOC switches at 1200px without page overflow",
+    "Mobile expandable article TOC and anchor positioning",
     "Mobile navigation drawer",
     "Search keyboard shortcuts"
   ],

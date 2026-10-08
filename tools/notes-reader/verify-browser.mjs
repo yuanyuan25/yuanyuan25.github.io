@@ -60,11 +60,29 @@ try{
  assert.match(await page.locator('.search-results').textContent(),/DPO/);
  await page.locator('.search-results a').filter({has:page.locator('strong',{hasText:'DPO：偏好'})}).click();
  assert.ok(decodeURIComponent(page.url()).endsWith('/post-training/DPO.html'));functions.push('Full-text search and result navigation');
- await page.locator('.toc summary').click();
- const toc=page.locator('.toc nav a').filter({hasText:'8. 隐式奖励'});await toc.click();
+ assert.ok(await page.locator('.toc-rail').isVisible());
+ assert.equal(await page.locator('.toc-inline').isVisible(),false);
+ const toc=page.locator('.toc-rail nav a').filter({hasText:'8. 隐式奖励'});await toc.click();
  await page.waitForFunction(()=>{const id=decodeURIComponent(location.hash.slice(1));const offset=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop);return Math.abs(document.getElementById(id).getBoundingClientRect().top-offset)<5;});
- functions.push('Table of contents anchor scroll');
+ await page.waitForFunction(()=>{
+  const rail=document.querySelector('.toc-rail'),link=rail.querySelector('[aria-current="location"]');
+  if(!link||link.hash!==location.hash)return false;
+  const bounds=rail.getBoundingClientRect(),item=link.getBoundingClientRect();
+  return item.top>=bounds.top+rail.querySelector('.eyebrow').offsetHeight&&item.bottom<=bounds.bottom;
+ });
+ assert.equal(await page.locator('.toc-inline nav a[aria-current="location"]').getAttribute('href'),await toc.getAttribute('href'));
+ functions.push('Sticky right table of contents, anchor positioning and synchronized current chapter');
  await page.screenshot({path:'/tmp/notes-dpo-formula-final.png'});
+ await page.locator('article h2').last().evaluate(h=>h.scrollIntoView({block:'start',behavior:'instant'}));
+ await page.waitForFunction(()=>{
+  const headings=[...document.querySelectorAll('article h2')],last=headings.at(-1),rail=document.querySelector('.toc-rail'),link=rail.querySelector('[aria-current="location"]');
+  const bounds=rail.getBoundingClientRect(),item=link?.getBoundingClientRect();
+  return link&&decodeURIComponent(link.hash.slice(1))===last.id&&item.top>=bounds.top+rail.querySelector('.eyebrow').offsetHeight&&item.bottom<=bounds.bottom;
+ });
+ functions.push('Reading scroll keeps the current chapter visible inside the right TOC');
+ await page.locator('.toc-rail .back-top').click();
+ await page.waitForFunction(()=>Math.abs(document.getElementById('main').getBoundingClientRect().top-parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop))<5);
+ functions.push('Right TOC return to article top');
  // Force the clipboard fallback and observe the actual copy event payload.
  await page.evaluate(()=>{
   Object.defineProperty(navigator,'clipboard',{value:{writeText:()=>Promise.reject(new Error('Exercise fallback'))},configurable:true});
@@ -77,8 +95,20 @@ try{
  await detail.locator('img').click();await page.waitForFunction(()=>document.querySelector('#image-dialog').open);
  assert.ok(await page.locator('#image-dialog img').evaluate(i=>i.naturalWidth>0));
  await page.screenshot({path:'/tmp/notes-image-final.png'});await page.locator('#image-dialog .close-dialog').click();functions.push('Original figure expansion and image zoom');
+ for(const width of [1199,1200]){
+  await page.setViewportSize({width,height:1000});
+  assert.equal(await page.locator('.toc-rail').isVisible(),width>=1200);
+  assert.equal(await page.locator('.toc-inline').isVisible(),width<1200);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
+ }
+ functions.push('Responsive TOC switches at 1200px without page overflow');
  await page.setViewportSize({width:390,height:844});await page.goto(url('post-training/DPO.html'));
  await page.screenshot({path:'/tmp/notes-mobile-final.png'});
+ assert.equal(await page.locator('.toc-rail').isVisible(),false);
+ await page.locator('.toc-inline summary').click();
+ await page.locator('.toc-inline nav a').filter({hasText:'8. 隐式奖励'}).click();
+ await page.waitForFunction(()=>{const h=document.getElementById(decodeURIComponent(location.hash.slice(1)));return Math.abs(h.getBoundingClientRect().top-parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop))<5;});
+ functions.push('Mobile expandable article TOC and anchor positioning');
  await page.locator('.menu-toggle').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true');
  await page.waitForFunction(()=>document.querySelector('.sidebar').getBoundingClientRect().left>=-0.5);functions.push('Mobile navigation drawer');
  await page.locator('.menu-toggle').click();await page.keyboard.press('/');assert.ok(await page.locator('#search-dialog').evaluate(d=>d.open));
