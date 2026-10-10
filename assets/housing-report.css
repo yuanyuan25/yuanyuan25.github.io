@@ -1,0 +1,42 @@
+.housing-report { padding-bottom: 40px; }
+.housing-report .snapshot-note {
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 7px 7px 0;
+  font-size: 14px;
+}
+.housing-report .snapshot-note p { margin: 0; }
+.housing-report .notice { padding: 14px 18px; margin-bottom: 22px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 13px; }
+.housing-report .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.housing-report .card { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 18px; }
+.housing-report .card .label, .housing-report .card .sub { font-size: 12px; color: var(--muted); }
+.housing-report .card .value { font-size: 23px; font-weight: 700; color: var(--accent); margin: 3px 0; }
+.housing-report section { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 24px; margin-bottom: 22px; }
+.housing-report section h2 { font-size: 20px; margin-bottom: 7px; }
+.housing-report .desc { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+.housing-report .table-wrap { overflow-x: auto; }
+.housing-report .table-wrap:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+.housing-report table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+.housing-report thead th { background: var(--accent-soft); color: var(--ink); font-weight: 600; text-align: left; padding: 11px 12px; border-bottom: 2px solid var(--line); }
+.housing-report tbody td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.housing-report tbody tr:hover td { background: var(--paper); }
+.housing-report td.name { font-weight: 600; }
+.housing-report td.price { color: var(--warm); font-weight: 600; }
+.housing-report td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.housing-report td.school { font-weight: 700; font-size: 14px; color: var(--accent); background: var(--accent-soft); text-align: center; vertical-align: middle; border-right: 2px solid var(--line); min-width: 96px; }
+.housing-report td.school .cnt { display: block; font-size: 11px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+.housing-report tr.group-end td { border-bottom: 2px solid var(--accent); }
+.housing-report .bar-cell { min-width: 130px; }
+.housing-report .bar { height: 8px; border-radius: 4px; background: var(--accent-soft); position: relative; margin-top: 5px; }
+.housing-report .bar .range { position: absolute; height: 100%; border-radius: 4px; background: var(--accent); }
+.housing-report .notes { background: var(--paper); border-radius: 7px; padding: 16px; font-size: 13px; color: var(--muted); margin-top: 18px; }
+.housing-report .notes ul, .housing-report .conclusion { padding-left: 22px; margin: 0; }
+.housing-report .notes li { margin-bottom: 6px; }
+.housing-report .conclusion li { margin-bottom: 12px; font-size: 14px; }
+.housing-report .source-footer { font-size: 12px; color: var(--muted); margin: 26px 0; }
+@media (max-width: 600px) {
+  .housing-report section { padding: 18px 14px; }
+  .housing-report .page-heading h1 { font-size: 28px; }
+}
