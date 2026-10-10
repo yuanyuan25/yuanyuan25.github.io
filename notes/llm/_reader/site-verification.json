@@ -1,7 +1,7 @@
 {
   "passed": true,
   "mode": "Local HTTP with external requests blocked",
-  "pageChecks": 50,
+  "pageChecks": 52,
   "functions": [
     "Shared site brand, navigation, footer, colors, typography and header geometry",
     "Learning notes active in global navigation",
@@ -64,6 +64,15 @@
     },
     {
       "file": "life/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/tianjin-hexi-school-housing-2026-10-10.html",
       "viewport": 1500,
       "pageWidth": 1500,
       "width": 1500,
@@ -289,6 +298,15 @@
     },
     {
       "file": "life/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/tianjin-hexi-school-housing-2026-10-10.html",
       "viewport": 390,
       "pageWidth": 390,
       "width": 390,

@@ -31,7 +31,7 @@ page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());})
 page.on('requestfailed',r=>errors.push(r.url()+' '+r.failure()?.errorText));
 try{
  const build=JSON.parse(fs.readFileSync(path.join(root,'notes/llm/_reader/build-report.json')));
- const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','life/index.html','life/tianjin-hexi-school-housing-2026-08-21.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
+ const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','life/index.html','life/tianjin-hexi-school-housing-2026-10-10.html','life/tianjin-hexi-school-housing-2026-08-21.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
  for(const width of [1500,390]){
   await page.setViewportSize({width,height:1000});
   await page.goto(base+'/index.html');
@@ -68,7 +68,12 @@ try{
   assert.equal(await page.locator('.topics .topic').last().getAttribute('href'),'life/');
   await page.locator('.topic[href="life/"]').click();
   assert.equal(page.url(),base+'/life/');
-  await page.getByRole('link',{name:/天津河西一片学区房房价整理/}).click();
+  assert.equal(await page.locator('.recent-item').first().getAttribute('href'),'tianjin-hexi-school-housing-2026-10-10.html');
+  await page.getByRole('link',{name:/天津河西一片学区房房价整理（仅私产）/}).click();
+  assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
+  assert.equal(await page.locator('#tbl-all tr').count(),32);
+  await page.locator('.site-header nav').getByRole('link',{name:'生活',exact:true}).click();
+  await page.getByRole('link',{name:/天津河西一片学区房房价整理（全量）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-08-21.html'));
   assert.equal(await page.locator('#tbl-all tr').count(),32);
   await page.getByRole('link',{name:'知行手记首页',exact:true}).click();

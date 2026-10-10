@@ -25,6 +25,7 @@
 .housing-report td.name { font-weight: 600; }
 .housing-report td.price { color: var(--warm); font-weight: 600; }
 .housing-report td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.housing-report .few { color: var(--warm); font-size: 11px; }
 .housing-report td.school { font-weight: 700; font-size: 14px; color: var(--accent); background: var(--accent-soft); text-align: center; vertical-align: middle; border-right: 2px solid var(--line); min-width: 96px; }
 .housing-report td.school .cnt { display: block; font-size: 11px; font-weight: 400; color: var(--muted); margin-top: 4px; }
 .housing-report tr.group-end td { border-bottom: 2px solid var(--accent); }
