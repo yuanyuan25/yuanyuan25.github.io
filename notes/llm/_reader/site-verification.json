@@ -1,10 +1,12 @@
 {
   "passed": true,
   "mode": "Local HTTP with external requests blocked",
-  "pageChecks": 46,
+  "pageChecks": 50,
   "functions": [
     "Shared site brand, navigation, footer, colors, typography and header geometry",
     "Learning notes active in global navigation",
+    "Life is last in navigation and home categories",
+    "Site home to Life and the complete housing article",
     "Clean directory routes from home to reports and back",
     "Site home to learning notes",
     "Topic anchors",
@@ -53,6 +55,24 @@
     },
     {
       "file": "practice/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/index.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "width": 1500,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/tianjin-hexi-school-housing-2026-08-21.html",
       "viewport": 1500,
       "pageWidth": 1500,
       "width": 1500,
@@ -260,6 +280,24 @@
     },
     {
       "file": "practice/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/index.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "width": 390,
+      "formulas": 0,
+      "contentAligned": true,
+      "tocWithinLayout": true
+    },
+    {
+      "file": "life/tianjin-hexi-school-housing-2026-08-21.html",
       "viewport": 390,
       "pageWidth": 390,
       "width": 390,

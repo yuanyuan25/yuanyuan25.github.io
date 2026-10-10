@@ -31,11 +31,12 @@ page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());})
 page.on('requestfailed',r=>errors.push(r.url()+' '+r.failure()?.errorText));
 try{
  const build=JSON.parse(fs.readFileSync(path.join(root,'notes/llm/_reader/build-report.json')));
- const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
+ const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','life/index.html','life/tianjin-hexi-school-housing-2026-08-21.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
  for(const width of [1500,390]){
   await page.setViewportSize({width,height:1000});
   await page.goto(base+'/index.html');
   const siteChrome=await page.evaluate(chromeSnapshot);
+  assert.deepEqual(siteChrome.links.at(-1),['生活','/life/'],'Life must be the final navigation item');
   for(const file of files){
    await page.goto(base+'/'+file);await page.evaluate(()=>document.fonts.ready);
    const result=await page.evaluate(async()=>{
@@ -50,10 +51,11 @@ try{
    assert.equal(result.pageWidth,width,file+' overflow');
    assert.equal(result.contentAligned,true,file+' must align with the shared site width');
    assert.equal(result.tocWithinLayout,true,file+' right TOC must stay inside the shared width without overlapping the article');
+   assert.deepEqual(await page.evaluate(chromeSnapshot),siteChrome,file+' must share site branding, navigation, typography and header geometry');
    if(file.startsWith('notes/llm/')){
-    assert.deepEqual(await page.evaluate(chromeSnapshot),siteChrome,file+' must share site branding, navigation, typography and header geometry');
     assert.equal(await page.locator('.site-header nav [aria-current="page"]').textContent(),'学习笔记');
    }
+   if(file.startsWith('life/'))assert.equal(await page.locator('.site-header nav [aria-current="page"]').textContent(),'生活');
    pages.push({file,viewport:width,...result});
   }
   await page.goto(base+'/index.html');
@@ -63,6 +65,13 @@ try{
   await page.waitForFunction(()=>document.querySelectorAll('#report-list .card').length>0);
   await page.locator('.site-header nav').getByRole('link',{name:'首页',exact:true}).click();
   assert.equal(page.url(),base+'/');
+  assert.equal(await page.locator('.topics .topic').last().getAttribute('href'),'life/');
+  await page.locator('.topic[href="life/"]').click();
+  assert.equal(page.url(),base+'/life/');
+  await page.getByRole('link',{name:/天津河西一片学区房房价整理/}).click();
+  assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-08-21.html'));
+  assert.equal(await page.locator('#tbl-all tr').count(),32);
+  await page.getByRole('link',{name:'知行手记首页',exact:true}).click();
   await page.locator('.topic[href="notes/"]').click();
   assert.ok(page.url().endsWith('/notes/'));
   await page.screenshot({path:'/tmp/yuan-notes-learning-'+width+'.png'});
@@ -80,7 +89,7 @@ try{
   assert.equal(page.url(),base+'/');
  }
  assert.deepEqual(errors,[]);
- const result={passed:true,mode:'Local HTTP with external requests blocked',pageChecks:pages.length,functions:['Shared site brand, navigation, footer, colors, typography and header geometry','Learning notes active in global navigation','Clean directory routes from home to reports and back','Site home to learning notes','Topic anchors','Cross-section navigation','Search result paths','Return to site home on desktop and mobile','Existing recent reports still load'],errors,pages};
+ const result={passed:true,mode:'Local HTTP with external requests blocked',pageChecks:pages.length,functions:['Shared site brand, navigation, footer, colors, typography and header geometry','Learning notes active in global navigation','Life is last in navigation and home categories','Site home to Life and the complete housing article','Clean directory routes from home to reports and back','Site home to learning notes','Topic anchors','Cross-section navigation','Search result paths','Return to site home on desktop and mobile','Existing recent reports still load'],errors,pages};
  fs.writeFileSync(path.join(root,'notes/llm/_reader/site-verification.json'),JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({...result,pages:undefined},null,2));
 }finally{await browser.close();await close();}
