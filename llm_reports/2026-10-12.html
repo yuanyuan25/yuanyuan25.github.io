@@ -10,14 +10,14 @@
   <!-- 周报结构基准为 2026-05-25（第21周）：统计、本周核心趋势、粘性分类按钮、分类正文。
        直接生成日期 HTML；顶部主站导航保持静态，不使用独立阅读器。
        保留原有占位符；CORE_TRENDS 填本期趋势的 li 列表，不能复制旧周新闻。
-       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 分类。
+       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 与 Infra 分类。
        论文卡片按主要研究问题单独归类，分类数量之和应等于总论文数。
        版心对齐主站 1120px。report-meta 用于 build_index.py 生成目录。 -->
   <script type="application/json" id="report-meta">{
   "title": "大模型周报 · 2026-10-12",
   "date": "2026-10-12",
   "week": "2026-10-05 ~ 2026-10-11 · 第41周",
-  "summary": "共收录 50 篇大模型相关论文，重点精读 9 篇，覆盖 7 个研究方向（含 VLA/VLM）。",
+  "summary": "共收录 50 篇大模型相关论文，重点精读 9 篇，覆盖 8 个研究方向（含 VLA/VLM 与 Infra）。",
   "stats": [
     {
       "label": "收录论文",
@@ -29,7 +29,7 @@
     },
     {
       "label": "覆盖方向",
-      "value": "7"
+      "value": "8"
     }
   ]
 }</script>
@@ -298,12 +298,12 @@
   <header class="report-header">
     <h1>大模型周报</h1>
     <div class="meta">2026-10-12｜上周 (2026-10-05 ~ 2026-10-11)</div>
-    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新</div>
+    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新 · Infra</div>
   </header>
   <div class="stats-bar">
         <div class="stat-item"><div class="stat-number">50</div><div class="stat-label">收录论文</div></div>
         <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">重点精读</div></div>
-        <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">覆盖方向</div></div></div>
+        <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">覆盖方向</div></div></div>
   <section class="summary-box" aria-labelledby="weekly-trends">
     <h3 id="weekly-trends">📌 本周核心趋势</h3>
     <ul><li><strong>交互环境与可验证经验成为 Agent 研究重点</strong>：AgentGarten、Learn2Play Bench 与 EVISKILL 分别关注可执行环境、陌生任务中的经验学习和可回放的技能证据，提示要把经验继承与闭环表现一起评估。</li>
@@ -319,7 +319,8 @@
 <li><a href="#预训练---Pre-training">预训练</a></li>
 <li><a href="#后训练---Post-training">后训练</a></li>
 <li><a href="#强化学习---RL">强化学习</a></li>
-<li><a href="#基础架构创新---Infrastructure-Innovation">架构创新</a></li></ul>
+<li><a href="#基础架构创新---Infrastructure-Innovation">架构创新</a></li>
+<li><a href="#Infra">Infra</a></li></ul>
   </nav>
 <section class="section" id="Agentic">
 <h2 class="section-title">🤖 Agentic<span class="section-count">13 篇</span></h2>
@@ -901,33 +902,8 @@
 </div>
 </section>
 <section class="section" id="基础架构创新---Infrastructure-Innovation">
-<h2 class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation<span class="section-count">4 篇</span></h2>
+<h2 class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation<span class="section-count">3 篇</span></h2>
 
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.12242" target="_blank">TokenRouter: Efficient Serving System for Token-Level LLM Routing</a></div>
-    <div class="paper-meta"><span title="论文首次发布日期">📅 <time datetime="2026-10-08">2026-10-08</time></span>
-      <a class="paper-team" href="https://huggingface.co/papers/2610.12242" target="_blank" rel="noopener" title="HF 论文页标注的发布组织：Tsinghua-NICS-EFC">🏢 清华 NICS-EFC</a>
-      <span class="tag">架构创新</span>
-      <span class="tag">推理路由</span>
-      <a href="https://arxiv.org/abs/2610.12242" target="_blank" rel="noopener">arXiv:2610.12242</a>
-      <span title="周报生成时的 HF 点赞数">HF 👍 129</span></div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">TokenRouter:面向 token 级 LLM routing 的高效 serving 系统。提出&#x27;request-centric programming, model-centric execution&#x27;原则——开发者从单个请求的视角描述路由逻辑,运行时则为每个 LLM 启动一个 subserver 并异步调度请求;每个 subserver 采用 delayed-batching scheduler,其最优超参由系统的数学吞吐模型推导。解决 token 级路由下严重的 step 失同步与 batch 准入延迟问题,并降低开发者实现复杂度。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在多种路由算法、workload 与模型组合上,TokenRouter 相比现有系统取得 2.01-64.15 倍更高的 decoding 吞吐,显著推进 token 级 LLM routing 的 serving 效率;同时其编程抽象让路由逻辑的开发与维护更简单。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨多样路由算法、负载与模型对进行系统级吞吐对比(2.01-64.15x);为 delayed-batching scheduler 建立数学吞吐模型并据此推导最优超参;代码开源。摘要未给出与具体系统(如 vLLM/SGLang 的 routing 方案)的逐项对比及首 token 延迟等指标,2.01-64.15x 区间很宽,具体收益依赖场景。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">评测限于吞吐指标,首 token 延迟、长上下文与高并发下的稳定性未报告;2.01-64.15 倍跨度大,收益对路由算法与负载分布的依赖关系不明;token 级路由算法本身尚处早期,算法实践未收敛可能限制系统设计的普适性;摘要未给出 GPU 利用率等资源效率数据。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合 LLM serving/推理平台团队,尤其是已采用或考虑大小模型路由分流的工业界团队——&#x27;请求中心编程+模型中心执行&#x27;的抽象对降低路由接入成本有借鉴价值。落地难度中等,需替换或改造现有 serving 运行时,建议在已有多模型部署的灰度场景试点。</div></div></div>
-</div>
-<div class="paper-card important">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2609.38169" target="_blank">STEPQuant: When and Where Errors Matter in Delta-Rule Recurrent State Quantization</a></div>
-    <div class="paper-meta"><span class="important-badge">🔴 重点精读</span>
-      <span title="论文首次发布日期">📅 <time datetime="2026-09-29">2026-09-29</time></span>
-      <a class="paper-team" href="https://huggingface.co/papers/2609.38169" target="_blank" rel="noopener" title="HF 论文页标注的发布组织：Zhejiang University">🏢 浙江大学</a>
-      <span class="tag">架构创新</span>
-      <span class="tag">状态量化</span>
-      <a href="https://arxiv.org/abs/2609.38169" target="_blank" rel="noopener">arXiv:2609.38169</a>
-      <span title="周报生成时的 HF 点赞数">HF 👍 117</span></div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对 linear attention 的 delta-rule 循环状态量化,首次从时间与空间两个互补维度刻画量化误差的影响:时间上,误差可在长存活记忆中跨多个解码步传播;空间上,不同 key 行对输出的影响不同,且状态幅度沿行列差异显著。据此提出空间-时间 PTQ 框架,按误差大小与记忆存活期分配精度,并基于状态分布及 key 行对输出误差的影响联合拟合 key 行与 value 列缩放,区别于直接均匀量化循环状态的做法。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">6-bit STEPQuant 在长短生成 benchmark 上可逼近 FP32 循环状态精度,其 4-bit 配置性能优于均匀 INT8;集成 SGLang 并配合优化的 GPU kernel 后,循环状态压缩超过 5 倍,总 serving 显存最多降低 68.7%。表明经时空感知的 PTQ 可在低精度下保持 linear attention 模型精度,显著缓解并发 serving 的循环状态显存瓶颈。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 Qwen3.8-27B 与 Kimi-Linear-48B-A3B-Instruct 两类 delta-rule 模型上,于长生成与短生成 benchmark 对比 FP32 状态及均匀 INT8 基线,并将方案集成进 SGLang 实测压缩率与显存收益。覆盖不同模型族与生成类型、附真实系统验证,设计合理;摘要未给出各 benchmark 具体分数与生成质量细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">仅评估两个模型,架构与规模覆盖面有限;4-bit 配置仅声称优于均匀 INT8,未明确与 FP32 的差距,超低精度下的精度损失未知;压缩收益依赖自研 kernel 与 SGLang 集成,移植成本未评估;对非 delta-rule 的线性注意力结构是否适用未验证。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合部署 linear attention 类模型(如 Kimi-Linear)且受并发显存约束的 serving 团队,5 倍状态压缩加最高 68.7% 显存下降有明确落地价值;PTQ 无需重训,接入成本低。借鉴前提是模型使用 delta-rule 循环状态,传统 KV cache 架构团队不可直接套用。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">本批 HF 点赞最高(117),首次系统刻画循环状态量化误差的时空特性并给出 PTQ 方案:6-bit 近无损、显存降 68.7% 且已集成 SGLang,对 linear attention 模型的工业级 serving 有直接借鉴价值。</div></div></div>
-</div>
 <div class="paper-card important">
   <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.04198" target="_blank">ALoDLM: Adaptively Looped Diffusion Language Models</a></div>
@@ -952,6 +928,37 @@
       <span title="周报生成时的 HF 点赞数">HF 👍 76</span></div>
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对&#x27;高压缩视频 autoencoder 加速 DiT 但破坏 latent 分布、迫使 DiT 重训或昂贵适配&#x27;的痛点,提出两阶段 generation-aware latent 压缩:冻结 pretrained encoder 的 base latent,另学 residual latent 补偿强压缩损失,并在冻结 DiT 的特征空间对齐压缩 latent,使 autoencoder 面向生成而非仅重建优化;再用轻量微调与非对称去噪(base 先于 residual)适配 DiT,兼顾压缩率与原流水线兼容性。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在 Wan2.1-I2V-14B 上 token 数减少 8x,480x832x81 分辨率下延迟降低 11.1x,同时在 VBench 上匹配压缩前的生成质量,说明生成感知的压缩可以在近一个数量级加速的同时保持与原 pretrained pipeline 的质量与兼容性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在主流开源视频模型 Wan2.1-I2V-14B 上验证 8x token 压缩与 11.1x 延迟收益,用 VBench 评估生成质量,结论具体且贴近实际部署。但仅单一模型、单一 benchmark 验证,各组件(冻 base 学 residual、DiT 特征对齐、非对称去噪)的消融贡献摘要未详细列出。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">仅在 Wan2.1-I2V-14B 与 VBench 上验证,跨模型、跨 benchmark 泛化未知;VBench 为自动指标,与人工观感的一致性未说明;8x 压缩在更高分辨率、更长时长下的画质退化未知;residual latent 引入的额外通道与存储成本未量化。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合自研视频生成 pipeline、想降低 DiT 推理成本的团队:无需从头重训 DiT 即获近数量级加速,方法两阶段、可插拔。对 Wan 系模型几乎即插即用,对其他 DiT 架构需重新做特征对齐,落地难度中等。</div></div></div>
+</div>
+
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2609.38169" target="_blank">STEPQuant: When and Where Errors Matter in Delta-Rule Recurrent State Quantization</a></div>
+    <div class="paper-meta"><span class="important-badge">🔴 重点精读</span>
+      <span title="论文首次发布日期">📅 <time datetime="2026-09-29">2026-09-29</time></span>
+      <a class="paper-team" href="https://huggingface.co/papers/2609.38169" target="_blank" rel="noopener" title="HF 论文页标注的发布组织：Zhejiang University">🏢 浙江大学</a>
+      <span class="tag">架构创新</span>
+      <span class="tag">状态量化</span>
+      <a href="https://arxiv.org/abs/2609.38169" target="_blank" rel="noopener">arXiv:2609.38169</a>
+      <span title="周报生成时的 HF 点赞数">HF 👍 117</span></div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对 linear attention 的 delta-rule 循环状态量化,首次从时间与空间两个互补维度刻画量化误差的影响:时间上,误差可在长存活记忆中跨多个解码步传播;空间上,不同 key 行对输出的影响不同,且状态幅度沿行列差异显著。据此提出空间-时间 PTQ 框架,按误差大小与记忆存活期分配精度,并基于状态分布及 key 行对输出误差的影响联合拟合 key 行与 value 列缩放,区别于直接均匀量化循环状态的做法。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">6-bit STEPQuant 在长短生成 benchmark 上可逼近 FP32 循环状态精度,其 4-bit 配置性能优于均匀 INT8;集成 SGLang 并配合优化的 GPU kernel 后,循环状态压缩超过 5 倍,总 serving 显存最多降低 68.7%。表明经时空感知的 PTQ 可在低精度下保持 linear attention 模型精度,显著缓解并发 serving 的循环状态显存瓶颈。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 Qwen3.8-27B 与 Kimi-Linear-48B-A3B-Instruct 两类 delta-rule 模型上,于长生成与短生成 benchmark 对比 FP32 状态及均匀 INT8 基线,并将方案集成进 SGLang 实测压缩率与显存收益。覆盖不同模型族与生成类型、附真实系统验证,设计合理;摘要未给出各 benchmark 具体分数与生成质量细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">仅评估两个模型,架构与规模覆盖面有限;4-bit 配置仅声称优于均匀 INT8,未明确与 FP32 的差距,超低精度下的精度损失未知;压缩收益依赖自研 kernel 与 SGLang 集成,移植成本未评估;对非 delta-rule 的线性注意力结构是否适用未验证。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合部署 linear attention 类模型(如 Kimi-Linear)且受并发显存约束的 serving 团队,5 倍状态压缩加最高 68.7% 显存下降有明确落地价值;PTQ 无需重训,接入成本低。借鉴前提是模型使用 delta-rule 循环状态,传统 KV cache 架构团队不可直接套用。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">本批 HF 点赞最高(117),首次系统刻画循环状态量化误差的时空特性并给出 PTQ 方案:6-bit 近无损、显存降 68.7% 且已集成 SGLang,对 linear attention 模型的工业级 serving 有直接借鉴价值。</div></div></div>
+</div>
+</section>
+<section class="section" id="Infra">
+<h2 class="section-title">🛠️ Infra / 基础设施<span class="section-count">1 篇</span></h2>
+<p class="section-desc">分布式训练、通信优化、算子与编译器、推理服务和资源调度。</p>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.12242" target="_blank">TokenRouter: Efficient Serving System for Token-Level LLM Routing</a></div>
+    <div class="paper-meta"><span title="论文首次发布日期">📅 <time datetime="2026-10-08">2026-10-08</time></span>
+      <a class="paper-team" href="https://huggingface.co/papers/2610.12242" target="_blank" rel="noopener" title="HF 论文页标注的发布组织：Tsinghua-NICS-EFC">🏢 清华 NICS-EFC</a>
+      <span class="tag">Infra</span>
+      <span class="tag">推理路由</span>
+      <a href="https://arxiv.org/abs/2610.12242" target="_blank" rel="noopener">arXiv:2610.12242</a>
+      <span title="周报生成时的 HF 点赞数">HF 👍 129</span></div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">TokenRouter:面向 token 级 LLM routing 的高效 serving 系统。提出&#x27;request-centric programming, model-centric execution&#x27;原则——开发者从单个请求的视角描述路由逻辑,运行时则为每个 LLM 启动一个 subserver 并异步调度请求;每个 subserver 采用 delayed-batching scheduler,其最优超参由系统的数学吞吐模型推导。解决 token 级路由下严重的 step 失同步与 batch 准入延迟问题,并降低开发者实现复杂度。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在多种路由算法、workload 与模型组合上,TokenRouter 相比现有系统取得 2.01-64.15 倍更高的 decoding 吞吐,显著推进 token 级 LLM routing 的 serving 效率;同时其编程抽象让路由逻辑的开发与维护更简单。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨多样路由算法、负载与模型对进行系统级吞吐对比(2.01-64.15x);为 delayed-batching scheduler 建立数学吞吐模型并据此推导最优超参;代码开源。摘要未给出与具体系统(如 vLLM/SGLang 的 routing 方案)的逐项对比及首 token 延迟等指标,2.01-64.15x 区间很宽,具体收益依赖场景。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">评测限于吞吐指标,首 token 延迟、长上下文与高并发下的稳定性未报告;2.01-64.15 倍跨度大,收益对路由算法与负载分布的依赖关系不明;token 级路由算法本身尚处早期,算法实践未收敛可能限制系统设计的普适性;摘要未给出 GPU 利用率等资源效率数据。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合 LLM serving/推理平台团队,尤其是已采用或考虑大小模型路由分流的工业界团队——&#x27;请求中心编程+模型中心执行&#x27;的抽象对降低路由接入成本有借鉴价值。落地难度中等,需替换或改造现有 serving 运行时,建议在已有多模型部署的灰度场景试点。</div></div></div>
 </div>
 </section>
   <footer>

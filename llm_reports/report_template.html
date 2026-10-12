@@ -10,7 +10,10 @@
   <!-- 周报结构基准为 2026-05-25（第21周）：统计、本周核心趋势、粘性分类按钮、分类正文。
        直接生成日期 HTML；顶部主站导航保持静态，不使用独立阅读器。
        保留原有占位符；CORE_TRENDS 填本期趋势的 li 列表，不能复制旧周新闻。
-       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 分类。
+       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 与 Infra 分类。
+       保留基础架构创新，覆盖优化器、网络结构、注意力机制和表示方法。
+       Infra 独立覆盖分布式训练、通信优化、算子与编译器、推理服务和资源调度。
+       按主要贡献区分算法和系统；有系统集成不自动归入 Infra。
        论文卡片按主要研究问题单独归类，分类数量之和应等于总论文数。
        每张卡片的 paper-header 先放 paper-title，再放唯一的 paper-meta 信息行。
        日期（论文首次发布）、可确认的团队/机构、分类和主题 tag、arXiv 链接、HF 热度、
@@ -288,7 +291,7 @@
   <header class="report-header">
     <h1>大模型周报</h1>
     <div class="meta">{{HEADER_META}}</div>
-    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新</div>
+    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新 · Infra</div>
   </header>
   <div class="stats-bar">{{STATS_BAR}}</div>
   <section class="summary-box" aria-labelledby="weekly-trends">
