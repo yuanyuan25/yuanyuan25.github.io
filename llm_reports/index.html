@@ -6,8 +6,8 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="知行手记的大模型论文报告归档，覆盖 Agent、RAG、预训练、后训练、强化学习与模型架构等方向。">
-  <title>大模型报告 | 知行手记 · Yuan’s Notes</title>
+  <meta name="description" content="知行手记的大模型周报归档，覆盖 Agent、RAG、预训练、后训练、强化学习与模型架构等方向。">
+  <title>大模型周报 | 知行手记 · Yuan’s Notes</title>
   <link rel="stylesheet" href="../assets/site.css">
   <!-- 运行 python3 llm_reports/build_index.py 更新 reports.json，目录按日期倒序展示。 -->
 </head>
@@ -21,7 +21,7 @@
       </a>
       <nav aria-label="主导航">
         <a href="../">首页</a>
-        <a href="../llm_reports/" aria-current="page">大模型报告</a>
+        <a href="../llm_reports/" aria-current="page">大模型周报</a>
         <a href="../notes/">学习笔记</a>
         <a href="../summaries/">文档总结</a>
         <a href="../practice/">实践记录</a>
@@ -31,15 +31,15 @@
   </header>
   <main id="main" class="shell">
     <header class="page-heading">
-      <p class="breadcrumb"><a href="../">首页</a> / 大模型报告</p>
-      <p class="eyebrow">RESEARCH REPORTS</p>
-      <h1>大模型报告</h1>
+      <p class="breadcrumb"><a href="../">首页</a> / 大模型周报</p>
+      <p class="eyebrow">WEEKLY RESEARCH</p>
+      <h1>大模型周报</h1>
       <p class="intro">论文周报、研究进展与重点精读。覆盖 Agent、RAG、预训练、后训练、强化学习与模型架构等方向。</p>
     </header>
     <div id="report-list" class="report-list" aria-live="polite">
-      <div class="status">正在加载报告列表…</div>
+      <div class="status">正在加载周报列表…</div>
     </div>
-    <noscript><p class="status">请启用 JavaScript 查看完整报告目录，也可以<a href="2026-09-07.html">阅读 2026-09-07 的报告</a>。</p></noscript>
+    <noscript><p class="status">请启用 JavaScript 查看完整周报目录，也可以<a href="2026-09-07.html">阅读 2026-09-07 的周报</a>。</p></noscript>
   </main>
   <footer class="site-footer"><div class="shell footer-inner"><p>知行手记 · Yuan’s Notes</p><p>记录所学，沉淀所思。</p></div></footer>
     <script>
@@ -89,7 +89,7 @@
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const metas = await res.json();
                 if (!Array.isArray(metas) || !metas.length) {
-                    showError('暂无报告。');
+                    showError('暂无周报。');
                     return;
                 }
                 metas.forEach(m => { m.date = m.date || (m.file || '').replace(/\.html$/, ''); });

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大模型新论文周报 | 2026-10-12</title>
+    <title>大模型周报 | 2026-10-12</title>
     <script type="application/json" id="report-meta">
     {
-  "title": "大模型新论文周报 · 2026-10-12",
+  "title": "大模型周报 · 2026-10-12",
   "date": "2026-10-12",
   "week": "2026-10-05 ~ 2026-10-11 · 第41周",
   "summary": "共收录 50 篇大模型相关论文，重点精读 9 篇，覆盖 6 个研究方向。",
@@ -155,12 +158,15 @@
             border-top: 1px solid var(--border);
             margin-top: 40px;
         }
+        .paper-reading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 10px; }
+        .paper-reading a { font-weight: 600; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+        .paper-reading span { font-size: 0.82rem; color: var(--text-secondary); }
     </style>
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>🧠 大模型新论文周报</h1>
+        <h1>🧠 大模型周报</h1>
         <div class="meta">2026-10-12｜上周 (2026-10-05 ~ 2026-10-11)</div>
     </header>
 
@@ -191,12 +197,13 @@
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">首个基于真实用户数据的 AI companion 长期理解 benchmark:10 段真实 AI 伴侣关系、27,218 条消息、跨度最长 120 天;除原始对话外还发布 profile、persona、chat ground truth、question set 四个派生文件,每个标签都引用其依据的消息并附带经逐阶段核验的推理链。与此前合成人物+预设答案的 benchmark 有本质区别。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">三个反直觉发现:(1)过去的信息很少被需要且距离很远——recency window 可命中 95.9% probe 所需消息,自然频率下 96% 的记录供给收益来自无需记忆的消息;(2)检测器在真实消息上无法判断何时需要记忆,人工问题会泄漏线索,把消息标记为 memory 可将其使用率提升 10-14 个百分点;(3)三个 agent 系统重建 persona 的 F1 相同,成本相差 31 倍。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">构建真实数据集(10 段关系、27,218 条消息、最长 120 天),每个 chat 标签附经逐阶段核验的推理链;用 recency window 探针统计记忆需求的时间分布;对比多种 memory-needed 检测器在真实消息与人工问题上的表现;横评 3 个 agent 系统的 persona 重建 F1 与成本。真实性是最大亮点,但仅 10 段关系。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">只有 10 段真实关系,样本量小,统计代表性有限;数据来自特定 AI companion 产品的英文用户,跨产品、语言与文化的泛化性未知;结论主要覆盖 persona 重建与记忆触发场景,未涉及情感支持质量等陪伴的其他核心维度。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对做 AI 陪伴、个人助手与长期记忆架构的团队有直接参考价值——&#x27;recency 已覆盖 95.9% 需求&#x27;和&#x27;memory 标注本身改变使用行为&#x27;两点可直接指导记忆触发器与上下文窗口设计,31 倍成本差异也提醒谨慎选择记忆管线。落地难度低,思路可立即在现有 companion 系统中复现验证。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">HF 282 赞为本周最高之一;首个真实用户长期对话 benchmark,直接挑战&#x27;companion 需要复杂长期记忆&#x27;的默认假设,并揭示 memory 检测失效与标注偏差问题,对记忆架构设计有范式级参考意义。</div></div></div>
 </div>
-<div class="paper-card important">
+<div class="paper-card important" id="agentgarten">
   <div class="paper-header">
     <div class="paper-title"><span class="important-badge">🔴 重点精读</span><a href="https://arxiv.org/abs/2610.12374" target="_blank">AgentGarten: Code Worlds for Evolving Agents</a></div>
     <div class="paper-meta">arXiv:2610.12374 · HF 👍 255</div>
+    <div class="paper-reading"><a href="../notes/llm/agents/AgentGarten.html">阅读完整精读 →</a><span>方法图、核心推导、实验与局限 · 2026-10-12 全文校订</span></div>
   </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 AgentGarten 框架:把模拟器/游戏引擎与共享 neural renderer 耦合,构建实时交互环境——模拟后端维护持久世界状态并执行程序定义的交互规则,渲染器从结构化条件经统一接口生成视觉观测;提出 Adversarial Forcing,通过精确回放使 history prefilling 可微,让后续预测的损失回传更新历史编码,并加真实数据对抗监督提升画质。新世界可写成代码接入同一渲染接口。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">Agent 在其中通过视觉观测实时交互,并把每轮经验蒸馏成 playbook 供后续 agent 继承与精炼;实证显示学习效率大幅提升——agent 仅 4 轮学习即达标,而传统 RL 对应物需要数百万轮交互;且环境可在数量与难度上随 agent 一同扩展,走向靠交互经验持续进化的 agent。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">构建多个代码定义的世界并以统一接口渲染;用 Adversarial Forcing(精确回放使历史预填充可微)+真实数据对抗监督训练渲染器并优化到实时交互;让 agent 多轮迭代蒸馏 playbook,与常规 RL 的学习轮数对比(4 轮 vs 数百万轮)。摘要未给出分任务的定量成功率,学习轮数的对比口径(任务、baseline 设置)也未明。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要未报告各环境上的定量成功率与泛化指标,&#x27;4 轮 vs 数百万轮&#x27;的具体任务与 baseline 设置不清楚;渲染器由视频模型改造,其视觉保真度与真实分布的差距未充分量化;playbook 继承机制在多世界、多 agent 规模下的可扩展性有待验证。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对 agent 训练环境基础设施与交互式/具身 agent 研究团队有借鉴价值——&#x27;环境写成代码+共享神经渲染&#x27;显著降低环境构建门槛,并对 RL 低效痛点给出 agentic 替代路径。落地难度中等:需要游戏引擎/模拟器工程能力与渲染训练算力,但思路对工业界自建 agent 训练场有启发。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">255 赞;将&#x27;环境写成代码+共享神经渲染&#x27;统一起来,agent 仅 4 轮学习即可对标传统 RL 数百万轮效率,为可进化 agent 的训练环境提供了新范式,可能改变 agentic 训练基础设施的构建方式。</div></div></div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 AgentGarten 框架:把模拟器/游戏引擎与共享 neural renderer 耦合,构建实时交互环境——模拟后端维护持久世界状态并执行程序定义的交互规则,渲染器从结构化条件经统一接口生成视觉观测;提出 Adversarial Forcing,通过精确回放使 history prefilling 可微,让后续预测的损失回传更新历史编码,并加真实数据对抗监督提升画质。新世界可写成代码接入同一渲染接口。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">预训练 Agent 通过视觉观察行动，跨轮继承文字 playbook；捉迷藏中第 4 轮出现搭掩体，第 10 轮出现斜坡越墙。这是已有预训练知识在环境中的落地案例；与从零 self-play RL 的里程碑参照不能直接计算样本效率倍数。Agent 的经验保存在外部手册，未进行在线权重更新。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">全文表 1：逐块 SDPA replay 的相对误差从 SGF 风格的 3.99% 降为 bitwise 0；表 2：单 H100、480×832、四步去噪、tiny decoder 下稳态渲染吞吐 36.5 fps，每个 16 帧块 438.8 ms。表 4 的四个额外世界每轮一个 episode：伴侣犬 13→19、狭桥 71→41 秒、牧羊入栏 3→4 只、装载机 30→90.9 分，装载机第 2 轮为 0。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">Agent 结果样本少，缺少无手册与同预算、多 seed 对照，也未充分验证跨世界泛化；画质主要是定性比较，深度/法线条件遗漏身份、材质和部分运动信息。任务在 Agent 思考时暂停世界；36.5 fps 是渲染吞吐，不是完整闭环决策频率。装载机使用第三人称相机，应与其他第一人称任务区分。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合可编程环境、交互式世界模型和具身 Agent 原型。优先复用状态与外观分离、可验证经验继承、精确 replay 等设计；精确 R1/R2 要求判别器骨干冻结。单卡推理不代表单卡训练，论文各训练阶段使用 32 张 H100；完整 code worlds 与实践循环仍待公开。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">可执行状态、共享实时渲染与跨轮文字经验形成了有价值的实验框架；精确 replay 和冻结骨干下的 R1/R2 具有明确技术复用价值。持续进化与通用学习收益仍需对照实验验证，不宜用“4 轮对标数百万次 RL”概括。</div></div></div>
 </div>
 <div class="paper-card">
   <div class="paper-header">
@@ -553,6 +560,7 @@
 </div>
 
     <footer>
+        <p><a href="./">← 返回大模型周报</a> · <a href="../">知行手记首页</a></p>
         由 VTM 小助手自动生成 | 2026-10-12
     </footer>
 </div>

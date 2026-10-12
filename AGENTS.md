@@ -1,10 +1,10 @@
 # 知行手记维护约定
 
-- 本仓库是后训练与 Infra 笔记的主要维护位置；编辑 `notes/llm/post-training/`、`notes/llm/infra/`、`notes/llm/agents/` 中的 Markdown，再生成同名 HTML。
+- 本仓库是大模型学习笔记与论文精读的主要维护位置；编辑 `notes/llm/post-training/`、`notes/llm/infra/`、`notes/llm/agents/` 中的 Markdown，再生成同名 HTML。
 - 本仓库只维护当前版本，不保留或重新创建修订前 Markdown 与资源的备份目录。当前配图保持原样，`_reader/asset-manifest.json` 仅保存资源哈希和必要图片引用，用于校验，不含旧稿正文。原图有错误时在当前正文解释；重画图片使用新文件名。
 - 多张公式图可能构成连续推导。文字化时保留中间步骤、假设、对象与符号定义，并解释每一步为什么这样变换。正文不要堆叠文件名或新旧版本映射；必要的配图错误说明可折叠展示。公式能渲染不代表推导完整或容易理解。
 - 独立公式整体居中；连续等号的推导用 `aligned` 分行，等号纵向对齐，每步单独一行。不要只在 LaTeX 源文换行而遗漏 `\\`，也不要为缩短公式删除中间步骤。
-- 阅读分类由 `tools/notes-reader/catalog.mjs` 维护。一级为后训练、Infra、智能体，二级为主题；无需按每个二级主题继续移动文件。
+- 阅读分类由 `tools/notes-reader/catalog.mjs` 维护。当前一级为后训练、Infra、智能体，二级为主题；根据实际收录内容扩展分类，不限定为后训练与 Infra。论文按主要研究问题归入对应主题，交叉方向在摘要或正文说明，不为了凑目录建立空分类；新增分类需同步栏目入口、侧栏和搜索。无需按每个二级主题继续移动文件。
 - 大模型页面属于主站「学习笔记」栏目，复用 `assets/site.css`；生成器通过 `site-layout.mjs` 读取首页的公共页头与页脚。不要另设品牌或配色。修改首页导航后重新构建笔记，并运行站点浏览器检查。
 - 展示与导航以 GitHub Pages 为准，栏目使用目录地址，不在公开导航中带 `index.html`，不增加 `file://` 兼容逻辑。本地检查使用 HTTP 服务，发布后检查线上效果。
 - 修改后运行 `npm --prefix tools/notes-reader run build` 与 `npm --prefix tools/notes-reader run verify`。影响导航、图片、公式排版或路径时，也运行 README 中的浏览器检查。

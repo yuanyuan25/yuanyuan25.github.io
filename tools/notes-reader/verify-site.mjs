@@ -81,7 +81,7 @@ try{
   }
   await page.goto(base+'/index.html');
   await page.waitForFunction(()=>document.querySelectorAll('#recent-reports .recent-item').length===3);
-  await page.locator('.site-header nav').getByRole('link',{name:'大模型报告',exact:true}).click();
+  await page.locator('.site-header nav').getByRole('link',{name:'大模型周报',exact:true}).click();
   assert.ok(page.url().endsWith('/llm_reports/'));
   await page.waitForFunction(()=>document.querySelectorAll('#report-list .card').length>0);
   await page.locator('.site-header nav').getByRole('link',{name:'首页',exact:true}).click();
@@ -94,10 +94,12 @@ try{
   assert.equal(await page.locator('.recent-item').first().getAttribute('href'),'tianjin-hexi-school-housing-2026-10-10.html');
   await page.getByRole('link',{name:/天津河西一片学区房房价整理（仅私产）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
+  await page.locator('#tbl-all tr').first().waitFor();
   assert.equal(await page.locator('#tbl-all tr').count(),32);
   await checkPinnedColumn();
   await page.getByRole('link',{name:'查看私产房源明细 →',exact:true}).click();
   assert.equal(page.url(),base+'/'+listingsPath);
+  await page.locator('#tb tr').first().waitFor();
   assert.equal(await page.locator('#tb tr').count(),200);
   await checkPinnedColumn();
   await page.getByRole('button',{name:'上海道小学',exact:true}).click();
@@ -127,6 +129,7 @@ try{
   await page.locator('.site-header nav').getByRole('link',{name:'生活',exact:true}).click();
   await page.getByRole('link',{name:/天津河西一片学区房房价整理（全量）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-08-21.html'));
+  await page.locator('#tbl-all tr').first().waitFor();
   assert.equal(await page.locator('#tbl-all tr').count(),32);
   await page.getByRole('link',{name:'知行手记首页',exact:true}).click();
   await page.locator('.topic[href="notes/"]').click();

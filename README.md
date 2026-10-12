@@ -6,7 +6,7 @@
 - **GitHub 仓库**：https://github.com/yuanyuan25/yuanyuan25.github.io
 - **本地项目目录**：`yuan-notes`
 
-网站由原来的大模型报告项目扩展而来。`yuanyuan25.github.io` 是 GitHub 个人主站要求的仓库名称；网站品牌和本地目录使用「知行手记」及 `yuan-notes`。
+网站由原来的大模型周报项目扩展而来。`yuanyuan25.github.io` 是 GitHub 个人主站要求的仓库名称；网站品牌和本地目录使用「知行手记」及 `yuan-notes`。
 
 网站图标沿用墨绿色底、白色「知」字。`assets/favicon.svg` 是可编辑的矢量原稿，`favicon.ico` 提供 16 / 32 / 48px 兼容图标，`assets/apple-touch-icon.png` 用于添加到主屏幕。修改图标时同步导出这两个位图文件。首页、栏目、报告及文章模板均已接入；大模型笔记构建时复用首页的图标声明并转换相对路径。
 
@@ -16,7 +16,7 @@
 yuan-notes/
 ├── index.html             # 知识库首页
 ├── assets/                # 公共样式与首页脚本
-├── llm_reports/           # 大模型论文报告，保留原有网址
+├── llm_reports/           # 大模型周报，保留原有网址
 │   ├── index.html         # 报告目录
 │   ├── YYYY-MM-DD.html    # 每期报告
 │   ├── reports.json       # 自动生成的报告清单
@@ -38,7 +38,7 @@ yuan-notes/
 └── templates/article.html # 通用文章模板
 ```
 
-目前已有大模型报告，以及 17 篇大模型笔记（13 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
+目前已有大模型周报，以及 17 篇大模型笔记（13 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
 
 ## 生活参考资料
 
@@ -59,7 +59,7 @@ python3 -m http.server 8000
 
 访问 http://localhost:8000/ 。网站以 GitHub Pages 的展示与路由为准，栏目使用 `/`、`/llm_reports/`、`/notes/` 等目录地址，由服务器提供目录中的 `index.html`。本地调试使用 HTTP 服务，不提供双击 HTML 文件的 `file://` 兼容处理。
 
-## 新增大模型报告
+## 新增大模型周报
 
 1. 参考 `llm_reports/report_template.html`，创建 `llm_reports/YYYY-MM-DD.html`。
 2. 填写页面中的 `report-meta` JSON 元数据。
@@ -68,13 +68,15 @@ python3 -m http.server 8000
 
 既有报告路径 `llm_reports/YYYY-MM-DD.html` 保持不变，原链接可继续使用。
 
-## 维护后训练与 Infra 笔记
+## 维护大模型学习笔记与论文精读
 
-本仓库独立维护两组笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。
+本仓库独立维护大模型笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。
 
 - `notes/llm/post-training/`：偏好与策略优化、预测与自蒸馏。
 - `notes/llm/infra/`：模型基础、训练与并行、推理与性能；后续加入集群与调度。
 - `notes/llm/agents/`：智能体与交互学习；[AgentGarten 精读](notes/llm/agents/AgentGarten.html) 包含方法图、核心推导、实验口径与复现入口。
+
+分类随实际内容扩展，按论文主要研究问题归类；交叉方向可在摘要和正文中说明。当前涵盖后训练、Infra 和智能体，其中 AgentGarten 属于「智能体 → 世界模型与交互学习」。
 
 一级目录采用稳定的英文名称；二级主题在侧栏配置中维护，暂不继续拆分文件夹，避免笔记少时层级过深。文章标题与文件名可保持中文。图片与所属笔记一起维护于各目录的 `pic/`。
 
