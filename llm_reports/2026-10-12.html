@@ -155,6 +155,9 @@
             background: linear-gradient(to right, var(--important-bg), var(--card-bg));
         }
         .paper-header { margin-bottom: 16px; }
+        .paper-title-row { display: flex; align-items: flex-start; gap: 16px; }
+        .paper-title-row .paper-title { min-width: 0; }
+        .paper-title-row .reading-link { flex: 0 0 auto; white-space: nowrap; margin-top: 2px; }
         .paper-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -179,7 +182,7 @@
         .paper-meta span { display: inline-flex; align-items: center; gap: 4px; }
         .paper-meta a { color: inherit; text-decoration: none; }
         .paper-meta a:hover { color: var(--primary); text-decoration: underline; }
-        .paper-meta .tag, .paper-meta .reading-link {
+        .paper-meta .tag, .reading-link {
             background: #e8f0fe;
             color: var(--primary);
             padding: 2px 10px;
@@ -187,7 +190,9 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
-        .paper-meta .reading-link { font-weight: 600; }
+        .reading-link { display: inline-block; font-weight: 600; text-decoration: none; }
+        .reading-link:hover { background: #d2e3fc; text-decoration: underline; }
+        @media (max-width: 600px) { .paper-title-row { gap: 10px; } }
         .field, .field-group {
             margin-bottom: 14px;
         }
@@ -340,15 +345,17 @@
 </div>
 <div class="paper-card important" id="agentgarten">
   <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.12374" target="_blank">AgentGarten: Code Worlds for Evolving Agents</a></div>
+    <div class="paper-title-row">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.12374" target="_blank">AgentGarten: Code Worlds for Evolving Agents</a></div>
+      <a class="reading-link" href="../notes/llm/agents/AgentGarten.html" title="方法图、核心推导、实验与局限；2026-10-12 全文校订">阅读完整精读 →</a>
+    </div>
     <div class="paper-meta"><span class="important-badge">🔴 重点精读</span>
       <span title="论文首次发布日期">📅 <time datetime="2026-10-08">2026-10-08</time></span>
       <a class="paper-team" href="https://huggingface.co/papers/2610.12374" target="_blank" rel="noopener" title="HF 论文页标注的发布组织：MirroS">🏢 MirroS</a>
       <span class="tag">Agentic</span>
       <span class="tag">世界模型</span>
       <a href="https://arxiv.org/abs/2610.12374" target="_blank" rel="noopener">arXiv:2610.12374</a>
-      <span title="周报生成时的 HF 点赞数">HF 👍 255</span>
-      <a class="reading-link" href="../notes/llm/agents/AgentGarten.html" title="方法图、核心推导、实验与局限；2026-10-12 全文校订">阅读完整精读 →</a></div>
+      <span title="周报生成时的 HF 点赞数">HF 👍 255</span></div>
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 AgentGarten 框架:把模拟器/游戏引擎与共享 neural renderer 耦合,构建实时交互环境——模拟后端维护持久世界状态并执行程序定义的交互规则,渲染器从结构化条件经统一接口生成视觉观测;提出 Adversarial Forcing,通过精确回放使 history prefilling 可微,让后续预测的损失回传更新历史编码,并加真实数据对抗监督提升画质。新世界可写成代码接入同一渲染接口。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">预训练 Agent 通过视觉观察行动，跨轮继承文字 playbook；捉迷藏中第 4 轮出现搭掩体，第 10 轮出现斜坡越墙。这是已有预训练知识在环境中的落地案例；与从零 self-play RL 的里程碑参照不能直接计算样本效率倍数。Agent 的经验保存在外部手册，未进行在线权重更新。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">全文表 1：逐块 SDPA replay 的相对误差从 SGF 风格的 3.99% 降为 bitwise 0；表 2：单 H100、480×832、四步去噪、tiny decoder 下稳态渲染吞吐 36.5 fps，每个 16 帧块 438.8 ms。表 4 的四个额外世界每轮一个 episode：伴侣犬 13→19、狭桥 71→41 秒、牧羊入栏 3→4 只、装载机 30→90.9 分，装载机第 2 轮为 0。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">Agent 结果样本少，缺少无手册与同预算、多 seed 对照，也未充分验证跨世界泛化；画质主要是定性比较，深度/法线条件遗漏身份、材质和部分运动信息。任务在 Agent 思考时暂停世界；36.5 fps 是渲染吞吐，不是完整闭环决策频率。装载机使用第三人称相机，应与其他第一人称任务区分。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合可编程环境、交互式世界模型和具身 Agent 原型。优先复用状态与外观分离、可验证经验继承、精确 replay 等设计；精确 R1/R2 要求判别器骨干冻结。单卡推理不代表单卡训练，论文各训练阶段使用 32 张 H100；完整 code worlds 与实践循环仍待公开。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">可执行状态、共享实时渲染与跨轮文字经验形成了有价值的实验框架；精确 replay 和冻结骨干下的 R1/R2 具有明确技术复用价值。持续进化与通用学习收益仍需对照实验验证，不宜用“4 轮对标数百万次 RL”概括。</div></div></div>
 </div>

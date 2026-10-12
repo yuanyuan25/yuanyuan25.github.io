@@ -15,15 +15,17 @@
        Infra 独立覆盖分布式训练、通信优化、算子与编译器、推理服务和资源调度。
        按主要贡献区分算法和系统；有系统集成不自动归入 Infra。
        论文卡片按主要研究问题单独归类，分类数量之和应等于总论文数。
-       每张卡片的 paper-header 先放 paper-title，再放唯一的 paper-meta 信息行。
+       每张卡片的 paper-header 先放标题，再放唯一的 paper-meta 信息行。
+       有完整精读时用 paper-title-row 包住 paper-title 与 reading-link，按钮放标题行最右侧。
        日期（论文首次发布）、可确认的团队/机构、分类和主题 tag、arXiv 链接、HF 热度、
-       important-badge 与可选 reading-link 均放入 paper-meta，桌面并排、手机自然换行。
+       important-badge 均放入 paper-meta，桌面并排、手机自然换行；reading-link 不放入元数据行。
        团队必须注明来源；缺失时省略，不用提交者身份推测机构；HF 热度保留本期快照。
        精读链接说明和校订日期可放 title 属性，不另起 paper-reading 一行。
        标识示例：<span>📅 <time datetime="2026-10-08">2026-10-08</time></span>
        <span>🏢 已核实团队</span><span class="tag">Agentic</span><span class="tag">世界模型</span>
        <a href="https://arxiv.org/abs/论文编号">arXiv:论文编号</a><span>HF 👍 本期点赞数</span>
-       <a class="reading-link" href="对应精读地址">阅读完整精读 →</a>。
+       标题行示例：<div class="paper-title-row"><div class="paper-title">论文标题</div>
+       <a class="reading-link" href="对应精读地址">阅读完整精读 →</a></div>。
        版心对齐主站 1120px。report-meta 用于 build_index.py 生成目录。 -->
   <script type="application/json" id="report-meta">{{REPORT_META_JSON}}</script>
   <style>
@@ -148,6 +150,9 @@
             background: linear-gradient(to right, var(--important-bg), var(--card-bg));
         }
         .paper-header { margin-bottom: 16px; }
+        .paper-title-row { display: flex; align-items: flex-start; gap: 16px; }
+        .paper-title-row .paper-title { min-width: 0; }
+        .paper-title-row .reading-link { flex: 0 0 auto; white-space: nowrap; margin-top: 2px; }
         .paper-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -172,7 +177,7 @@
         .paper-meta span { display: inline-flex; align-items: center; gap: 4px; }
         .paper-meta a { color: inherit; text-decoration: none; }
         .paper-meta a:hover { color: var(--primary); text-decoration: underline; }
-        .paper-meta .tag, .paper-meta .reading-link {
+        .paper-meta .tag, .reading-link {
             background: #e8f0fe;
             color: var(--primary);
             padding: 2px 10px;
@@ -180,7 +185,9 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
-        .paper-meta .reading-link { font-weight: 600; }
+        .reading-link { display: inline-block; font-weight: 600; text-decoration: none; }
+        .reading-link:hover { background: #d2e3fc; text-decoration: underline; }
+        @media (max-width: 600px) { .paper-title-row { gap: 10px; } }
         .field, .field-group {
             margin-bottom: 14px;
         }
