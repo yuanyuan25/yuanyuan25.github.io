@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1080" viewBox="0 0 1280 1080" role="img" aria-labelledby="title desc"><title id="title">AgentGarten 方法总图</title><desc id="desc">程序引擎导出几何，神经渲染器生成观察；渲染器经三阶段训练，Agent 跨轮继承文字手册。</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#315e50"/></marker><style>text{font-family:"PingFang SC","Noto Sans CJK SC",Arial,sans-serif;fill:#20382f}.title{font-size:32px;font-weight:700}.head{font-size:24px;font-weight:650}.body{font-size:20px}.small{font-size:18px;fill:#526a60}.card{fill:#fff;stroke:#b4cbbb;stroke-width:2}.panel{fill:#f0f5ee;stroke:#d8e3d5;stroke-width:2}.flow{fill:none;stroke:#315e50;stroke-width:3;marker-end:url(#arrow)}</style></defs><rect width="1280" height="1080" rx="18" fill="#fafbf6"/>
+<text x="40" y="52" class="title">AgentGarten 方法总图</text>
+<text x="40" y="86" class="body">程序维护事件，模型生成观察，Agent 将经验写成下一轮手册</text>
+<rect x="28" y="112" width="1224" height="352" rx="12" class="panel"/>
+<text x="50" y="150" class="head">① 交互时：每次动作推进可执行世界</text>
+<rect x="52" y="212" width="190" height="134" rx="12" class="card"/>
+<text x="74" y="248" class="head">视觉 Agent</text>
+<text x="74" y="280" class="body">只用 RGB 观察</text>
+<text x="74" y="312" class="body">选择动作 aₜ</text>
+<rect x="318" y="212" width="236" height="134" rx="12" class="card"/>
+<text x="340" y="248" class="head">代码与物理引擎</text>
+<text x="340" y="280" class="body">更新状态与相机</text>
+<text x="340" y="312" class="body">碰撞 / 规则 / 裁判</text>
+<rect x="630" y="212" width="210" height="134" rx="12" class="card"/>
+<text x="652" y="248" class="head">几何条件 cₜ</text>
+<text x="652" y="280" class="body">深度或表面法线</text>
+<text x="652" y="312" class="body">可见布局与运动</text>
+<rect x="916" y="212" width="300" height="134" rx="12" class="card"/>
+<text x="938" y="248" class="head">神经渲染器 Rθ</text>
+<text x="938" y="280" class="body">几何 + x₀ + 文本</text>
+<text x="938" y="312" class="body">历史 KV → 观察 xₜ</text>
+<path d="M242 279H312" class="flow"/>
+<path d="M554 279H624" class="flow"/>
+<path d="M840 279H910" class="flow"/>
+<text x="256" y="264" class="small">动作</text>
+<text x="567" y="264" class="small">导出</text>
+<path d="M1066 212V182H976V207" class="flow"/>
+<text x="805" y="176" class="small">外观与历史输入</text>
+<path d="M1066 346V384H147V351" class="flow"/>
+<text x="388" y="376" class="small">RGB 返回 Agent，并加入视觉历史</text>
+<text x="52" y="428" class="body">状态由引擎保存；图像错误会影响动作选择，但不会直接改写物理状态。</text>
+<rect x="28" y="486" width="1224" height="318" rx="12" class="panel"/>
+<text x="50" y="524" class="head">② 训练时：更新渲染器权重</text>
+<rect x="52" y="550" width="266" height="122" rx="12" class="card"/>
+<text x="74" y="586" class="head">Stage 1 几何适配</text>
+<text x="74" y="618" class="body">视频骨干 + 几何</text>
+<text x="74" y="650" class="body">双向模型 → 教师</text>
+<rect x="370" y="550" width="274" height="122" rx="12" class="card"/>
+<text x="392" y="586" class="head">Stage 2 因果适配</text>
+<text x="392" y="618" class="body">干净历史 + 带噪块</text>
+<text x="392" y="650" class="body">块间因果，块内双向</text>
+<rect x="696" y="550" width="520" height="122" rx="12" class="card"/>
+<text x="718" y="586" class="head">Stage 3 Adversarial Forcing</text>
+<text x="718" y="618" class="body">DMD 分布匹配 + 真实数据 GAN</text>
+<text x="718" y="650" class="body">Exact replay + 精确 R1/R2</text>
+<path d="M318 610H364" class="flow"/>
+<path d="M644 610H690" class="flow"/>
+<text x="52" y="713" class="body">Pass 1：无梯度 rollout，记录最后一步输入 U 与历史输出 Z。</text>
+<text x="52" y="745" class="body">Pass 2：同执行结构重算预测与历史 KV；后续损失更新历史编码参数。</text>
+<text x="52" y="778" class="small">U、Z 保持 detached：没有对完整多步采样轨迹反传。R1/R2 要求判别器骨干冻结。</text>
+<rect x="28" y="826" width="1224" height="228" rx="12" class="panel"/>
+<text x="50" y="864" class="head">③ 跨轮时：Agent 继承文字经验</text>
+<rect x="52" y="887" width="240" height="79" rx="12" class="card"/>
+<text x="74" y="920" class="head">读任务与旧手册</text>
+<text x="74" y="950" class="small">新会话，固定预算</text>
+<rect x="350" y="887" width="232" height="79" rx="12" class="card"/>
+<text x="372" y="920" class="head">观察、行动、反馈</text>
+<text x="372" y="950" class="small">任务结束后复盘</text>
+<rect x="640" y="887" width="232" height="79" rx="12" class="card"/>
+<text x="662" y="920" class="head">写 playbook</text>
+<text x="662" y="950" class="small">证据 / 失败 / 假设</text>
+<rect x="930" y="887" width="286" height="79" rx="12" class="card"/>
+<text x="952" y="920" class="head">归档并传给下一轮</text>
+<text x="952" y="950" class="small">经验保存在外部文字</text>
+<path d="M292 927H344" class="flow"/>
+<path d="M582 927H634" class="flow"/>
+<path d="M872 927H924" class="flow"/>
+<text x="52" y="1013" class="body">没有 Agent 权重更新；思考时世界暂停；案例改善仍需同预算、多 seed 对照。</text>
+<text x="929" y="1040" class="small">据论文 §2、§3、§5 重画</text>
+</svg>

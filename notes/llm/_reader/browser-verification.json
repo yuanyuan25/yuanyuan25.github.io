@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-12",
   "passed": true,
   "mode": "Local HTTP with external requests blocked",
-  "browser": "153.0.8010.53",
+  "browser": "155.0.8059.39",
   "viewports": [
     1500,
     390
   ],
-  "pageChecks": 36,
+  "pageChecks": 38,
   "functions": [
     "Full-text search and result navigation",
     "Sticky right table of contents, anchor positioning and synchronized current chapter",
@@ -245,6 +245,19 @@
       "formulaAlignmentErrors": []
     },
     {
+      "file": "agents/AgentGarten.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "viewportWidth": 1500,
+      "images": 1,
+      "badImages": [],
+      "rawDollars": false,
+      "formulas": 89,
+      "mathErrors": [],
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
+    },
+    {
       "file": "revision-notes.html",
       "viewport": 1500,
       "pageWidth": 1500,
@@ -474,6 +487,19 @@
       "badImages": [],
       "rawDollars": false,
       "formulas": 85,
+      "mathErrors": [],
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
+    },
+    {
+      "file": "agents/AgentGarten.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "images": 1,
+      "badImages": [],
+      "rawDollars": false,
+      "formulas": 89,
       "mathErrors": [],
       "inconsistentTables": [],
       "formulaAlignmentErrors": []

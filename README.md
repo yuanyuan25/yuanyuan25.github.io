@@ -28,6 +28,7 @@ yuan-notes/
 │       ├── index.html     # 阅读入口（自动生成）
 │       ├── post-training/ # 后训练：Markdown、HTML、pic/
 │       ├── infra/         # 模型与系统：Markdown、HTML、pic/
+│       ├── agents/        # 智能体与交互学习：Markdown、HTML、pic/
 │       ├── _reader/       # 本地公式、样式、搜索索引与校验清单
 │       └── revision-notes.md
 ├── tools/notes-reader/    # Markdown 转 HTML 与校验工具
@@ -37,7 +38,7 @@ yuan-notes/
 └── templates/article.html # 通用文章模板
 ```
 
-目前已有大模型报告，以及 16 篇大模型笔记（12 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
+目前已有大模型报告，以及 17 篇大模型笔记（13 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
 
 ## 生活参考资料
 
@@ -73,6 +74,7 @@ python3 -m http.server 8000
 
 - `notes/llm/post-training/`：偏好与策略优化、预测与自蒸馏。
 - `notes/llm/infra/`：模型基础、训练与并行、推理与性能；后续加入集群与调度。
+- `notes/llm/agents/`：智能体与交互学习；[AgentGarten 精读](notes/llm/agents/AgentGarten.html) 包含方法图、核心推导、实验口径与复现入口。
 
 一级目录采用稳定的英文名称；二级主题在侧栏配置中维护，暂不继续拆分文件夹，避免笔记少时层级过深。文章标题与文件名可保持中文。图片与所属笔记一起维护于各目录的 `pic/`。
 

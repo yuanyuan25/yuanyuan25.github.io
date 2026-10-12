@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-08",
-  "pages": 18,
-  "notes": 16,
-  "reviewed": 12,
+  "date": "2026-10-12",
+  "pages": 19,
+  "notes": 17,
+  "reviewed": 13,
   "pending": 4,
-  "totalFormulas": 992,
+  "totalFormulas": 1081,
   "entries": [
     {
       "file": "post-training/DPO.md",
@@ -132,6 +132,14 @@
       "formulas": 85,
       "displayFormulas": 13,
       "headings": 11,
+      "status": "revised"
+    },
+    {
+      "file": "agents/AgentGarten.md",
+      "output": "agents/AgentGarten.html",
+      "formulas": 89,
+      "displayFormulas": 14,
+      "headings": 27,
       "status": "revised"
     },
     {

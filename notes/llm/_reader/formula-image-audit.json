@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-12",
   "scope": "Original referenced figures; formula differences are annotated in prose, not edited into image pixels.",
   "originalReferences": 90,
-  "retainedReferences": 89,
+  "retainedReferences": 90,
   "entries": [
     {
       "note": "post-training/DPO.md",
@@ -626,6 +626,12 @@
       "sha256": "090814caeb388bba8a51576046195bd3ad82d5dcb5a97f60cb3d400286575398",
       "originalBytesPreserved": true,
       "review": "Stable softmax block factors checked; normalized O in image equals unnormalized u/ell in text."
+    },
+    {
+      "note": "agents/AgentGarten.md",
+      "image": "agents/pic/agentgarten-method.svg",
+      "sha256": "4d14b8c719e55e368bfa5d880196167cd23bf1e1a7247aea6771f788d31be0ea",
+      "review": "See note-specific explanation in revised text."
     }
   ]
 }

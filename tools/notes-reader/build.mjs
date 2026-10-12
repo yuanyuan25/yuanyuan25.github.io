@@ -6,7 +6,7 @@ import katex from 'katex';
 import {siteLayout} from './site-layout.mjs';
 
 fs.mkdirSync(asset,{recursive:true});
-import {sections,pending,titles,summaries} from './catalog.mjs';
+import {sections,pending,titles,summaries,articleDates} from './catalog.mjs';
 const groups=sections.flatMap(section=>section.groups.map(([title,list])=>[`${section.title} · ${title}`,list]));
 const files=groups.flatMap(([,f])=>f);
 files.push('revision-notes.md');
@@ -112,7 +112,8 @@ for(const e of entries){
  const env={file:e.file,formulas:[],headings:[]};
  const content=md.render(e.source,env);
  const metadata=`<div class="article-meta"><span>${esc(e.group)}</span><span class="note-status ${e.pending?'draft':''}">${e.pending?'待补':'笔记'}</span></div><div class="article-tools"><a href="${relative(e.output,e.file)}">Markdown 源文</a><button type="button" class="print-button">打印 / PDF</button></div>`;
- const footer=`<footer class="article-footer"><a href="${relative(e.output,'index.html')}">← 返回全部笔记</a><span>2026-10-08 修订 · 公式可复制 · 图片可放大</span></footer>`;
+ const articleDate=articleDates[path.basename(e.file,'.md')]||'2026-10-08';
+ const footer=`<footer class="article-footer"><a href="${relative(e.output,'index.html')}">← 返回全部笔记</a><span>${articleDate} 修订 · 公式可复制 · 图片可放大</span></footer>`;
  const toc=env.headings.map(h=>`<a class="toc-level-${h.level}" href="#${encodeURIComponent(h.id)}">${esc(h.label)}</a>`).join('');
  const outline=toc?`<details class="toc toc-inline"><summary>本文目录 <span>${env.headings.length} 个章节 · 展开查看</span></summary><nav aria-label="本篇章节">${toc}</nav></details>`:'';
  const article=content.replace('</h1>','</h1>'+outline);
@@ -121,12 +122,12 @@ for(const e of entries){
 }
 const reviewed=entries.filter(e=>!e.pending&&e.file.includes('/')).length;
 const cards=sections.map(section=>`<section id="collection-${section.id}" class="collection section"><div class="section-heading"><h2>${esc(section.title)}</h2><span>${section.groups.reduce((n,[,list])=>n+list.length,0)} 篇笔记</span></div><p class="collection-intro">${esc(section.description)}</p>${section.groups.map(([title,list])=>`<section class="note-topic"><h3>${esc(title)}</h3><div class="card-grid">${list.map(file=>{const e=entries.find(x=>x.file===file);return `<a class="note-card ${e.pending?'draft-card':''}" href="${uri(e.output)}"><div class="card-top"><span class="note-status ${e.pending?'draft':''}">${e.pending?'待补':'笔记'}</span><span aria-hidden="true">↗</span></div><h4>${esc(e.title)}</h4><p>${esc(summary(e))}</p></a>`;}).join('')}</div></section>`).join('')}${section.id==='infra'?'<div class="future"><h3>集群与调度 <span>待扩展</span></h3><p>后续补充集群架构、资源管理、任务调度、通信网络与部署运维。</p></div>':''}</section>`).join('');
-const homepage=`<header class="page-heading"><p class="eyebrow">LEARNING NOTES / LLM</p><h1>大模型</h1><p class="intro">从后训练的目标函数与推导，到模型结构、训练并行与推理性能。把原理和实现放在一起，逐步建立自己的理解。</p><div class="card-stats"><span class="card-stat"><span class="number">${reviewed}</span> 篇笔记</span><span class="card-stat"><span class="number">${entries.filter(e=>e.pending).length}</span> 篇待补</span><span class="reading-hint">公式可复制 · 图片可放大</span></div></header>${cards}<div class="article-footer"><a href="${uri('revision-notes.html')}">修订与公式核对记录 →</a><a href="${uri(path.relative(root,path.join(siteRoot,'notes/index.html')))}">← 学习笔记</a></div>`;
+const homepage=`<header class="page-heading"><p class="eyebrow">LEARNING NOTES / LLM</p><h1>大模型</h1><p class="intro">从后训练的目标函数与推导，到模型结构、训练并行与推理性能，再到智能体的世界模型与交互学习。把原理、实现与实验依据放在一起。</p><div class="card-stats"><span class="card-stat"><span class="number">${reviewed}</span> 篇笔记</span><span class="card-stat"><span class="number">${entries.filter(e=>e.pending).length}</span> 篇待补</span><span class="reading-hint">公式可复制 · 图片可放大</span></div></header>${cards}<div class="article-footer"><a href="${uri('revision-notes.html')}">修订与公式核对记录 →</a><a href="${uri(path.relative(root,path.join(siteRoot,'notes/index.html')))}">← 学习笔记</a></div>`;
 fs.writeFileSync(path.join(root,'index.html'),shell('index.html','大模型 · 学习笔记',homepage,'',true));
 const search=entries.map(e=>({title:e.title,url:uri(e.output),group:e.group,pending:e.pending,text:e.source.replace(/!\[[^\]]*\]\([^)]*\)/g,'').replace(/<[^>]+>/g,'').replace(/[`#$>*_]/g,'').replace(/\s+/g,' ')}));
 fs.writeFileSync(path.join(asset,'search-data.js'),'window.NOTE_SEARCH='+JSON.stringify(search).replace(/</g,'\\u003c')+';\n');
 fs.cpSync(path.join(here,'node_modules/katex/dist'),path.join(asset,'katex'),{recursive:true,filter:p=>fs.statSync(p).isDirectory()||p.endsWith('.woff2')||p.endsWith('.woff')||p.endsWith('.ttf')||p.endsWith('katex.min.css')});
 fs.copyFileSync(path.join(here,'node_modules/katex/LICENSE'),path.join(asset,'katex/LICENSE'));
 for(const name of ['reader.css','reader.js'])fs.copyFileSync(path.join(here,name),path.join(asset,name));
-fs.writeFileSync(path.join(asset,'build-report.json'),JSON.stringify({date:'2026-10-08',pages:report.length+1,notes:files.length-1,reviewed,pending:entries.filter(e=>e.pending).length,totalFormulas:report.reduce((a,r)=>a+r.formulas,0),entries:report},null,2)+'\n');
+fs.writeFileSync(path.join(asset,'build-report.json'),JSON.stringify({date:new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Shanghai'}),pages:report.length+1,notes:files.length-1,reviewed,pending:entries.filter(e=>e.pending).length,totalFormulas:report.reduce((a,r)=>a+r.formulas,0),entries:report},null,2)+'\n');
 console.log(`Built ${report.length+1} static HTML pages; ${report.reduce((a,r)=>a+r.formulas,0)} formulas rendered with KaTeX.`);
