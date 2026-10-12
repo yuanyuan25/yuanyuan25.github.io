@@ -17,6 +17,17 @@
 .housing-report section h2 { font-size: 20px; margin-bottom: 7px; }
 .housing-report .desc { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
 .housing-report .table-wrap { overflow-x: auto; }
+.housing-report .related-date { color: var(--muted); font-size: 13px; }
+.housing-report .sticky-last-column { border-collapse: separate; border-spacing: 0; }
+.housing-report .sticky-last-column tr > :last-child {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  box-shadow: -5px 0 8px -6px rgba(32, 46, 43, .4);
+}
+.housing-report .sticky-last-column thead tr > :last-child { z-index: 3; background: var(--accent-soft); }
 .housing-report .table-wrap:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
 .housing-report table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
 .housing-report thead th { background: var(--accent-soft); color: var(--ink); font-weight: 600; text-align: left; padding: 11px 12px; border-bottom: 2px solid var(--line); }

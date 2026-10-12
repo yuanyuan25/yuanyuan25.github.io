@@ -1,0 +1,44 @@
+.housing-listings .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.housing-listings .toolbar input,
+.housing-listings .toolbar select,
+.housing-listings .btn {
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+.housing-listings .toolbar input { flex: 1 1 240px; min-width: 0; }
+.housing-listings .toolbar input:focus-visible,
+.housing-listings .toolbar select:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+.housing-listings .btn { cursor: pointer; }
+.housing-listings .btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+.housing-listings .stats { color: var(--muted); font-size: 13px; }
+.housing-listings .table-wrap { max-height: 75vh; overflow: auto; }
+.housing-listings thead th { position: sticky; top: 0; z-index: 2; }
+.housing-listings .sort-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.housing-listings .sort-button:hover { color: var(--accent); }
+.housing-listings .arrow { color: var(--accent); font-size: 10px; margin-left: 3px; }
+.housing-listings td:nth-child(4) { min-width: 220px; max-width: 360px; white-space: normal; }
+.housing-listings .badge { padding: 2px 8px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-size: 11px; }
+.housing-listings .link { font-weight: 600; }

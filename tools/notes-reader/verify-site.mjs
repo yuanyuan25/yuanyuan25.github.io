@@ -13,6 +13,27 @@ const errors=[],pages=[];
 const context=await browser.newContext();
 await context.route('**/*',route=>route.request().url().startsWith(base+'/')?route.continue():route.abort());
 const page=await context.newPage();
+const listingsPath='life/tianjin-hexi-school-housing-2026-10-10/listings.html';
+// The last column must remain visible at every horizontal scroll position.
+async function checkPinnedColumn(){
+ const table=page.locator('.sticky-last-column');
+ await table.locator('thead').scrollIntoViewIfNeeded();
+ for(const fraction of [0,.5,1]){
+  const result=await table.evaluate(async(table,fraction)=>{
+   const wrap=table.parentElement;
+   wrap.scrollLeft=(wrap.scrollWidth-wrap.clientWidth)*fraction;
+   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+   const box=wrap.getBoundingClientRect();
+   const cells=[...table.querySelectorAll('tr > :last-child')];
+   return {overflow:wrap.scrollWidth>wrap.clientWidth,visible:cells.every(cell=>{
+    const rect=cell.getBoundingClientRect(),style=getComputedStyle(cell);
+    return Math.abs(rect.right-box.right)<2&&rect.left>=box.left&&style.position==='sticky'&&style.backgroundColor!=='rgba(0, 0, 0, 0)';
+   })};
+  },fraction);
+  assert.ok(result.overflow,'Wide housing table should scroll inside its container');
+  assert.ok(result.visible,'Last column must stay visible with an opaque background at scroll fraction '+fraction);
+ }
+}
 // Compare what the browser actually renders, including links and shared colors.
 const chromeSnapshot=()=>{
  const style=getComputedStyle(document.body),brand=getComputedStyle(document.querySelector('.brand-mark'));
@@ -31,7 +52,7 @@ page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());})
 page.on('requestfailed',r=>errors.push(r.url()+' '+r.failure()?.errorText));
 try{
  const build=JSON.parse(fs.readFileSync(path.join(root,'notes/llm/_reader/build-report.json')));
- const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','life/index.html','life/tianjin-hexi-school-housing-2026-10-10.html','life/tianjin-hexi-school-housing-2026-08-21.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
+ const files=['index.html','llm_reports/index.html','notes/index.html','summaries/index.html','practice/index.html','life/index.html','life/tianjin-hexi-school-housing-2026-10-10.html',listingsPath,'life/tianjin-hexi-school-housing-2026-08-21.html','notes/llm/index.html',...build.entries.map(e=>'notes/llm/'+e.output)];
  for(const width of [1500,390]){
   await page.setViewportSize({width,height:1000});
   await page.goto(base+'/index.html');
@@ -66,12 +87,43 @@ try{
   await page.locator('.site-header nav').getByRole('link',{name:'首页',exact:true}).click();
   assert.equal(page.url(),base+'/');
   assert.equal(await page.locator('.topics .topic').last().getAttribute('href'),'life/');
+  assert.equal(await page.locator('a[href*="listings.html"]').count(),0,'No independent listings entry on home');
   await page.locator('.topic[href="life/"]').click();
   assert.equal(page.url(),base+'/life/');
+  assert.equal(await page.locator('a[href*="listings.html"]').count(),0,'Listings only belong to their parent article');
   assert.equal(await page.locator('.recent-item').first().getAttribute('href'),'tianjin-hexi-school-housing-2026-10-10.html');
   await page.getByRole('link',{name:/天津河西一片学区房房价整理（仅私产）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
   assert.equal(await page.locator('#tbl-all tr').count(),32);
+  await checkPinnedColumn();
+  await page.getByRole('link',{name:'查看私产房源明细 →',exact:true}).click();
+  assert.equal(page.url(),base+'/'+listingsPath);
+  assert.equal(await page.locator('#tb tr').count(),200);
+  await checkPinnedColumn();
+  await page.getByRole('button',{name:'上海道小学',exact:true}).click();
+  assert.equal(await page.locator('#tb tr').count(),129);
+  await page.getByRole('textbox').fill('元兴');
+  assert.ok(await page.locator('#tb tr').count()>0);
+  assert.ok((await page.locator('#tb tr td:nth-child(2)').allTextContents()).every(s=>s==='元兴新里'));
+  await page.getByRole('textbox').fill('没有对应房源的关键词');
+  assert.equal(await page.locator('#tb tr').count(),0);
+  assert.match(await page.locator('#stats').textContent(),/共 0 套/);
+  await page.getByRole('textbox').fill('');
+  await page.getByRole('button',{name:'闽侯路小学',exact:true}).click();
+  assert.equal(await page.locator('#tb tr').count(),71);
+  await page.getByRole('combobox').selectOption({label:'富邦花园'});
+  assert.ok(await page.locator('#tb tr').count()>0);
+  assert.ok((await page.locator('#tb tr td:nth-child(2)').allTextContents()).every(s=>s==='富邦花园'));
+  await page.getByRole('combobox').selectOption('');
+  await page.getByRole('button',{name:'全部学校',exact:true}).click();
+  for(const direction of ['ascending','descending','ascending']){
+   if(await page.locator('th[data-k="total"]').getAttribute('aria-sort')!==direction)await page.locator('th[data-k="total"] button').click();
+   const prices=(await page.locator('#tb tr td:nth-child(9)').allTextContents()).map(Number);
+   assert.deepEqual(prices,[...prices].sort((a,b)=>direction==='ascending'?a-b:b-a));
+  }
+  assert.match(await page.locator('#tb a').first().getAttribute('href'),/^https:\/\/tj\.ke\.com\/ershoufang\/\d+\.html$/);
+  await page.getByRole('link',{name:'← 返回学区房房价汇总（仅私产）',exact:true}).click();
+  assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
   await page.locator('.site-header nav').getByRole('link',{name:'生活',exact:true}).click();
   await page.getByRole('link',{name:/天津河西一片学区房房价整理（全量）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-08-21.html'));
@@ -94,7 +146,7 @@ try{
   assert.equal(page.url(),base+'/');
  }
  assert.deepEqual(errors,[]);
- const result={passed:true,mode:'Local HTTP with external requests blocked',pageChecks:pages.length,functions:['Shared site brand, navigation, footer, colors, typography and header geometry','Learning notes active in global navigation','Life is last in navigation and home categories','Site home to Life and the complete housing article','Clean directory routes from home to reports and back','Site home to learning notes','Topic anchors','Cross-section navigation','Search result paths','Return to site home on desktop and mobile','Existing recent reports still load'],errors,pages};
+ const result={passed:true,mode:'Local HTTP with external requests blocked',pageChecks:pages.length,functions:['Shared site brand, navigation, footer, colors, typography and header geometry','Learning notes active in global navigation','Life is last in navigation and home categories','Site home to Life and the complete housing article','Pinned last housing column at start, middle and end of horizontal scrolling','Article-only listings entry and return link','Listings school, community and keyword filters, empty results and numeric sorting','Clean directory routes from home to reports and back','Site home to learning notes','Topic anchors','Cross-section navigation','Search result paths','Return to site home on desktop and mobile','Existing recent reports still load'],errors,pages};
  fs.writeFileSync(path.join(root,'notes/llm/_reader/site-verification.json'),JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({...result,pages:undefined},null,2));
 }finally{await browser.close();await close();}
