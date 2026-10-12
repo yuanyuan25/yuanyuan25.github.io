@@ -46,11 +46,13 @@ for(const file of htmlFiles){
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);check(ids.length===new Set(ids).size,'Duplicate ids '+file);
  for(const [,raw] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
   const href=entities(raw);if(/^(https?:|mailto:|data:|javascript:)/i.test(href))continue;
-  const [p,frag]=href.split('#');let target=p?path.resolve(path.dirname(full),decodeURIComponent(p)):full;links++;
+  const [pathAndQuery,frag]=href.split('#');const [p,query]=pathAndQuery.split('?');let target=p?path.resolve(path.dirname(full),decodeURIComponent(p)):full;links++;
   if(fs.existsSync(target)&&fs.statSync(target).isDirectory())target=path.join(target,'index.html');
   check(fs.existsSync(target),'Broken local URL '+file+' -> '+href);
   if(frag&&target.endsWith('.html')&&fs.existsSync(target)){
-   const targetHTML=target===full?html:fs.readFileSync(target,'utf8');check(targetHTML.includes(`id="${decodeURIComponent(frag)}"`),'Broken anchor '+file+' -> '+href);
+   const report=new URLSearchParams(query||'').get('report');
+   const anchorTarget=path.basename(target)==='read.html'&&/^\d{4}-\d{2}-\d{2}\.html$/.test(report||'')?path.join(path.dirname(target),report):target;
+   const targetHTML=anchorTarget===full?html:fs.existsSync(anchorTarget)?fs.readFileSync(anchorTarget,'utf8'):'';check(targetHTML.includes(`id="${decodeURIComponent(frag)}"`),'Broken anchor '+file+' -> '+href);
   }
  }
 }

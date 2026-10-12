@@ -9,6 +9,7 @@
 - 展示与导航以 GitHub Pages 为准，栏目使用目录地址，不在公开导航中带 `index.html`，不增加 `file://` 兼容逻辑。本地检查使用 HTTP 服务，发布后检查线上效果。
 - 修改后运行 `npm --prefix tools/notes-reader run build` 与 `npm --prefix tools/notes-reader run verify`。影响导航、图片、公式排版或路径时，也运行 README 中的浏览器检查。
 - `llm_reports/` 保留已有报告网址。首页与栏目入口应能双向到达新笔记；提交生成的 HTML 和本地阅读资源，但不要提交 `node_modules`。
+- 周报原始 HTML 由其他任务按其模板生成，保持日期文件的原始格式。首页和目录进入 `llm_reports/read.html?report=日期.html`，通过 `assets/weekly-reader.js` 与公共样式适配主站；原始地址继续可用。修改适配器后运行 `verify-weekly.mjs`，核对全部周报正文、统计、趋势与跳转，不把样式要求回写给源周报模板。
 - `.nojekyll` 用于直接提供静态文件，包括 `_reader/` 资源。构建不需要发布；仅在用户要求时提交、推送或发布。
 
 - 两组笔记是完整独立副本，不使用指向 MyKnowledgeBase 的软链接、跳转、资源路径或生成脚本依赖，也不自动回写原目录。

@@ -68,6 +68,15 @@ python3 -m http.server 8000
 
 既有报告路径 `llm_reports/YYYY-MM-DD.html` 保持不变，原链接可继续使用。
 
+### 主站统一阅读页
+
+首页和周报目录通过 `llm_reports/read.html?report=YYYY-MM-DD.html` 打开周报，统一使用个人主站的页头、导航、页脚、字体与配色。`assets/weekly-reader.js` 在浏览器中读取原始周报，提取元数据、统计、趋势总结与正文；`assets/weekly-reader.css` 提供响应式目录和论文排版。原始周报的内容和模板无需为主站样式重写，阅读页提供「查看原始周报」入口。
+
+其他任务继续生成 `llm_reports/YYYY-MM-DD.html` 并运行 `build_index.py`。保留现有 `report-meta`、`.section`、`.paper-card` 等正文结构即可，新一期会自动使用统一阅读页，不需要额外生成主站副本。新增精读入口可留在论文卡片中；精读返回周报时使用统一阅读页 URL 并附对应论文锚点。
+
+兼容性检查使用 `tools/notes-reader/verify-weekly.mjs`，逐期比较论文正文、趋势总结和统计内容，并检查主站样式、原文入口、跨期链接与精读往返；运行方式同笔记生成工具的浏览器检查。
+
+
 ## 维护大模型学习笔记与论文精读
 
 本仓库独立维护大模型笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。

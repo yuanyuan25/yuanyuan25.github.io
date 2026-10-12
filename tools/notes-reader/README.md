@@ -29,6 +29,10 @@ node verify-browser.mjs
 
 将上述命令中的 `verify-browser.mjs` 换成 `verify-site.mjs`，可检查网站首页、学习笔记栏目与文章之间的跳转，并比对品牌、主导航、页脚、字体、配色与页头尺寸是否与主站一致。脚本自动启动并关闭仅监听本机的临时 HTTP 服务，检查桌面和手机页面；报告写到 `_reader/site-verification.json`。
 
+## 周报主站阅读器检查
+
+`verify-weekly.mjs` 自动读取 `llm_reports/reports.json`，对所有周报检查主站页头、页脚、配色与字体，并逐篇比较论文正文、趋势总结和统计，检查原始周报入口、跨期链接、精读双向链接及手机布局。它使用运行时适配器，周报源 HTML 不需要修改。运行方式同上，将命令中的 `verify-browser.mjs` 换成 `verify-weekly.mjs`；结果保存在 `_reader/weekly-verification.json`。
+
 ## 资源维护约定
 
 - `asset-manifest.json` 仅记录 97 个原始资源的大小、SHA256 和各笔记的必要图片引用，不含旧稿正文；构建不得重新覆盖该校验基线。

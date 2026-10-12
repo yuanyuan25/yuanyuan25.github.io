@@ -17,7 +17,7 @@
       for (const report of recent) {
         const link = document.createElement('a');
         link.className = 'recent-item';
-        link.href = `llm_reports/${report.file}`;
+        link.href = `llm_reports/read.html?report=${encodeURIComponent(report.file)}`;
         const date = document.createElement('time');
         date.dateTime = report.date;
         date.textContent = report.date;

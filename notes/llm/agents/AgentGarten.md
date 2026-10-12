@@ -6,7 +6,7 @@
 
 来源：[论文摘要](https://arxiv.org/abs/2610.12374v1)、[26 页 PDF](https://arxiv.org/pdf/2610.12374v1)、[HTML 全文](https://arxiv.org/html/2610.12374v1)、[项目演示](https://mirros-lab.github.io/agent-garten/)、[官方代码](https://github.com/MirroS-Lab/AgentGarten)、[渲染器权重](https://huggingface.co/MirroS-Lab/AgentGarten-renderer)。下文页码、图表编号以 PDF v1 为准，HTML 的图号存在差异。
 
-相关周报：[2026-10-12 大模型周报中的 AgentGarten 条目](../../../llm_reports/2026-10-12.html#agentgarten)。
+相关周报：[2026-10-12 大模型周报中的 AgentGarten 条目](../../../llm_reports/read.html?report=2026-10-12.html#agentgarten)。
 
 ## 核心结论与阅读判断
 

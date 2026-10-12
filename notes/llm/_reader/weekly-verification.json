@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-12",
+  "passed": true,
+  "reports": 13,
+  "pageChecks": 26,
+  "widths": [
+    1500,
+    390
+  ],
+  "functions": [
+    "Preserve every paper, trend summary and source statistic",
+    "Shared site header, footer, font and colors",
+    "Home and archive enter site reader",
+    "Original report link",
+    "Close reading link and backlink",
+    "Links to other weekly reports stay in reader",
+    "Default latest report and invalid date state"
+  ],
+  "errors": [],
+  "pages": [
+    {
+      "file": "2026-10-12.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-09-07.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-31.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-17.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-03.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-07-28.html",
+      "width": 1500,
+      "papers": 1,
+      "directions": 7
+    },
+    {
+      "file": "2026-07-27.html",
+      "width": 1500,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-07-13.html",
+      "width": 1500,
+      "papers": 43,
+      "directions": 6
+    },
+    {
+      "file": "2026-06-08.html",
+      "width": 1500,
+      "papers": 22,
+      "directions": 6
+    },
+    {
+      "file": "2026-06-01.html",
+      "width": 1500,
+      "papers": 18,
+      "directions": 6
+    },
+    {
+      "file": "2026-05-25.html",
+      "width": 1500,
+      "papers": 21,
+      "directions": 6
+    },
+    {
+      "file": "2026-05-18.html",
+      "width": 1500,
+      "papers": 21,
+      "directions": 7
+    },
+    {
+      "file": "2026-03-13.html",
+      "width": 1500,
+      "papers": 23,
+      "directions": 7
+    },
+    {
+      "file": "2026-10-12.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-09-07.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-31.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-17.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-08-03.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-07-28.html",
+      "width": 390,
+      "papers": 1,
+      "directions": 7
+    },
+    {
+      "file": "2026-07-27.html",
+      "width": 390,
+      "papers": 50,
+      "directions": 6
+    },
+    {
+      "file": "2026-07-13.html",
+      "width": 390,
+      "papers": 43,
+      "directions": 6
+    },
+    {
+      "file": "2026-06-08.html",
+      "width": 390,
+      "papers": 22,
+      "directions": 6
+    },
+    {
+      "file": "2026-06-01.html",
+      "width": 390,
+      "papers": 18,
+      "directions": 6
+    },
+    {
+      "file": "2026-05-25.html",
+      "width": 390,
+      "papers": 21,
+      "directions": 6
+    },
+    {
+      "file": "2026-05-18.html",
+      "width": 390,
+      "papers": 21,
+      "directions": 7
+    },
+    {
+      "file": "2026-03-13.html",
+      "width": 390,
+      "papers": 23,
+      "directions": 7
+    }
+  ]
+}
