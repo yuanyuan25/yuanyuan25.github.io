@@ -24,7 +24,7 @@
 <p>阅读日期：2026-10-12</p>
 <p>论文：<strong>AgentGarten: Code Worlds for Evolving Agents</strong>。MirroS 技术报告，作者来自 MirroS、清华大学与北京大学；arXiv v1 发表于 2026-10-08。本文讨论可编程交互环境、实时神经渲染，以及预训练 Agent 如何通过文字经验跨轮改进行为。</p>
 <p>来源：<a href="https://arxiv.org/abs/2610.12374v1" target="_blank" rel="noopener noreferrer">论文摘要</a>、<a href="https://arxiv.org/pdf/2610.12374v1" target="_blank" rel="noopener noreferrer">26 页 PDF</a>、<a href="https://arxiv.org/html/2610.12374v1" target="_blank" rel="noopener noreferrer">HTML 全文</a>、<a href="https://mirros-lab.github.io/agent-garten/" target="_blank" rel="noopener noreferrer">项目演示</a>、<a href="https://github.com/MirroS-Lab/AgentGarten" target="_blank" rel="noopener noreferrer">官方代码</a>、<a href="https://huggingface.co/MirroS-Lab/AgentGarten-renderer" target="_blank" rel="noopener noreferrer">渲染器权重</a>。下文页码、图表编号以 PDF v1 为准，HTML 的图号存在差异。</p>
-<p>相关周报：<a href="../../../llm_reports/read.html?report=2026-10-12.html#agentgarten">2026-10-12 大模型周报中的 AgentGarten 条目</a>。</p>
+<p>相关周报：<a href="../../../llm_reports/2026-10-12.html#agentgarten">2026-10-12 大模型周报中的 AgentGarten 条目</a>。</p>
 <h2 id="核心结论与阅读判断">核心结论与阅读判断</h2>
 <p>AgentGarten 值得关注的主张是：<strong>用程序维护世界的状态和规则，用共享视频模型生成外观，再让 Agent 把交互经验写成下一轮可继承的技能文件。</strong> 这种分工让物理事件可检查、可回放，也允许同一状态轨迹更换视觉风格。</p>
 <p>我的判断是，这篇论文最扎实的贡献集中在渲染器训练与数值执行：两遍计算恢复历史编码的梯度，逐块执行保证 replay 与采样一致，以及冻结判别器骨干条件下的精确 R1/R2。Agent 实验展示了有启发性的经验继承案例，但还不足以证明通用能力持续增长，也不能把摘要的“4 轮对比数百万次 RL”解释为同等条件下的效率倍数。<a href="https://arxiv.org/pdf/2610.12374v1" target="_blank" rel="noopener noreferrer">论文 §3–5，PDF p.5–15</a></p>
