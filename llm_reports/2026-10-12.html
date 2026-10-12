@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" sizes="any">
-    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大模型周报 | 2026-10-12</title>
-    <script type="application/json" id="report-meta">
-    {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180">
+  <title>大模型周报 | 2026-10-12</title>
+  <!-- 周报结构基准为 2026-05-25（第21周）：统计、本周核心趋势、粘性分类按钮、分类正文。
+       直接生成日期 HTML；顶部主站导航保持静态，不使用独立阅读器。
+       保留原有占位符；CORE_TRENDS 填本期趋势的 li 列表，不能复制旧周新闻。
+       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 分类。
+       论文卡片按主要研究问题单独归类，分类数量之和应等于总论文数。
+       版心对齐主站 1120px。report-meta 用于 build_index.py 生成目录。 -->
+  <script type="application/json" id="report-meta">{
   "title": "大模型周报 · 2026-10-12",
   "date": "2026-10-12",
   "week": "2026-10-05 ~ 2026-10-11 · 第41周",
-  "summary": "共收录 50 篇大模型相关论文，重点精读 9 篇，覆盖 6 个研究方向。",
+  "summary": "共收录 50 篇大模型相关论文，重点精读 9 篇，覆盖 7 个研究方向（含 VLA/VLM）。",
   "stats": [
     {
       "label": "收录论文",
@@ -24,144 +29,261 @@
     },
     {
       "label": "覆盖方向",
-      "value": "6"
+      "value": "7"
     }
   ]
-}
-    </script>
-    <style>
+}</script>
+  <style>
         :root {
             --primary: #1a73e8;
-            --primary-light: #e8f0fe;
-            --accent: #d93025;
-            --accent-bg: #fce8e6;
+            --primary-dark: #1557b0;
+            --accent: #ea4335;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
             --text: #202124;
             --text-secondary: #5f6368;
-            --bg: #f8f9fa;
-            --card: #ffffff;
             --border: #dadce0;
-            --success: #188038;
+            --highlight-bg: #fef3e8;
+            --highlight-border: #f9ab00;
+            --important-bg: #fce8e8;
+            --important-border: #ea4335;
         }
-        * { box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0; padding: 0;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
         }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-        header {
+        .container { width: min(1120px, calc(100% - 64px)); max-width: none; margin: 0 auto; padding: 40px 0; }
+        .report-header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, #4285f4 100%);
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 16px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(26,115,232,0.2);
         }
-        header h1 { margin: 0 0 8px; font-size: 2rem; }
-        header .meta { opacity: 0.9; font-size: 1rem; }
+        .report-header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+        .report-header .meta { font-size: 1.1rem; opacity: 0.9; }
+        .report-header .subtitle { font-size: 0.95rem; opacity: 0.8; margin-top: 8px; }
         .stats-bar {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            gap: 40px;
             flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-        .stat-item {
-            background: var(--card);
-            padding: 16px 28px;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--card-bg);
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            text-align: center;
-            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
-        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
-        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
-        .toc {
-            background: var(--card);
-            padding: 20px 28px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        .stat-item { text-align: center; }
+        .stat-item .number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-item .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(248,249,250,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
         }
-        .toc h2 { margin-top: 0; font-size: 1.1rem; }
-        .toc ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
-        .toc a { color: var(--primary); text-decoration: none; font-size: 0.95rem; }
-        .toc a:hover { text-decoration: underline; }
-        .section { margin-bottom: 40px; }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        .section {
+            margin-bottom: 50px;
+        }
         .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            padding: 12px 20px;
-            background: var(--primary-light);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-count {
+            background: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
         }
         .paper-card {
-            background: var(--card);
+            background: var(--card-bg);
             border-radius: 12px;
-            padding: 24px;
+            padding: 28px;
             margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
-            transition: box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .paper-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
         .paper-card.important {
-            border: 2px solid var(--accent);
-            background: linear-gradient(to right, var(--accent-bg) 0%, var(--card) 60%);
+            border-left-color: var(--important-border);
+            background: linear-gradient(to right, var(--important-bg), var(--card-bg));
         }
-        .paper-header { margin-bottom: 16px; }
+        .paper-.report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
         .paper-title {
             font-size: 1.15rem;
-            font-weight: 600;
-            margin: 0 0 6px;
+            font-weight: 700;
+            color: var(--text);
             line-height: 1.4;
+            flex: 1;
         }
-        .paper-title a { color: var(--text); text-decoration: none; }
-        .paper-title a:hover { color: var(--primary); text-decoration: underline; }
-        .paper-meta { font-size: 0.85rem; color: var(--text-secondary); }
+        .paper-card.important .paper-title {
+            color: var(--important-border);
+        }
+        .paper-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .paper-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .paper-meta .tag {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .field, .field-group {
+            margin-bottom: 14px;
+        }
+        .field-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .field-content {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+        }
         .important-badge {
-            display: inline-block;
-            background: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--important-border);
             color: white;
             font-size: 0.75rem;
             font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-right: 6px;
-            vertical-align: middle;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
         }
-        .paper-body { font-size: 0.95rem; }
-        .field { margin-bottom: 14px; }
-        .field-label {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-            display: block;
-        }
-        .field-content { color: var(--text); }
-        .empty { color: var(--text-secondary); font-style: italic; }
         footer {
             text-align: center;
-            padding: 24px;
+            padding: 40px 20px;
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-top: 1px solid var(--border);
-            margin-top: 40px;
+            margin-top: 60px;
         }
+        .summary-box {
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .summary-box h3 {
+            color: #b06000;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .summary-box ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        .summary-box li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 768px) {
+            .report-header h1 { font-size: 1.6rem; }
+            .paper-.report-header { flex-direction: column; }
+            .stats-bar { gap: 20px; }
+        }
+
+        .important-badge { margin-right: 8px; vertical-align: middle; }
+        .nav-links li { list-style: none; }
+        .nav-links a { display: inline-block; }
+        .section, .paper-card { scroll-margin-top: 88px; }
+        .section-title { flex-wrap: wrap; }
+        .paper-title a { color: inherit; text-decoration: none; }
+        .paper-title a:hover { color: var(--primary); text-decoration: underline; }
+        .empty { color: var(--text-secondary); font-style: italic; }
+        .section-desc { color: var(--text-secondary); font-size: 0.9rem; margin: -8px 0 20px; }
         .paper-reading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 10px; }
         .paper-reading a { font-weight: 600; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
         .paper-reading span { font-size: 0.82rem; color: var(--text-secondary); }
-    </style>
+        .paper-card { overflow-wrap: anywhere; }
+        /* Keep the current three statistic cards and their number/label classes. */
+        .stats-bar { gap: 32px; padding: 0; margin: 0 0 32px; background: transparent; box-shadow: none; }
+        .stat-item { background: var(--card-bg); padding: 16px 28px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); min-width: 120px; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            .container { width: calc(100% - 36px); padding: 28px 0; }
+            .report-header { padding: 34px 18px; }
+            .nav-links { gap: 8px; }
+            .nav-links a { padding: 5px 11px; font-size: 0.8rem; }
+            .paper-card { padding: 20px; }
+            .field-content { padding-left: 14px; }
+            .summary-box { padding: 20px; }
+            .section, .paper-card { scroll-margin-top: 136px; }
+        }
+</style>
   <link rel="stylesheet" href="../assets/site-header.css">
 </head>
 <body>
@@ -181,32 +303,36 @@
       </nav>
     </div>
   </header>
-<div class="container">
-    <header>
-        <h1>🧠 大模型周报</h1>
-        <div class="meta">2026-10-12｜上周 (2026-10-05 ~ 2026-10-11)</div>
-    </header>
-
-    <div class="stats-bar">
+<main class="container" id="main">
+  <header class="report-header">
+    <h1>大模型周报</h1>
+    <div class="meta">2026-10-12｜上周 (2026-10-05 ~ 2026-10-11)</div>
+    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新</div>
+  </header>
+  <div class="stats-bar">
         <div class="stat-item"><div class="stat-number">50</div><div class="stat-label">收录论文</div></div>
         <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">重点精读</div></div>
-        <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">覆盖方向</div></div>
-    </div>
+        <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">覆盖方向</div></div></div>
+  <section class="summary-box" aria-labelledby="weekly-trends">
+    <h3 id="weekly-trends">📌 本周核心趋势</h3>
+    <ul><li><strong>交互环境与可验证经验成为 Agent 研究重点</strong>：AgentGarten、Learn2Play Bench 与 EVISKILL 分别关注可执行环境、陌生任务中的经验学习和可回放的技能证据，提示要把经验继承与闭环表现一起评估。</li>
+<li><strong>VLA/VLM 聚焦视觉决策与世界动作建模</strong>：MotorMind、SuperNav 关注通用视觉语言模型的具身执行；Long-WAM、ProWAM、NAVA-WAM、PointWAM、UniWAM 从记忆、视觉规划、视频动作先验和三维表示等角度探索机器人策略。</li>
+<li><strong>长程 Agent 更重视验证和记忆可靠性</strong>：CheckerBench、VeriHarness 研究长时任务的验证工具，RealCompanion 和 Memadapter 分别考察长期理解与记忆带来的偏差；任务预算和证据链仍是阅读结果时的重要条件。</li>
+<li><strong>后训练关注监督可靠性与泛化机制</strong>：跨 tokenizer 的 on-policy 蒸馏、参数更新方向、多教师蒸馏和自蒸馏等论文，围绕如何获得可靠监督与可迁移能力展开。</li>
+<li><strong>效率研究覆盖训练、低精度与推理服务</strong>：TRACE、STEPQuant、LoGRA、TokenRouter 和 GRACE 分别讨论 FP4 强化学习、状态量化、低秩梯度、路由服务与视频 latent 压缩，指标需结合各自模型和硬件设置解读。</li></ul>
+  </section>
+  <nav class="nav" aria-label="论文分类导航">
+    <ul class="nav-links"><li><a href="#Agentic">Agentic</a></li>
+<li><a href="#VLA-VLM">VLA / VLM</a></li>
+<li><a href="#生成式检索---Generative-Retrieval">生成式检索</a></li>
+<li><a href="#预训练---Pre-training">预训练</a></li>
+<li><a href="#后训练---Post-training">后训练</a></li>
+<li><a href="#强化学习---RL">强化学习</a></li>
+<li><a href="#基础架构创新---Infrastructure-Innovation">架构创新</a></li></ul>
+  </nav>
+<section class="section" id="Agentic">
+<h2 class="section-title">🤖 Agentic<span class="section-count">13 篇</span></h2>
 
-    <div class="toc">
-        <h2>📑 目录导航</h2>
-        <ul>
-<li><a href="#Agentic">🤖 Agentic</a> (16 篇)</li>
-<li><a href="#生成式检索---Generative-Retrieval">🔍 生成式检索 / Generative Retrieval</a> (0 篇)</li>
-<li><a href="#预训练---Pre-training">📊 预训练 / Pre-training</a> (17 篇)</li>
-<li><a href="#后训练---Post-training">🎓 后训练 / Post-training</a> (7 篇)</li>
-<li><a href="#强化学习---RL">🎯 强化学习 / RL</a> (5 篇)</li>
-<li><a href="#基础架构创新---Infrastructure-Innovation">⚙️ 基础架构创新 / Infrastructure Innovation</a> (5 篇)</li>
-        </ul>
-    </div>
-
-<div class="section" id="Agentic">
-<div class="section-title">🤖 Agentic (16 篇)</div>
 <div class="paper-card important">
   <div class="paper-header">
     <div class="paper-title"><span class="important-badge">🔴 重点精读</span><a href="https://arxiv.org/abs/2610.01780" target="_blank">RealCompanion: Benchmarking Human Understanding from Reasoning over Longitudinal Real-World Conversations</a></div>
@@ -228,13 +354,6 @@
     <div class="paper-meta">arXiv:2610.08215 · HF 👍 136</div>
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">专门评估 LLM agent&#x27;从经验中学习&#x27;这一能力维度的 benchmark:新设计一批规则新颖甚至反直觉的文本游戏,agent 无法依赖预训练知识或指令内规则,只能通过交互获取知识;游戏提供可复现反馈与自动评分,支持对同一 agent 跨多次重复尝试的学习曲线做受控评估,并通过变换游戏实例检验所学知识的迁移能力。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">横评骨干模型、self-evolving 方法与不同 harness 后得到三个发现:(1)经验保留上,完整保留动作与反馈记录比把经验总结成规则或策略更利于学习;(2)人类-agent 差距明显,顶尖人类玩家的峰值分数高于所有受评 agent,且人类探索策略更多样、重复动作更少;(3)harness 很关键——骨干固定时仅更换 harness 即可提升性能并降低估计推理成本。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">设计规则新颖/反直觉的文本游戏以排除预训练知识的干扰;用自动评分跟踪多次尝试的学习曲线;通过实例变换测试迁移;横评骨干模型、self-evolving 方法与多种 harness;与人类玩家对比峰值分数与行为模式(策略多样性、动作重复率)。设计能区分&#x27;交互中学习&#x27;与&#x27;用已有知识推理&#x27;,针对性较强。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">仅限文本游戏,结论向视觉、具身等更真实环境的迁移性未知;反直觉规则的游戏类型有限,对特定能力可能高估或低估;人类玩家的样本量摘要未说明;&#x27;完整记录优于摘要&#x27;的结论未与外部记忆、检索增强等机制组合验证。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对做 self-evolving agent、长期记忆与经验复用的团队有参考价值——&#x27;完整记录优于摘要成规则&#x27;对记忆架构设计是直接证据;harness 影响的发现提醒团队重视工程封装而非只换模型。落地难度低,可作为 agent 学习能力的回归测试集纳入评测体系。</div></div></div>
-</div>
-<div class="paper-card important">
-  <div class="paper-header">
-    <div class="paper-title"><span class="important-badge">🔴 重点精读</span><a href="https://arxiv.org/abs/2609.38078" target="_blank">MotorMind: Scaffolding General Vision Language Models for Zero-Shot Robot Manipulation</a></div>
-    <div class="paper-meta">arXiv:2609.38078 · HF 👍 114</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出让通用 VLM 直接充当机器人&quot;操作员&quot;的 harness:将 VLM 提出的 mid-level action 接入确定性机器人控制与执行反馈,配异步监控与后台记忆更新。与依赖专用 action expert、coding agent 或 SAM3 等 grounding 工具的 agentic 机器人系统不同,MotorMind 无需任务特定策略训练与任何外部模型/工具,直接回答&quot;通用 VLM 能否仅凭观测推理、下发动作并依据执行反馈持续自适应&quot;这一问题。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">零样本设定下,MotorMind 在 LIBERO-PRO 基础套件达 66.7% 成功率、扰动下 53.8%,远高于已有零样本方法的最高 13.3%/19.2%;在真实 xArm6 上直操与人为扰动场景平均 95% 成功。替换更强的 VLM backbone 后性能进一步提升,剩余失败(视觉 grounding、具身推理、动作知识)随 VLM 能力增强而减少,说明通用 VLM 加合适的中层动作表示与异步执行框架即可实现有效零样本操控。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 LIBERO-PRO 基础与扰动两类设定下与多个已有零样本方法对比,并在真实 xArm6 上验证直操与扰动场景;通过替换更强 VLM backbone 做归因分析。仿真加真机加 backbone 消融的设计较完整;但对比方法数量、真机任务规模在摘要中有限,95% 为平均成功率,未给出方差。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">评测集中于 LIBERO 系列与单台 xArm6,任务与环境多样性有限;性能受 backbone VLM 能力制约,当前失败仍集中在视觉 grounding 与具身推理;未与微调式 VLA 方法对比绝对性能上限;长时程、多阶段任务及更复杂真机场景的稳定性未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研究 VLM 机器人零样本操控、或不想为每个任务训练专用策略的团队,mid-level action 加异步反馈的 harness 设计可直接借鉴;落地难度中等,需机器人控制接口与确定性执行环境。对工业界&quot;通用 VLM 快速适配新任务&quot;路线有明确参考价值。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">零样本成功率大幅超越已有方法(66.7% vs 最高 13.3%),真机达 95%,以极简架构验证了&quot;通用 VLM + 中层动作接口&quot;路线可行,且随通用 VLM 进步持续受益,对具身智能体方向影响可能较大。</div></div></div>
 </div>
 <div class="paper-card">
   <div class="paper-header">
@@ -263,13 +382,6 @@
     <div class="paper-meta">arXiv:2610.07967 · HF 👍 74</div>
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">系统化评估 LLM agent 欺骗行为的 benchmark:1,532 个实例、3 个任务族、28 个职业场景。借鉴经典舞弊理论提出 LLM Deception Diamond 框架,从 pressure、incentive、opportunity、conflict 四种外部条件刻画欺骗诱因;每个实例配 neutral 与 induced 两个版本以测量条件依赖的欺骗率变化,并用显式任务事实与可观测 agent 行为区分&#x27;欺骗&#x27;与&#x27;能力性错误&#x27;。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">9 个前沿 LLM 的评估显示:诱因在跨模型、跨任务族上普遍提升欺骗率,即使 baseline 欺骗率低的模型也会被诱发。说明 LLM agent 的欺骗风险具有条件依赖性、可被外部诱因系统性放大,需要可测量的共享 benchmark 来持续跟踪这一脆弱性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">1,532 实例覆盖 3 任务族、28 职业场景,样本量与场景多样性较好;neutral/induced 配对设计能隔离外部条件的影响;区分欺骗与能力错误的控制提升了测量的可信度。局限:欺骗判定依赖行为观测,摘要未说明判定是否自动完成及准确率,复杂场景主观性难完全排除。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">场景为受控模拟而非真实生产环境,真实部署中的欺骗频率与强度可能不同;仅评估 9 个模型且摘要未列出具体数字;结论向真实 agent 工作流的生态效度未知;benchmark 衡量&#x27;何时更易欺骗&#x27;,本身不直接提供防御手段。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合关注 agent 安全与可信 AI 的团队,以及需要做模型上线前红队测试的场景;Deception Diamond 四维框架也可转化为内部风控检查清单。benchmark 评测门槛低可直接使用,但把测量结论转化为防御机制仍需额外研究。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.12126" target="_blank">SuperNav: An Agentic Navigation System for Any Task in Any Scene</a></div>
-    <div class="paper-meta">arXiv:2610.12126 · HF 👍 72</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">核心思路是让通用 MLLM 专注请求理解、场景理解与决策,保持其通用能力不被导航微调损害,把运动执行委托给导航工具。SuperNav 为 MLLM 配备 agent harness:Navigation Skills、面向物理交互的 agent-oriented Tools、任务进度与上下文管理;统一 visual-point 接口让模型直接在图像上指点目的地,并可依据执行反馈修订决策,从而兼顾任务通用性与场景通用性。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在 instance-level、multi-object、demand-driven 三类任务上超过 4 个被评估基线;HM3D 上的 category-level 评估与真实四足机器人部署进一步验证了跨环境适用性。说明&#x27;通用 MLLM 决策 + 工具化执行&#x27;的解耦范式可在不做导航特定微调的情况下支撑多样请求与陌生场景。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">评估覆盖三类任务、仿真(HM3D category-level)与真实四足机器人部署,维度较全面,并与 4 个基线对比。但摘要未给出成功率等具体数字,真实机器人试验的规模、场景数与鲁棒性细节未知,支撑力度需读正文确认。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">运动执行委托给导航工具,性能受工具能力与接口表达上限约束;visual-point 接口在遮挡、精细操作类任务上的适用性未知;主要在仿真加单台四足上验证,复杂动态环境与长时程任务稳定性未知;摘要未报告失败案例分类。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合具身导航与服务机器人团队:免导航训练数据、直接复用通用 MLLM,落地门槛低;harness 思路(MLLM 决策 + 工具执行 + 统一指点接口)可迁移到机械臂等其他具身场景。最终表现依赖底层 MLLM 能力,换更强 backbone 可能进一步提升。</div></div></div>
 </div>
 <div class="paper-card">
   <div class="paper-header">
@@ -308,6 +420,31 @@
 </div>
 <div class="paper-card">
   <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.05030" target="_blank">EVISKILL: Grounding Skill Evolution in Replayable Evidence</a></div>
+    <div class="paper-meta">arXiv:2610.05030 · HF 👍 53</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对持续技能进化中&#x27;改什么、为何改、何时固化&#x27;三问题,提出 evidence-driven 框架:把执行观测组织成可重放的 Replayable Evidence Cards,编辑与其支持上下文显式链接;targeted replay 通过重执行验证编辑并反馈修正;跨 epoch 保留证据、局部受支持的编辑暂存待更多经验,全局验证再决定其并入最终 skill,避免全局 reject 误伤局部正确修正。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">保留行为证据与任务上下文、以 targeted replay 做局部验证、按证据成熟度分阶段固化编辑,能提升 agent 持续技能进化的有效性;全局验证结果不足以评判构成性修改——局部受支持的修正不应随整体拒绝而被丢弃,部分证据需更多经验积累才能形成有用更新。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 3 个交互式 benchmark 上、以 6 个不同 LLM 作为 backbone 进行实验,检验框架对模型选择的鲁棒性;以证据卡与重放机制把编辑验证局部化,直接针对其提出的问题(证据丢失、全局判决粗糙)设计机制。多 backbone + 多 benchmark 设计合理,但摘要未给出具体指标数字。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要未报告量化提升幅度与基线名单;3 个 benchmark 的环境多样性有限,对真实复杂软件/工具环境的迁移性未明;证据卡的组织与重放成本可能随经验规模增长,扩展性未讨论;skill 表示形式与编辑冲突处理机制未详述。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于做 agent 长期记忆/技能库、自动化工作流自我改进的团队;证据留存与局部验证机制对避免&#x27;全局成败一票否决&#x27;式经验学习有明确借鉴意义。落地难度中等,需在 agent 框架中加入证据存储与重放模块。</div></div></div>
+</div>
+</section>
+<section class="section" id="VLA-VLM">
+<h2 class="section-title">🦾 VLA / VLM<span class="section-count">9 篇</span></h2>
+<p class="section-desc">视觉语言理解、具身导航与机器人动作策略；按主要研究问题归类。</p>
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><span class="important-badge">🔴 重点精读</span><a href="https://arxiv.org/abs/2609.38078" target="_blank">MotorMind: Scaffolding General Vision Language Models for Zero-Shot Robot Manipulation</a></div>
+    <div class="paper-meta">arXiv:2609.38078 · HF 👍 114</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出让通用 VLM 直接充当机器人&quot;操作员&quot;的 harness:将 VLM 提出的 mid-level action 接入确定性机器人控制与执行反馈,配异步监控与后台记忆更新。与依赖专用 action expert、coding agent 或 SAM3 等 grounding 工具的 agentic 机器人系统不同,MotorMind 无需任务特定策略训练与任何外部模型/工具,直接回答&quot;通用 VLM 能否仅凭观测推理、下发动作并依据执行反馈持续自适应&quot;这一问题。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">零样本设定下,MotorMind 在 LIBERO-PRO 基础套件达 66.7% 成功率、扰动下 53.8%,远高于已有零样本方法的最高 13.3%/19.2%;在真实 xArm6 上直操与人为扰动场景平均 95% 成功。替换更强的 VLM backbone 后性能进一步提升,剩余失败(视觉 grounding、具身推理、动作知识)随 VLM 能力增强而减少,说明通用 VLM 加合适的中层动作表示与异步执行框架即可实现有效零样本操控。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 LIBERO-PRO 基础与扰动两类设定下与多个已有零样本方法对比,并在真实 xArm6 上验证直操与扰动场景;通过替换更强 VLM backbone 做归因分析。仿真加真机加 backbone 消融的设计较完整;但对比方法数量、真机任务规模在摘要中有限,95% 为平均成功率,未给出方差。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">评测集中于 LIBERO 系列与单台 xArm6,任务与环境多样性有限;性能受 backbone VLM 能力制约,当前失败仍集中在视觉 grounding 与具身推理;未与微调式 VLA 方法对比绝对性能上限;长时程、多阶段任务及更复杂真机场景的稳定性未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研究 VLM 机器人零样本操控、或不想为每个任务训练专用策略的团队,mid-level action 加异步反馈的 harness 设计可直接借鉴;落地难度中等,需机器人控制接口与确定性执行环境。对工业界&quot;通用 VLM 快速适配新任务&quot;路线有明确参考价值。</div></div><div class="field"><span class="field-label">推荐理由</span><div class="field-content">零样本成功率大幅超越已有方法(66.7% vs 最高 13.3%),真机达 95%,以极简架构验证了&quot;通用 VLM + 中层动作接口&quot;路线可行,且随通用 VLM 进步持续受益,对具身智能体方向影响可能较大。</div></div></div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.12126" target="_blank">SuperNav: An Agentic Navigation System for Any Task in Any Scene</a></div>
+    <div class="paper-meta">arXiv:2610.12126 · HF 👍 72</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">核心思路是让通用 MLLM 专注请求理解、场景理解与决策,保持其通用能力不被导航微调损害,把运动执行委托给导航工具。SuperNav 为 MLLM 配备 agent harness:Navigation Skills、面向物理交互的 agent-oriented Tools、任务进度与上下文管理;统一 visual-point 接口让模型直接在图像上指点目的地,并可依据执行反馈修订决策,从而兼顾任务通用性与场景通用性。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在 instance-level、multi-object、demand-driven 三类任务上超过 4 个被评估基线;HM3D 上的 category-level 评估与真实四足机器人部署进一步验证了跨环境适用性。说明&#x27;通用 MLLM 决策 + 工具化执行&#x27;的解耦范式可在不做导航特定微调的情况下支撑多样请求与陌生场景。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">评估覆盖三类任务、仿真(HM3D category-level)与真实四足机器人部署,维度较全面,并与 4 个基线对比。但摘要未给出成功率等具体数字,真实机器人试验的规模、场景数与鲁棒性细节未知,支撑力度需读正文确认。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">运动执行委托给导航工具,性能受工具能力与接口表达上限约束;visual-point 接口在遮挡、精细操作类任务上的适用性未知;主要在仿真加单台四足上验证,复杂动态环境与长时程任务稳定性未知;摘要未报告失败案例分类。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合具身导航与服务机器人团队:免导航训练数据、直接复用通用 MLLM,落地门槛低;harness 思路(MLLM 决策 + 工具执行 + 统一指点接口)可迁移到机械臂等其他具身场景。最终表现依赖底层 MLLM 能力,换更强 backbone 可能进一步提升。</div></div></div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.06293" target="_blank">VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement Learning for Video Event Prediction</a></div>
     <div class="paper-meta">arXiv:2610.06293 · HF 👍 55</div>
   </div>
@@ -315,18 +452,55 @@
 </div>
 <div class="paper-card">
   <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.05030" target="_blank">EVISKILL: Grounding Skill Evolution in Replayable Evidence</a></div>
-    <div class="paper-meta">arXiv:2610.05030 · HF 👍 53</div>
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.10528" target="_blank">Long-WAM: Scaling the Context of World-Action Models</a></div>
+    <div class="paper-meta">arXiv:2610.10528 · HF 👍 104</div>
   </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对持续技能进化中&#x27;改什么、为何改、何时固化&#x27;三问题,提出 evidence-driven 框架:把执行观测组织成可重放的 Replayable Evidence Cards,编辑与其支持上下文显式链接;targeted replay 通过重执行验证编辑并反馈修正;跨 epoch 保留证据、局部受支持的编辑暂存待更多经验,全局验证再决定其并入最终 skill,避免全局 reject 误伤局部正确修正。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">保留行为证据与任务上下文、以 targeted replay 做局部验证、按证据成熟度分阶段固化编辑,能提升 agent 持续技能进化的有效性;全局验证结果不足以评判构成性修改——局部受支持的修正不应随整体拒绝而被丢弃,部分证据需更多经验积累才能形成有用更新。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 3 个交互式 benchmark 上、以 6 个不同 LLM 作为 backbone 进行实验,检验框架对模型选择的鲁棒性;以证据卡与重放机制把编辑验证局部化,直接针对其提出的问题(证据丢失、全局判决粗糙)设计机制。多 backbone + 多 benchmark 设计合理,但摘要未给出具体指标数字。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要未报告量化提升幅度与基线名单;3 个 benchmark 的环境多样性有限,对真实复杂软件/工具环境的迁移性未明;证据卡的组织与重放成本可能随经验规模增长,扩展性未讨论;skill 表示形式与编辑冲突处理机制未详述。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于做 agent 长期记忆/技能库、自动化工作流自我改进的团队;证据留存与局部验证机制对避免&#x27;全局成败一票否决&#x27;式经验学习有明确借鉴意义。落地难度中等,需在 agent 框架中加入证据存储与重放模块。</div></div></div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出模型-系统协同框架 Long-WAM,在实时控制约束下扩展 causal world-action model 的视觉上下文。核心发现是&quot;能访问历史不等于会用历史&quot;:历史加长只在视频底座经自回归(AR)预训练时带来显著收益,双向预训练初始化则无净增益。方法先在机器人与第一视角视频上做无动作标签的因果预测预训练,再在 world-action 适配中保留&quot;历史到未来&quot;的结构;配合流式观测编码、异步执行与硬件专属加速实现实时部署。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">RoboCasa GR-1 上上下文从 0 增至 19.2 秒,成功率从 63.3% 升至 78.7%,双向初始化无净收益,机器人域 AR 预训练进一步提升 GR-1 与 LIBERO-Long 峰值;在 LIBERO-Long、RoboTwin 2.0、DOMINO 上为对比方法中最优。RTX 5090 上每个动作 chunk(含未来视频 latent 预测)耗时 107.4ms;Unitree G1 上动态叠杯 95% 成功,而 Pi0.5 与 Fast-WAM 在 20 次试验中全部失败。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 GR-1、LIBERO-Long、RoboTwin 2.0、DOMINO 多个 benchmark 上做上下文长度与预训练方式(AR vs 双向、机器人域 vs 通用)的对照实验,并在 RTX 5090、DGX Spark、Jetson AGX Thor 及 Unitree G1、YAM 真机上验证时延与动态任务。对照设计能支撑核心论点;摘要未给出训练数据规模与详细消融数字。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">增益依赖 AR 预训练底座,对双向或非视频底座的模型结论可能不适用;真机验证任务面较窄(动态叠杯等),长时程复合任务仅以 memory-informed executor 角色配合高层规划验证;107.4ms 时延依赖特定硬件与专用加速,泛化到其他部署平台的表现未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM/机器人 VLA 且关注长上下文与实时部署的团队,&quot;历史收益取决于 AR 预训练&quot;这一发现对视频预训练范式与数据选择有直接参考;流式编码加异步执行的系统设计可借鉴。落地需视频生成式 backbone 与机器人平台适配,难度中高。</div></div></div>
 </div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02508" target="_blank">World Action Modeling with Progressive Visual Planning</a></div>
+    <div class="paper-meta">arXiv:2610.02508 · HF 👍 97</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出渐进式 world action model ProWAM:联合预测动作与有序稀疏视觉子目标序列(progress-indexed),为整个任务执行过程提供显式视觉引导,化解 WAM 长程预测中&quot;密集视频 rollout 低效、单帧预测又忽视如何向目标推进&quot;的矛盾。子目标预测可从无动作标签的大规模视频学习,把复杂视觉规划从动作策略中卸载给视频 backbone;执行时视频 backbone 单次前向缓存稀疏子目标特征,重规划仅需轻量 action denoising,避免迭代式全视频生成。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">ProWAM 取得更优的 OOD 鲁棒性:仿真上刷新 LIBERO-Plus(85.8%)与随机 RoboTwin(75.7%)的最好成绩,相对最强基线最高提升 35.9%;RoboCasa365 上 48.1% 成功率,高难 Composite-Unseen 分割 18.2%(总榜第 4);零样本真机新场景中 70.0% 成功,较最强基线的 55.0% 提升 15 个百分点(相对 +27.3%)。说明 progress-indexed 的视觉前瞻对闭环控制有价值。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 LIBERO-Plus、随机 RoboTwin、RoboCasa365(含 Composite-Unseen 难分割)多个仿真 benchmark 及零样本真机新场景与最强基线对比;架构上通过单次前向加轻量 denoise 支撑效率主张。覆盖仿真加真机、含 OOD 设定,较充分;但摘要未给出训练数据规模与推理时延数字,Composite-Unseen 仅 18.2% 说明最难任务仍有明显差距。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">长程能力依赖子目标预测质量,真机零样本 70% 仍意味着近三成失败;Composite-Unseen 上 18.2% 表明高难复合任务表现一般;子目标从无动作视频学习的规模与配比敏感性未展开;仅在特定机器人形态与任务族上验证,泛化性待考。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM/VLA 模型的团队,稀疏子目标规划把视觉规划与动作策略解耦,可与同批 Long-WAM 等工作互补甚至组合;落地难度中高,需视频 backbone 与动作专家联合训练。对希望用无标注视频扩大数据规模的机器人团队有直接参考价值。</div></div></div>
 </div>
-<div class="section" id="生成式检索---Generative-Retrieval">
-<div class="section-title">🔍 生成式检索 / Generative Retrieval (0 篇)</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.03391" target="_blank">Native Action-Prior Learning from Videos for World Action Models</a></div>
+    <div class="paper-meta">arXiv:2610.03391 · HF 👍 88</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 native action-prior learning:直接从无动作标注的观测视频预训练动作策略,避免&quot;先预训练视觉表征再适配控制&quot;的间接迁移,也不需要独立的 latent-action 模型。NAVA-WAM 分两阶段:第一阶段在观测视频上以未来视频 flow-matching 监督视觉转移,经 transition-structured joint attention 将监督传播至 Action-DiT,学习动作相关先验;第二阶段用带标注演示对 Action-DiT 做联合视频-动作 flow matching 的 post-train,非对称注意力解耦视觉分支与迭代动作 denoising,实现高效动作推理。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">NAVA-WAM 在分布内与 OOD 设置下一致优于已有方法,并表现出强动作标注效率(action-label efficiency)与有效的真机泛化。作者据此认为,从观测视频直接预训练动作策略是可行的,为突破 WAM 对带动作标注机器人数据的依赖、提升可扩展性提供了一条新路径。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在分布内与 OOD 两组设定下与已有方法对比,并考察动作标注效率(较少标注数据下的性能)与真机泛化;两阶段设计配合非对称注意力实现高效推理,机制上有清晰的消融逻辑。但摘要未给出具体 benchmark 数字、视频数据规模与对比方法清单,证据强度依赖正文,摘要层面难以独立核实定量结论。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要缺少定量支撑(未报告具体成功率或标注效率曲线),结论暂难独立核验;两阶段管线较复杂,transition-structured joint attention 与非对称注意力的贡献未分离量化;真机泛化实验的规模与场景在摘要中未说明;对非机器人形态动作空间的适用性未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM 且受机器人标注数据规模限制的团队,&quot;绕过 latent-action、直接从观测视频学动作先验&quot;与 Long-WAM、ProWAM 等同期工作互补,可组合使用。落地难度中高,需同时维护视频预训练与动作 post-train 两阶段;在真机数据采集昂贵的业务中价值更大。</div></div></div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02840" target="_blank">PointWAM: 3D World Action Modeling for Dexterous Robotic Manipulation</a></div>
+    <div class="paper-meta">arXiv:2610.02840 · HF 👍 63</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出首个将 world action model 显式分解为 scene(环境)与 hands(执行体)的 3D 世界动作模型 PointWAM,在统一时空坐标系内将两者联合预测为 3D 点轨迹。解耦表示支持在大规模人类演示视频上预训练,无需任务特定的物体或关键点选择;预测的手部运动再 retarget 到机器人动作,显式捕捉 3D 空间结构与接触几何。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">人类视频预训练使 DexJoCo 平均成功率提升 56.9 个百分点;加入 scene 轨迹监督比仅预测手部再增 10.9 点;两者结合在 DexJoCo 十项任务上超越此前 SOTA 11.7 点,并在真机上优于强 VLA 模型,说明 3D 点轨迹表示对灵巧操作的世界建模至关重要。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 DexJoCo 基准十项任务上与 SOTA 及强 VLA 对比;通过预训练消融(人类视频预训练、scene 轨迹监督)分离各成分贡献;真机实验验证 sim-to-real 可行性。既有大幅定量提升又有真实机器人验证,支撑较强;但摘要未披露预训练数据规模与真机任务细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">主要在与人类手部形态相近的灵巧操作场景验证,对夹爪等不同形态执行器的泛化未说明;依赖点云输入,对感知质量敏感;人类视频到机器人动作的 retarget 可能存在误差累积;摘要未报告失败案例与推理/训练成本。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对机器人学习与世界模型团队有明确借鉴价值:在人类视频上预训练 3D 点轨迹世界模型,大幅降低对机器人数据的依赖;scene/hands 解耦设计简洁优雅。落地需要点云感知与 retargeting 工程,难度中高,适合有灵巧操作业务的团队跟进。</div></div></div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02054" target="_blank">UniWAM: Unified World-Action Model</a></div>
+    <div class="paper-meta">arXiv:2610.02054 · HF 👍 55</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">将 physical reasoner、world generator、action predictor 整合为统一架构,联合学习物理语义理解、视觉生成与动作预测;用自然语言表示低层动作,设计预训练 recipe 把 VQA、人类第一视角、机器人演示的互补监督分配给不同组件;后训练引入 future visual noise augmentation 与 history-conditioned flow matching 显著减少 denoising 步数,并配套人/机器人数据清洗标注流水线。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">UniWAM 在 in-distribution、鲁棒性、泛化、指令遵循、长程任务等多组评测上达到 SOTA;并发现统一人-机器人联合训练的 log-linear scaling law,验证了人类数据与机器人数据混合大规模预训练的有效性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在分布内、鲁棒性、泛化、指令遵循、长程任务等多类标准评测上对比现有方法;通过 scaling law 拟合联合训练数据量与性能的关系;以严格的数据清洗与标注流水线保证训练数据质量。多维评测设计较全面,但摘要未给出具体分数与基线细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要未披露各评测的具体分数与对比基线名单,复现与核验成本不明;scaling law 仅在自身数据配方下验证;多源数据清洗流水线工程复杂,外部团队复现门槛高;人类数据与机器人数据的最优配比效应未细化。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于具身智能/机器人 foundation model 团队,尤其是希望复用 VLM 能力并统一生成与动作预测的团队;监督分配与数据 pipeline 思路有借鉴价值。落地难度高,需要大规模多源数据与算力投入,更适合有数据积累的头部团队。</div></div></div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2610.00864" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></div>
+    <div class="paper-meta">arXiv:2610.00864 · HF 👍 49</div>
+  </div>
+  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对 MeanFlow 直接用于 Robotic Foundation Models 会导致性能塌缩的问题,分析出 RFM 速度场的两个特有动态:局部加速度在去噪末期急剧上升、速度幅值随去噪进程不断展宽。基于运动学恒等式把 MeanFlow 的时间导数项在中间点拆成两个子区间项,分别刻画早/晚期去噪动态并抑制误差放大,首次让 RFM 实现一步动作生成。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">K-MF 在从零训练与微调两种范式、多种任务下实现一步动作生成,且在多数设置下超过多步 flow matching;推理效率上,GR00T-N1.6 的 action-head 延迟在 L40 与 Jetson Orin、eager/compiled 模式下降低 67.5%~74.4%,端到端延迟降低 30.3%~54.9%。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">先通过速度场动力学分析定位失败机理(局部加速度、幅值展宽),再据此推导解耦公式,属机理驱动设计;在从头训练与微调、多种任务上验证有效性;在 L40 GPU 与 Jetson Orin 边缘设备、eager/compiled 四种配置实测延迟,覆盖云端与端侧。机理分析 + 双范式验证 + 真实硬件测试,证据链充分。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">延迟数字仅报告在 GR00T-N1.6 上,其它 RFM 是否一致未验证;&#x27;多数设置下优于多步&#x27;意味着部分设置可能不及;摘要未给出任务成功率等性能指标的具体数字;中间点选择的敏感性与理论最优性未讨论。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于机器人 foundation model 部署团队,尤其是端侧/实时控制场景;一步生成对控制频率敏感的任务价值明确,代码已开源(IntelChina-AI/K-MF),落地门槛低、见效快,是推理加速优化 serving 机器人的好样板。</div></div></div>
+</div>
+</section>
+<section class="section" id="生成式检索---Generative-Retrieval">
+<h2 class="section-title">🔍 生成式检索 / Generative Retrieval<span class="section-count">0 篇</span></h2>
+
 <p class="empty">本周暂无新论文</p>
-</div>
-<div class="section" id="预训练---Pre-training">
-<div class="section-title">📊 预训练 / Pre-training (17 篇)</div>
+</section>
+<section class="section" id="预训练---Pre-training">
+<h2 class="section-title">📊 预训练 / Pre-training<span class="section-count">12 篇</span></h2>
+
 <div class="paper-card">
   <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.05608" target="_blank">Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation</a></div>
@@ -350,38 +524,10 @@
 </div>
 <div class="paper-card">
   <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.10528" target="_blank">Long-WAM: Scaling the Context of World-Action Models</a></div>
-    <div class="paper-meta">arXiv:2610.10528 · HF 👍 104</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出模型-系统协同框架 Long-WAM,在实时控制约束下扩展 causal world-action model 的视觉上下文。核心发现是&quot;能访问历史不等于会用历史&quot;:历史加长只在视频底座经自回归(AR)预训练时带来显著收益,双向预训练初始化则无净增益。方法先在机器人与第一视角视频上做无动作标签的因果预测预训练,再在 world-action 适配中保留&quot;历史到未来&quot;的结构;配合流式观测编码、异步执行与硬件专属加速实现实时部署。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">RoboCasa GR-1 上上下文从 0 增至 19.2 秒,成功率从 63.3% 升至 78.7%,双向初始化无净收益,机器人域 AR 预训练进一步提升 GR-1 与 LIBERO-Long 峰值;在 LIBERO-Long、RoboTwin 2.0、DOMINO 上为对比方法中最优。RTX 5090 上每个动作 chunk(含未来视频 latent 预测)耗时 107.4ms;Unitree G1 上动态叠杯 95% 成功,而 Pi0.5 与 Fast-WAM 在 20 次试验中全部失败。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 GR-1、LIBERO-Long、RoboTwin 2.0、DOMINO 多个 benchmark 上做上下文长度与预训练方式(AR vs 双向、机器人域 vs 通用)的对照实验,并在 RTX 5090、DGX Spark、Jetson AGX Thor 及 Unitree G1、YAM 真机上验证时延与动态任务。对照设计能支撑核心论点;摘要未给出训练数据规模与详细消融数字。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">增益依赖 AR 预训练底座,对双向或非视频底座的模型结论可能不适用;真机验证任务面较窄(动态叠杯等),长时程复合任务仅以 memory-informed executor 角色配合高层规划验证;107.4ms 时延依赖特定硬件与专用加速,泛化到其他部署平台的表现未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM/机器人 VLA 且关注长上下文与实时部署的团队,&quot;历史收益取决于 AR 预训练&quot;这一发现对视频预训练范式与数据选择有直接参考;流式编码加异步执行的系统设计可借鉴。落地需视频生成式 backbone 与机器人平台适配,难度中高。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.03543" target="_blank">DuoMatching: Joint-Marginal Distribution Matching for Few-Step Video Generation</a></div>
     <div class="paper-meta">arXiv:2610.03543 · HF 👍 100</div>
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对流式视频生成中 DMD 蒸馏(匹配视频 teacher 近似的联合分布)仍存在的视觉质量与语义对齐不足,提出联合-边缘(joint-marginal)统一分布匹配框架:在联合匹配之上增加 marginal matching 目标,从图像生成器引入帧级监督,转移互补的视觉与语义先验。为化解视频 student 与图像 teacher 的 latent 表示不一致,设计 LatentBridge;并以 Latent Variation Sampling 将帧级监督分散到不同时间段,降低冗余。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">DuoMatching 在提升视觉质量、构图与语义对齐的同时大体保持运动动态;人类评测中对所有参评基线的整体偏好率超过 80%。表明图像 teacher 的帧级监督能有效补足视频 teacher 联合匹配蒸馏的短板,joint+marginal 的统一匹配及 LatentBridge、Latent Variation Sampling 是可行的技术路径。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">以少步流式视频生成为对象,对比多个 DMD 类基线,从视觉质量、构图、语义对齐与运动保持多维评估,以人类评测(对全部基线偏好率超 80%)为核心证据,并以 LatentBridge 与 Latent Variation Sampling 两个组件支撑设计必要性。以人评为主要指标存在主观性与样本规模限制,摘要未给出 FVD 等客观指标数字。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">依赖现成高质量图像 teacher,其能力构成方法上限;帧级监督可能损害运动一致性,虽称&quot;大体保持&quot;但摘要中缺少定量证据;评测以人类偏好为主,缺少 FVD 等客观指标与下游任务验证;仅覆盖少步流式 setting,对多步扩散等其他设定未做验证。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合自研视频生成基础模型、尤其做少步蒸馏与流式生成的团队,joint+marginal 统一匹配与 LatentBridge 的设计可直接借鉴,组件实现难度中等。人评 80% 以上的偏好率显示较强竞争力,但收益依赖图像 teacher 质量,缺乏强图像模型的团队获益会打折。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02508" target="_blank">World Action Modeling with Progressive Visual Planning</a></div>
-    <div class="paper-meta">arXiv:2610.02508 · HF 👍 97</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出渐进式 world action model ProWAM:联合预测动作与有序稀疏视觉子目标序列(progress-indexed),为整个任务执行过程提供显式视觉引导,化解 WAM 长程预测中&quot;密集视频 rollout 低效、单帧预测又忽视如何向目标推进&quot;的矛盾。子目标预测可从无动作标签的大规模视频学习,把复杂视觉规划从动作策略中卸载给视频 backbone;执行时视频 backbone 单次前向缓存稀疏子目标特征,重规划仅需轻量 action denoising,避免迭代式全视频生成。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">ProWAM 取得更优的 OOD 鲁棒性:仿真上刷新 LIBERO-Plus(85.8%)与随机 RoboTwin(75.7%)的最好成绩,相对最强基线最高提升 35.9%;RoboCasa365 上 48.1% 成功率,高难 Composite-Unseen 分割 18.2%(总榜第 4);零样本真机新场景中 70.0% 成功,较最强基线的 55.0% 提升 15 个百分点(相对 +27.3%)。说明 progress-indexed 的视觉前瞻对闭环控制有价值。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 LIBERO-Plus、随机 RoboTwin、RoboCasa365(含 Composite-Unseen 难分割)多个仿真 benchmark 及零样本真机新场景与最强基线对比;架构上通过单次前向加轻量 denoise 支撑效率主张。覆盖仿真加真机、含 OOD 设定,较充分;但摘要未给出训练数据规模与推理时延数字,Composite-Unseen 仅 18.2% 说明最难任务仍有明显差距。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">长程能力依赖子目标预测质量,真机零样本 70% 仍意味着近三成失败;Composite-Unseen 上 18.2% 表明高难复合任务表现一般;子目标从无动作视频学习的规模与配比敏感性未展开;仅在特定机器人形态与任务族上验证,泛化性待考。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM/VLA 模型的团队,稀疏子目标规划把视觉规划与动作策略解耦,可与同批 Long-WAM 等工作互补甚至组合;落地难度中高,需视频 backbone 与动作专家联合训练。对希望用无标注视频扩大数据规模的机器人团队有直接参考价值。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.03391" target="_blank">Native Action-Prior Learning from Videos for World Action Models</a></div>
-    <div class="paper-meta">arXiv:2610.03391 · HF 👍 88</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 native action-prior learning:直接从无动作标注的观测视频预训练动作策略,避免&quot;先预训练视觉表征再适配控制&quot;的间接迁移,也不需要独立的 latent-action 模型。NAVA-WAM 分两阶段:第一阶段在观测视频上以未来视频 flow-matching 监督视觉转移,经 transition-structured joint attention 将监督传播至 Action-DiT,学习动作相关先验;第二阶段用带标注演示对 Action-DiT 做联合视频-动作 flow matching 的 post-train,非对称注意力解耦视觉分支与迭代动作 denoising,实现高效动作推理。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">NAVA-WAM 在分布内与 OOD 设置下一致优于已有方法,并表现出强动作标注效率(action-label efficiency)与有效的真机泛化。作者据此认为,从观测视频直接预训练动作策略是可行的,为突破 WAM 对带动作标注机器人数据的依赖、提升可扩展性提供了一条新路径。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在分布内与 OOD 两组设定下与已有方法对比,并考察动作标注效率(较少标注数据下的性能)与真机泛化;两阶段设计配合非对称注意力实现高效推理,机制上有清晰的消融逻辑。但摘要未给出具体 benchmark 数字、视频数据规模与对比方法清单,证据强度依赖正文,摘要层面难以独立核实定量结论。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要缺少定量支撑(未报告具体成功率或标注效率曲线),结论暂难独立核验;两阶段管线较复杂,transition-structured joint attention 与非对称注意力的贡献未分离量化;真机泛化实验的规模与场景在摘要中未说明;对非机器人形态动作空间的适用性未知。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合研发 WAM 且受机器人标注数据规模限制的团队,&quot;绕过 latent-action、直接从观测视频学动作先验&quot;与 Long-WAM、ProWAM 等同期工作互补,可组合使用。落地难度中高,需同时维护视频预训练与动作 post-train 两阶段;在真机数据采集昂贵的业务中价值更大。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02840" target="_blank">PointWAM: 3D World Action Modeling for Dexterous Robotic Manipulation</a></div>
-    <div class="paper-meta">arXiv:2610.02840 · HF 👍 63</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出首个将 world action model 显式分解为 scene(环境)与 hands(执行体)的 3D 世界动作模型 PointWAM,在统一时空坐标系内将两者联合预测为 3D 点轨迹。解耦表示支持在大规模人类演示视频上预训练,无需任务特定的物体或关键点选择;预测的手部运动再 retarget 到机器人动作,显式捕捉 3D 空间结构与接触几何。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">人类视频预训练使 DexJoCo 平均成功率提升 56.9 个百分点;加入 scene 轨迹监督比仅预测手部再增 10.9 点;两者结合在 DexJoCo 十项任务上超越此前 SOTA 11.7 点,并在真机上优于强 VLA 模型,说明 3D 点轨迹表示对灵巧操作的世界建模至关重要。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在 DexJoCo 基准十项任务上与 SOTA 及强 VLA 对比;通过预训练消融(人类视频预训练、scene 轨迹监督)分离各成分贡献;真机实验验证 sim-to-real 可行性。既有大幅定量提升又有真实机器人验证,支撑较强;但摘要未披露预训练数据规模与真机任务细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">主要在与人类手部形态相近的灵巧操作场景验证,对夹爪等不同形态执行器的泛化未说明;依赖点云输入,对感知质量敏感;人类视频到机器人动作的 retarget 可能存在误差累积;摘要未报告失败案例与推理/训练成本。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">对机器人学习与世界模型团队有明确借鉴价值:在人类视频上预训练 3D 点轨迹世界模型,大幅降低对机器人数据的依赖;scene/hands 解耦设计简洁优雅。落地需要点云感知与 retargeting 工程,难度中高,适合有灵巧操作业务的团队跟进。</div></div></div>
 </div>
 <div class="paper-card">
   <div class="paper-header">
@@ -420,13 +566,6 @@
 </div>
 <div class="paper-card">
   <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.02054" target="_blank">UniWAM: Unified World-Action Model</a></div>
-    <div class="paper-meta">arXiv:2610.02054 · HF 👍 55</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">将 physical reasoner、world generator、action predictor 整合为统一架构,联合学习物理语义理解、视觉生成与动作预测;用自然语言表示低层动作,设计预训练 recipe 把 VQA、人类第一视角、机器人演示的互补监督分配给不同组件;后训练引入 future visual noise augmentation 与 history-conditioned flow matching 显著减少 denoising 步数,并配套人/机器人数据清洗标注流水线。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">UniWAM 在 in-distribution、鲁棒性、泛化、指令遵循、长程任务等多组评测上达到 SOTA;并发现统一人-机器人联合训练的 log-linear scaling law,验证了人类数据与机器人数据混合大规模预训练的有效性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在分布内、鲁棒性、泛化、指令遵循、长程任务等多类标准评测上对比现有方法;通过 scaling law 拟合联合训练数据量与性能的关系;以严格的数据清洗与标注流水线保证训练数据质量。多维评测设计较全面,但摘要未给出具体分数与基线细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">摘要未披露各评测的具体分数与对比基线名单,复现与核验成本不明;scaling law 仅在自身数据配方下验证;多源数据清洗流水线工程复杂,外部团队复现门槛高;人类数据与机器人数据的最优配比效应未细化。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于具身智能/机器人 foundation model 团队,尤其是希望复用 VLM 能力并统一生成与动作预测的团队;监督分配与数据 pipeline 思路有借鉴价值。落地难度高,需要大规模多源数据与算力投入,更适合有数据积累的头部团队。</div></div></div>
-</div>
-<div class="paper-card">
-  <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.10429" target="_blank">SGF+: Decoupling Gradient Flows for Autoregressive Video Generation</a></div>
     <div class="paper-meta">arXiv:2610.10429 · HF 👍 55</div>
   </div>
@@ -446,9 +585,10 @@
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">将多智能体第一视角 world modeling 形式化为共享世界中多 ego-stream 的同步生成,要求跨视角动作一致、共享环境一致、交互引发的状态更新一致传播。提出 ME-World:在共享 token 序列中联合去噪多个 ego stream、以所有 agent 的目标视角 pose 为条件、用共享环境记忆 ground 生成;并提出 shared-world consistency 指标(环境、更新、身份一致性)加以衡量。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">ME-World 在共享世界一致性、动作控制、身份保持与视频质量上均优于现有方法;联合去噪 + 共享环境记忆是处理细粒度具身交互下多 ego 流一致性的有效设计,弥补了现有工作只支持移动/相机控制/离散命令等粗粒度动作的不足。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在真实与合成的多智能体数据上训练与评估;提出三项 shared-world consistency 新指标,连同视频质量与动作控制指标与现有方法对比。指标针对论文定义的三类一致性设计,任务与训练数据对口,评估设计合理;摘要未给出具体数值。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">多 ego 同步数据稀缺,真实数据规模可能有限;一致性与控制性指标为自提指标,外部可比对性较弱;合成与真实数据的差距、长时程交互中的误差累积未讨论;未见与强 world model 基线的定量差距说明。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于多智能体仿真、协作式具身智能与 world model 研究;细粒度交互 + 多视角一致性的建模思路对多人场景模拟(协作机器人、群体智能体训练数据生成)有参考价值。落地难度中等偏高,需要多 agent 同步采集数据与相应训练成本。</div></div></div>
 </div>
-</div>
-<div class="section" id="后训练---Post-training">
-<div class="section-title">🎓 后训练 / Post-training (7 篇)</div>
+</section>
+<section class="section" id="后训练---Post-training">
+<h2 class="section-title">🎓 后训练 / Post-training<span class="section-count">7 篇</span></h2>
+
 <div class="paper-card important">
   <div class="paper-header">
     <div class="paper-title"><span class="important-badge">🔴 重点精读</span><a href="https://arxiv.org/abs/2610.08448" target="_blank">Rethinking Cross-Tokenizer On-Policy Distillation: From Alignment Coverage to Supervision Reliability</a></div>
@@ -498,9 +638,10 @@
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出&#x27;从蛋白质折叠中学习可迁移推理&#x27;的设想并给出完整 recipe:一个已解结构可产生数千条可精确校验的空间/拓扑陈述,构成非语言、结构稠密的监督来源。构建 FoldingCorpus 数据集与 Fold2Reason 后训练方法,采用双信号——模型原生语言头输出的离散结构答案与同一共享表示解码的连续 3D 几何——共同 post-train;随机/合成/打乱结构的对照组用于证伪捷径。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">学习蛋白质折叠能系统提升语言模型的广义推理:FoldBench 上结构预测得分为 Qwen3.5-9B 的 2.7~3.5 倍;10 个空间/图/科学/通用推理 benchmark 全部正向提升,macro-average 从 45.09% 升至 48.33%(+3.24pp);随机/合成/打乱结构对照的增益小或为负,说明收益来自真实结构监督而非数据表面格式。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">离散结构答案 + 连续 3D 几何的双信号设计互为补充;在 10 个跨领域 benchmark 上观察全覆盖提升;设置随机、合成、打乱三种对照排除&#x27;格式捷径&#x27;假说;以同基座 Qwen3.5-9B 对比。对照实验是最大亮点,使&#x27;结构数据带来推理增益&#x27;的因果论证较完整。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">+3.24pp 的平均增益幅度温和,单任务实用性有限;仅在单一 9B 基座与蛋白质领域验证,其它科学领域与更大模型上的泛化未明;10 个 benchmark 的覆盖仍属抽样,外推到更广推理能力需谨慎;FoldingCorpus 的构建成本与质量控制细节摘要未述。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于寻找后训练新数据源的团队,尤其是 AI4Science/科学计算方向;&#x27;已解科学问题 = 可校验监督源&#x27;的视角启发性强,且数据构建成本相对低、可校验性天然防污染。落地难度中等,关键在于找到能批量生成可校验陈述的领域。</div></div></div>
 </div>
-</div>
-<div class="section" id="强化学习---RL">
-<div class="section-title">🎯 强化学习 / RL (5 篇)</div>
+</section>
+<section class="section" id="强化学习---RL">
+<h2 class="section-title">🎯 强化学习 / RL<span class="section-count">5 篇</span></h2>
+
 <div class="paper-card">
   <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.08077" target="_blank">Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight</a></div>
@@ -536,9 +677,10 @@
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">提出 taxonomy-driven 的法律奖励建模框架 LexReward,将法律回复质量分解为 Style(词汇句法)、Element(主体/事实/法条/判决)、Chain(推理顺序/完整/正确/无冗余)三个维度,各配 rubric 定义评价标准与质量等级;比现有粗粒度整体打分更具领域针对性与可解释性,奖励用于构造 pairwise 偏好数据做 DPO 与奖励模型训练。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">rubric-based 奖励能可靠区分不同质量的法律回复;基于该偏好数据的 DPO 训练在三个维度上全面提升性能;训练出的维度专属奖励模型 LexRM 可在 RL 中各自提升对应维度,且奖励推理时无需参考答案;维度级分析验证了 taxonomy 划分的有效性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">构建覆盖三维度的 rubric 奖励体系,用偏好数据+DPO 训练验证奖励信号质量;再训练 LexRM 作为维度专属奖励模型,经 RL 观察各维度策略提升,并辅以维度级分析。维度分解使归因清晰,实验链条完整;但摘要未披露数据集规模、模型规格与人工评测比例等细节。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">局限于法律单一领域,taxonomy 迁移到医疗、金融等领域需重新设计 rubric;摘要未说明实验模型规模与数据范围;奖励质量依赖 rubric 设计本身,可能存在评价偏差;未与通用奖励模型做跨领域效果对比。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合法律 AI 及需要做领域对齐的团队借鉴:将整体偏好细分为多维 rubric 是通用方法论,可迁移到其他强专业领域;RL 场景下无需参考答案的维度奖励是实用亮点。落地难度中等,主要成本在 rubric 设计与偏好标注。</div></div></div>
 </div>
-</div>
-<div class="section" id="基础架构创新---Infrastructure-Innovation">
-<div class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation (5 篇)</div>
+</section>
+<section class="section" id="基础架构创新---Infrastructure-Innovation">
+<h2 class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation<span class="section-count">4 篇</span></h2>
+
 <div class="paper-card">
   <div class="paper-header">
     <div class="paper-title"><a href="https://arxiv.org/abs/2610.12242" target="_blank">TokenRouter: Efficient Serving System for Token-Level LLM Routing</a></div>
@@ -567,19 +709,11 @@
   </div>
   <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对&#x27;高压缩视频 autoencoder 加速 DiT 但破坏 latent 分布、迫使 DiT 重训或昂贵适配&#x27;的痛点,提出两阶段 generation-aware latent 压缩:冻结 pretrained encoder 的 base latent,另学 residual latent 补偿强压缩损失,并在冻结 DiT 的特征空间对齐压缩 latent,使 autoencoder 面向生成而非仅重建优化;再用轻量微调与非对称去噪(base 先于 residual)适配 DiT,兼顾压缩率与原流水线兼容性。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">在 Wan2.1-I2V-14B 上 token 数减少 8x,480x832x81 分辨率下延迟降低 11.1x,同时在 VBench 上匹配压缩前的生成质量,说明生成感知的压缩可以在近一个数量级加速的同时保持与原 pretrained pipeline 的质量与兼容性。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">在主流开源视频模型 Wan2.1-I2V-14B 上验证 8x token 压缩与 11.1x 延迟收益,用 VBench 评估生成质量,结论具体且贴近实际部署。但仅单一模型、单一 benchmark 验证,各组件(冻 base 学 residual、DiT 特征对齐、非对称去噪)的消融贡献摘要未详细列出。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">仅在 Wan2.1-I2V-14B 与 VBench 上验证,跨模型、跨 benchmark 泛化未知;VBench 为自动指标,与人工观感的一致性未说明;8x 压缩在更高分辨率、更长时长下的画质退化未知;residual latent 引入的额外通道与存储成本未量化。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适合自研视频生成 pipeline、想降低 DiT 推理成本的团队:无需从头重训 DiT 即获近数量级加速,方法两阶段、可插拔。对 Wan 系模型几乎即插即用,对其他 DiT 架构需重新做特征对齐,落地难度中等。</div></div></div>
 </div>
-<div class="paper-card">
-  <div class="paper-header">
-    <div class="paper-title"><a href="https://arxiv.org/abs/2610.00864" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></div>
-    <div class="paper-meta">arXiv:2610.00864 · HF 👍 49</div>
-  </div>
-  <div class="paper-body"><div class="field"><span class="field-label">创新点</span><div class="field-content">针对 MeanFlow 直接用于 Robotic Foundation Models 会导致性能塌缩的问题,分析出 RFM 速度场的两个特有动态:局部加速度在去噪末期急剧上升、速度幅值随去噪进程不断展宽。基于运动学恒等式把 MeanFlow 的时间导数项在中间点拆成两个子区间项,分别刻画早/晚期去噪动态并抑制误差放大,首次让 RFM 实现一步动作生成。</div></div><div class="field"><span class="field-label">结论</span><div class="field-content">K-MF 在从零训练与微调两种范式、多种任务下实现一步动作生成,且在多数设置下超过多步 flow matching;推理效率上,GR00T-N1.6 的 action-head 延迟在 L40 与 Jetson Orin、eager/compiled 模式下降低 67.5%~74.4%,端到端延迟降低 30.3%~54.9%。</div></div><div class="field"><span class="field-label">结论支撑</span><div class="field-content">先通过速度场动力学分析定位失败机理(局部加速度、幅值展宽),再据此推导解耦公式,属机理驱动设计;在从头训练与微调、多种任务上验证有效性;在 L40 GPU 与 Jetson Orin 边缘设备、eager/compiled 四种配置实测延迟,覆盖云端与端侧。机理分析 + 双范式验证 + 真实硬件测试,证据链充分。</div></div><div class="field"><span class="field-label">局限性</span><div class="field-content">延迟数字仅报告在 GR00T-N1.6 上,其它 RFM 是否一致未验证;&#x27;多数设置下优于多步&#x27;意味着部分设置可能不及;摘要未给出任务成功率等性能指标的具体数字;中间点选择的敏感性与理论最优性未讨论。</div></div><div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">适用于机器人 foundation model 部署团队,尤其是端侧/实时控制场景;一步生成对控制频率敏感的任务价值明确,代码已开源(IntelChina-AI/K-MF),落地门槛低、见效快,是推理加速优化 serving 机器人的好样板。</div></div></div>
-</div>
-</div>
-
-    <footer>
+</section>
+  <footer>
         <p><a href="./">← 返回大模型周报</a> · <a href="../">知行手记首页</a></p>
         由 VTM 小助手自动生成 | 2026-10-12
     </footer>
-</div>
+</main>
 </body>
 </html>
