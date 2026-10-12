@@ -1,0 +1,50 @@
+RealCompanion: Benchmarking Human Understanding from Reasoning over Longitudinal Real-World Conversations | https://arxiv.org/abs/2610.01780
+AgentGarten: Code Worlds for Evolving Agents | https://arxiv.org/abs/2610.12374
+Rethinking Cross-Tokenizer On-Policy Distillation: From Alignment Coverage to Supervision Reliability | https://arxiv.org/abs/2610.08448
+Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation | https://arxiv.org/abs/2610.05608
+Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight | https://arxiv.org/abs/2610.08077
+UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation | https://arxiv.org/abs/2610.09823
+LoGRA: Scaling LLM Reinforcement Learning with Low-Rank Gradient Sketches | https://arxiv.org/abs/2610.06647
+Learn2Play Bench: How Well Do LLM Agents Learn from Experience in Unfamiliar Environments? | https://arxiv.org/abs/2610.08215
+TokenRouter: Efficient Serving System for Token-Level LLM Routing | https://arxiv.org/abs/2610.12242
+FrameMorrow: Future-guided Frame Selection with Prospective Tokens for Long-Horizon Video Generation | https://arxiv.org/abs/2609.38839
+STEPQuant: When and Where Errors Matter in Delta-Rule Recurrent State Quantization | https://arxiv.org/abs/2609.38169
+MotorMind: Scaffolding General Vision Language Models for Zero-Shot Robot Manipulation | https://arxiv.org/abs/2609.38078
+From Traces to Agentic Worlds: Agentic Language World Models for Interactive Environment Simulation | https://arxiv.org/abs/2610.06100
+Long-WAM: Scaling the Context of World-Action Models | https://arxiv.org/abs/2610.10528
+Scaling Trajectories for Complex Tasks through Recursive Self-Rewrite | https://arxiv.org/abs/2610.02826
+nanoMuse: An Open-Source Personal Agent for Every Device You Own | https://arxiv.org/abs/2610.08699
+DuoMatching: Joint-Marginal Distribution Matching for Few-Step Video Generation | https://arxiv.org/abs/2610.03543
+World Action Modeling with Progressive Visual Planning | https://arxiv.org/abs/2610.02508
+TRACE: Rollout-Guided Quantization-Aware Training for FP4 Reinforcement Learning of MoE Language Models | https://arxiv.org/abs/2610.07767
+Native Action-Prior Learning from Videos for World Action Models | https://arxiv.org/abs/2610.03391
+On-Policy Parameter Update Direction Underlies Generalization in LLM Post-Training | https://arxiv.org/abs/2609.36659
+Recursive Game Creator: An Agentic Product-Level Experience-Oriented Game Harness | https://arxiv.org/abs/2610.08621
+ALoDLM: Adaptively Looped Diffusion Language Models | https://arxiv.org/abs/2610.04198
+GRACE: Generation-aware latent compression for efficient video generation | https://arxiv.org/abs/2610.10524
+DecepEval: A Benchmark for Evaluating Deception in LLM Agents | https://arxiv.org/abs/2610.07967
+MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement | https://arxiv.org/abs/2610.11959
+SuperNav: An Agentic Navigation System for Any Task in Any Scene | https://arxiv.org/abs/2610.12126
+Latent-MOPD: Latent Multi-Teacher On-Policy Distillation | https://arxiv.org/abs/2610.02381
+Questioning the Questions: Sustaining Self-Evolution in Reasoning Models | https://arxiv.org/abs/2610.04299
+CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers? | https://arxiv.org/abs/2610.07557
+LexReward: A Taxonomy-Driven Reward Framework for Legal Language Models | https://arxiv.org/abs/2609.39071
+PointWAM: 3D World Action Modeling for Dexterous Robotic Manipulation | https://arxiv.org/abs/2610.02840
+VeriHarness: Scaling Agentic Verification for Long-Horizon Tasks | https://arxiv.org/abs/2610.00972
+Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models | https://arxiv.org/abs/2610.03665
+Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers | https://arxiv.org/abs/2610.00531
+PDE-JEPA: Predictive Representation Learning of Latent Dynamics Modeling for Parametric PDEs | https://arxiv.org/abs/2609.34715
+HyperBrowseComp: A Multilingual and Multimodal Stress Test for Web-Browsing Agents | https://arxiv.org/abs/2610.03574
+Memadapter: Counterfactual Adaptation Against Memory-induced Sycophancy | https://arxiv.org/abs/2610.05162
+Spatial Memory Intelligence: Endowing World Models with Understanding-Driven Long-Term Memory | https://arxiv.org/abs/2610.02521
+EditHero: A Benchmark for Long-Horizon Part-Level 3D Editing and Vibe Modeling | https://arxiv.org/abs/2610.02298
+SimuVerity: Benchmarking Agents for Engineering-Grade Simulink Model Generation | https://arxiv.org/abs/2610.02304
+World Embedding Benchmark | https://arxiv.org/abs/2610.03632
+UniWAM: Unified World-Action Model | https://arxiv.org/abs/2610.02054
+VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement Learning for Video Event Prediction | https://arxiv.org/abs/2610.06293
+SGF+: Decoupling Gradient Flows for Autoregressive Video Generation | https://arxiv.org/abs/2610.10429
+EVISKILL: Grounding Skill Evolution in Replayable Evidence | https://arxiv.org/abs/2610.05030
+Multilingual GSM-Symbolic: What determines capability transfer across languages? | https://arxiv.org/abs/2610.03367
+Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction | https://arxiv.org/abs/2610.12299
+Does Learning Protein Folding Generalize to Broader Reasoning? | https://arxiv.org/abs/2609.38879
+Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models | https://arxiv.org/abs/2610.00864
