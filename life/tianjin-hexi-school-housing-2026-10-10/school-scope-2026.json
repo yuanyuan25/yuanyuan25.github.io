@@ -1779,6 +1779,7 @@
   ],
   "comparison_rows": [
     {
+      "committee": "四化里",
       "name": "四化里",
       "shanghaidao": [
         "1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）"
@@ -1786,6 +1787,7 @@
       "minhoulu": []
     },
     {
+      "committee": "四化里",
       "name": "服务楼",
       "shanghaidao": [
         "1—11号"
@@ -1793,6 +1795,7 @@
       "minhoulu": []
     },
     {
+      "committee": "四化里",
       "name": "围堤道",
       "shanghaidao": [
         "200号1—6",
@@ -1801,6 +1804,7 @@
       "minhoulu": []
     },
     {
+      "committee": "四化里",
       "name": "天达里",
       "shanghaidao": [
         "1—18栋"
@@ -1808,23 +1812,23 @@
       "minhoulu": []
     },
     {
+      "committee": "四化里",
       "name": "绍兴道",
       "shanghaidao": [
         "260—284号"
       ],
-      "minhoulu": [
-        "9—15号（单号）"
-      ]
+      "minhoulu": []
     },
     {
+      "committee": "三合里",
       "name": "向荣里",
       "shanghaidao": [
-        "单号（未列起止号）",
-        "双号（未列起止号）"
+        "单号（未列起止号）"
       ],
       "minhoulu": []
     },
     {
+      "committee": "三合里",
       "name": "综合楼",
       "shanghaidao": [
         "14—28号"
@@ -1832,6 +1836,7 @@
       "minhoulu": []
     },
     {
+      "committee": "三合里",
       "name": "生昌楼",
       "shanghaidao": [
         "1—34号"
@@ -1839,6 +1844,7 @@
       "minhoulu": []
     },
     {
+      "committee": "三合里",
       "name": "三合里",
       "shanghaidao": [
         "1—72号（1—71单号、60—72双号）"
@@ -1846,6 +1852,7 @@
       "minhoulu": []
     },
     {
+      "committee": "三合里",
       "name": "三合里平房",
       "shanghaidao": [
         "2—48号"
@@ -1853,6 +1860,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "新闻里",
       "shanghaidao": [
         "1—35号"
@@ -1860,6 +1868,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "新闻里平房",
       "shanghaidao": [
         "1—8号"
@@ -1867,6 +1876,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "轻纸楼",
       "shanghaidao": [
         "1—5门"
@@ -1874,6 +1884,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "新闻西里",
       "shanghaidao": [
         "1—26号"
@@ -1881,6 +1892,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "地毯楼",
       "shanghaidao": [
         "1—8门"
@@ -1888,6 +1900,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新闻里",
       "name": "环友里",
       "shanghaidao": [
         "未列楼栋号段"
@@ -1895,6 +1908,15 @@
       "minhoulu": []
     },
     {
+      "committee": "文静里",
+      "name": "向荣里",
+      "shanghaidao": [
+        "双号（未列起止号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "committee": "文静里",
       "name": "文静小区",
       "shanghaidao": [
         "40—79号"
@@ -1902,6 +1924,7 @@
       "minhoulu": []
     },
     {
+      "committee": "文静里",
       "name": "梧桐小区",
       "shanghaidao": [
         "16—21号"
@@ -1909,6 +1932,7 @@
       "minhoulu": []
     },
     {
+      "committee": "文静里",
       "name": "康达小区",
       "shanghaidao": [
         "1—12号"
@@ -1916,6 +1940,7 @@
       "minhoulu": []
     },
     {
+      "committee": "文静里",
       "name": "中行小区",
       "shanghaidao": [
         "1—14号"
@@ -1923,6 +1948,7 @@
       "minhoulu": []
     },
     {
+      "committee": "文静里",
       "name": "文静里",
       "shanghaidao": [
         "31—39门",
@@ -1931,6 +1957,7 @@
       "minhoulu": []
     },
     {
+      "committee": "元兴新里",
       "name": "元兴新里",
       "shanghaidao": [
         "4—7号楼，且单元门号为1—63单号（按全小区统一编号）"
@@ -1938,6 +1965,7 @@
       "minhoulu": []
     },
     {
+      "committee": "元兴新里",
       "name": "长安里",
       "shanghaidao": [
         "1—13单号（原文未标楼/门单位）"
@@ -1945,6 +1973,7 @@
       "minhoulu": []
     },
     {
+      "committee": "津港里",
       "name": "市政楼（湛江路新村）",
       "shanghaidao": [
         "1—35门"
@@ -1952,6 +1981,7 @@
       "minhoulu": []
     },
     {
+      "committee": "津港里",
       "name": "静安里",
       "shanghaidao": [
         "1—24门"
@@ -1959,6 +1989,7 @@
       "minhoulu": []
     },
     {
+      "committee": "黄埔里",
       "name": "新会里",
       "shanghaidao": [
         "1—15号"
@@ -1966,6 +1997,7 @@
       "minhoulu": []
     },
     {
+      "committee": "黄埔里",
       "name": "江门里",
       "shanghaidao": [
         "1—22门"
@@ -1973,6 +2005,7 @@
       "minhoulu": []
     },
     {
+      "committee": "黄埔里",
       "name": "亚中花园",
       "shanghaidao": [
         "未列楼栋号段"
@@ -1980,6 +2013,7 @@
       "minhoulu": []
     },
     {
+      "committee": "黄埔里",
       "name": "友城名居",
       "shanghaidao": [
         "未列楼栋号段"
@@ -1987,15 +2021,15 @@
       "minhoulu": []
     },
     {
+      "committee": "新华里",
       "name": "荣华里／荣华小区",
       "shanghaidao": [
         "原表列“荣华里”，未列楼栋号段"
       ],
-      "minhoulu": [
-        "原表列“荣华小区”，未列楼栋号段"
-      ]
+      "minhoulu": []
     },
     {
+      "committee": "新华里",
       "name": "新华南里",
       "shanghaidao": [
         "未列楼栋号段"
@@ -2003,6 +2037,7 @@
       "minhoulu": []
     },
     {
+      "committee": "新华里",
       "name": "新华北里",
       "shanghaidao": [
         "未列楼栋号段；不另按拆迁状态筛选"
@@ -2010,15 +2045,15 @@
       "minhoulu": []
     },
     {
+      "committee": "积庆里",
       "name": "积庆里",
       "shanghaidao": [
         "5—10栋"
       ],
-      "minhoulu": [
-        "1—4、11—21（原文未标单位）"
-      ]
+      "minhoulu": []
     },
     {
+      "committee": "台北路",
       "name": "闽侯路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2027,6 +2062,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "吉万里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2034,6 +2070,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "宁波道",
       "shanghaidao": [],
       "minhoulu": [
@@ -2041,6 +2078,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "解放南路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2048,6 +2086,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "台北路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2055,6 +2094,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "福建路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2062,6 +2102,7 @@
       ]
     },
     {
+      "committee": "台北路",
       "name": "积余里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2069,6 +2110,15 @@
       ]
     },
     {
+      "committee": "台北路",
+      "name": "绍兴道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "9—15号（单号）"
+      ]
+    },
+    {
+      "committee": "台北路",
       "name": "增禄胡同",
       "shanghaidao": [],
       "minhoulu": [
@@ -2076,6 +2126,7 @@
       ]
     },
     {
+      "committee": "福至里",
       "name": "久仰里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2083,14 +2134,15 @@
       ]
     },
     {
+      "committee": "福至里",
       "name": "徽州道",
       "shanghaidao": [],
       "minhoulu": [
-        "10号",
-        "5号"
+        "10号"
       ]
     },
     {
+      "committee": "福至里",
       "name": "福至里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2098,6 +2150,7 @@
       ]
     },
     {
+      "committee": "福至里",
       "name": "存诚里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2105,6 +2158,7 @@
       ]
     },
     {
+      "committee": "福至里",
       "name": "春梅楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2112,6 +2166,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "富邦花园",
       "shanghaidao": [],
       "minhoulu": [
@@ -2119,6 +2174,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "立生东里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2126,6 +2182,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "天昌里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2133,6 +2190,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "利合里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2140,6 +2198,15 @@
       ]
     },
     {
+      "committee": "大沽路",
+      "name": "徽州道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "5号"
+      ]
+    },
+    {
+      "committee": "大沽路",
       "name": "同善里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2147,6 +2214,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "信昌大楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2154,6 +2222,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "西楼后街",
       "shanghaidao": [],
       "minhoulu": [
@@ -2161,6 +2230,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "天庆里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2168,6 +2238,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "宝和里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2175,6 +2246,7 @@
       ]
     },
     {
+      "committee": "大沽路",
       "name": "积厚里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2182,6 +2254,7 @@
       ]
     },
     {
+      "committee": "西楼北里",
       "name": "西楼北里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2189,6 +2262,7 @@
       ]
     },
     {
+      "committee": "西楼北里",
       "name": "西楼北里老楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2196,6 +2270,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "杭州道",
       "shanghaidao": [],
       "minhoulu": [
@@ -2203,6 +2278,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "东莱里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2210,6 +2286,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "港建里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2217,6 +2294,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "海运里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2224,6 +2302,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "天津公馆（海汇名邸）",
       "shanghaidao": [],
       "minhoulu": [
@@ -2231,6 +2310,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "新立里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2238,6 +2318,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "重建里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2245,6 +2326,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "南园里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2252,6 +2334,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "江浦里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2259,6 +2342,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "爱慕里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2266,6 +2350,7 @@
       ]
     },
     {
+      "committee": "东莱里",
       "name": "白楼名邸",
       "shanghaidao": [],
       "minhoulu": [
@@ -2273,6 +2358,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "江苏路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2281,6 +2367,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "连云里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2288,6 +2375,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "南通里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2295,6 +2383,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "扬州里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2302,6 +2391,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "浦口东里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2309,6 +2399,7 @@
       ]
     },
     {
+      "committee": "蚌埠道",
       "name": "南京路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2316,6 +2407,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "安辛庄大楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2323,6 +2415,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "崇明里（南京路",
       "shanghaidao": [],
       "minhoulu": [
@@ -2330,6 +2423,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "孚德里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2337,6 +2431,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "广田里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2344,6 +2439,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "广发楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2351,6 +2447,7 @@
       ]
     },
     {
+      "committee": "浦口道",
       "name": "浦江大厦",
       "shanghaidao": [],
       "minhoulu": [
@@ -2358,6 +2455,7 @@
       ]
     },
     {
+      "committee": "敬重里",
       "name": "敬重里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2365,6 +2463,7 @@
       ]
     },
     {
+      "committee": "敬重里",
       "name": "宝德里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2372,6 +2471,7 @@
       ]
     },
     {
+      "committee": "三义大厦",
       "name": "三义大厦",
       "shanghaidao": [],
       "minhoulu": [
@@ -2379,6 +2479,7 @@
       ]
     },
     {
+      "committee": "三义大厦",
       "name": "尚品嘉园",
       "shanghaidao": [],
       "minhoulu": [
@@ -2386,6 +2487,7 @@
       ]
     },
     {
+      "committee": "荣华里",
       "name": "浦口道",
       "shanghaidao": [],
       "minhoulu": [
@@ -2393,6 +2495,7 @@
       ]
     },
     {
+      "committee": "荣华里",
       "name": "浦口西里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2400,6 +2503,7 @@
       ]
     },
     {
+      "committee": "荣华里",
       "name": "青岛胡同",
       "shanghaidao": [],
       "minhoulu": [
@@ -2407,6 +2511,15 @@
       ]
     },
     {
+      "committee": "荣华里",
+      "name": "荣华里／荣华小区",
+      "shanghaidao": [],
+      "minhoulu": [
+        "原表列“荣华小区”，未列楼栋号段"
+      ]
+    },
+    {
+      "committee": "荣华里",
       "name": "鸿华里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2414,6 +2527,7 @@
       ]
     },
     {
+      "committee": "荣华里",
       "name": "华夏国际公寓",
       "shanghaidao": [],
       "minhoulu": [
@@ -2421,6 +2535,7 @@
       ]
     },
     {
+      "committee": "荣华里",
       "name": "苏州道",
       "shanghaidao": [],
       "minhoulu": [
@@ -2428,6 +2543,7 @@
       ]
     },
     {
+      "committee": "九江路",
       "name": "祺寿里",
       "shanghaidao": [],
       "minhoulu": [
@@ -2435,6 +2551,15 @@
       ]
     },
     {
+      "committee": "九江路",
+      "name": "积庆里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—4、11—21（原文未标单位）"
+      ]
+    },
+    {
+      "committee": "九江路",
       "name": "无锡道大楼",
       "shanghaidao": [],
       "minhoulu": [
@@ -2442,6 +2567,7 @@
       ]
     },
     {
+      "committee": "九江路",
       "name": "南浦大厦",
       "shanghaidao": [],
       "minhoulu": [
@@ -2449,6 +2575,7 @@
       ]
     },
     {
+      "committee": "九江路",
       "name": "安德里",
       "shanghaidao": [],
       "minhoulu": [
