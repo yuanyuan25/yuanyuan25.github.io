@@ -1,0 +1,2624 @@
+{
+  "year": 2026,
+  "organized_on": "2026-10-13",
+  "basis": "两份2026招生简章学区片范围表及用户明确补充、更正；原文保留，检索口径另列，实体别名以本轮贝壳查询核验。",
+  "stage": "范围检索口径已明确；荣华里与荣华小区按用户要求合并检索，具体房源学校归属留待地址核验",
+  "schools": [
+    {
+      "school": "天津市河西区上海道小学",
+      "year": 2026,
+      "source_type": "用户提供的2026年招生简章及清晰学区表",
+      "source_full_image": "shanghaidao-2026-brochure.png",
+      "exclusions": "以下地址不含公寓性质、非居住性质房屋",
+      "rows": [
+        {
+          "committee": "四化里",
+          "scope": "四化里1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）；服务楼1—11号；围堤道200号1—6；天达里1—18栋；围堤道160—292号（包括：土产楼1—4号）；绍兴道260—284号。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "向荣里单号；综合楼14—28号；生昌楼1—34号；三合里1—72号（1—71单号、60—72双号）；三合里平房2—48号。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "新闻里1—35号；新闻里平房1—8号；轻纸楼1—5门；新闻西里1—26号；地毯楼1—8门；环友里。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "向荣里双号；文静小区40—79号；梧桐小区16—21号；康达小区1—12号；中行小区1—14号；文静里31—39门；文静里1—3门。"
+        },
+        {
+          "committee": "元兴新里",
+          "scope": "元兴新里单号4—7号楼（1—63门单号）；长安里单号1—13。"
+        },
+        {
+          "committee": "津港里",
+          "scope": "市政楼（湛江路新村）1—35门；静安里1—24门。"
+        },
+        {
+          "committee": "黄埔里",
+          "scope": "新会里1—15号；江门里1—22门；亚中花园；友城名居。"
+        },
+        {
+          "committee": "新华里",
+          "scope": "荣华里、新华南里、新华北里未拆迁部分。"
+        },
+        {
+          "committee": "积庆里",
+          "scope": "积庆里5—10栋。"
+        }
+      ],
+      "id": "shanghaidao",
+      "source_clear_image": "shanghaidao-2026-catchment.jpg",
+      "entries": [
+        {
+          "committee": "四化里",
+          "scope": "四化里1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）",
+          "effective_scope": "四化里1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "四化里",
+          "scope": "服务楼1—11号",
+          "effective_scope": "服务楼1—11号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "四化里",
+          "scope": "围堤道200号1—6",
+          "effective_scope": "围堤道200号1—6",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "四化里",
+          "scope": "天达里1—18栋",
+          "effective_scope": "天达里1—18栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "四化里",
+          "scope": "围堤道160—292号（包括：土产楼1—4号）",
+          "effective_scope": "围堤道160—292号（包括：土产楼1—4号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "四化里",
+          "scope": "绍兴道260—284号",
+          "effective_scope": "绍兴道260—284号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "向荣里单号",
+          "effective_scope": "向荣里单号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "单号、双号均列于上海道表，不同居委会分别记录。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "综合楼14—28号",
+          "effective_scope": "综合楼14—28号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "生昌楼1—34号",
+          "effective_scope": "生昌楼1—34号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "三合里1—72号（1—71单号、60—72双号）",
+          "effective_scope": "三合里1—72号（1—71单号、60—72双号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按1—71单号、60—72双号匹配，不能展开为全部1—72。"
+        },
+        {
+          "committee": "三合里",
+          "scope": "三合里平房2—48号",
+          "effective_scope": "三合里平房2—48号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "新闻里1—35号",
+          "effective_scope": "新闻里1—35号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "新闻里平房1—8号",
+          "effective_scope": "新闻里平房1—8号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "轻纸楼1—5门",
+          "effective_scope": "轻纸楼1—5门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "新闻西里1—26号",
+          "effective_scope": "新闻西里1—26号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "地毯楼1—8门",
+          "effective_scope": "地毯楼1—8门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "新闻里",
+          "scope": "环友里",
+          "effective_scope": "环友里",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "向荣里双号",
+          "effective_scope": "向荣里双号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "单号、双号均列于上海道表，不同居委会分别记录。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "文静小区40—79号",
+          "effective_scope": "文静小区40—79号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "梧桐小区16—21号",
+          "effective_scope": "梧桐小区16—21号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "康达小区1—12号",
+          "effective_scope": "康达小区1—12号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "中行小区1—14号",
+          "effective_scope": "中行小区1—14号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "文静里31—39门",
+          "effective_scope": "文静里31—39门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "文静里",
+          "scope": "文静里1—3门",
+          "effective_scope": "文静里1—3门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "元兴新里",
+          "scope": "元兴新里单号4—7号楼（1—63门单号）",
+          "effective_scope": "元兴新里单号4—7号楼（1—63门单号）",
+          "pending_ids": [],
+          "clarification_ids": [
+            "yuanxing"
+          ],
+          "matching_rules": [
+            {
+              "operator": "all",
+              "building_numbers": [
+                4,
+                5,
+                6,
+                7
+              ],
+              "entrance_numbering": "whole_community",
+              "entrance_min": 1,
+              "entrance_max": 63,
+              "entrance_parity": "odd",
+              "missing_address_result": "待地址核验"
+            }
+          ],
+          "note": "楼号为4、5、6、7，同时要求单元门号在1—63的单号序列中。1—63是全小区统一排序，不能给每栋楼重新从1编号。贝壳确认小区共7栋，抽查2套详情没有楼号、单元门号或对应表。"
+        },
+        {
+          "committee": "元兴新里",
+          "scope": "长安里单号1—13",
+          "effective_scope": "长安里单号1—13",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "津港里",
+          "scope": "市政楼（湛江路新村）1—35门",
+          "effective_scope": "市政楼（湛江路新村）1—35门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "津港里",
+          "scope": "静安里1—24门",
+          "effective_scope": "静安里1—24门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "黄埔里",
+          "scope": "新会里1—15号",
+          "effective_scope": "新会里1—15号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "黄埔里",
+          "scope": "江门里1—22门",
+          "effective_scope": "江门里1—22门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "黄埔里",
+          "scope": "亚中花园",
+          "effective_scope": "亚中花园",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "黄埔里",
+          "scope": "友城名居",
+          "effective_scope": "友城名居",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "新华里",
+          "scope": "荣华里、新华南里、新华北里未拆迁部分",
+          "effective_scope": "荣华里、新华南里、新华北里",
+          "pending_ids": [],
+          "clarification_ids": [
+            "ronghua",
+            "xinhua"
+          ],
+          "matching_rules": [
+            {
+              "retrieval_group": "荣华里 / 荣华小区",
+              "treat_as_one_for_search": true,
+              "canonical_beike_name": "荣华小区",
+              "beike_id": "128752558518247",
+              "search_aliases": [
+                "荣华里",
+                "荣华里（河西区）",
+                "荣华小区"
+              ],
+              "committee_filter": "ignored_by_user",
+              "brochure_relations": [
+                {
+                  "school": "上海道小学",
+                  "source_name": "荣华里",
+                  "source_committee": "新华里"
+                },
+                {
+                  "school": "闽侯路小学",
+                  "source_name": "荣华小区",
+                  "source_committee": "荣华里"
+                }
+              ],
+              "deduplicate_by": "house_id",
+              "missing_address_result": "学校归属待核",
+              "automatically_assign_school": false
+            },
+            {
+              "demolition_filter": "ignored_by_user",
+              "preserve_brochure_literal": true
+            }
+          ],
+          "note": "搜索和匹配时不额外应用“未拆迁部分”条件；范围表及简章原图保留原文用于追溯。荣华里、新华南里、新华北里的名称及学校对应关系仍分别保存。 用户最终要求：先把荣华里与荣华小区作为同一个小区检索和汇总。贝壳当前名称为荣华小区，别名荣华里（河西区），统一检索后按房源标识去重。居委会仅保留在简章来源表，不作为房源筛选条件。上海道原文荣华里、闽侯路原文荣华小区及各自来源学校分别保留；具体房源地址不足以区分时单列待核，不自动指定唯一学校，也不重复计入两校确定对口数量。"
+        },
+        {
+          "committee": "积庆里",
+          "scope": "积庆里5—10栋",
+          "effective_scope": "积庆里5—10栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "两校按不同号段划分；上海道5—10栋，闽侯路1—4、11—21（闽侯路原文未写单位）。"
+        }
+      ],
+      "display_rows": [
+        {
+          "name": "四化里",
+          "boundary": "1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）",
+          "committee": "四化里",
+          "source_scope": "四化里1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）"
+        },
+        {
+          "name": "服务楼",
+          "boundary": "1—11号",
+          "committee": "四化里",
+          "source_scope": "服务楼1—11号"
+        },
+        {
+          "name": "围堤道",
+          "boundary": "200号1—6",
+          "committee": "四化里",
+          "source_scope": "围堤道200号1—6"
+        },
+        {
+          "name": "天达里",
+          "boundary": "1—18栋",
+          "committee": "四化里",
+          "source_scope": "天达里1—18栋"
+        },
+        {
+          "name": "围堤道",
+          "boundary": "160—292号（包括：土产楼1—4号）",
+          "committee": "四化里",
+          "source_scope": "围堤道160—292号（包括：土产楼1—4号）"
+        },
+        {
+          "name": "绍兴道",
+          "boundary": "260—284号",
+          "committee": "四化里",
+          "source_scope": "绍兴道260—284号"
+        },
+        {
+          "name": "向荣里",
+          "boundary": "单号（未列起止号）",
+          "committee": "三合里",
+          "source_scope": "向荣里单号"
+        },
+        {
+          "name": "综合楼",
+          "boundary": "14—28号",
+          "committee": "三合里",
+          "source_scope": "综合楼14—28号"
+        },
+        {
+          "name": "生昌楼",
+          "boundary": "1—34号",
+          "committee": "三合里",
+          "source_scope": "生昌楼1—34号"
+        },
+        {
+          "name": "三合里",
+          "boundary": "1—72号（1—71单号、60—72双号）",
+          "committee": "三合里",
+          "source_scope": "三合里1—72号（1—71单号、60—72双号）"
+        },
+        {
+          "name": "三合里平房",
+          "boundary": "2—48号",
+          "committee": "三合里",
+          "source_scope": "三合里平房2—48号"
+        },
+        {
+          "name": "新闻里",
+          "boundary": "1—35号",
+          "committee": "新闻里",
+          "source_scope": "新闻里1—35号"
+        },
+        {
+          "name": "新闻里平房",
+          "boundary": "1—8号",
+          "committee": "新闻里",
+          "source_scope": "新闻里平房1—8号"
+        },
+        {
+          "name": "轻纸楼",
+          "boundary": "1—5门",
+          "committee": "新闻里",
+          "source_scope": "轻纸楼1—5门"
+        },
+        {
+          "name": "新闻西里",
+          "boundary": "1—26号",
+          "committee": "新闻里",
+          "source_scope": "新闻西里1—26号"
+        },
+        {
+          "name": "地毯楼",
+          "boundary": "1—8门",
+          "committee": "新闻里",
+          "source_scope": "地毯楼1—8门"
+        },
+        {
+          "name": "环友里",
+          "boundary": "未列楼栋号段",
+          "committee": "新闻里",
+          "source_scope": "环友里"
+        },
+        {
+          "name": "向荣里",
+          "boundary": "双号（未列起止号）",
+          "committee": "文静里",
+          "source_scope": "向荣里双号"
+        },
+        {
+          "name": "文静小区",
+          "boundary": "40—79号",
+          "committee": "文静里",
+          "source_scope": "文静小区40—79号"
+        },
+        {
+          "name": "梧桐小区",
+          "boundary": "16—21号",
+          "committee": "文静里",
+          "source_scope": "梧桐小区16—21号"
+        },
+        {
+          "name": "康达小区",
+          "boundary": "1—12号",
+          "committee": "文静里",
+          "source_scope": "康达小区1—12号"
+        },
+        {
+          "name": "中行小区",
+          "boundary": "1—14号",
+          "committee": "文静里",
+          "source_scope": "中行小区1—14号"
+        },
+        {
+          "name": "文静里",
+          "boundary": "31—39门",
+          "committee": "文静里",
+          "source_scope": "文静里31—39门"
+        },
+        {
+          "name": "文静里",
+          "boundary": "1—3门",
+          "committee": "文静里",
+          "source_scope": "文静里1—3门"
+        },
+        {
+          "name": "元兴新里",
+          "boundary": "4—7号楼，且单元门号为1—63单号（按全小区统一编号）",
+          "committee": "元兴新里",
+          "source_scope": "元兴新里单号4—7号楼（1—63门单号）"
+        },
+        {
+          "name": "长安里",
+          "boundary": "1—13单号（原文未标楼/门单位）",
+          "committee": "元兴新里",
+          "source_scope": "长安里单号1—13"
+        },
+        {
+          "name": "市政楼（湛江路新村）",
+          "boundary": "1—35门",
+          "committee": "津港里",
+          "source_scope": "市政楼（湛江路新村）1—35门"
+        },
+        {
+          "name": "静安里",
+          "boundary": "1—24门",
+          "committee": "津港里",
+          "source_scope": "静安里1—24门"
+        },
+        {
+          "name": "新会里",
+          "boundary": "1—15号",
+          "committee": "黄埔里",
+          "source_scope": "新会里1—15号"
+        },
+        {
+          "name": "江门里",
+          "boundary": "1—22门",
+          "committee": "黄埔里",
+          "source_scope": "江门里1—22门"
+        },
+        {
+          "name": "亚中花园",
+          "boundary": "未列楼栋号段",
+          "committee": "黄埔里",
+          "source_scope": "亚中花园"
+        },
+        {
+          "name": "友城名居",
+          "boundary": "未列楼栋号段",
+          "committee": "黄埔里",
+          "source_scope": "友城名居"
+        },
+        {
+          "name": "荣华里／荣华小区",
+          "boundary": "原表列“荣华里”，未列楼栋号段",
+          "committee": "新华里",
+          "source_scope": "荣华里、新华南里、新华北里未拆迁部分"
+        },
+        {
+          "name": "新华南里",
+          "boundary": "未列楼栋号段",
+          "committee": "新华里",
+          "source_scope": "荣华里、新华南里、新华北里未拆迁部分"
+        },
+        {
+          "name": "新华北里",
+          "boundary": "未列楼栋号段；不另按拆迁状态筛选",
+          "committee": "新华里",
+          "source_scope": "荣华里、新华南里、新华北里未拆迁部分"
+        },
+        {
+          "name": "积庆里",
+          "boundary": "5—10栋",
+          "committee": "积庆里",
+          "source_scope": "积庆里5—10栋"
+        }
+      ]
+    },
+    {
+      "school": "天津市河西区闽侯路小学",
+      "year": 2026,
+      "source_type": "用户提供的2026年招生简章",
+      "source_full_image": "minhoulu-2026-brochure.jpg",
+      "exclusions": "以下地址不含新建楼盘、公寓性质、非居住性质房屋",
+      "rows": [
+        {
+          "committee": "台北路",
+          "scope": "闽侯路3号、7号；闽侯路29号、31号、37号；吉万里1—9门；宁波道16—42、48（双号）、17号；解放南路268—290号（双号）；台北路2、3、5、12号；福建路1、3、9、11号、2—24号（双号）；积余里；绍兴道9—15号（单号）；增禄胡同。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "久仰里1—27；徽州道10号；福至里1—41门；存诚里1—18门；春梅楼1—8栋（厦门路32号）。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "富邦花园；立生东里1—2号；天昌里1—2门；利合里1—7门；徽州道5号；同善里1—12；信昌大楼；西楼后街9、13号楼1—7、23号楼1—4；天庆里1—2；宝和里1—6；积厚里1—3。"
+        },
+        {
+          "committee": "西楼北里",
+          "scope": "西楼北里9号、10号；西楼北里老楼1—6门。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "杭州道9、11、16、18、20；东莱里1—29栋；港建里1—5栋；海运里1—8栋；天津公馆（海汇名邸）1—3栋；新立里1—16栋；重建里1—3栋；南园里1—7栋；江浦里1—5号；爱慕里1—8栋；白楼名邸。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "江苏路11—19（单号）、8、10、18—22（双号）；连云里1—5门；南通里1—11；扬州里1—4；江苏路3号余门；浦口东里1—22、24栋；南京路50、52。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "安辛庄大楼1—18栋；崇明里（南京路25号）；孚德里；广田里；广发楼；浦江大厦。"
+        },
+        {
+          "committee": "敬重里",
+          "scope": "敬重里1—47、50—64栋；宝德里1—43栋。"
+        },
+        {
+          "committee": "三义大厦",
+          "scope": "三义大厦1—4号；尚品嘉园1—6。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "浦口道147、149、151号；浦口西里1—15；青岛胡同；荣华小区；鸿华里；华夏国际公寓1—3栋；苏州道128、130、132、156—160。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "祺寿里1—25；积庆里1—4、11—21；无锡道大楼6—40栋；南浦大厦；安德里1—41。"
+        }
+      ],
+      "id": "minhoulu",
+      "entries": [
+        {
+          "committee": "台北路",
+          "scope": "闽侯路3号、7号",
+          "effective_scope": "闽侯路3号、7号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "闽侯路29号、31号、37号",
+          "effective_scope": "闽侯路29号、31号、37号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "吉万里1—9门",
+          "effective_scope": "吉万里1—9门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "宁波道16—42、48（双号）、17号",
+          "effective_scope": "宁波道16—42、48（双号）、17号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "解放南路268—290号（双号）",
+          "effective_scope": "解放南路268—290号（双号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "台北路2、3、5、12号",
+          "effective_scope": "台北路2、3、5、12号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "福建路1、3、9、11号、2—24号（双号）",
+          "effective_scope": "福建路1、3、9、11号、2—24号（双号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "积余里",
+          "effective_scope": "积余里",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "绍兴道9—15号（单号）",
+          "effective_scope": "绍兴道9—15号（单号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "台北路",
+          "scope": "增禄胡同",
+          "effective_scope": "增禄胡同",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "久仰里1—27",
+          "effective_scope": "久仰里1—27",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "徽州道10号",
+          "effective_scope": "徽州道10号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "福至里1—41门",
+          "effective_scope": "福至里1—41门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "存诚里1—18门",
+          "effective_scope": "存诚里1—18门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "福至里",
+          "scope": "春梅楼1—8栋（厦门路32号）",
+          "effective_scope": "春梅楼1—8栋（厦门路32号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "富邦花园",
+          "effective_scope": "富邦花园",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "立生东里1—2号",
+          "effective_scope": "立生东里1—2号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "天昌里1—2门",
+          "effective_scope": "天昌里1—2门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "利合里1—7门",
+          "effective_scope": "利合里1—7门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "徽州道5号",
+          "effective_scope": "徽州道5号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "同善里1—12",
+          "effective_scope": "同善里1—12",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "信昌大楼",
+          "effective_scope": "信昌大楼",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "西楼后街9、13号楼1—7、23号楼1—4",
+          "effective_scope": "西楼后街9、13号楼1—7、23号楼1—4",
+          "pending_ids": [],
+          "clarification_ids": [
+            "xilou"
+          ],
+          "matching_rules": [
+            {
+              "operator": "any",
+              "branches": [
+                {
+                  "building_numbers": [
+                    9,
+                    13
+                  ],
+                  "entrance_min": 1,
+                  "entrance_max": 7
+                },
+                {
+                  "building_numbers": [
+                    23
+                  ],
+                  "entrance_min": 1,
+                  "entrance_max": 4
+                }
+              ],
+              "entrance_numbering": "address_original",
+              "missing_address_result": "待地址核验"
+            }
+          ],
+          "note": "9、13号楼中1—7单元门的部分，或23号楼中1—4单元门的部分；楼号与单元门号须同时命中，不能纳入整栋。单元门保留地址实际编号，不按每栋重新生成号段。贝壳有西楼后街实体，但一般道路检索被放宽成周边1公里，不能用其数量核对招生楼栋。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "天庆里1—2",
+          "effective_scope": "天庆里1—2",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "宝和里1—6",
+          "effective_scope": "宝和里1—6",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "大沽路",
+          "scope": "积厚里1—3",
+          "effective_scope": "积厚里1—3",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "西楼北里",
+          "scope": "西楼北里9号、10号",
+          "effective_scope": "西楼北里9号、10号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "西楼北里",
+          "scope": "西楼北里老楼1—6门",
+          "effective_scope": "西楼北里老楼1—6门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "杭州道9、11、16、18、20",
+          "effective_scope": "杭州道9、11、16、18、20",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "东莱里1—29栋",
+          "effective_scope": "东莱里1—29栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "港建里1—5栋",
+          "effective_scope": "港建里1—5栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "海运里1—8栋",
+          "effective_scope": "海运里1—8栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "天津公馆（海汇名邸）1—3栋",
+          "effective_scope": "天津公馆（海汇名邸）1—3栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章列名，但仍受公寓性质、非居住性质排除条件约束；营销名称不能代替登记性质。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "新立里1—16栋",
+          "effective_scope": "新立里1—16栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "重建里1—3栋",
+          "effective_scope": "重建里1—3栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "南园里1—7栋",
+          "effective_scope": "南园里1—7栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "江浦里1—5号",
+          "effective_scope": "江浦里1—5号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "爱慕里1—8栋",
+          "effective_scope": "爱慕里1—8栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "东莱里",
+          "scope": "白楼名邸",
+          "effective_scope": "白楼名邸",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "江苏路11—19（单号）、8、10、18—22（双号）",
+          "effective_scope": "江苏路11—19（单号）、8、10、18—22（双号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "连云里1—5门",
+          "effective_scope": "连云里1—5门",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "南通里1—11",
+          "effective_scope": "南通里1—11",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "扬州里1—4",
+          "effective_scope": "扬州里1—4",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "江苏路3号余门",
+          "effective_scope": "江苏路3号",
+          "pending_ids": [],
+          "clarification_ids": [
+            "jiangsu"
+          ],
+          "matching_rules": [
+            {
+              "street": "江苏路",
+              "street_number": 3,
+              "optional_label": "余门",
+              "label_aliases": [
+                "三号余门"
+              ],
+              "current_label_filter": "ignored",
+              "label_policy": "若相关房源地址或描述出现余门则启用标签筛选；字段未出现则忽略文字条件",
+              "missing_address_result": "待地址核验"
+            }
+          ],
+          "note": "贝壳当前返回的江苏路小区16套房源已取得全部详情，均未出现“余门”字样，故按用户要求忽略该文字条件，仍保留江苏路3号的地址限制。当前返回字段缺门牌，尚不能把16套均判为江苏路3号。后续若地址或描述出现“余门/三号余门”，则按该标识筛选，并核对江苏路3号；不得把查询问题中出现的余门当成房源字段。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "浦口东里1—22、24栋",
+          "effective_scope": "浦口东里1—22、24栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "23栋未列入。"
+        },
+        {
+          "committee": "蚌埠道",
+          "scope": "南京路50、52",
+          "effective_scope": "南京路50、52",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "安辛庄大楼1—18栋",
+          "effective_scope": "安辛庄大楼1—18栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "崇明里（南京路25号）",
+          "effective_scope": "崇明里（南京路25号）",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "孚德里",
+          "effective_scope": "孚德里",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "广田里",
+          "effective_scope": "广田里",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "广发楼",
+          "effective_scope": "广发楼",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "浦口道",
+          "scope": "浦江大厦",
+          "effective_scope": "浦江大厦",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "敬重里",
+          "scope": "敬重里1—47、50—64栋",
+          "effective_scope": "敬重里1—47、50—64栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "48、49栋未列入。"
+        },
+        {
+          "committee": "敬重里",
+          "scope": "宝德里1—43栋",
+          "effective_scope": "宝德里1—43栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "三义大厦",
+          "scope": "三义大厦1—4号",
+          "effective_scope": "三义大厦1—4号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "三义大厦",
+          "scope": "尚品嘉园1—6",
+          "effective_scope": "尚品嘉园1—6",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "浦口道147、149、151号",
+          "effective_scope": "浦口道147、149、151号",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "浦口西里1—15",
+          "effective_scope": "浦口西里1—15",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "青岛胡同",
+          "effective_scope": "青岛胡同",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "荣华小区",
+          "effective_scope": "荣华小区",
+          "pending_ids": [],
+          "clarification_ids": [
+            "ronghua"
+          ],
+          "matching_rules": [
+            {
+              "retrieval_group": "荣华里 / 荣华小区",
+              "treat_as_one_for_search": true,
+              "canonical_beike_name": "荣华小区",
+              "beike_id": "128752558518247",
+              "search_aliases": [
+                "荣华里",
+                "荣华里（河西区）",
+                "荣华小区"
+              ],
+              "committee_filter": "ignored_by_user",
+              "brochure_relations": [
+                {
+                  "school": "上海道小学",
+                  "source_name": "荣华里",
+                  "source_committee": "新华里"
+                },
+                {
+                  "school": "闽侯路小学",
+                  "source_name": "荣华小区",
+                  "source_committee": "荣华里"
+                }
+              ],
+              "deduplicate_by": "house_id",
+              "missing_address_result": "学校归属待核",
+              "automatically_assign_school": false
+            }
+          ],
+          "note": "用户最终要求：先把荣华里与荣华小区作为同一个小区检索和汇总。贝壳当前名称为荣华小区，别名荣华里（河西区），统一检索后按房源标识去重。居委会仅保留在简章来源表，不作为房源筛选条件。上海道原文荣华里、闽侯路原文荣华小区及各自来源学校分别保留；具体房源地址不足以区分时单列待核，不自动指定唯一学校，也不重复计入两校确定对口数量。 简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "鸿华里",
+          "effective_scope": "鸿华里",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "华夏国际公寓1—3栋",
+          "effective_scope": "华夏国际公寓1—3栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章列名，但仍受公寓性质、非居住性质排除条件约束；营销名称不能代替登记性质。"
+        },
+        {
+          "committee": "荣华里",
+          "scope": "苏州道128、130、132、156—160",
+          "effective_scope": "苏州道128、130、132、156—160",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "祺寿里1—25",
+          "effective_scope": "祺寿里1—25",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "积庆里1—4、11—21",
+          "effective_scope": "积庆里1—4、11—21",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。 两校按不同号段划分；上海道5—10栋，闽侯路1—4、11—21（闽侯路原文未写单位）。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "无锡道大楼6—40栋",
+          "effective_scope": "无锡道大楼6—40栋",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "按所列地址及原文单位匹配。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "南浦大厦",
+          "effective_scope": "南浦大厦",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "简章仅列名称，未附楼栋号段；适用本校房屋性质限制。"
+        },
+        {
+          "committee": "九江路",
+          "scope": "安德里1—41",
+          "effective_scope": "安德里1—41",
+          "pending_ids": [],
+          "clarification_ids": [],
+          "matching_rules": [],
+          "note": "原文未标号/栋/门单位，暂保留数段，后续按实际地址确认单位。"
+        }
+      ],
+      "display_rows": [
+        {
+          "name": "闽侯路",
+          "boundary": "3号、7号",
+          "committee": "台北路",
+          "source_scope": "闽侯路3号、7号"
+        },
+        {
+          "name": "闽侯路",
+          "boundary": "29号、31号、37号",
+          "committee": "台北路",
+          "source_scope": "闽侯路29号、31号、37号"
+        },
+        {
+          "name": "吉万里",
+          "boundary": "1—9门",
+          "committee": "台北路",
+          "source_scope": "吉万里1—9门"
+        },
+        {
+          "name": "宁波道",
+          "boundary": "16—42、48（双号）、17号",
+          "committee": "台北路",
+          "source_scope": "宁波道16—42、48（双号）、17号"
+        },
+        {
+          "name": "解放南路",
+          "boundary": "268—290号（双号）",
+          "committee": "台北路",
+          "source_scope": "解放南路268—290号（双号）"
+        },
+        {
+          "name": "台北路",
+          "boundary": "2、3、5、12号",
+          "committee": "台北路",
+          "source_scope": "台北路2、3、5、12号"
+        },
+        {
+          "name": "福建路",
+          "boundary": "1、3、9、11号、2—24号（双号）",
+          "committee": "台北路",
+          "source_scope": "福建路1、3、9、11号、2—24号（双号）"
+        },
+        {
+          "name": "积余里",
+          "boundary": "未列楼栋号段",
+          "committee": "台北路",
+          "source_scope": "积余里"
+        },
+        {
+          "name": "绍兴道",
+          "boundary": "9—15号（单号）",
+          "committee": "台北路",
+          "source_scope": "绍兴道9—15号（单号）"
+        },
+        {
+          "name": "增禄胡同",
+          "boundary": "未列楼栋号段",
+          "committee": "台北路",
+          "source_scope": "增禄胡同"
+        },
+        {
+          "name": "久仰里",
+          "boundary": "1—27（原文未标单位）",
+          "committee": "福至里",
+          "source_scope": "久仰里1—27"
+        },
+        {
+          "name": "徽州道",
+          "boundary": "10号",
+          "committee": "福至里",
+          "source_scope": "徽州道10号"
+        },
+        {
+          "name": "福至里",
+          "boundary": "1—41门",
+          "committee": "福至里",
+          "source_scope": "福至里1—41门"
+        },
+        {
+          "name": "存诚里",
+          "boundary": "1—18门",
+          "committee": "福至里",
+          "source_scope": "存诚里1—18门"
+        },
+        {
+          "name": "春梅楼",
+          "boundary": "1—8栋（厦门路32号）",
+          "committee": "福至里",
+          "source_scope": "春梅楼1—8栋（厦门路32号）"
+        },
+        {
+          "name": "富邦花园",
+          "boundary": "未列楼栋号段",
+          "committee": "大沽路",
+          "source_scope": "富邦花园"
+        },
+        {
+          "name": "立生东里",
+          "boundary": "1—2号",
+          "committee": "大沽路",
+          "source_scope": "立生东里1—2号"
+        },
+        {
+          "name": "天昌里",
+          "boundary": "1—2门",
+          "committee": "大沽路",
+          "source_scope": "天昌里1—2门"
+        },
+        {
+          "name": "利合里",
+          "boundary": "1—7门",
+          "committee": "大沽路",
+          "source_scope": "利合里1—7门"
+        },
+        {
+          "name": "徽州道",
+          "boundary": "5号",
+          "committee": "大沽路",
+          "source_scope": "徽州道5号"
+        },
+        {
+          "name": "同善里",
+          "boundary": "1—12（原文未标单位）",
+          "committee": "大沽路",
+          "source_scope": "同善里1—12"
+        },
+        {
+          "name": "信昌大楼",
+          "boundary": "未列楼栋号段",
+          "committee": "大沽路",
+          "source_scope": "信昌大楼"
+        },
+        {
+          "name": "西楼后街",
+          "boundary": "9、13号楼：1—7单元门；23号楼：1—4单元门",
+          "committee": "大沽路",
+          "source_scope": "西楼后街9、13号楼1—7、23号楼1—4"
+        },
+        {
+          "name": "天庆里",
+          "boundary": "1—2（原文未标单位）",
+          "committee": "大沽路",
+          "source_scope": "天庆里1—2"
+        },
+        {
+          "name": "宝和里",
+          "boundary": "1—6（原文未标单位）",
+          "committee": "大沽路",
+          "source_scope": "宝和里1—6"
+        },
+        {
+          "name": "积厚里",
+          "boundary": "1—3（原文未标单位）",
+          "committee": "大沽路",
+          "source_scope": "积厚里1—3"
+        },
+        {
+          "name": "西楼北里",
+          "boundary": "9号、10号",
+          "committee": "西楼北里",
+          "source_scope": "西楼北里9号、10号"
+        },
+        {
+          "name": "西楼北里老楼",
+          "boundary": "1—6门",
+          "committee": "西楼北里",
+          "source_scope": "西楼北里老楼1—6门"
+        },
+        {
+          "name": "杭州道",
+          "boundary": "9、11、16、18、20（原文未标单位）",
+          "committee": "东莱里",
+          "source_scope": "杭州道9、11、16、18、20"
+        },
+        {
+          "name": "东莱里",
+          "boundary": "1—29栋",
+          "committee": "东莱里",
+          "source_scope": "东莱里1—29栋"
+        },
+        {
+          "name": "港建里",
+          "boundary": "1—5栋",
+          "committee": "东莱里",
+          "source_scope": "港建里1—5栋"
+        },
+        {
+          "name": "海运里",
+          "boundary": "1—8栋",
+          "committee": "东莱里",
+          "source_scope": "海运里1—8栋"
+        },
+        {
+          "name": "天津公馆（海汇名邸）",
+          "boundary": "1—3栋",
+          "committee": "东莱里",
+          "source_scope": "天津公馆（海汇名邸）1—3栋"
+        },
+        {
+          "name": "新立里",
+          "boundary": "1—16栋",
+          "committee": "东莱里",
+          "source_scope": "新立里1—16栋"
+        },
+        {
+          "name": "重建里",
+          "boundary": "1—3栋",
+          "committee": "东莱里",
+          "source_scope": "重建里1—3栋"
+        },
+        {
+          "name": "南园里",
+          "boundary": "1—7栋",
+          "committee": "东莱里",
+          "source_scope": "南园里1—7栋"
+        },
+        {
+          "name": "江浦里",
+          "boundary": "1—5号",
+          "committee": "东莱里",
+          "source_scope": "江浦里1—5号"
+        },
+        {
+          "name": "爱慕里",
+          "boundary": "1—8栋",
+          "committee": "东莱里",
+          "source_scope": "爱慕里1—8栋"
+        },
+        {
+          "name": "白楼名邸",
+          "boundary": "未列楼栋号段",
+          "committee": "东莱里",
+          "source_scope": "白楼名邸"
+        },
+        {
+          "name": "江苏路",
+          "boundary": "11—19（单号）、8、10、18—22（双号）",
+          "committee": "蚌埠道",
+          "source_scope": "江苏路11—19（单号）、8、10、18—22（双号）"
+        },
+        {
+          "name": "连云里",
+          "boundary": "1—5门",
+          "committee": "蚌埠道",
+          "source_scope": "连云里1—5门"
+        },
+        {
+          "name": "南通里",
+          "boundary": "1—11（原文未标单位）",
+          "committee": "蚌埠道",
+          "source_scope": "南通里1—11"
+        },
+        {
+          "name": "扬州里",
+          "boundary": "1—4（原文未标单位）",
+          "committee": "蚌埠道",
+          "source_scope": "扬州里1—4"
+        },
+        {
+          "name": "江苏路",
+          "boundary": "3号；不另按“余门”字样筛选",
+          "committee": "蚌埠道",
+          "source_scope": "江苏路3号余门"
+        },
+        {
+          "name": "浦口东里",
+          "boundary": "1—22、24栋",
+          "committee": "蚌埠道",
+          "source_scope": "浦口东里1—22、24栋"
+        },
+        {
+          "name": "南京路",
+          "boundary": "50、52（原文未标单位）",
+          "committee": "蚌埠道",
+          "source_scope": "南京路50、52"
+        },
+        {
+          "name": "安辛庄大楼",
+          "boundary": "1—18栋",
+          "committee": "浦口道",
+          "source_scope": "安辛庄大楼1—18栋"
+        },
+        {
+          "name": "崇明里（南京路",
+          "boundary": "25号）",
+          "committee": "浦口道",
+          "source_scope": "崇明里（南京路25号）"
+        },
+        {
+          "name": "孚德里",
+          "boundary": "未列楼栋号段",
+          "committee": "浦口道",
+          "source_scope": "孚德里"
+        },
+        {
+          "name": "广田里",
+          "boundary": "未列楼栋号段",
+          "committee": "浦口道",
+          "source_scope": "广田里"
+        },
+        {
+          "name": "广发楼",
+          "boundary": "未列楼栋号段",
+          "committee": "浦口道",
+          "source_scope": "广发楼"
+        },
+        {
+          "name": "浦江大厦",
+          "boundary": "未列楼栋号段",
+          "committee": "浦口道",
+          "source_scope": "浦江大厦"
+        },
+        {
+          "name": "敬重里",
+          "boundary": "1—47、50—64栋",
+          "committee": "敬重里",
+          "source_scope": "敬重里1—47、50—64栋"
+        },
+        {
+          "name": "宝德里",
+          "boundary": "1—43栋",
+          "committee": "敬重里",
+          "source_scope": "宝德里1—43栋"
+        },
+        {
+          "name": "三义大厦",
+          "boundary": "1—4号",
+          "committee": "三义大厦",
+          "source_scope": "三义大厦1—4号"
+        },
+        {
+          "name": "尚品嘉园",
+          "boundary": "1—6（原文未标单位）",
+          "committee": "三义大厦",
+          "source_scope": "尚品嘉园1—6"
+        },
+        {
+          "name": "浦口道",
+          "boundary": "147、149、151号",
+          "committee": "荣华里",
+          "source_scope": "浦口道147、149、151号"
+        },
+        {
+          "name": "浦口西里",
+          "boundary": "1—15（原文未标单位）",
+          "committee": "荣华里",
+          "source_scope": "浦口西里1—15"
+        },
+        {
+          "name": "青岛胡同",
+          "boundary": "未列楼栋号段",
+          "committee": "荣华里",
+          "source_scope": "青岛胡同"
+        },
+        {
+          "name": "荣华里／荣华小区",
+          "boundary": "原表列“荣华小区”，未列楼栋号段",
+          "committee": "荣华里",
+          "source_scope": "荣华小区"
+        },
+        {
+          "name": "鸿华里",
+          "boundary": "未列楼栋号段",
+          "committee": "荣华里",
+          "source_scope": "鸿华里"
+        },
+        {
+          "name": "华夏国际公寓",
+          "boundary": "1—3栋",
+          "committee": "荣华里",
+          "source_scope": "华夏国际公寓1—3栋"
+        },
+        {
+          "name": "苏州道",
+          "boundary": "128、130、132、156—160（原文未标单位）",
+          "committee": "荣华里",
+          "source_scope": "苏州道128、130、132、156—160"
+        },
+        {
+          "name": "祺寿里",
+          "boundary": "1—25（原文未标单位）",
+          "committee": "九江路",
+          "source_scope": "祺寿里1—25"
+        },
+        {
+          "name": "积庆里",
+          "boundary": "1—4、11—21（原文未标单位）",
+          "committee": "九江路",
+          "source_scope": "积庆里1—4、11—21"
+        },
+        {
+          "name": "无锡道大楼",
+          "boundary": "6—40栋",
+          "committee": "九江路",
+          "source_scope": "无锡道大楼6—40栋"
+        },
+        {
+          "name": "南浦大厦",
+          "boundary": "未列楼栋号段",
+          "committee": "九江路",
+          "source_scope": "南浦大厦"
+        },
+        {
+          "name": "安德里",
+          "boundary": "1—41（原文未标单位）",
+          "committee": "九江路",
+          "source_scope": "安德里1—41"
+        }
+      ]
+    }
+  ],
+  "comparison_rows": [
+    {
+      "name": "四化里",
+      "shanghaidao": [
+        "1—66号（包括：绍兴大楼38—50、四化里25栋增1—7单号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "服务楼",
+      "shanghaidao": [
+        "1—11号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "围堤道",
+      "shanghaidao": [
+        "200号1—6",
+        "160—292号（包括：土产楼1—4号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "天达里",
+      "shanghaidao": [
+        "1—18栋"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "绍兴道",
+      "shanghaidao": [
+        "260—284号"
+      ],
+      "minhoulu": [
+        "9—15号（单号）"
+      ]
+    },
+    {
+      "name": "向荣里",
+      "shanghaidao": [
+        "单号（未列起止号）",
+        "双号（未列起止号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "综合楼",
+      "shanghaidao": [
+        "14—28号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "生昌楼",
+      "shanghaidao": [
+        "1—34号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "三合里",
+      "shanghaidao": [
+        "1—72号（1—71单号、60—72双号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "三合里平房",
+      "shanghaidao": [
+        "2—48号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "新闻里",
+      "shanghaidao": [
+        "1—35号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "新闻里平房",
+      "shanghaidao": [
+        "1—8号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "轻纸楼",
+      "shanghaidao": [
+        "1—5门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "新闻西里",
+      "shanghaidao": [
+        "1—26号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "地毯楼",
+      "shanghaidao": [
+        "1—8门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "环友里",
+      "shanghaidao": [
+        "未列楼栋号段"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "文静小区",
+      "shanghaidao": [
+        "40—79号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "梧桐小区",
+      "shanghaidao": [
+        "16—21号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "康达小区",
+      "shanghaidao": [
+        "1—12号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "中行小区",
+      "shanghaidao": [
+        "1—14号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "文静里",
+      "shanghaidao": [
+        "31—39门",
+        "1—3门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "元兴新里",
+      "shanghaidao": [
+        "4—7号楼，且单元门号为1—63单号（按全小区统一编号）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "长安里",
+      "shanghaidao": [
+        "1—13单号（原文未标楼/门单位）"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "市政楼（湛江路新村）",
+      "shanghaidao": [
+        "1—35门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "静安里",
+      "shanghaidao": [
+        "1—24门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "新会里",
+      "shanghaidao": [
+        "1—15号"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "江门里",
+      "shanghaidao": [
+        "1—22门"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "亚中花园",
+      "shanghaidao": [
+        "未列楼栋号段"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "友城名居",
+      "shanghaidao": [
+        "未列楼栋号段"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "荣华里／荣华小区",
+      "shanghaidao": [
+        "原表列“荣华里”，未列楼栋号段"
+      ],
+      "minhoulu": [
+        "原表列“荣华小区”，未列楼栋号段"
+      ]
+    },
+    {
+      "name": "新华南里",
+      "shanghaidao": [
+        "未列楼栋号段"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "新华北里",
+      "shanghaidao": [
+        "未列楼栋号段；不另按拆迁状态筛选"
+      ],
+      "minhoulu": []
+    },
+    {
+      "name": "积庆里",
+      "shanghaidao": [
+        "5—10栋"
+      ],
+      "minhoulu": [
+        "1—4、11—21（原文未标单位）"
+      ]
+    },
+    {
+      "name": "闽侯路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "3号、7号",
+        "29号、31号、37号"
+      ]
+    },
+    {
+      "name": "吉万里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—9门"
+      ]
+    },
+    {
+      "name": "宁波道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "16—42、48（双号）、17号"
+      ]
+    },
+    {
+      "name": "解放南路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "268—290号（双号）"
+      ]
+    },
+    {
+      "name": "台北路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "2、3、5、12号"
+      ]
+    },
+    {
+      "name": "福建路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1、3、9、11号、2—24号（双号）"
+      ]
+    },
+    {
+      "name": "积余里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "增禄胡同",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "久仰里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—27（原文未标单位）"
+      ]
+    },
+    {
+      "name": "徽州道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "10号",
+        "5号"
+      ]
+    },
+    {
+      "name": "福至里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—41门"
+      ]
+    },
+    {
+      "name": "存诚里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—18门"
+      ]
+    },
+    {
+      "name": "春梅楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—8栋（厦门路32号）"
+      ]
+    },
+    {
+      "name": "富邦花园",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "立生东里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—2号"
+      ]
+    },
+    {
+      "name": "天昌里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—2门"
+      ]
+    },
+    {
+      "name": "利合里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—7门"
+      ]
+    },
+    {
+      "name": "同善里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—12（原文未标单位）"
+      ]
+    },
+    {
+      "name": "信昌大楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "西楼后街",
+      "shanghaidao": [],
+      "minhoulu": [
+        "9、13号楼：1—7单元门；23号楼：1—4单元门"
+      ]
+    },
+    {
+      "name": "天庆里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—2（原文未标单位）"
+      ]
+    },
+    {
+      "name": "宝和里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—6（原文未标单位）"
+      ]
+    },
+    {
+      "name": "积厚里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—3（原文未标单位）"
+      ]
+    },
+    {
+      "name": "西楼北里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "9号、10号"
+      ]
+    },
+    {
+      "name": "西楼北里老楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—6门"
+      ]
+    },
+    {
+      "name": "杭州道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "9、11、16、18、20（原文未标单位）"
+      ]
+    },
+    {
+      "name": "东莱里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—29栋"
+      ]
+    },
+    {
+      "name": "港建里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—5栋"
+      ]
+    },
+    {
+      "name": "海运里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—8栋"
+      ]
+    },
+    {
+      "name": "天津公馆（海汇名邸）",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—3栋"
+      ]
+    },
+    {
+      "name": "新立里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—16栋"
+      ]
+    },
+    {
+      "name": "重建里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—3栋"
+      ]
+    },
+    {
+      "name": "南园里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—7栋"
+      ]
+    },
+    {
+      "name": "江浦里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—5号"
+      ]
+    },
+    {
+      "name": "爱慕里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—8栋"
+      ]
+    },
+    {
+      "name": "白楼名邸",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "江苏路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "11—19（单号）、8、10、18—22（双号）",
+        "3号；不另按“余门”字样筛选"
+      ]
+    },
+    {
+      "name": "连云里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—5门"
+      ]
+    },
+    {
+      "name": "南通里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—11（原文未标单位）"
+      ]
+    },
+    {
+      "name": "扬州里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—4（原文未标单位）"
+      ]
+    },
+    {
+      "name": "浦口东里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—22、24栋"
+      ]
+    },
+    {
+      "name": "南京路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "50、52（原文未标单位）"
+      ]
+    },
+    {
+      "name": "安辛庄大楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—18栋"
+      ]
+    },
+    {
+      "name": "崇明里（南京路",
+      "shanghaidao": [],
+      "minhoulu": [
+        "25号）"
+      ]
+    },
+    {
+      "name": "孚德里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "广田里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "广发楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "浦江大厦",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "敬重里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—47、50—64栋"
+      ]
+    },
+    {
+      "name": "宝德里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—43栋"
+      ]
+    },
+    {
+      "name": "三义大厦",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—4号"
+      ]
+    },
+    {
+      "name": "尚品嘉园",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—6（原文未标单位）"
+      ]
+    },
+    {
+      "name": "浦口道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "147、149、151号"
+      ]
+    },
+    {
+      "name": "浦口西里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—15（原文未标单位）"
+      ]
+    },
+    {
+      "name": "青岛胡同",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "鸿华里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "华夏国际公寓",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—3栋"
+      ]
+    },
+    {
+      "name": "苏州道",
+      "shanghaidao": [],
+      "minhoulu": [
+        "128、130、132、156—160（原文未标单位）"
+      ]
+    },
+    {
+      "name": "祺寿里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—25（原文未标单位）"
+      ]
+    },
+    {
+      "name": "无锡道大楼",
+      "shanghaidao": [],
+      "minhoulu": [
+        "6—40栋"
+      ]
+    },
+    {
+      "name": "南浦大厦",
+      "shanghaidao": [],
+      "minhoulu": [
+        "未列楼栋号段"
+      ]
+    },
+    {
+      "name": "安德里",
+      "shanghaidao": [],
+      "minhoulu": [
+        "1—41（原文未标单位）"
+      ]
+    }
+  ],
+  "pending": [],
+  "clarifications": [
+    {
+      "id": "yuanxing",
+      "title": "元兴新里：楼号与全小区单元门号同时匹配",
+      "status": "用户已确认；贝壳编号对应表未提供",
+      "explanation": "楼号为4、5、6、7，同时要求单元门号在1—63的单号序列中。1—63是全小区统一排序，不能给每栋楼重新从1编号。贝壳确认小区共7栋，抽查2套详情没有楼号、单元门号或对应表。",
+      "matching_rule": {
+        "operator": "all",
+        "building_numbers": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "entrance_numbering": "whole_community",
+        "entrance_min": 1,
+        "entrance_max": 63,
+        "entrance_parity": "odd",
+        "missing_address_result": "待地址核验"
+      },
+      "evidence": [
+        "yuanxing-detail.json",
+        "yuanxing-house-details.json"
+      ]
+    },
+    {
+      "id": "xilou",
+      "title": "西楼后街：楼号与指定单元门号同时匹配",
+      "status": "用户已确认",
+      "explanation": "9、13号楼中1—7单元门的部分，或23号楼中1—4单元门的部分；楼号与单元门号须同时命中，不能纳入整栋。单元门保留地址实际编号，不按每栋重新生成号段。贝壳有西楼后街实体，但一般道路检索被放宽成周边1公里，不能用其数量核对招生楼栋。",
+      "matching_rule": {
+        "operator": "any",
+        "branches": [
+          {
+            "building_numbers": [
+              9,
+              13
+            ],
+            "entrance_min": 1,
+            "entrance_max": 7
+          },
+          {
+            "building_numbers": [
+              23
+            ],
+            "entrance_min": 1,
+            "entrance_max": 4
+          }
+        ],
+        "entrance_numbering": "address_original",
+        "missing_address_result": "待地址核验"
+      },
+      "evidence": [
+        "xilou-resolve.json",
+        "xilou-detail.json",
+        "xilou-house.json"
+      ]
+    },
+    {
+      "id": "jiangsu",
+      "title": "江苏路3号余门：当前忽略余门文字条件",
+      "status": "用户处理规则已落实；16套详情未出现余门",
+      "explanation": "贝壳当前返回的江苏路小区16套房源已取得全部详情，均未出现“余门”字样，故按用户要求忽略该文字条件，仍保留江苏路3号的地址限制。当前返回字段缺门牌，尚不能把16套均判为江苏路3号。后续若地址或描述出现“余门/三号余门”，则按该标识筛选，并核对江苏路3号；不得把查询问题中出现的余门当成房源字段。",
+      "matching_rule": {
+        "street": "江苏路",
+        "street_number": 3,
+        "optional_label": "余门",
+        "label_aliases": [
+          "三号余门"
+        ],
+        "current_label_filter": "ignored",
+        "label_policy": "若相关房源地址或描述出现余门则启用标签筛选；字段未出现则忽略文字条件",
+        "missing_address_result": "待地址核验"
+      },
+      "evidence": [
+        "yumen-search-retry.json",
+        "yumen-remainder.json",
+        "yumen-search-retry-details.json",
+        "yumen-remainder-details.json"
+      ]
+    },
+    {
+      "id": "xinhua",
+      "title": "未拆迁部分：不作为检索过滤条件",
+      "status": "用户已明确忽略",
+      "explanation": "搜索和匹配时不额外应用“未拆迁部分”条件；范围表及简章原图保留原文用于追溯。荣华里、新华南里、新华北里的名称及学校对应关系仍分别保存。",
+      "matching_rule": {
+        "demolition_filter": "ignored_by_user",
+        "preserve_brochure_literal": true
+      }
+    },
+    {
+      "id": "ronghua",
+      "title": "荣华里 / 荣华小区：先合并为一个检索小区",
+      "status": "按用户最终要求处理；保留双校简章来源",
+      "explanation": "用户最终要求：先把荣华里与荣华小区作为同一个小区检索和汇总。贝壳当前名称为荣华小区，别名荣华里（河西区），统一检索后按房源标识去重。居委会仅保留在简章来源表，不作为房源筛选条件。上海道原文荣华里、闽侯路原文荣华小区及各自来源学校分别保留；具体房源地址不足以区分时单列待核，不自动指定唯一学校，也不重复计入两校确定对口数量。",
+      "evidence": [
+        "ronghua-resolve.json",
+        "ronghua-detail.json"
+      ],
+      "matching_rule": {
+        "retrieval_group": "荣华里 / 荣华小区",
+        "treat_as_one_for_search": true,
+        "canonical_beike_name": "荣华小区",
+        "beike_id": "128752558518247",
+        "search_aliases": [
+          "荣华里",
+          "荣华里（河西区）",
+          "荣华小区"
+        ],
+        "committee_filter": "ignored_by_user",
+        "brochure_relations": [
+          {
+            "school": "上海道小学",
+            "source_name": "荣华里",
+            "source_committee": "新华里"
+          },
+          {
+            "school": "闽侯路小学",
+            "source_name": "荣华小区",
+            "source_committee": "荣华里"
+          }
+        ],
+        "deduplicate_by": "house_id",
+        "missing_address_result": "学校归属待核",
+        "automatically_assign_school": false
+      }
+    }
+  ],
+  "administrative_context": {
+    "name": "荣华里社区",
+    "composition_source": "用户说明",
+    "components": [
+      "荣华小区",
+      "鸿华小区",
+      "华夏国际公寓",
+      "浦口西里片",
+      "苏州道片"
+    ],
+    "school_scope_usage": "仅行政背景，不据此推定学校归属"
+  },
+  "beike_information_availability": {
+    "checked_on": "2026-10-13",
+    "basis": "本次已取得的贝壳房源、小区详情字段核查；不推断其他接口或未返回字段。",
+    "visible": [
+      "小区名称及别名",
+      "所属城区和商圈",
+      "平台标注的关联小学"
+    ],
+    "not_returned": [
+      "明确的居委会归属",
+      "具体楼号",
+      "具体单元门号",
+      "可用于门牌匹配的完整房产地址"
+    ],
+    "school_field_role": "平台参考关系，不能替代2026简章中的楼栋、单元门和单双号匹配",
+    "missing_address_policy": "名称可用于检索；缺楼号、单元门号的记录单列待地址核验，不计为已按简章逐套确认对口",
+    "evidence": [
+      "verification/yuanxing-house-details.json",
+      "verification/yumen-search-retry-details.json",
+      "verification/yumen-remainder-details.json",
+      "verification/ronghua-detail.json"
+    ]
+  }
+}
