@@ -1,10 +1,10 @@
 {
   "date": "2026-10-13",
-  "pages": 19,
-  "notes": 17,
-  "reviewed": 13,
+  "pages": 20,
+  "notes": 18,
+  "reviewed": 14,
   "pending": 4,
-  "totalFormulas": 1081,
+  "totalFormulas": 1125,
   "entries": [
     {
       "file": "post-training/DPO.md",
@@ -44,6 +44,14 @@
       "formulas": 96,
       "displayFormulas": 47,
       "headings": 42,
+      "status": "revised"
+    },
+    {
+      "file": "post-training/OPSFT.md",
+      "output": "post-training/OPSFT.html",
+      "formulas": 44,
+      "displayFormulas": 9,
+      "headings": 20,
       "status": "revised"
     },
     {

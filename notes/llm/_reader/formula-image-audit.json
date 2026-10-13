@@ -2,7 +2,7 @@
   "date": "2026-10-13",
   "scope": "Original referenced figures; formula differences are annotated in prose, not edited into image pixels.",
   "originalReferences": 90,
-  "retainedReferences": 90,
+  "retainedReferences": 91,
   "entries": [
     {
       "note": "post-training/DPO.md",
@@ -136,6 +136,12 @@
       "sha256": "cf91f1277e1e5e46264448bbe7727cea69f4ac9481c817d9c74111f03ca8f318",
       "originalBytesPreserved": true,
       "review": "BT/KL/Z/reward formulas correspond; maximization versus loss sign and objective-value equalities explicitly annotated."
+    },
+    {
+      "note": "post-training/OPSFT.md",
+      "image": "post-training/pic/opsft-method.svg",
+      "sha256": "e7e414bf8a16d7947657135ad4899657e5594a0df21463890e97dea03042917d",
+      "review": "See note-specific explanation in revised text."
     },
     {
       "note": "post-training/MTP.md",

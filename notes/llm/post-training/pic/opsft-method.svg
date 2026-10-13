@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" role="img" aria-labelledby="title desc">
+<title id="title">OPSFT 更新方向与两级约束</title><desc id="desc">从基座与 on-policy checkpoint 差分得到支持集和符号，梯度过滤后更新参数，再对累计位移投影。三种协议分别用于完整方向转移、提速和继续学习。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#487168" stroke-width="1.5"/></marker></defs>
+<rect width="1000" height="720" rx="20" fill="#f5f7f2"/>
+<g font-family="PingFang SC,Microsoft YaHei,sans-serif" fill="#203a33">
+<text x="38" y="48" font-size="25" font-weight="700">OPSFT：用 on-policy 的逐参数符号约束 SFT</text>
+<text x="38" y="78" font-size="16" fill="#546b60">方向来源与 SFT 起点是两个独立选择 · 根据论文式 7、附录 A.4 与官方协议重画</text>
+<rect x="38" y="104" width="285" height="106" rx="12" fill="#fff" stroke="#becfc4"/>
+<text x="57" y="137" font-size="19" font-weight="600">同一模型的两份权重</text>
+<text x="57" y="168" font-size="17">原始基座 θ_base</text><text x="57" y="192" font-size="17">on-policy checkpoint θ_on</text>
+<path d="M325 157H364" stroke="#487168" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="378" y="104" width="250" height="106" rx="12" fill="#e4eee8" stroke="#becfc4"/>
+<text x="396" y="137" font-size="19" font-weight="600">提取约束</text><text x="396" y="165" font-size="17">D = θ_on − θ_base</text><text x="396" y="191" font-size="17">M = (D ≠ 0) · v = sign(D)</text>
+<path d="M630 157H668" stroke="#487168" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="682" y="104" width="280" height="106" rx="12" fill="#fff" stroke="#becfc4"/>
+<text x="702" y="137" font-size="19" font-weight="600">开始本轮 SFT</text><text x="702" y="168" font-size="17">选择初始权重 θ₀</text><text x="702" y="192" font-size="17">固定优质轨迹 · 交叉熵损失</text>
+<text x="38" y="256" font-size="20" font-weight="700">每个训练步</text>
+<rect x="38" y="278" width="275" height="126" rx="12" fill="#fff" stroke="#becfc4"/>
+<text x="56" y="312" font-size="19" font-weight="600">① 反传后过滤梯度 g</text><text x="56" y="343" font-size="17">M = 0：梯度清零</text><text x="56" y="370" font-size="17">g · D &gt; 0：梯度清零</text><text x="56" y="391" font-size="14" fill="#546b60">下降位移约为 −g，注意负号</text>
+<path d="M315 340H353" stroke="#487168" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="367" y="278" width="210" height="126" rx="12" fill="#fff" stroke="#becfc4"/>
+<text x="386" y="312" font-size="19" font-weight="600">② 优化器更新</text><text x="386" y="345" font-size="17">梯度裁剪 → AdamW</text><text x="386" y="373" font-size="16" fill="#546b60">动量与 weight decay</text><text x="386" y="395" font-size="16" fill="#546b60">仍可能产生额外位移</text>
+<path d="M580 340H617" stroke="#487168" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="631" y="278" width="331" height="126" rx="12" fill="#e4eee8" stroke="#becfc4"/>
+<text x="649" y="312" font-size="19" font-weight="600">③ 投影累计位移</text><text x="649" y="344" font-size="17">M = 0：恢复到 θ₀</text><text x="649" y="372" font-size="17">(θ − θ₀) · D &lt; 0：恢复到 θ₀</text><text x="649" y="395" font-size="14" fill="#546b60">合法半轴内仍可回退，不保证逐步单调</text>
+<text x="38" y="453" font-size="20" font-weight="700">三种实验协议要分开记账</text>
+<rect x="38" y="475" width="924" height="163" rx="12" fill="#fff" stroke="#becfc4"/>
+<text x="59" y="509" font-size="17" font-weight="600">完整方向转移</text><text x="256" y="509" font-size="17">150 步 GRPO 定方向 → 从基座做 700 步 OPSFT</text>
+<text x="59" y="552" font-size="17" font-weight="600">早期方向提速</text><text x="256" y="552" font-size="17">50 步 GRPO 定方向 → 从基座做 100 步 OPSFT</text>
+<text x="59" y="595" font-size="17" font-weight="600">GRPO 后继续学习</text><text x="256" y="595" font-size="17">100 步 GRPO 定方向 → 从该 checkpoint 做 700 步 OPSFT</text>
+<text x="59" y="623" font-size="14" fill="#546b60">前两种 θ₀ = 原始基座；第三种 θ₀ = GRPO checkpoint。D 均由原始基座作差取得。</text>
+<text x="38" y="678" font-size="16" fill="#546b60">逐坐标符号决定合法半轴，SFT 仍学习各坐标的幅度；不是把整个梯度投影成 αv。</text>
+</g></svg>

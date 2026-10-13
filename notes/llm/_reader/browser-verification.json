@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "passed": true,
   "mode": "Local HTTP with external requests blocked",
-  "browser": "155.0.8059.39",
+  "browser": "155.0.8059.40",
   "viewports": [
     1500,
     390
   ],
-  "pageChecks": 38,
+  "pageChecks": 40,
   "functions": [
     "Full-text search and result navigation",
     "Sticky right table of contents, anchor positioning and synchronized current chapter",
@@ -97,6 +97,19 @@
       "badImages": [],
       "rawDollars": false,
       "formulas": 96,
+      "mathErrors": [],
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
+    },
+    {
+      "file": "post-training/OPSFT.html",
+      "viewport": 1500,
+      "pageWidth": 1500,
+      "viewportWidth": 1500,
+      "images": 1,
+      "badImages": [],
+      "rawDollars": false,
+      "formulas": 44,
       "mathErrors": [],
       "inconsistentTables": [],
       "formulaAlignmentErrors": []
@@ -344,6 +357,19 @@
       "badImages": [],
       "rawDollars": false,
       "formulas": 96,
+      "mathErrors": [],
+      "inconsistentTables": [],
+      "formulaAlignmentErrors": []
+    },
+    {
+      "file": "post-training/OPSFT.html",
+      "viewport": 390,
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "images": 1,
+      "badImages": [],
+      "rawDollars": false,
+      "formulas": 44,
       "mathErrors": [],
       "inconsistentTables": [],
       "formulaAlignmentErrors": []

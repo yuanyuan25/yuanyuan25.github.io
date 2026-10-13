@@ -2,6 +2,7 @@
 export const sections=[
  {id:'post-training',title:'后训练',description:'理解偏好如何成为学习信号，以及策略优化、预测与自蒸馏的目标和训练过程。',groups:[
   ['偏好与策略优化',['post-training/DPO.md','post-training/PPO.md','post-training/GRPO.md','post-training/GXPO.md','post-training/pair-grpo-family.md']],
+  ['更新方向与泛化',['post-training/OPSFT.md']],
   ['预测与自蒸馏',['post-training/MTP.md','post-training/SD-Zero.md']],
  ]},
  {id:'infra',title:'Infra',description:'从模型的计算结构出发，梳理精度、显存、并行训练与推理性能，逐步扩展到集群和调度。',groups:[
@@ -14,9 +15,10 @@ export const sections=[
  ]},
 ];
 export const pending=new Set(['PPO','GRPO','GXPO','MLA']);
-export const titles={AgentGarten:'AgentGarten 论文精读',DPO:'DPO：偏好、奖励与 PPO',PPO:'PPO',GRPO:'GRPO',GXPO:'GXPO','pair-grpo-family':'Pair-GRPO 精读',MTP:'MTP 多 token 预测','SD-Zero':'SD-Zero 精读',transformer结构:'Transformer 与 RoPE',激活函数:'激活函数与 SwiGLU',MLA:'MLA',混合精度:'混合精度','分布式训练-数据并行':'数据并行、ZeRO 与 FSDP','分布式训练-模型并行':'TP、EP、SP 与 CP','分布式训练-流水线并行':'流水线并行',显存分析:'参数量、显存与计算量',Flash_attention:'FlashAttention','revision-notes':'修订与公式核对'};
+export const titles={OPSFT:'OPSFT 更新方向与泛化精读',AgentGarten:'AgentGarten 论文精读',DPO:'DPO：偏好、奖励与 PPO',PPO:'PPO',GRPO:'GRPO',GXPO:'GXPO','pair-grpo-family':'Pair-GRPO 精读',MTP:'MTP 多 token 预测','SD-Zero':'SD-Zero 精读',transformer结构:'Transformer 与 RoPE',激活函数:'激活函数与 SwiGLU',MLA:'MLA',混合精度:'混合精度','分布式训练-数据并行':'数据并行、ZeRO 与 FSDP','分布式训练-模型并行':'TP、EP、SP 与 CP','分布式训练-流水线并行':'流水线并行',显存分析:'参数量、显存与计算量',Flash_attention:'FlashAttention','revision-notes':'修订与公式核对'};
 // Short discovery text for cards; the complete Markdown remains in each article.
 export const summaries={
+ OPSFT:'逐参数符号约束如何转移 on-policy 泛化收益：完整推导、两级投影、三种协议与精度和预算边界。',
  AgentGarten:'程序维护世界、神经模型生成观察、Agent 继承经验：推导 exact replay 与精确 R1/R2，核对实时性能和学习证据。',
  DPO:'从偏好比较和 KL 约束推导 DPO，理解隐式奖励、参考模型，以及它们与 PPO 的关系。',
  PPO:'待补充：策略概率比、裁剪目标、价值函数与 GAE，以及完整训练流程。',
@@ -36,4 +38,4 @@ export const summaries={
  Flash_attention:'从稳定 Softmax 推导分块计算与在线合并，理解 FlashAttention 如何减少显存读写。',
 };
 
-export const articleDates={AgentGarten:'2026-10-12'};
+export const articleDates={OPSFT:'2026-10-13',AgentGarten:'2026-10-12'};
