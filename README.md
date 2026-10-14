@@ -73,6 +73,8 @@ python3 -m http.server 8000
 
 模板保留原有占位符，并新增 `{{CORE_TRENDS}}`，填入本期趋势的 `<li>` 列表；`{{TOC}}` 继续填分类链接的 `<li>` 列表，各链接必须对应 `{{SECTIONS}}` 中的分类 ID。趋势依据本期论文更新，不复制参考周报的旧新闻；统计数字从本期论文清单生成。
 
+分类导航通过 `assets/report-navigation.js` 和 `assets/report-navigation.css` 跟随阅读位置高亮当前分类，点击时立即高亮，锚点偏移随导航栏实际高度调整。生成周报时保留这两个资源引用；中文分类 ID、论文直达锚点和浏览器前进后退均使用原生链接。可按笔记浏览器检查相同的环境变量运行 `node tools/verify-report-navigation.mjs`，验证模板生成页与使用该分类栏的已有周报。
+
 周报直接打开原 HTML，顶部导航与主站一致。`llm_reports/report_template.html` 已包含品牌与栏目链接，`assets/site-header.css` 只设置页头样式，不改变周报正文。后续生成任务继续使用该模板并更新 `reports.json` 即可。
 
 ## 维护大模型学习笔记与论文精读

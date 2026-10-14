@@ -11,9 +11,11 @@ const {base,close}=await startPreview();
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_EXECUTABLE?{executablePath:process.env.CHROME_EXECUTABLE}:{})});
 const errors=[],pages=[];
 const context=await browser.newContext();
+context.setDefaultTimeout(15000);
 await context.route('**/*',route=>route.request().url().startsWith(base+'/')?route.continue():route.abort());
 const page=await context.newPage();
 const listingsPath='life/tianjin-hexi-school-housing-2026-10-10/listings.html';
+const listingsData=JSON.parse(fs.readFileSync(path.join(root,listingsPath),'utf8').match(/const DATA = (.*);\n/)[1]);
 // The last column must remain visible at every horizontal scroll position.
 async function checkPinnedColumn(){
  const table=page.locator('.sticky-last-column');
@@ -91,8 +93,8 @@ try{
   await page.locator('.topic[href="life/"]').click();
   assert.equal(page.url(),base+'/life/');
   assert.equal(await page.locator('a[href*="listings.html"]').count(),0,'Listings only belong to their parent article');
-  assert.equal(await page.locator('.recent-item').first().getAttribute('href'),'tianjin-hexi-school-housing-2026-10-10.html');
-  await page.getByRole('link',{name:/天津河西一片学区房房价整理（仅私产）/}).click();
+  // Keep this snapshot's interaction checks stable when newer reports are added.
+  await page.locator('.recent-item[href="tianjin-hexi-school-housing-2026-10-10.html"]').click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
   await page.locator('#tbl-all tr').first().waitFor();
   assert.equal(await page.locator('#tbl-all tr').count(),32);
@@ -100,23 +102,23 @@ try{
   await page.getByRole('link',{name:'查看私产房源明细 →',exact:true}).click();
   assert.equal(page.url(),base+'/'+listingsPath);
   await page.locator('#tb tr').first().waitFor();
-  assert.equal(await page.locator('#tb tr').count(),200);
+  assert.equal(await page.locator('#tb tr').count(),listingsData.length);
   await checkPinnedColumn();
-  await page.getByRole('button',{name:'上海道小学',exact:true}).click();
-  assert.equal(await page.locator('#tb tr').count(),129);
+  await page.getByRole('button',{name:'上海道简章名称线索',exact:true}).click();
+  assert.equal(await page.locator('#tb tr').count(),listingsData.filter(row=>row.scope_schools.includes('上海道小学')).length);
   await page.getByRole('textbox').fill('元兴');
   assert.ok(await page.locator('#tb tr').count()>0);
-  assert.ok((await page.locator('#tb tr td:nth-child(2)').allTextContents()).every(s=>s==='元兴新里'));
+  assert.ok((await page.locator('#tb tr td:nth-child(2) b').allTextContents()).every(s=>s==='元兴新里'));
   await page.getByRole('textbox').fill('没有对应房源的关键词');
   assert.equal(await page.locator('#tb tr').count(),0);
   assert.match(await page.locator('#stats').textContent(),/共 0 套/);
   await page.getByRole('textbox').fill('');
-  await page.getByRole('button',{name:'闽侯路小学',exact:true}).click();
-  assert.equal(await page.locator('#tb tr').count(),71);
-  await page.getByRole('combobox').selectOption({label:'富邦花园'});
+  await page.getByRole('button',{name:'闽侯路简章名称线索',exact:true}).click();
+  assert.equal(await page.locator('#tb tr').count(),listingsData.filter(row=>row.scope_schools.includes('闽侯路小学')).length);
+  await page.getByRole('combobox',{name:'按小区筛选',exact:true}).selectOption({label:'富邦花园'});
   assert.ok(await page.locator('#tb tr').count()>0);
-  assert.ok((await page.locator('#tb tr td:nth-child(2)').allTextContents()).every(s=>s==='富邦花园'));
-  await page.getByRole('combobox').selectOption('');
+  assert.ok((await page.locator('#tb tr td:nth-child(2) b').allTextContents()).every(s=>s==='富邦花园'));
+  await page.getByRole('combobox',{name:'按小区筛选',exact:true}).selectOption('');
   await page.getByRole('button',{name:'全部学校',exact:true}).click();
   for(const direction of ['ascending','descending','ascending']){
    if(await page.locator('th[data-k="total"]').getAttribute('aria-sort')!==direction)await page.locator('th[data-k="total"] button').click();
@@ -124,8 +126,8 @@ try{
    assert.deepEqual(prices,[...prices].sort((a,b)=>direction==='ascending'?a-b:b-a));
   }
   assert.match(await page.locator('#tb a').first().getAttribute('href'),/^https:\/\/tj\.ke\.com\/ershoufang\/\d+\.html$/);
-  await page.getByRole('link',{name:'← 返回学区房房价汇总（仅私产）',exact:true}).click();
-  assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-10.html'));
+  await page.getByRole('link',{name:'← 查看两校 2026 小区范围',exact:true}).click();
+  assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-10-12.html'));
   await page.locator('.site-header nav').getByRole('link',{name:'生活',exact:true}).click();
   await page.getByRole('link',{name:/天津河西一片学区房房价整理（全量）/}).click();
   assert.ok(page.url().endsWith('/life/tianjin-hexi-school-housing-2026-08-21.html'));
