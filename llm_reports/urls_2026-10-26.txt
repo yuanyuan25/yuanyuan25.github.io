@@ -1,0 +1,50 @@
+BizBench: Unveiling Hidden Challenges in Deploying Long-Horizon Agents for Real-World Business | https://arxiv.org/abs/2610.20424
+Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents | https://arxiv.org/abs/2610.11942
+SpatialScout: Can VLM Agents Actively Explore and Map 3D Scenes? | https://arxiv.org/abs/2610.26659
+Deep Search in Real-World Web Environments | https://arxiv.org/abs/2610.30181
+Into the Unknown: Benchmarking AI agents on open scientific research problems | https://arxiv.org/abs/2610.19159
+Pack Light, CarryOn: Building Object-Oriented Context for Long-Horizon Agents | https://arxiv.org/abs/2610.18784
+HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents | https://arxiv.org/abs/2610.23479
+OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory | https://arxiv.org/abs/2610.26860
+CoEvo-RSI: When Harnesses Evolve, Which Models Should Follow? | https://arxiv.org/abs/2610.25078
+Focused Omni-Modal GUI Agents | https://arxiv.org/abs/2610.26203
+S-Agent 2.0: Spatial Reasoning with a General Coding Agent | https://arxiv.org/abs/2610.28354
+Agent World Model in the Wild: Computer-Use Agent Environment Synthesis | https://arxiv.org/abs/2610.26828
+DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems | https://arxiv.org/abs/2610.28522
+Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition | https://arxiv.org/abs/2610.28578
+Scene-Designer: Learning Design Intelligence for Agentic 3D Scene Generation | https://arxiv.org/abs/2610.23121
+LiveMACE: Process-Aware Evaluation of LLM Agent Capabilities in Evolving Markets | https://arxiv.org/abs/2610.09872
+OpenMobile-2: Building Versatile Mobile Agents with Scalable Environments and App-Native Tools | https://arxiv.org/abs/2610.14157
+CoworkEnv: Synthesizing Training Environments for Long-Horizon Cowork Agents | https://arxiv.org/abs/2610.24960
+Matrix-Game 4.0: Harnessing Video Models for Real-Time Playable Game Worlds | https://arxiv.org/abs/2610.27999
+Cache Engineering for Agents | https://arxiv.org/abs/2610.28577
+StreamEval: Evaluating Interactive Streaming Video Generation Models | https://arxiv.org/abs/2610.28402
+Has GPT-6-Astra Achieved Embodied Intelligence? | https://arxiv.org/abs/2610.22471
+WeVisOne-VL: Unified Visual Perception from Objects to Pixels | https://arxiv.org/abs/2610.31329
+EgoXperience: Learning World-Grounded Egocentric Representations from Human Experience | https://arxiv.org/abs/2610.26625
+Editing Images into Reusable Layers via Compositional Edit-Prior Distillation | https://arxiv.org/abs/2610.24738
+Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation | https://arxiv.org/abs/2610.30926
+Holi-World: Building Holistic World Intelligence from Human-Ego Experience | https://arxiv.org/abs/2610.26549
+DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations | https://arxiv.org/abs/2610.29997
+Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience | https://arxiv.org/abs/2610.26855
+Learning from Fleet Experience: Collective Experience Learning Across 96 Robots | https://arxiv.org/abs/2610.25736
+MOSS-Image Technical Report | https://arxiv.org/abs/2610.23374
+ScaleNav: Scalable Internet Video Pretraining for Language-Conditioned Local Navigation | https://arxiv.org/abs/2610.25690
+Toward Recursive Self-Improvement in Physical AI | https://arxiv.org/abs/2610.29677
+Scaling Parameter-Efficient Fine-Tuning for Brain Encoding | https://arxiv.org/abs/2610.26802
+PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis | https://arxiv.org/abs/2610.20538
+Spectral-Spatial Interpretation | https://arxiv.org/abs/2610.21114
+Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation | https://arxiv.org/abs/2610.29989
+PAR: Progress-Aligned Recurrence for Length Generalization in State Tracking | https://arxiv.org/abs/2610.27628
+MemT-1.0: Towards Memory-Native Evolution | https://arxiv.org/abs/2610.26825
+LEV: Thinking Fast and Deep with Looped Decision Models | https://arxiv.org/abs/2610.20951
+Speculative Sampling in Interactive Video Generation | https://arxiv.org/abs/2610.20556
+VLA-Rolling: Fewer Denoising Steps, Better Control via Adaptive Action Reuse | https://arxiv.org/abs/2610.25043
+Lexical Reference Frames: Interpreting LM Residual Streams in Native Semantics | https://arxiv.org/abs/2610.22169
+Learning to Think and Explore in 3D World | https://arxiv.org/abs/2610.21783
+Tree-Aware Posterior Distillation for Long-Horizon Agentic Reinforcement Learning | https://arxiv.org/abs/2610.23181
+Self-Evolving Coding Agents via Harness-Policy Optimization | https://arxiv.org/abs/2610.22791
+SpecMRL: Redesign Matryoshka Representation Learning within Parametric Spectrum | https://arxiv.org/abs/2610.26824
+Retrieval Augmented Generation Compositionality | https://arxiv.org/abs/2610.29722
+IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems | https://arxiv.org/abs/2610.30949
+Scaling in Games: Continued Pre-Training For Embodied Agents In Diverse Virtual Worlds | https://arxiv.org/abs/2610.28698
