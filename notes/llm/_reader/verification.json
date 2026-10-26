@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-14",
   "passed": true,
   "unchangedCurrentAssets": 97,
   "originalImageReferences": 90,
-  "currentUniqueNoteImageReferences": 89,
-  "htmlPages": 18,
-  "localLinksVerified": 1244,
+  "currentUniqueNoteImageReferences": 91,
+  "htmlPages": 20,
+  "localLinksVerified": 1467,
   "fontResourcesVerified": 60,
-  "compiledFormulas": 992,
+  "compiledFormulas": 1125,
   "math": {
     "checks": [
       {

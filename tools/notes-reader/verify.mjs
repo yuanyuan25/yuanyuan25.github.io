@@ -37,7 +37,7 @@ for(const entry of build.entries){
   audit.push({note:entry.file,image,sha256,...(baseline?{originalBytesPreserved:sha256===baseline.sha256}:{}),review:notes[path.basename(entry.file)]||'See note-specific explanation in revised text.'});
  }
 }
-fs.writeFileSync(path.join(asset,'formula-image-audit.json'),JSON.stringify({date:'2026-10-08',scope:'Original referenced figures; formula differences are annotated in prose, not edited into image pixels.',originalReferences:references,retainedReferences:audit.length,entries:audit},null,2)+'\n');
+fs.writeFileSync(path.join(asset,'formula-image-audit.json'),JSON.stringify({date:build.date,scope:'Original referenced figures; formula differences are annotated in prose, not edited into image pixels.',originalReferences:references,retainedReferences:audit.length,entries:audit},null,2)+'\n');
 let links=0;const htmlFiles=['index.html',...build.entries.map(e=>e.output)];
 const entities=s=>s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
 for(const file of htmlFiles){
@@ -57,7 +57,7 @@ for(const file of htmlFiles){
 const css=fs.readFileSync(path.join(asset,'katex/katex.min.css'),'utf8');let fonts=0;
 for(const [,url] of css.matchAll(/url\(([^)]+)\)/g)){check(fs.existsSync(path.resolve(asset,'katex',url.replace(/["']/g,''))),'Missing font '+url);fonts++;}
 const math=JSON.parse(execFileSync('python3',[path.join(here,'check_math.py')],{encoding:'utf8'}));
-const report={date:'2026-10-08',passed:fail.length===0,unchangedCurrentAssets:copied,originalImageReferences:references,currentUniqueNoteImageReferences:audit.length,htmlPages:htmlFiles.length,localLinksVerified:links,fontResourcesVerified:fonts,compiledFormulas:build.totalFormulas,math,failures:fail};
+const report={date:build.date,passed:fail.length===0,unchangedCurrentAssets:copied,originalImageReferences:references,currentUniqueNoteImageReferences:audit.length,htmlPages:htmlFiles.length,localLinksVerified:links,fontResourcesVerified:fonts,compiledFormulas:build.totalFormulas,math,failures:fail};
 fs.writeFileSync(path.join(asset,'verification.json'),JSON.stringify(report,null,2)+'\n');
 if(fail.length){console.error(fail.join('\n'));process.exit(1);}
 console.log(JSON.stringify({...report,math:`${math.passed} independent checks passed`},null,2));

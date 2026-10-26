@@ -114,7 +114,7 @@ try{
  await page.locator('.menu-toggle').click();await page.keyboard.press('/');assert.ok(await page.locator('#search-dialog').evaluate(d=>d.open));
  await page.keyboard.press('Escape');assert.equal(await page.locator('#search-dialog').evaluate(d=>d.open),false);functions.push('Search keyboard shortcuts');
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
- const result={date:'2026-10-08',passed:true,mode:'Local HTTP with external requests blocked',browser:await browser.version(),viewports:[1500,390],pageChecks:pages.length,functions,errors,externalRequests:external,pages};
+ const result={date:build.date,passed:true,mode:'Local HTTP with external requests blocked',browser:await browser.version(),viewports:[1500,390],pageChecks:pages.length,functions,errors,externalRequests:external,pages};
  fs.writeFileSync(path.join(root,'_reader/browser-verification.json'),JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({passed:true,pageChecks:pages.length,functions,errors,externalRequests:external},null,2));
 }finally{await browser.close();await close();}

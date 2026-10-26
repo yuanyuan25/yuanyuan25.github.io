@@ -6,7 +6,7 @@
 - **GitHub 仓库**：https://github.com/yuanyuan25/yuanyuan25.github.io
 - **本地项目目录**：`yuan-notes`
 
-网站由原来的大模型报告项目扩展而来。`yuanyuan25.github.io` 是 GitHub 个人主站要求的仓库名称；网站品牌和本地目录使用「知行手记」及 `yuan-notes`。
+网站由原来的大模型周报项目扩展而来。`yuanyuan25.github.io` 是 GitHub 个人主站要求的仓库名称；网站品牌和本地目录使用「知行手记」及 `yuan-notes`。
 
 网站图标沿用墨绿色底、白色「知」字。`assets/favicon.svg` 是可编辑的矢量原稿，`favicon.ico` 提供 16 / 32 / 48px 兼容图标，`assets/apple-touch-icon.png` 用于添加到主屏幕。修改图标时同步导出这两个位图文件。首页、栏目、报告及文章模板均已接入；大模型笔记构建时复用首页的图标声明并转换相对路径。
 
@@ -16,7 +16,7 @@
 yuan-notes/
 ├── index.html             # 知识库首页
 ├── assets/                # 公共样式与首页脚本
-├── llm_reports/           # 大模型论文报告，保留原有网址
+├── llm_reports/           # 大模型周报，保留原有网址
 │   ├── index.html         # 报告目录
 │   ├── YYYY-MM-DD.html    # 每期报告
 │   ├── reports.json       # 自动生成的报告清单
@@ -28,6 +28,7 @@ yuan-notes/
 │       ├── index.html     # 阅读入口（自动生成）
 │       ├── post-training/ # 后训练：Markdown、HTML、pic/
 │       ├── infra/         # 模型与系统：Markdown、HTML、pic/
+│       ├── agents/        # 智能体与交互学习：Markdown、HTML、pic/
 │       ├── _reader/       # 本地公式、样式、搜索索引与校验清单
 │       └── revision-notes.md
 ├── tools/notes-reader/    # Markdown 转 HTML 与校验工具
@@ -37,13 +38,14 @@ yuan-notes/
 └── templates/article.html # 通用文章模板
 ```
 
-目前已有大模型报告，以及 16 篇大模型笔记（12 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
+目前已有大模型周报，以及 18 篇大模型笔记（14 篇有正文，4 篇标为待补）。「生活」收录居住与教育等日常资料，放在主导航和首页分类的最后；文档总结用于工作与技术资料，实践记录保留栏目入口。
 
 ## 生活参考资料
 
+- [上海道 / 闽侯路小学2026招生范围](life/tianjin-hexi-school-housing-2026-10-12.html)：按居委会、小区及两校范围四列对照，列明楼栋、单元门号、门牌和单双号限制。
 - [天津河西一片学区房房价整理（仅私产，2026-10-10）](life/tianjin-hexi-school-housing-2026-10-10.html)：32 个小区、285 套私产挂牌房源，保留原始价格区间图、少量在售提示与结论。
 - [天津河西一片学区房房价整理（全量，2026-08-21）](life/tianjin-hexi-school-housing-2026-08-21.html)：32 个小区的全量挂牌资料。两篇查询日期和统计口径不同，作为独立资料在「生活 → 居住与教育」按日期倒序排列。
-- 两篇均由用户提供的 HTML 于 2026-10-10 收录，正文在 `life/` 维护，接入主站导航与样式。
+- 两篇历史资料均由用户提供的 HTML 于 2026-10-10 收录；最新学区表依据两校2026招生简章和已确认的楼栋、单元门规则整理，正文在 `life/` 维护，接入主站导航与样式。
 - 原文注明数据来源为贝壳找房挂牌信息；本次仅收录资料，未重新查询或核验价格与学区信息，保留各自的查询日期和统计口径。
 - 后续新增生活资料，放在 `life/`，在栏目页按主题分组；保留原始数据日期，并同步维护首页入口文字。工作和技术文档类总结放在 `summaries/`。
 - 仅与某篇资料关联的明细页放在该文章同名子目录中，只从文章内提供入口，不加入首页、生活栏目或独立资料列表。私产汇总页的挂牌总价列在横向滚动时固定于右侧。
@@ -58,7 +60,7 @@ python3 -m http.server 8000
 
 访问 http://localhost:8000/ 。网站以 GitHub Pages 的展示与路由为准，栏目使用 `/`、`/llm_reports/`、`/notes/` 等目录地址，由服务器提供目录中的 `index.html`。本地调试使用 HTTP 服务，不提供双击 HTML 文件的 `file://` 兼容处理。
 
-## 新增大模型报告
+## 新增大模型周报
 
 1. 参考 `llm_reports/report_template.html`，创建 `llm_reports/YYYY-MM-DD.html`。
 2. 填写页面中的 `report-meta` JSON 元数据。
@@ -67,12 +69,23 @@ python3 -m http.server 8000
 
 既有报告路径 `llm_reports/YYYY-MM-DD.html` 保持不变，原链接可继续使用。
 
-## 维护后训练与 Infra 笔记
+周报模板采用第 21 周（2026-05-25）的结构：标题、当前统计卡片、本周核心趋势、随滚动保持可见的分类按钮和分类论文正文。版心宽度与主站一致，为 1120px，并在手机上收窄。分类包含 Agentic、VLA/VLM、生成式检索、预训练、后训练、强化学习、架构创新；VLA/VLM 收录视觉语言理解、具身导航与机器人动作策略，论文按主要研究问题归入一个类别，分类数量之和与总数一致。
 
-本仓库独立维护两组笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。
+模板保留原有占位符，并新增 `{{CORE_TRENDS}}`，填入本期趋势的 `<li>` 列表；`{{TOC}}` 继续填分类链接的 `<li>` 列表，各链接必须对应 `{{SECTIONS}}` 中的分类 ID。趋势依据本期论文更新，不复制参考周报的旧新闻；统计数字从本期论文清单生成。
 
-- `notes/llm/post-training/`：偏好与策略优化、预测与自蒸馏。
+分类导航通过 `assets/report-navigation.js` 和 `assets/report-navigation.css` 跟随阅读位置高亮当前分类，点击时立即高亮，锚点偏移随导航栏实际高度调整。生成周报时保留这两个资源引用；中文分类 ID、论文直达锚点和浏览器前进后退均使用原生链接。可按笔记浏览器检查相同的环境变量运行 `node tools/verify-report-navigation.mjs`，验证模板生成页与使用该分类栏的已有周报。
+
+周报直接打开原 HTML，顶部导航与主站一致。`llm_reports/report_template.html` 已包含品牌与栏目链接，`assets/site-header.css` 只设置页头样式，不改变周报正文。后续生成任务继续使用该模板并更新 `reports.json` 即可。
+
+## 维护大模型学习笔记与论文精读
+
+本仓库独立维护大模型笔记的当前 Markdown、HTML、完整配图与生成工具，不再存放修订前副本。MyKnowledgeBase 中保留的原稿不受影响；两份目录没有软链接、跨仓库引用或自动同步，构建和校验均在本仓库内完成。
+
+- `notes/llm/post-training/`：偏好与策略优化、更新方向与泛化、预测与自蒸馏；[OPSFT 精读](notes/llm/post-training/OPSFT.html) 核对逐参数符号约束、两级投影与三种实验协议。
 - `notes/llm/infra/`：模型基础、训练与并行、推理与性能；后续加入集群与调度。
+- `notes/llm/agents/`：智能体与交互学习；[AgentGarten 精读](notes/llm/agents/AgentGarten.html) 包含方法图、核心推导、实验口径与复现入口。
+
+分类随实际内容扩展，按论文主要研究问题归类；交叉方向可在摘要和正文中说明。当前涵盖后训练、Infra 和智能体，其中 AgentGarten 属于「智能体 → 世界模型与交互学习」。
 
 一级目录采用稳定的英文名称；二级主题在侧栏配置中维护，暂不继续拆分文件夹，避免笔记少时层级过深。文章标题与文件名可保持中文。图片与所属笔记一起维护于各目录的 `pic/`。
 

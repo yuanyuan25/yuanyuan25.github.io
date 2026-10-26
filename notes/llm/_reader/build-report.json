@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-08",
-  "pages": 18,
-  "notes": 16,
-  "reviewed": 12,
+  "date": "2026-10-14",
+  "pages": 20,
+  "notes": 18,
+  "reviewed": 14,
   "pending": 4,
-  "totalFormulas": 992,
+  "totalFormulas": 1125,
   "entries": [
     {
       "file": "post-training/DPO.md",
@@ -44,6 +44,14 @@
       "formulas": 96,
       "displayFormulas": 47,
       "headings": 42,
+      "status": "revised"
+    },
+    {
+      "file": "post-training/OPSFT.md",
+      "output": "post-training/OPSFT.html",
+      "formulas": 44,
+      "displayFormulas": 9,
+      "headings": 20,
       "status": "revised"
     },
     {
@@ -132,6 +140,14 @@
       "formulas": 85,
       "displayFormulas": 13,
       "headings": 11,
+      "status": "revised"
+    },
+    {
+      "file": "agents/AgentGarten.md",
+      "output": "agents/AgentGarten.html",
+      "formulas": 89,
+      "displayFormulas": 14,
+      "headings": 27,
       "status": "revised"
     },
     {
