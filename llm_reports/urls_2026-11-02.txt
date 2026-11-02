@@ -1,0 +1,50 @@
+[PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations] | https://arxiv.org/abs/2610.37381
+[TAO: Tool-Aware Joint Scheduling for LLM-Based Agentic Serving] | https://arxiv.org/abs/2610.37230
+[HiSTEVE 1.0: Harnessing Human-Interface VLA Agents for Open-World Games] | https://arxiv.org/abs/2610.31162
+[WorldCast: World-Consistent Character Video Generation with Large-Angle Camera Control] | https://arxiv.org/abs/2610.33135
+[Continual Learning Exam: Benchmarking Long-Horizon RSI and Experiential Learning in LLM Agents] | https://arxiv.org/abs/2610.33956
+[L3G-World: Real-Time Infinite World Generation with Latent 3D Gaussian Memory] | https://arxiv.org/abs/2610.40614
+[S3AC: Stabilized, Selective, and Scalable Actor-Critic for LLM Reasoning] | https://arxiv.org/abs/2610.35518
+[How Far Can Coding Agents Go in Visual Generation?] | https://arxiv.org/abs/2610.19025
+[OmniShowcase: Omnidirectional Subject-Consistent Video Generation from Multi-View Images] | https://arxiv.org/abs/2610.35684
+[Rollback: Experience Backtracking in World Models for Policy Improvement] | https://arxiv.org/abs/2610.36068
+[RynnUnify: Towards Unified Embodied Brain] | https://arxiv.org/abs/2610.32965
+[RSIHub: A Composable Framework for Agent-Evolution Methods] | https://arxiv.org/abs/2610.32253
+[Trajectory2Gym: Decision-Grounded Compositional Interaction Synthesis for Tool-Use Agents] | https://arxiv.org/abs/2610.33568
+[HABIT-Bench: Evaluating Habit Induction from Longitudinal Weak Evidence in Agent Memory] | https://arxiv.org/abs/2610.24520
+[Qwen-Image-PE: Learning Visual Design for Text-to-Image Prompt Enhancement] | https://arxiv.org/abs/2610.33472
+[Efficient Streaming Audio-Visual Target Speaker Extraction for Real-World Acoustic Scenes] | https://arxiv.org/abs/2610.32749
+[ChronoReplay: One Answer Interface Is Not Enough for Streaming Spatial Intelligence] | https://arxiv.org/abs/2610.34283
+[InteractiveWorld: A Verifiable Human-Centric Environment for Building Better Interactive MLLM Assistants] | https://arxiv.org/abs/2610.33966
+[LociArt: A Unified Paradigm for Free-Style Local Video Stylization] | https://arxiv.org/abs/2610.36456
+[The Trinity: Capability-Driven Recursive Self-Improvement for Multimodal Agents] | https://arxiv.org/abs/2610.36077
+[WorkFactory: Turning Professional Intents into Executable Work for Scalable Agent Training] | https://arxiv.org/abs/2610.37161
+[World-in-Context: Interactive Video World Modeling with In-Context Conditioning] | https://arxiv.org/abs/2610.33169
+[Hy-Nomas: Towards Free-form Interactive World Generation] | https://arxiv.org/abs/2610.36729
+[ThinkWorld: World Imagination Reinforces Chain-of-Dynamics Reasoning] | https://arxiv.org/abs/2610.37666
+[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success] | https://arxiv.org/abs/2610.31670
+[Reading, Writing, Sharing, and Interacting with the World through Video] | https://arxiv.org/abs/2610.31668
+[OmniSpectra: A Unified Foundation Model for Universal Spectra Representation Learning] | https://arxiv.org/abs/2601.15351
+[RSI Arena: Towards Recursive Self-Improvement with Human Feedback] | https://arxiv.org/abs/2610.33624
+[Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception] | https://arxiv.org/abs/2610.37037
+[Work Agents: Systems, Capabilities, and Optimization] | https://arxiv.org/abs/2610.35845
+[Proving and Improving the Platonic Representation Hypothesis with JEPAs] | https://arxiv.org/abs/2610.39302
+[Trial by Trace: Benchmarking AI Agent Harnesses for Reliability and Failure Attribution] | https://arxiv.org/abs/2610.32285
+[On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models] | https://arxiv.org/abs/2610.32770
+[HuGe: Scaling Humanoid Generalist Vision-Language-Action Models with Egocentric Experience] | https://arxiv.org/abs/2610.34186
+[On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction] | https://arxiv.org/abs/2610.22543
+[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning] | https://arxiv.org/abs/2610.32093
+[Look Only When Needed: Certificate-Guided Visual Routing for Efficient Diffusion VLMs] | https://arxiv.org/abs/2610.36671
+[A-RSI: Adaptive Task Refresh for Zero-Data Multimodal Self-Improvement] | https://arxiv.org/abs/2610.38568
+[CodeCap-Bench: Can Code Serve as a Good Video Caption?] | https://arxiv.org/abs/2610.37341
+[Eat Your Precision: Precision Objective Mitigates Reward Hacking in Rubric-based RL] | https://arxiv.org/abs/2610.33512
+[Principia: Test-Time Hypotheses to Principle Construction for Scientific Discovery] | https://arxiv.org/abs/2610.32195
+[Dual Exam: Controlled Evaluation of Multimodal Agents and World Models] | https://arxiv.org/abs/2610.31066
+[Build, Don't Play: Self-Improving LLM Research Agents Develop a Hearthstone Battlegrounds AI That Rivals Top Players] | https://arxiv.org/abs/2610.33845
+[StreamVibe: Proactive Video Agents for Evolving User Intent] | https://arxiv.org/abs/2610.34662
+[UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents] | https://arxiv.org/abs/2610.30932
+[Spatial Audio Generation and Editing with Executable Plans and Self-Distilling Transfusion] | https://arxiv.org/abs/2610.34415
+[DynaFlow: Learning Free-Form Multi-Agent Orchestration] | https://arxiv.org/abs/2610.34467
+[Function-Space Temporal Self-Distillation for Policy Optimization] | https://arxiv.org/abs/2610.19687
+[HiP3R: Hierarchical Pose Graphs for Long-Horizon 3D Reconstruction] | https://arxiv.org/abs/2610.31635
+[What Effort Level Should I Choose? On the Economics of Reasoning Effort in LLM Agents] | https://arxiv.org/abs/2610.34491
