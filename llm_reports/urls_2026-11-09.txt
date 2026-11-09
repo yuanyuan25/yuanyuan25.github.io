@@ -1,0 +1,50 @@
+[Advances in Agentic Computer Graphics] | https://arxiv.org/abs/2611.01860
+[Wave Forcing: Towards Speed-of-Light Streaming Video Generation] | https://arxiv.org/abs/2611.00859
+[From Autonomous Agents to Cognitive Symbionts: Toward AI-Augmented Human Intelligence] | https://arxiv.org/abs/2611.05376
+[VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding] | https://arxiv.org/abs/2611.08449
+[CoworkOS:Scaling Agent Coworkers for Real-world Automation] | https://arxiv.org/abs/2611.03178
+[MoviEdit: Long-form Multi-Shot Video Editing Made Easy] | https://arxiv.org/abs/2611.02737
+[Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training] | https://arxiv.org/abs/2611.04277
+[Does Scaling Toward AGI Depend on What System-1 Lets System-2 Execute?] | https://arxiv.org/abs/2610.39497
+[Think Less, Locally: Local Preference Learning for Reasoning Compression] | https://arxiv.org/abs/2611.04814
+[From Pixels to Actions - Towards Native Vision-Language-Action Policies] | https://arxiv.org/abs/2611.06918
+[FrontierPhysics: Evaluating Agents for End-to-End Physics Research] | https://arxiv.org/abs/2611.06910
+[DreamX: Video Diffusion Model is a Universal Latent Action Learner] | https://arxiv.org/abs/2611.05377
+[Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand] | https://arxiv.org/abs/2611.00883
+[RoboColosseum: Evaluating Physical Intelligence at Scale In-The-Wild] | https://arxiv.org/abs/2611.02497
+[Turns Matter: Advancing Streaming Video RL via Turn-Level Credit] | https://arxiv.org/abs/2611.06728
+[Axion 1.0: Open Agent Foundation Models, Simplified] | https://arxiv.org/abs/2611.03233
+[R^2Orch: Recursive Self-Improvement for Agent Orchestration via Self-Play within a Skill-Internalization Loop] | https://arxiv.org/abs/2610.22740
+[CUA-Master: Scaling Computer-use Agents through Open-World Recursive Improvements] | https://arxiv.org/abs/2611.03126
+[Democratizing Robot-Use Agents: A Unified Harness with Open Models] | https://arxiv.org/abs/2611.01560
+[Factorized MLLM Embeddings for Composed Image Retrieval] | https://arxiv.org/abs/2611.05193
+[IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?] | https://arxiv.org/abs/2611.03424
+[Latent Reasoning in Continuous Space for Unified Multimodal Models] | https://arxiv.org/abs/2610.42149
+[WeLM-Image: A Unified Image Generation Model towards Visual Intelligence] | https://arxiv.org/abs/2611.07392
+[ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents] | https://arxiv.org/abs/2611.05036
+[SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training] | https://arxiv.org/abs/2611.02074
+[TailSteer: Trajectory-Tail Steering for Drift-Resistant Multi-turn Image Editing] | https://arxiv.org/abs/2611.06741
+[What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?] | https://arxiv.org/abs/2611.06483
+[PhotoGuider: Composition-Aware Cropping and 360^{circ} View Framing with Explainable Photographic Assessments] | https://arxiv.org/abs/2611.02897
+[GameVerse: A Minute-Scale Gameplay Dataset for Long-Horizon Interactive World Modeling] | https://arxiv.org/abs/2610.37257
+[Apriel Voice 27B Preview: An Open Model for Speech, Reasoning, and Tool Use] | https://arxiv.org/abs/2610.40738
+[NorthCUA Technical Report: Turbocharging Computer-Use Agents through Experience at Scale] | https://arxiv.org/abs/2611.02102
+[YANAMI: A Large-Scale Multimodal Dataset and Benchmark for Multiturn Stateful Interaction] | https://arxiv.org/abs/2611.05280
+[Open-HumanScale: An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models] | https://arxiv.org/abs/2611.06817
+[Follow the Gradient: Tracing Safety Degradation Back to Training Data] | https://arxiv.org/abs/2610.37481
+[VideoMemBench: How Well Do MLLMs Remember in Video Conversations?] | https://arxiv.org/abs/2610.40131
+[ReLift: Dense 3D Tracking as Lifted Trajectory Repair] | https://arxiv.org/abs/2610.42136
+[EvoTeam: Multi-Agent Collaboration via Evolving Teams] | https://arxiv.org/abs/2610.39813
+[WebHarbor: Docking Real Websites for Evolving GUI Agent Environments] | https://arxiv.org/abs/2611.03634
+[VidUEU-Agent: A Data-Curation Agent for Multimodal Understanding, Editing, and Unified Tasks] | https://arxiv.org/abs/2611.04418
+[EmoReward: Self-Evolving Reward Calibration for Emotional Video Generation RL] | https://arxiv.org/abs/2611.06518
+[SLA: Scaling Spatial-Language-Action Model via Continual Pre-training] | https://arxiv.org/abs/2611.08373
+[Route Anything: A Study of Model and Policy Routing for General-Purpose AI Systems] | https://arxiv.org/abs/2611.05275
+[Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement] | https://arxiv.org/abs/2610.40191
+[Words Caught in the Heart: Simulating Person-Specific Expression for Self-Opaque Clients in Psychotherapy] | https://arxiv.org/abs/2611.00617
+[Behind Video Generation: Observations and Insights on Multimodal Understanding from Kling] | https://arxiv.org/abs/2611.04916
+[Lost in Recovery: Demystifying Recovery Behavior of Computer-Use Agents via Goal-Oriented Action Replay] | https://arxiv.org/abs/2610.27954
+[Order-Only On-Policy Distillation] | https://arxiv.org/abs/2611.02112
+[FrameForge: Harnessing Priors of Video Foundation Models for Unified Image Generation] | https://arxiv.org/abs/2610.36545
+[Halley: A Predictive Control Plane for Optical AI Data Center Networks] | https://arxiv.org/abs/2611.04408
+[EvoMemState: Evolving Memory State for Personal Agents] | https://arxiv.org/abs/2611.03743
