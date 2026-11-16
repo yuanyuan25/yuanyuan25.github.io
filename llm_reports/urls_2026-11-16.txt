@@ -1,0 +1,50 @@
+[SO-Arena: Benchmarking the Capability Spectrum and Reliability of System One Models] | https://arxiv.org/abs/2611.15777
+[Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents] | https://arxiv.org/abs/2611.14320
+[Sage-Taiyi: A Metacognitive Architecture for Scientific Discovery] | https://arxiv.org/abs/2611.12762
+[Toward the Era of Agentic Embodied Intelligence] | https://arxiv.org/abs/2611.09124
+[Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization] | https://arxiv.org/abs/2611.11995
+[PhysLoop: Harnessing LLMs' Physics Awareness for Self-Improving Video Generation Models] | https://arxiv.org/abs/2611.16748
+[PCBRouteAgent: How Close Are LLM Agents to Becoming PCB Routing Engineers?] | https://arxiv.org/abs/2611.08175
+[Actor, Judge, or Teacher? Understanding Decision Models in Long-Horizon Agents] | https://arxiv.org/abs/2611.17167
+[ReproBridge: Building Reproducibility into ML Research Artifacts] | https://arxiv.org/abs/2611.08452
+[Embodied First Exam] | https://arxiv.org/abs/2611.12177
+[Frontier3DBench: Benchmarking Coding Agents for 3D Creation across Objects, Scenes, and Interactive Open Worlds] | https://arxiv.org/abs/2611.09017
+[MMDM: Measuring Massive Multitask Decision Making] | https://arxiv.org/abs/2611.14309
+[FinCosmos: An Open-World Evaluation Paradigm for Agents in Finance] | https://arxiv.org/abs/2611.07464
+[Beneath the Surface: What We Overlook When We Talk About Agent Evolution] | https://arxiv.org/abs/2611.07624
+[Longtail-SWE: High-Quality SWE Tasks for Underrepresented Languages] | https://arxiv.org/abs/2611.10304
+[Video-Coder: Reinforcing Agentic Coding for Video Generation] | https://arxiv.org/abs/2611.09894
+[AgentBaton: Efficient Model Collaboration in Agentic Tasks] | https://arxiv.org/abs/2610.35959
+[Read Less, Solve More: Token-Efficient Sparse Reading of External Content for AI Agents] | https://arxiv.org/abs/2608.22237
+[Learning Heterogeneous Tactile Representation for General Dexterous Manipulation] | https://arxiv.org/abs/2611.12806
+[World In-Context Learning for Agentic Robot Manipulation] | https://arxiv.org/abs/2611.12885
+[BirdDreams: Joint Perspective and BEV Video Generation for a Plausible, Reactive Driving World Model] | https://arxiv.org/abs/2611.14815
+[Duo: A Reciprocal World Model for Full-Duplex Interaction] | https://arxiv.org/abs/2611.15131
+[A Fully Open Recipe for Generative Visual Perception (Open Vision Banana)] | https://arxiv.org/abs/2611.15844
+[LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis] | https://arxiv.org/abs/2611.06856
+[Ropedia Xperience 2: A Gold Standard for Scaling Physical AI Environments and Behaviors] | https://arxiv.org/abs/2611.17060
+[EvoWorld: Towards Out-of-Sight World Evolution in Generative Video Models] | https://arxiv.org/abs/2611.06748
+[DexForesight: Grounding Dexterous Policies with Implicit Spatial Foresight] | https://arxiv.org/abs/2611.11166
+[SWAM: Scaling World Action Models with Cross-Modal Alignment] | https://arxiv.org/abs/2611.12870
+[Scaling Mathematical Proof Supervision from Structured Textbooks] | https://arxiv.org/abs/2610.40394
+[One Table, Many Queries: Benchmarking Generalist Tabular Models Across Generation, Imputation, and Prediction] | https://arxiv.org/abs/2611.13001
+[LLMs Don't Know What They Know: Benchmarking Temporal Self-Knowledge for Financial Backtesting] | https://arxiv.org/abs/2611.06808
+[dNaViT: Discrete Codes are General-Purpose Visual Representations] | https://arxiv.org/abs/2611.12426
+[Confucius4-R2T2: A Stable-Prefix Streaming ASR Model for Real Real-Time Transcription] | https://arxiv.org/abs/2611.06043
+[P^2-MOPD: Accelerating Multi-Teacher On-Policy Distillation via Parameter Priors] | https://arxiv.org/abs/2611.03953
+[Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning] | https://arxiv.org/abs/2611.12886
+[SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering] | https://arxiv.org/abs/2611.13410
+[OneTrans-GSR: A Generative Slate Ranking Paradigm Unifying Reranking and Mix-Ranking with One Autoregressive Transformer] | https://arxiv.org/abs/2611.04720
+[Incentivizing Self-Learning in Large Language Models via Reinforcement Learning] | https://arxiv.org/abs/2610.39671
+[FewStepRL: Fine-tuning Few-step Diffusion Models with Reinforcement Learning] | https://arxiv.org/abs/2611.08240
+[Few-Step Streaming Video Generation via Condition Shifting] | https://arxiv.org/abs/2611.14033
+[SplatAnything: Gaussian Spacing Normalization for Feed-forward 3DGS across Arbitrary Scenes] | https://arxiv.org/abs/2611.08264
+[Tree-Ising: Repairing Language Models with Bit-Level Ising Edits] | https://arxiv.org/abs/2611.14210
+[G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation] | https://arxiv.org/abs/2611.13004
+[MACaQ: Fast, Model Agnostic Calibrated Quantization for Low-Precision Weights and Activations] | https://arxiv.org/abs/2611.10649
+[On the Design of Hyper-Connections: Simplification, Stability, and Scalability] | https://arxiv.org/abs/2611.05984
+[TTB: Test-time Baking for Efficient Rendering of Decoder-only View Synthesis Models] | https://arxiv.org/abs/2611.17331
+[Fast and Exact Relative-Position Attention via Structure-Aware Kernels] | https://arxiv.org/abs/2611.01182
+[WorldFoundry: Towards Unified Infrastructure for World Intelligence] | https://arxiv.org/abs/2611.10771
+[Flide: Accelerating Decision Inference with Exact State Forking] | https://arxiv.org/abs/2610.42148
+[InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure] | https://arxiv.org/abs/2611.11558
