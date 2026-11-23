@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180">
+  <title>大模型周报 | 2026-11-23</title>
+  <!-- 周报结构基准为 2026-05-25（第21周）：统计、本周核心趋势、粘性分类按钮、分类正文。
+       直接生成日期 HTML；顶部主站导航保持静态，不使用独立阅读器。
+       保留原有占位符；CORE_TRENDS 填本期趋势的 li 列表，不能复制旧周新闻。
+       TOC 仍填 li/a 列表，每个 href 必须对应 SECTIONS 中的 id；同步 VLA/VLM 与 Infra 分类。
+       保留基础架构创新，覆盖优化器、网络结构、注意力机制和表示方法。
+       Infra 独立覆盖分布式训练、通信优化、算子与编译器、推理服务和资源调度。
+       按主要贡献区分算法和系统；有系统集成不自动归入 Infra。
+       论文卡片按主要研究问题单独归类，分类数量之和应等于总论文数。
+       每张卡片的 paper-header 先放标题，再放唯一的 paper-meta 信息行。
+       有完整精读时用 paper-title-row 包住 paper-title 与 reading-link，按钮放标题行最右侧。
+       日期（论文首次发布）、可确认的团队/机构、分类和主题 tag、arXiv 链接、HF 热度、
+       important-badge 均放入 paper-meta，桌面并排、手机自然换行；reading-link 不放入元数据行。
+       团队必须注明来源；缺失时省略，不用提交者身份推测机构；HF 热度保留本期快照。
+       精读链接说明和校订日期可放 title 属性，不另起 paper-reading 一行。
+       标识示例：<span>📅 <time datetime="2026-10-08">2026-10-08</time></span>
+       <span>🏢 已核实团队</span><span class="tag">Agentic</span><span class="tag">世界模型</span>
+       <a href="https://arxiv.org/abs/论文编号">arXiv:论文编号</a><span>HF 👍 本期点赞数</span>
+       标题行示例：<div class="paper-title-row"><div class="paper-title">论文标题</div>
+       <a class="reading-link" href="对应精读地址">阅读完整精读 →</a></div>。
+       版心对齐主站 1120px。report-meta 用于 build_index.py 生成目录。 -->
+  <script type="application/json" id="report-meta">{
+  "title": "大模型周报 · 2026-11-23",
+  "date": "2026-11-23",
+  "week": "2026-11-16 ~ 2026-11-22 · 第47周",
+  "summary": "共收录 50 篇大模型相关论文，重点精读 6 篇，覆盖 8 个研究方向（含 VLA/VLM 与 Infra）。",
+  "stats": [
+    {
+      "label": "收录论文",
+      "value": "50"
+    },
+    {
+      "label": "重点精读",
+      "value": "6"
+    },
+    {
+      "label": "覆盖方向",
+      "value": "8"
+    }
+  ]
+}</script>
+  <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --accent: #ea4335;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #202124;
+            --text-secondary: #5f6368;
+            --border: #dadce0;
+            --highlight-bg: #fef3e8;
+            --highlight-border: #f9ab00;
+            --important-bg: #fce8e8;
+            --important-border: #ea4335;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { width: min(1120px, calc(100% - 64px)); max-width: none; margin: 0 auto; padding: 40px 0; }
+        .report-header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(26,115,232,0.2);
+        }
+        .report-header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+        .report-header .meta { font-size: 1.1rem; opacity: 0.9; }
+        .report-header .subtitle { font-size: 0.95rem; opacity: 0.8; margin-top: 8px; }
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .stat-item { text-align: center; }
+        .stat-item .number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-item .label { font-size: 0.85rem; color: var(--text-secondary); }
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(248,249,250,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-count {
+            background: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+        .paper-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .paper-card.important {
+            border-left-color: var(--important-border);
+            background: linear-gradient(to right, var(--important-bg), var(--card-bg));
+        }
+        .paper-header { margin-bottom: 16px; }
+        .paper-title-row { display: flex; align-items: flex-start; gap: 16px; }
+        .paper-title-row .paper-title { min-width: 0; }
+        .paper-title-row .reading-link { flex: 0 0 auto; white-space: nowrap; margin-top: 2px; }
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+            flex: 1;
+        }
+        .paper-card.important .paper-title {
+            color: var(--important-border);
+        }
+        .paper-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            margin-top: 10px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .paper-meta > * { max-width: 100%; }
+        .paper-meta span { display: inline-flex; align-items: center; gap: 4px; }
+        .paper-meta a { color: inherit; text-decoration: none; }
+        .paper-meta a:hover { color: var(--primary); text-decoration: underline; }
+        .paper-meta .tag, .reading-link {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .reading-link { display: inline-block; font-weight: 600; text-decoration: none; }
+        .reading-link:hover { background: #d2e3fc; text-decoration: underline; }
+        @media (max-width: 600px) { .paper-title-row { gap: 10px; } }
+        .field, .field-group {
+            margin-bottom: 14px;
+        }
+        .field-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .field-content {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+        }
+        .important-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--important-border);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+        .summary-box {
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .summary-box h3 {
+            color: #b06000;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .summary-box ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+        .summary-box li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 768px) {
+            .report-header h1 { font-size: 1.6rem; }
+            .stats-bar { gap: 20px; }
+        }
+
+        .nav-links li { list-style: none; }
+        .nav-links a { display: inline-block; }
+        .section, .paper-card { scroll-margin-top: 88px; }
+        .section-title { flex-wrap: wrap; }
+        .paper-title a { color: inherit; text-decoration: none; }
+        .paper-title a:hover { color: var(--primary); text-decoration: underline; }
+        .empty { color: var(--text-secondary); font-style: italic; }
+        .section-desc { color: var(--text-secondary); font-size: 0.9rem; margin: -8px 0 20px; }
+        .paper-card { overflow-wrap: anywhere; }
+        /* Keep the current three statistic cards and their number/label classes. */
+        .stats-bar { gap: 32px; padding: 0; margin: 0 0 32px; background: transparent; box-shadow: none; }
+        .stat-item { background: var(--card-bg); padding: 16px 28px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); min-width: 120px; }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            .container { width: calc(100% - 36px); padding: 28px 0; }
+            .report-header { padding: 34px 18px; }
+            .nav-links { gap: 8px; }
+            .nav-links a { padding: 5px 11px; font-size: 0.8rem; }
+            .paper-card { padding: 20px; }
+            .field-content { padding-left: 14px; }
+            .summary-box { padding: 20px; }
+            .section, .paper-card { scroll-margin-top: 136px; }
+        }
+</style>
+  <link rel="stylesheet" href="../assets/site-header.css">
+  <link rel="stylesheet" href="../assets/report-navigation.css">
+  <script src="../assets/report-navigation.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../" aria-label="知行手记首页">
+        <span class="brand-mark" aria-hidden="true">知</span>
+        <span><span class="brand-name">知行手记</span><span class="brand-subtitle">Yuan’s Notes</span></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="../">首页</a>
+        <a href="../llm_reports/" aria-current="page">大模型周报</a>
+        <a href="../notes/">学习笔记</a>
+        <a href="../summaries/">文档总结</a>
+        <a href="../practice/">实践记录</a>
+        <a href="../life/">生活</a>
+      </nav>
+    </div>
+  </header>
+<main class="container" id="main">
+  <header class="report-header">
+    <h1>大模型周报</h1>
+    <div class="meta">2026-11-23｜上周 (2026-11-16 ~ 2026-11-22)</div>
+    <div class="subtitle">Agentic · VLA/VLM · 生成式检索 · 预训练 · 后训练 · 强化学习 · 架构创新 · Infra</div>
+  </header>
+  <div class="stats-bar"><div class="stat-item"><div class="stat-number">50</div><div class="stat-label">收录论文</div></div><div class="stat-item"><div class="stat-number">6</div><div class="stat-label">重点精读</div></div><div class="stat-item"><div class="stat-number">8</div><div class="stat-label">覆盖方向</div></div></div>
+  <section class="summary-box" aria-labelledby="weekly-trends">
+    <h3 id="weekly-trends">📌 本周核心趋势</h3>
+    <ul><li><strong>Agentic（14 篇）：评测可信度与需求跟踪成为焦点</strong>——Resolution Hypothesis 用超 1000 万次 LLM 调用证明 agent 进化瓶颈在评估噪声而非提案方法；SWE-CoWork 显示头部 coding agent F2P 测试通过率约 63% 但完整任务交付率不足 8%。同时出现两篇重磅系统报告：Xing4 在 8192 张 Ascend 910C 上完成 285B 全栈训练，Sage S2.1 Flash 以 320B MoE + 可验证环境冲击科学智能体。</li>
+<li><strong>VLA/VLM（22 篇）：大骨干时代与单遍生成新范式</strong>——ScaleVLA 首次系统验证 552B 前沿 VLM 作为机器人策略骨干的样本效率与泛化优势；Gamer 以统一“屏幕→键鼠”接口打通长程实时游戏智能体全栈；Jeveration 让 System One 模型单次前向生成图像（78ms，快至 122 倍）。</li>
+<li><strong>生成式检索本周暂无新论文；预训练（2 篇）亮点是 K2-Horizon</strong>——按 LLM360 定义全量开放 6 模型舰队（0.9B–375B-A23B）、380 个 checkpoint 与约 10T 合成 token 配方，合成数据规模化的里程碑。</li>
+<li><strong>后训练（2 篇）与 RL（1 篇）精而实</strong>——CurvDelta 把能力保持约束参数化进低曲率空间，PROLA 重设计低秩预算分配；AllocFlow 以“模仿塑形 + GRPO 精炼”在加密永续合约上把 Calmar 比率从 0.955 提到 4.043。</li>
+<li><strong>基础架构创新（6 篇）与 Infra（3 篇）多点开花</strong>——Multi-Branch/Loopback Transformer 探索参数高效架构，MMFlash 以视觉依赖度分析加速 VLM 投机解码；AscendGYM、Tideway、FastFrames 分别把优化收益锚定在真实算子负载、消费级内存层级与交互式视频延迟上。</li></ul>
+  </section>
+  <nav class="nav" aria-label="论文分类导航">
+    <ul class="nav-links"><li><a href="#Agentic">🤖 Agentic</a></li>
+<li><a href="#VLA-VLM">👁️ VLA / VLM</a></li>
+<li><a href="#生成式检索---Generative-Retrieval">🔍 生成式检索 / Generative Retrieval</a></li>
+<li><a href="#预训练---Pre-training">📊 预训练 / Pre-training</a></li>
+<li><a href="#后训练---Post-training">🎓 后训练 / Post-training</a></li>
+<li><a href="#强化学习---RL">🎯 强化学习 / RL</a></li>
+<li><a href="#基础架构创新---Infrastructure-Innovation">⚙️ 基础架构创新 / Infrastructure Innovation</a></li>
+<li><a href="#Infra">🖥️ Infra / 训练与推理系统</a></li></ul>
+  </nav>
+<section class="section" id="Agentic">
+<h2 class="section-title">🤖 Agentic<span class="section-count">14 篇</span></h2>
+
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.22115" target="_blank">TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span>🏢 Xingchen AGI Lab（TeleChat 团队）</span>
+<span class="tag">Agentic</span>
+<span class="tag">国产算力</span>
+<span class="tag">MoE</span>
+<span class="tag">长上下文</span>
+<span class="tag">Infra</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.22115" target="_blank" rel="noopener">arXiv:2611.22115</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 167</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">系统公开在国产 Ascend 芯片 + MindSpore 框架上训练 frontier agentic 模型的全栈工程报告。架构侧组合 MLA+DSA+IndexShare 长上下文注意力、宽浅 MoE 拓扑、DSpark 块级投机解码；系统侧基于 MindSpore HyperParallel 实现 HSDP（完全去除流水线并行）、owner-based Muon 分布式优化器、细粒度选择性重计算、CPU 亲和与核隔离；后训练侧提出 TeleGym 统一 agent 执行平台（异步执行 + 有界过采样 + 部分 rollout）。开源 29B-A4B 成员（原生 256K 上下文）。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">在 8192 张 Ascend 910C 上完成 285B（激活 17B、支持 1M 上下文）预训练；MLA+DSA+IndexShare 使 prefill 吞吐达纯 MLA 基线的 4.68 倍；DSpark 带来 2.67–3.77 倍解码吞吐；宽浅拓扑额外提升约 10% 训练吞吐，消除流水线并行再提 16.1%。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">架构对比基于华为 Zhanlu 模拟框架（TTFT/TPOT/吞吐三指标，32 卡 P/D 分离部署）；DSpark 在 GSM8K/MATH-500/HumanEval 等六个基准实测吞吐；训练优化在 1024 卡 profiling 集群上分别实测降步时 9.1%/6.9%/15.2%。对照配置清晰，但部分架构结论来自模拟器而非端到端生产部署（论文已声明模拟可能偏乐观）。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">模型能力榜单成绩着墨较少，agentic 效果有待后续释放验证；架构选型深度绑定 Ascend 硬件特性（Cube 强、Vector 与 HBM 受限），迁移到 GPU 需重新校准；模拟结果可能乐观。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">国产算力训练团队必读：把“硬件特性→架构选择→并行/优化器/通信设计”串成完整方法论，285B@8192 卡的 HSDP 去 PP、Muon owner 执行等细节可直接借鉴；对 GPU 大团队，其按带宽拓扑设计并行策略的思路同样适用。落地难度中高，需要全栈掌控力。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21218" target="_blank">InclusionMed: Benchmarking AI for Inclusive Healthcare</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span>🏢 The InclusionMed Collaboration</span>
+<span class="tag">评测基准</span>
+<span class="tag">医疗 AI</span>
+<span class="tag">诊断推理</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.21218" target="_blank" rel="noopener">arXiv:2611.21218</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 104</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">开放医疗 AI 评测倡议：InclusionMed Atlas 按 3 类医疗角色 × 3 种 AI 能力组织基准，从 388 个候选基准经结构化审计 + 独立复现选出 4 个公开基准，加上私有诊断推理基准 DxFiles，形成五基准 Atlas 与 InclusionMed Index 聚合分。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">前沿 LLM 总分仅 17.5–49.1/100；模型排名随角色与能力视角显著变化；前十模型患者沟通分均高于临床决策分；相近总分模型推理成本差异大，支持按场景选型。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">388 候选结构化审计 + 独立复现 + 任务级 tag 的组内分析，工程可信度高；Index 按角色/能力双维分解。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">9 个角色-能力单元只覆盖 3 个；私有基准无法外部复核；单次评测快照，未做多 seed 稳定性分析。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">医疗 AI 应用方的选型参考框架——“按角色/能力/成本三维选型”的方法可推广到其他垂直行业评测。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21072" target="_blank">Sage S2.1 Flash Technical Report</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span>🏢 Shanghai AI Laboratory、Fudan University 等</span>
+<span class="tag">Agentic</span>
+<span class="tag">科学智能体</span>
+<span class="tag">多模态</span>
+<span class="tag">可验证环境</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.21072" target="_blank" rel="noopener">arXiv:2611.21072</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 98</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">320B 通用 MoE 模型，主打科学证据推理 + 交互环境操作。Sage Sci-Perception 用分子图、生物序列专用编码器并把光谱表示为有序测量 patch，经模态投影器接入共享骨干；后训练在工具使用、搜索、编码、ML 实验、科学软件等大量可验证环境中进行，以执行结果、环境状态变化或提交产物校验任务完成。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">33 个基准 7 大领域评测中，OfficeQA Pro 72.2、MLE-bench Lite 90.3（HumanRank）、Harvey LAB、SpreadsheetBench 2 四项第一；OSWorld-Verified 85.2、WebArena-Verified 67.6、DeepResearch Bench II 54.2 三项第二，桌面/浏览器工作流表现有竞争力。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">与 5 个主要基线同协议对比；评测含反作弊检查（伪造截图、硬编码结果直接清零）、BabyVision 图像上采样等细节，榜单可信度较高；发布权重与代码。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">基线多为 API 模型且版本快照与本文不完全同期；科学模态仅覆盖三种，未含更多仪器数据；agent 完成度依赖可验证环境设计，开放环境泛化未知。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">科学智能体方向的代表性工作：可验证环境 + 反作弊评测的设计值得所有科研 agent 团队借鉴；多模态科学编码器的接入方式对垂直领域模型有参考价值。落地难度高（算力 + 环境构建成本）。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.15789" target="_blank">VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-11">2026-11-11</time></span>
+<span class="tag">评测基准</span>
+<span class="tag">Coding Agent</span>
+<span class="tag">4D 场景</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.15789" target="_blank" rel="noopener">arXiv:2611.15789</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 87</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">面向 agent 在 Blender 中重建 4D 场景并渲染 graybox proxy 视频的新基准：242 任务覆盖脚本/照片/续写/参考视频四类输入；双维评测——规则化 Scene Check（重跑代码与 9 维隐藏事实比对）+ VLM Screen Check（验证事实在 proxy 视频中可辨认），同时考察长多镜头场景。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">11 个前沿 coding agent 的评测显示：多模态理解（尤其空间与镜头运动理解）是主要分水岭；基础运镜已普遍掌握；agent 会检查自己的渲染但无法纠正错误。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">242 任务双维评分 + 轨迹分析，三维观察均来自跨 agent 对比，区分度好。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅考察 Blender 4D 重建单一形态；VLM judge 引入二次误差；任务规模有限。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做视频生成预渲染管线/4D 资产生成的团队可用其诊断 agent 空间理解短板；“渲染后自检却无法纠错”的现象具有普遍性。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.12068" target="_blank">MIRIX-2.0: Multi-Agent Memory System</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-09">2026-11-09</time></span>
+<span class="tag">LLM Agent</span>
+<span class="tag">长期记忆</span>
+<span class="tag">多智能体</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.12068" target="_blank" rel="noopener">arXiv:2611.12068</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 56</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">多智能体记忆系统：6 个类型化记忆 agent 以完整记录为 system of record，用 provenance 超图（n-ary frames 引用记录行）索引情景/语义记忆；检索在显式预算内进行，证据量不随历史增长；AutoDream 在写路径外合并重复锚点并把任务会话蒸馏为技能。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">5 个 QA 基准中 4 个最准（LoCoMo 91.4、LongMemEval-S 72.6，超最强基线 14.3 分）；程序记忆在 ALFWorld/WebShop 取得最高平均成功，MetaClaw-Bench 49.2%（技能库 44.0%）；关闭 AutoDream 时单跳/多跳文档 QA 较 HyperMem +31.0/+22.0 分且 5 个计时基准全部更快。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">QA + 程序记忆多基准对照（含 HyperMem、AutoDream 消融），免微调、闭源/开源模型均可运行，代码公开。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">记忆写入与技能蒸馏依赖 AutoDream 质量；超长在预算检索下可能遗漏早期记录；未与参数化记忆做成本对比。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做 agent 长期记忆产品的团队可直接参考其超图 + 预算检索工程设计；免微调、即插即用是落地优势，门槛低。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21373" target="_blank">WeVisForensics: Self-Evolving Agent for Omni AI-Generated Video Detection</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span class="tag">AIGC 检测</span>
+<span class="tag">多智能体</span>
+<span class="tag">强化学习</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.21373" target="_blank" rel="noopener">arXiv:2611.21373</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 55</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">自进化取证 agent 框架：主调查 agent 调度可自我进化的视觉/音频取证 inspector 子代理库，学习检查何种伪影、在何时间窗、何时下结论；双时间尺度策略优化 DTPO——调查者快 RL + inspector 慢迭代；配套 ForenCue-30K（角色取证标注 + 交互轨迹）监督数据。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">域内、域外、agentic 基准平均检测准确率 95.2%，超最强先前检测器 9.0%，且结论附带定位证据。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">多基准 + 跨域评测，相对单轮 CoT 与固定多代理流程均有明确增量；消融支持 DTPO 双时间尺度的必要性。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖 artifact 区间标注；与视频生成器持续对抗，检测器需不断进化；未覆盖音频以外其他模态。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">AIGC 检测/内容安全团队可借鉴“双时间尺度自进化”机制；标注成本高是主要落地门槛。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.20218" target="_blank">SWE-CoWork: Benchmarking Coding Agents as Digital Employees in Organizations</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-15">2026-11-15</time></span>
+<span class="tag">Coding Agent</span>
+<span class="tag">评测基准</span>
+<span class="tag">软件工程</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.20218" target="_blank" rel="noopener">arXiv:2611.20218</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 53</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">把 coding agent 放进模拟工程组织：101 个真实仓库开发任务、11 语言、12 领域，26 个有职责边界、有限知识与受控协作行为的“同事”；agent 需从交接简报、同事与工作记录中恢复需求、调和冲突证据并交付通过私有可执行测试的实现。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">头部模型约通过 63% 的 fail-to-pass 测试但完整任务完成率不足 8%；直接给完整需求 F2P 提升约 16 个百分点而完整完成率不变；需求跟踪（澄清→实现→验证→交接）是核心瓶颈。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">101 仓库大规模评测 + 需求级轨迹分析（如 Claude-Opus-5.5 首问 93% 指向责任人但仅获得 64% 的同事持有需求），失败归因细致。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">模拟同事行为受控，与真实组织有差距；完整完成率度量严格，可能低估部分交付价值；私有测试存在过拟合测试的风险。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做 coding agent 产品化的团队应重视其结论：补齐需求管理与跟踪工具链比单纯提升代码生成能力更紧迫。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.07222" target="_blank">SPILLWAY: Separating Target Admission from Sanitization to Defend Tool-Using Agents against Prompt Injection</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-04">2026-11-04</time></span>
+<span class="tag">Agent 安全</span>
+<span class="tag">提示注入</span>
+<span class="tag">工具调用</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.07222" target="_blank" rel="noopener">arXiv:2611.07222</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 47</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">不依赖模型的确定性注入防御：利用工具返回的 typed 字段（发件人/收款账户）识别动作目标——目标值必须来自只读工具的 typed 字段或固定委托规则才放行；固定规则 sanitizer 先行移除指令性文本并保留证据，本地 judge 可恢复被拒调用但永不恢复目标位于已移除文本的调用。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">3 个骨干 × 7 任务套件下无标准模板注入能重定向动作；面对已发布的 RL 攻击者平均域内攻击成功率仅 0.007；达到该防线几乎不增加模型调用、无防御触发的重跑，且效用分最高。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨骨干、多套件、学习型攻击者三重验证，指标含 NRP/ERS 复合分；伪造聊天模板直接归零。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅覆盖“动作去向”单维度，数据泄露类风险不在范围；委托规则需人工维护；typed 字段假设依赖工具 API 设计。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">个人 AI agent（邮件/文件/支付）安全落地的务实方案，“确定性地板 + 可审计拒绝”设计值得所有工具型 agent 借鉴，落地门槛低。</div></div>
+</div>
+</div>
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.23068" target="_blank">The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span class="tag">Agent 进化</span>
+<span class="tag">RSI</span>
+<span class="tag">评估方法</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.23068" target="_blank" rel="noopener">arXiv:2611.23068</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 39</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">提出 Resolution Hypothesis：agent 进化停滞的根因不是提案不够好，而是噪声评估无法可靠识别改进。在候选级（选择 artifact）与方法级（方法排名）两个层面验证：7 种进化方法 × 6 个模型，累计超 1000 万次 LLM 调用。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">候选层面——有益的候选 artifact 确实存在，但现有选择机制不优于随机，错误随轮次累积；方法层面——论文间典型几个百分点的差距小于同一方法两次独立运行的差异，已发表排名常靠运气。agent 进化的瓶颈是让真实改进可检测、可积累。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">规模空前的受控实验（10M+ LLM calls），双层级证据链完整，统计论证扎实，是该领域少见的“元研究”。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">结论限于“评估驱动”的进化范式；不同任务域的噪声水平可能不同；论文指出问题但未给出统一降噪方案。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">所有做 RSI/self-improving agent 的团队必读：应把精力从“设计更好的提案器”转向“让改进可检测、可积累”；多 seed、置信区间的评测工程将成为核心竞争力。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26595" target="_blank">Coda-DaVinci: Reimagining Video Generation with Code2Video</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">视频生成</span>
+<span class="tag">Code2Video</span>
+<span class="tag">多智能体</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.26595" target="_blank" rel="noopener">arXiv:2611.26595</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 39</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">系统研究 Code2Video 的代理粒度、物理仿真与 prompting 规律（任务相关权衡：粗代理利自然运动、中粒度利一致性），据此构建任务自适应 agentic 框架：自动选择代理引导或直接生成、按实体自适应建模粒度、协调仿真与代理对齐 prompt；多 agent harness 保存场景资产，经视觉检查 + 独立评审引导修复。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">VTR 指令遵循与 R2M 场景一致性领先；物理合理性超直接生成；视觉真实感超 Code2Video 基线；长视频事件结构与一致性有提升，但转场稳定性与场景设定遵从仍是短板。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">控制实验 + 盲评人类评估 + 多基准，先研究规律再构建系统，方法论扎实。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">转场稳定性不足；依赖 3D 代理构建质量；盲评规模有限。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做可控视频生成/游戏预渲染的团队可参考其“代理粒度-质量”权衡图谱与多代理修复 harness。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.18856" target="_blank">Self-Improvement Memory Enables Continual Recursive Self-Improvement</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span class="tag">RSI</span>
+<span class="tag">Harness 优化</span>
+<span class="tag">持续学习</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.18856" target="_blank" rel="noopener">arXiv:2611.18856</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 38</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">研究 continual RSI：跨 benchmark、换策略模型时如何延续 harness 优化。为 harness 优化器（而非任务策略）配备 Self-Improvement Memory：按反复出现的 harness 问题分组记录每次编辑的动机、预测与实际结果、评估上下文，新尝试在此历史之上延伸。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">4 领域跨数据集/跨模型对比中 SIM 终分均高于 harness-only 与 root-cause-only 延续；10 组独立源 run 的配对延续平均提升 2.36 分（p=0.003）。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">跨数据集 + 跨模型双重设定，配对 t 检验显著，覆盖 coding 等多个领域。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">提升幅度温和；记忆价值依赖评估上下文记录的完整性；未探索记忆规模增长后的检索与遗忘问题。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做 agent 自我进化平台的团队可把 SIM 作为延续学习的默认组件——成本低、收益稳、易集成。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.17834" target="_blank">PaperCritic: Training AI Reviewers to Assess the Soundness of Papers</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span>🏢 CMU（Sean Welleck 团队）</span>
+<span class="tag">AI 审稿</span>
+<span class="tag">强化学习</span>
+<span class="tag">后训练</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.17834" target="_blank" rel="noopener">arXiv:2611.17834</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 33</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">只聚焦最客观的 soundness 维度训练 AI 审稿人：学习目标定义为 precision（评审点有依据且实质）与 recall（覆盖高质量参考评审点）的联合最大化；构建 PaperSound-23K（1K ICLR 投稿 + 23K 人写/LLM 生成评审点），以 F1 为奖励做 RL 训练 PaperCritic。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">域内测试集上超过前沿模型与其他 AI 审稿训练方法；学习 ICLR 审稿可迁移到 Nature 系论文评审乃至代码评审、法律合同评审、写作反馈等 OOD 任务。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">质量标注数据集 + RL + 跨域迁移评测，奖励设计避免了主观维度（有趣度/清晰度）的噪声。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅覆盖 soundness 单维度；参考评审点质量依赖 LLM 生成 + 人工标注 pipeline；AI 审稿的定位与伦理问题未展开。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">学术机构/出版方可用于初审筛查与审稿质量校准；precision-recall 联合的 RL 奖励设计可迁移到其他评审/检查类任务。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26073" target="_blank">AltRA-Test: An Alternative Annotator Test for LLM Judges Without Shared Annotators</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span>🏢 Technion（Roi Reichart 团队）</span>
+<span class="tag">LLM 评审</span>
+<span class="tag">统计检验</span>
+<span class="tag">评估方法</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.26073" target="_blank" rel="noopener">arXiv:2611.26073</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">Alt-Test 的扩展，允许不同题目由不同标注者子集标注：bootstrap 重采样题目、抽 k 份人类标注替换其一为 LLM 标注，比较混合 panel 与全人 panel 的标注者间一致性（IAA），非劣即支持替换；理论上证明检验一致性（asymptotic level α）。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">真实数据实验中 LLM 约半数场景通过测试，取决于任务——替换人类标注并非总是合理，应先检验。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">理论 + 仿真 + 真实实验三层：真实实验覆盖 18 个 LLM × 5 种 prompting × 20 数据集（文本/图/音/视频），约 100 条样本常足够；仿真中比已有基线做出更多正确替换决策。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅基于 IAA 单一信号；通过与否高度依赖任务类型；“只替换一人”设定与全量替换有距离。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">用 LLM judge 替代人工标注前做统计检验的实用工具，评估/数据团队应纳入 workflow，避免盲目替代。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.17814" target="_blank">G-CAST: Governed Continual Self-Training for E-Commerce Agents under Evolving Demands</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span>🏢 阿里巴巴 1688（元采）</span>
+<span class="tag">持续训练</span>
+<span class="tag">电商 Agent</span>
+<span class="tag">生产系统</span>
+<span class="tag">Agentic</span>
+<a href="https://arxiv.org/abs/2611.17814" target="_blank" rel="noopener">arXiv:2611.17814</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 21</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">治理化的持续自训练系统：把每日生产证据在需求漂移与能力契约下转为 reward 路由、熵优先的训练数据和受治理的奖励进化；累积评估下的受治理 checkpoint 迁移控制每次更新，确保学会新行为不丢已验收能力。已在生产部署。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">真实生产电商 agent（1688 元采）上，比强自主后训练基线更好地适应新引入需求且更少丢失已验收行为；消融显示 reward 路由的数据编排与奖励进化二者缺一不可。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真实生产环境对比 + 消融，且为已上线系统（http://cai.1688.com/），证据等级高。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">结果绑定单一 B2B 电商场景；奖励进化长期漂移仍需监控；熵优先阈值等超参需调参。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做生产级 agent 持续迭代（而非一次性发版）的团队可直接参考：治理门控是自主训练在生产环境落地的关键。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="VLA-VLM">
+<h2 class="section-title">👁️ VLA / VLM<span class="section-count">22 篇</span></h2>
+
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.18397" target="_blank">Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span class="tag">VLA</span>
+<span class="tag">游戏智能体</span>
+<span class="tag">长程任务</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.18397" target="_blank" rel="noopener">arXiv:2611.18397</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 150</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">通用游戏智能体全栈框架：屏幕像素输入 + 原生键鼠动作输出（非侵入统一接口）；数万小时设备级键鼠轨迹继续预训练（随机键位重映射 + 重复感知损失衰减去偏）；稀疏思维指令微调（操作/子目标/完整任务三层条件 + 跨上下文记忆摘要）；TA-GRPO 把超长 rollout 切段、以可验证结果做组相对优势 + 时间信用分配；Streaming-vLLM 支撑实时交互与在线 rollout。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">多个 3D 开放世界游戏任务上泛化与操作效率接近熟练玩家，传统 2D 游戏基准有竞争力；证明重复性键鼠轨迹上 scaling 数据与算法仍有大幅收益，为跨数字与物理世界的通用智能体提供路径。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">3D 商业游戏（崩坏：星穹铁道等）+ 传统 2D 基准双验证；CPT scaling 受 GameScaling 组合感知定律指导；实时性对策略表现的影响有受控实验（暂停 vs 实时）。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">数据安全原因未开放 HSR 数据与对应 checkpoint；游戏环境仍是数字域，向物理世界迁移待验证；长程任务表现依赖记忆摘要质量。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">“游戏作为 agent 训练场”路线的集大成者：统一动作表示、稀疏推理 SFT、实时服务引擎三大设计值得所有交互式 agent 团队借鉴；实时性闭环是在线 RL 的关键基础设施。</div></div>
+</div>
+</div>
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.24738" target="_blank">Jeveration: System One Models Now Generate</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-18">2026-11-18</time></span>
+<span class="tag">VLM</span>
+<span class="tag">单遍生成</span>
+<span class="tag">System One</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.24738" target="_blank" rel="noopener">arXiv:2611.24738</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 149</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">证明 System One 决策模型（单次前向并行预测）也能生成图像：冻结 VLM 复用其视觉-语义知识做整体生成；所有位置条件化于共享随机状态以协调并行预测、保证全局一致性；先学习离散图像码分布引导单遍生成；同一 checkpoint 以单次前向统一文生图、图生图与稠密预测。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">512×512 图像生成仅需 78ms，比现有统一模型快至多 122 倍，同时保持有竞争力的图像质量与稠密预测性能。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">生成质量 + 稠密预测双指标，速度实测；与统一模型和专用生成模型均有对比。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">生成质量受冻结 VLM 上限约束；共享随机状态带来的多样性-一致性权衡未充分探索；高分辨率与长序列扩展待验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">单遍生成新范式的信号弹：若可扩展，交互式图像应用（设计/游戏）的延迟瓶颈将被重写；做生成加速的团队应精读并复现。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.18359" target="_blank">Envisioning Agentic Robotics: A New Era of Robotic Systems</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span>🏢 Grid Robotics</span>
+<span class="tag">VLA</span>
+<span class="tag">具身智能</span>
+<span class="tag">综述</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.18359" target="_blank" rel="noopener">arXiv:2611.18359</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 137</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">提出 agentic robotics 范式定义：基础模型 + embodied harness 构成 Embodied System 2 决策核心，闭环执行观测-理解-推理-调用技能-验证-适应；提出同时测“模型能力”与“闭环系统表现”的评测框架；梳理数字 agent 到物理 agent 的可迁移原则与持续自治（sustained autonomy）研究路线图。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">GPT-6 Astra 类前沿模型配 agentic harness 在数周内于许多具身基准上追平甚至超过专用策略；核心挑战是把通用推理转成物理约束（反应时间、机械极限、不可逆后果）下可验证的有效动作。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">立场/综述型论文，以基准现象归纳 + 原则推导为主，无新实验。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">无实证实验；评测框架尚未定型；路线图偏定性，可执行性待验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">机器人团队的战略参考：其“何时用通用模型 + harness vs 专用策略”的判断框架价值高，适合作为组内技术选型讨论底稿。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26444" target="_blank">Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">具身评测</span>
+<span class="tag">VLA</span>
+<span class="tag">WAM</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26444" target="_blank" rel="noopener">arXiv:2611.26444</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 52</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">诊断式具身基准：30 个模拟操作任务 × 3 难度 × 2 场景 = 180 配置，拆成 Mind（基于历史观测决策）/ Act（精确及时执行）/ Mind2Act（闭环组合）三视图，配失败归因 harness，可区分“缺能力”与“有能力但不会组合”。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">最强 agent 在 Mind 视图成功 52.7%、Act 39.0%，但 Mind2Act 仅 12.0%；单视图能力不迁移到组合任务——“通过环境反馈组合推理与执行”是主要开放问题。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">三视图对照 + episode 级归因 + 系统 profile card，覆盖多模态 agent、VLA、WAM 三类系统，设计严谨。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅 30 个模拟任务；归因依赖规则判断；未覆盖语言交互与真机。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">VLA 团队定位系统短板的利器：“组合失败”结论提示应优先投资闭环反馈机制而非单点能力堆叠。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21099" target="_blank">ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span class="tag">机器人操作</span>
+<span class="tag">力控</span>
+<span class="tag">Harness</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.21099" target="_blank" rel="noopener">arXiv:2611.21099</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 45</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">让仅 API 访问的冻结前沿模型用上力觉：自终止力原语在模型之下闭环力控、接触事件触发返回；物理翻译层把力轨迹转成带不确定度的物理量供模型推理；配套 HiddenPhys 基准（7 任务，隐藏物理变量），无需演示或微调。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">真实机械臂（无腕部力传感器）上 GPT-6 Astra 零样本成功率从 3.3% 升至 90.0%；仿真 ForceBench +17.5pp、HiddenPhys +34.3pp，超过演示训练的力感知策略并匹配手写专家控制器；小模型在物理量表示下决策显著更好。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真机 + 仿真双验证，与专家控制器、学习策略在相同条件下对比；消融支持物理翻译层的必要性。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖腕部传感器或关节力矩标定；原语库需预先设计；API 延迟仍限制闭环频率上限。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">“harness 工程弥补模型接口”的范式样本：对只能用 API 模型做机器人的团队极实用，落地门槛低。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26409" target="_blank">WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">VLM</span>
+<span class="tag">全模态</span>
+<span class="tag">视频理解</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26409" target="_blank" rel="noopener">arXiv:2611.26409</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 45</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">中英双语全模态视频理解模型家族（2B/4B/9B/35B-A3B）：统一文本、图像、音频、视频处理，hybrid-thinking 支持非思考快速应答与显式思考推理双模式；约 1.2T token 渐进预训练 + 多阶段后训练（multi-teacher OPD、anti-repetition MrDPO、specialist RL）。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">120+ 基准评测：旗舰 35B-A3B 刷新开源 omni-modal 视频理解 SOTA，明显超过 Qwen3.5-Omni-Flash、Seed2.0-Mini，缩小与 Gemini-3.0-Flash 差距；9B 超过更大的 Qwen3-Omni-30B-A3B-Instruct。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">大规模基准矩阵 + 完整开放的评测与复现 pipeline；技术报告式系统评测。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">部分基准为内部版本；与闭源最强模型仍有差距；长视频与音频联合理解未单独消融。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">开源全模态视频模型的最强选项之一：做视频理解的团队可直接拿来做基座或对标，复现 pipeline 也适合作为评测模板。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26590" target="_blank">Probing the "Conscious" Mind: Selective Access and Global Workspace in Vision-Language Models</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">可解释性</span>
+<span class="tag">VLM</span>
+<span class="tag">跨模态对齐</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26590" target="_blank" rel="noopener">arXiv:2611.26590</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 43</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">提出 MC-Lens 多模态 Jacobian lens：把 VLM 中间状态映射到解码器输出词表定义的共享语义空间，量化概念可达性与选择性访问；支持内部概念干预的因果验证；提出 J-space 指标追踪跨模态对齐的发展过程。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">概念信息在中间状态可读且随任务选择性访问；被访问概念参与下游计算与推理；可靠的选择性访问晚于概念可达性出现；跨模型存在共享的可及性模式。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">相关分析 + 反事实干预双层证据；对照 hidden-state cosine 更敏感；覆盖多个 VLM 家族与尺寸。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">探针可读性不完全等于因果使用（虽有干预补充）；词表语义空间本身有偏；分析限于概念层面，未覆盖程序性知识。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做可解释性/跨模态对齐研究的团队可把 MC-Lens 作为分析工具；对业务团队偏研究向，但“选择性访问发展滞后”结论对训练时序有启发。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21366" target="_blank">ALIVE: Making Streaming Video Models Interactive</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span class="tag">流视频</span>
+<span class="tag">交互</span>
+<span class="tag">强化学习</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.21366" target="_blank" rel="noopener">arXiv:2611.21366</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 42</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">交互式流视频模型：支持主动监控、流式任务协同与主动求反馈三类交互；ALIVE-SFT-288K + ALIVE-RL-3K 两阶段训练，对比 SFT 教“何时回应”；RL 阶段提出 BACA（行为对齐信用分配）结合轨迹级与局部优势精调回应、沉默决策；新建 FSI-Bench 评估求反馈与后续任务完成。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">4 个公开基准 + FSI-Bench 上总分最高，流式理解与交互能力领先对比模型。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">多基准 + 自建基准，两阶段与 BACA 均有消融，评测协议完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">RL 数据规模小（3K）；求反馈成功率依赖模拟用户；长视频一致性未重点验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做实时视频助手/监控类产品的团队可参考其“何时说话”的行为训练方案与 BACA 信用分配设计。</div></div>
+</div>
+</div>
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21607" target="_blank">ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span>🏢 清华大学、北京大学、上海交通大学、Galbot / Galaxy General Robotics</span>
+<span class="tag">VLA</span>
+<span class="tag">机器人策略</span>
+<span class="tag">Scaling</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.21607" target="_blank" rel="noopener">arXiv:2611.21607</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 40</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">把 VLA 的视觉骨干扩到 552B（DeepSeek-V4.1-Flash）接可训练 action DiT，在 2B→552B 共享训练设置下系统对照，评估机器人基础模型的三大根本能力：样本效率、泛化、精细操作。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">10 条演示即超过 2B 骨干 50 条演示的模型（87.8% vs 85.6%）；LIBERO-PRO 45.1% vs 小骨干至多 31.3%；真机充电器插拔 4/10→9/10 且增益集中在接触敏感对齐；552B 下仍保持 216ms 中位动作延迟。前沿 VLM 不仅能做推理 agent，也是高效、泛化机器人策略的强大表示基础。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">仿真（LIBERO/RoboCasa）+ 真机双验证；演示量扫描（2k-40k）与优化器更新扫描详尽；latency 实测。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅验证单一前沿骨干（DeepSeek-V4.1-Flash）；真机任务数量少；推理成本对消费级部署不友好。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">VLA 社区的重要信号：前沿 VLM 的预训练知识可直接转化为机器人策略的样本效率与泛化。有高算力的机器人团队应立即复现验证，重点精读。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26603" target="_blank">Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span>🏢 Apple</span>
+<span class="tag">深度估计</span>
+<span class="tag">空间理解</span>
+<span class="tag">视频</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26603" target="_blank" rel="noopener">arXiv:2611.26603</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 34</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">单一可扩展网络同时处理图像与视频，在原生分辨率输出稠密度量深度，打破“多帧方法重时序一致、单帧方法重边界清晰”的传统取舍。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">度量精度、边界锐利度、时序一致性、运行时四个维度同时超越先前工作，定义新的 Pareto 前沿；代码与权重开放。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">多基准对比 + 运行时效率评估，覆盖图像/视频两类输入。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">度量深度依赖相机内参先验；极端运动与弱纹理场景的鲁棒性未充分验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">空间感知基础设施级工作：机器人/XR/自动驾驶团队可直接替换深度模块；Apple 开放权重值得跟进。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21383" target="_blank">The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span class="tag">3D Gaussian</span>
+<span class="tag">分割</span>
+<span class="tag">监督信号</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.21383" target="_blank" rel="noopener">arXiv:2611.21383</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 33</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">指出 3DGS 分割的“渲染视角监督 ≠ 体素完整”失配：alpha 混合特征监督偏向高贡献 Gaussian，遮挡/低贡献 Gaussian 监督不足；VODA 用局部深度结构分组逐像素贡献者，直接监督所选深度簇内全部 Gaussian，即插即用；并提出 Removal-3D/RDE 体积分割评测。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">4 个渲染基线上 Removal-3D 体积分割一致提升，LERF/ScanNet 渲染指标不降或反升；梯度重加权与空间传播无法复现同等收益。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">合成 + 真实数据双评测 + 机制分析（恢复低贡献 Gaussian），论证链条完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖深度簇质量；仅评对象移除场景；3DGS 编辑链路完整性未评估。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做 3D 场景编辑/数字孪生的团队应关注：“渲染代理指标失真”的教训在视觉监督任务中有普适性。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.24154" target="_blank">Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-18">2026-11-18</time></span>
+<span class="tag">视觉智能体</span>
+<span class="tag">游戏数据</span>
+<span class="tag">SFT</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.24154" target="_blank" rel="noopener">arXiv:2611.24154</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 29</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">环境与玩家共发展框架：Builder agent 改造现有网页游戏、暴露内部状态、定义带状态进度度量与成功检查的任务；Coding Player 与 VLM Player 试玩并报修——玩同时是环境验证与数据采集；产出 568 个验证游戏、3436 任务、15.7K 轨迹（307 小时）；留出 50 游戏构成 PlayerBench；progress-weighted SFT 给推进任务进度的步骤更高权重。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">Game2Player-9B 在 PlayerBench 任务进度 14.3%→31.2%，在外部 GameWorld 基准 30.0%→53.1%，验证采集经验作为训练数据的有效性。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">大规模数据管线 + 留出基准 + 外部基准双重验证，外部泛化提升有说服力。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">网页游戏以 2D 为主，与 3D 世界有差距；轨迹质量受玩家水平制约；任务由 Builder 定义存在分布偏差。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">低成本构建可验证游戏数据管线的模板：做 agent 训练数据工厂的团队可复用其“玩即验证”闭环。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.17831" target="_blank">V-JEPA-LM: Video-Language Models That Read Dynamics Beyond Static, Text-Aligned Representations</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span class="tag">视频 LLM</span>
+<span class="tag">动力学</span>
+<span class="tag">反事实监督</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.17831" target="_blank" rel="noopener">arXiv:2611.17831</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 27</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">指出 caption/QA 监督让 VLM 只学“检索被点名属性”而浪费编码器的动力学信息（linear probe 以 87% 从冻结 V-JEPA 特征读出速度，VLM 却随机作答）；定位动力学在预测式编码器（V-JEPA）的跨视频共享子空间中（SigLIP 类帧级对齐编码器无）；用像素变换构造反事实监督逼 LM 读出动力学；单阶段训练、4.53M 公开样本、每帧 32 视觉 token。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">1B–8B 模型在 11 个视频基准的每个尺寸档领先：4B 模型 72.1 分 vs 最佳开源 4B 61.1、8B 64.8；匹配预算下反事实监督平均 +4.5 分、速度类问题 +38。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">编码器 × 监督受控研究，得出“编码器决定能读什么、监督决定读什么”的干净结论；数据与代码开放。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖 V-JEPA 类预测式编码器；像素变换生成的反事实多样性有限；未覆盖音频模态。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">视频 VLM 团队的提示：先检查编码器里有没有动力学、再设计监督；训练成本极友好（单阶段小数据），复现门槛低。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.23143" target="_blank">TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span class="tag">机器人操作</span>
+<span class="tag">4D 表示</span>
+<span class="tag">跨本体</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.23143" target="_blank" rel="noopener">arXiv:2611.23143</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 25</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">统一工具中心点（TCP）跟踪 + 生成模型：共享 4D 场景表示从单目视频直接恢复 SE(3) 度量 TCP 位姿与夹爪状态（连同场景几何与相机参数），生成器沿恢复轨迹采样特征结合机器人观测与语言预测未来 TCP 状态；跨本体增广管线把已有 RGB 视频重定向为其他本体的演示。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">跟踪在 DROID/RoboLab 上绝对轨迹误差 7.60/16.07mm，10 条演示适配新本体；生成在 RoboTwin 平均成功 69.19%，两个真机任务超已有策略；源数据 + 增广联合训练比仅增广 +41.5%。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">跟踪、生成、增广三任务互证 + 真机对照，指标完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖初始 2D TCP query；增广质量受重定向误差影响；单目恢复的度量尺度有假设。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">数据稀缺本体的团队可用其“视频→跨本体演示”管线快速扩数据，是低成本迁移的实用路线。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26380" target="_blank">EgoCaptioner: Towards Comprehensive and Fine-Grained Egocentric Video Captioning</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">第一视角视频</span>
+<span class="tag">视频 Caption</span>
+<span class="tag">GRPO</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26380" target="_blank" rel="noopener">arXiv:2611.26380</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 25</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">第一视角视频 caption 新格式：视频级概览 + 带时间戳的步骤叙述（叙述随感知需求变化并标记关键时刻）；粗到细标注管线（先事件结构后展开描述，5 万训练样本）；互补奖励（事实准确/覆盖、步骤级时间对齐、抗碎片化冗余）+ GRPO 精炼；有传感器时用语义派生的运动事实增强监督。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">5 个第一视角基准上开源模型领先：PhysCapBench 超过 Gemini 3.1 Pro，Minerva-Ego 超过所有被测闭源基线（caption-to-QA 协议）。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">多基准 + 两组消融（奖励设计、标注方式），评估协议细致。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">奖励设计复杂需调参；caption 质量经 QA 协议间接评估；传感器增强仅限部分数据源。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做第一视角数据标注/AR 助手的团队可直接复用其 caption 格式与奖励设计。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21479" target="_blank">LynnReal-Hand: Unlocking World Interaction with Hand Control</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span class="tag">视频世界模型</span>
+<span class="tag">手控交互</span>
+<span class="tag">蒸馏加速</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.21479" target="_blank" rel="noopener">arXiv:2611.21479</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">手控视频世界模型：100K 真实+合成交互片段 + 手感知监督；学习因果流图实现少步生成；区域感知 score distillation 融合视频与图像先验细化交互动态与外观；Ultra-Fast-VAE 紧凑解码器大幅降低推理成本。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">HandBench 上手部跟随精度与视觉质量最优：全序列 FVD 181.67、MANO Dice 93.02，三步因果模型 92.49；540p 流式单 H200 达 18.03 FPS、741ms 延迟、峰值显存仅 34.89GB。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">自建基准 + 质量/效率双指标，真机级效率指标（FPS/延迟/显存）完整，并承诺开放数据与代码。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">18 FPS 对真正实时交互仍勉强；交互物理真实性未严格量化；训练分布外的手部姿态外推未验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">交互式世界模型产品化（XR/游戏）的参考：“蒸馏加速 + 轻量 VAE”组合可迁移到其他流式生成模型。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.22275" target="_blank">Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span class="tag">多智能体</span>
+<span class="tag">人形机器人</span>
+<span class="tag">协作</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.22275" target="_blank" rel="noopener">arXiv:2611.22275</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">去中心化长程多人形协作：低层多智能体后训练把基础 tracking 模型适配到人形间物理耦合交互（仅局部观测即可去中心化控制）；高层 VLM planner + 语音 leader-follower 机制同步去中心化执行（无需网络通信）；HH-Bench 含 12 任务、2–10 人形、含异构团队。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">用两台相同人形训练即可扩展到 10 台、免重训练泛化到异构团队；系统评测一致超基线，真机实验展示鲁棒去中心化协作。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">仿真基准 + 真机实验双层验证，规模扩展曲线完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">语音同步带宽有限，复杂协商不足；物理耦合类型有限；异构团队规模仍小。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">多机器人协作方向的标杆：“低层分布式控制 + 高层语言协商”分层架构清晰可复用。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26107" target="_blank">HiUni: Harmonizing Understanding and Generation in Shared Visual Space</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">统一多模态</span>
+<span class="tag">生成</span>
+<span class="tag">参数共享</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26107" target="_blank" rel="noopener">arXiv:2611.26107</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">极致参数共享的统一多模态：同一 language-aligned ViT + 稠密 Transformer 骨干同时服务理解与生成，任务特定计算只在输出侧；Pixel Diffusion Head 解决像素空间直接优化难，轻量 HiGate 通路在输出附近补回细粒度空间细节。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">理解平均分与预训练 VLM 持平，图像生成/编辑有竞争力；受控对比证明单一稠密骨干可有效支撑双能力，为统一多模态提供更简单路径。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">受控实验 + 多基准 + 机制分析，论证“统一不必分裂骨干”。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">生成质量距专用生成模型仍有差距；HiGate 设计偏工程化；更大规模与更多模态未验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">想做统一多模态但算力有限的团队可参考其“输出侧分流”设计——比双塔/多专家统一便宜得多。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.25387" target="_blank">TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">空间智能</span>
+<span class="tag">评测基准</span>
+<span class="tag">微调</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.25387" target="_blank" rel="noopener">arXiv:2611.25387</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">把空间智能 grounding 到屏幕动作：125 个交互 CAPTCHA 覆盖 5 种空间能力，必须通过点击拖拽解决；每个任务是可生成新实例的程序（含 checker 与 oracle），因此同时是规模化训练 gym；人类 94.1% 通过，GPT-6 Astra 仍失败 25.9%，最佳开源 Kimi K3 失败 68.0%。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">主要失败来自误读截图；模型推理很少纠正错误信念而是幻觉证据辩护；在 gym 上微调 Qwen3.5-9B 后成功率 1.6%→33.1%（超 Kimi K3），且 7 个 OOD 基准全部提升（真实室内视频 VSI-Bench +9.9）。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">大规模合成任务 + 人类基线 + OOD 迁移验证三重证据，证明能力可学且迁移到真实场景。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">CAPTCHA 与真实操作存在域差；合成环境视觉多样性有限；“可学”结论依赖微调数据分布。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">空间智能评测的新颖设计：“可执行程序 + checker”的基准构建方式值得评测团队借鉴。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.24789" target="_blank">HINT-WAM: Hindsight-Informed Training for World Action Models</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-18">2026-11-18</time></span>
+<span class="tag">WAM</span>
+<span class="tag">机器人策略</span>
+<span class="tag">自蒸馏</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.24789" target="_blank" rel="noopener">arXiv:2611.24789</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 22</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">首个 on-policy 自蒸馏 WAM 后训练框架：以“事后视频”（hindsight，示范的未来视频）作特权信息，同一模型在部署输入下当 student、在附加 hindsight 条件下当 teacher，沿自身采样轨迹给出稠密动作目标；用 energy score 把教师动作分布蒸馏进 flow-matching action expert，无需环境奖励与仿真交互。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">弥合离线 SFT（只在干净示范上训练、适应损害预训练能力）与 on-policy RL（稀疏奖励难探索）的空白：在保持预训练能力的同时提升任务执行成功率。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">方法设计严谨，给出与离线 SFT、on-policy RL 基线的对比与消融；项目页公开。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">hindsight 特权信息真实部署不可得（仅训练用）；依赖示范质量；未在真机验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">WAM 方向有理论品味的后训练方案：“自蒸馏 + energy score”思路可推广到其他 flow-matching 策略。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26414" target="_blank">ZeroVLN: Learning to Navigate without Supervised Fine-Tuning of the VLM Brain</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">VLN</span>
+<span class="tag">导航</span>
+<span class="tag">强化学习</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.26414" target="_blank" rel="noopener">arXiv:2611.26414</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 22</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">零导航域 SFT 的慢-快导航框架：VLM brain 不预测几何目标，而是通过语义工具调用（自然语言移动指令）指挥 action expert；先适配 action expert，再 closed-loop RL 联合优化 brain 的移动决策与 action expert 的连续执行，全程零导航域 SFT。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">相同导航训练量下显著超过代表性 SFT 式分层 VLN 方法（VLN-CE 基准），且 brain 权重改动小、通用视觉能力基本保留。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">VLN-CE 标准基准 + 权重漂移度量，慢-快解耦的消融支持设计。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖 action expert 执行质量；语义接口表达几何精度有限；仅验证 VLN-CE 设定。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">“冻结通用 VLM + 小专家”范式的又一成功例：资源受限的导航团队可免大规模导航 SFT，落地门槛低。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.24869" target="_blank">WorldRuler: Interactive World Modeling under Configurable Rules</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-18">2026-11-18</time></span>
+<span class="tag">世界模型</span>
+<span class="tag">交互</span>
+<span class="tag">规则引擎</span>
+<span class="tag">VLA/VLM</span>
+<a href="https://arxiv.org/abs/2611.24869" target="_blank" rel="noopener">arXiv:2611.24869</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 21</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">可配置规则下的交互世界建模：可执行 3D 规则图联合保存/恢复规则定义、依赖与世界状态（解决 rule-state persistence）；规则执行-视频生成-感知反馈闭环（解决 rule-to-visual realization）；动态对象绑定 + 属性状态替换 + 反事实重建训练，支持规则作用于尚未可见的对象；RuleVerse 数据集（GTA-V + Habitat 自动采集标注）。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">存取加载后能有效保持规则-状态一致性，并准确在指定对象/属性上实现规则诱导的视觉变化。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">自建数据集 + 多项对照实验，覆盖保存/加载与未见对象绑定两类难点。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">规则表达限于图结构可描述的类型；视频质量受底层生成器限制；未在真实场景验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">可定制游戏世界/交互视频产品的技术储备：规则-状态持久化是 UGC 世界模型的关键短板。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="生成式检索---Generative-Retrieval">
+<h2 class="section-title">🔍 生成式检索 / Generative Retrieval<span class="section-count">0 篇</span></h2>
+
+<p class="empty">本周暂无新论文</p>
+</section>
+<section class="section" id="预训练---Pre-training">
+<h2 class="section-title">📊 预训练 / Pre-training<span class="section-count">2 篇</span></h2>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.21003" target="_blank">K2-Horizon: A Frontier Fleet of Open Source Language Models</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-16">2026-11-16</time></span>
+<span>🏢 MBZUAI（K2 团队）</span>
+<span class="tag">开源模型</span>
+<span class="tag">MoE</span>
+<span class="tag">合成数据</span>
+<span class="tag">预训练</span>
+<a href="https://arxiv.org/abs/2611.21003" target="_blank" rel="noopener">arXiv:2611.21003</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 90</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">6 个全开源语言模型（0.9B 稠密–375B-A23B MoE）的完整舰队：MoVA 把 MoE 应用到 attention value 投影、softplus attention gating 理论动机更充分；Uno 无损扩散适配器免独立 draft model 提速解码至多 2.2 倍；按 LLM360 定义全量开放（380 个 checkpoint、21.6TB 训练数据、训练日志、xLLM 训练框架与 RL360 全代码）；4 个模型共享 22T token 语料；约 10T 合成预训练 token。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">同尺寸开源模型中 agentic/coding 领先或有竞争力；36B-A4B 以 1/7 激活参数逼近同数据训练的 32B 稠密模型；合成数据可成为大规模预训练的主要成分；四个模型共享配方揭示了 scaling 与稀疏化的一致行为。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">受控 scaling 研究（共享配方）+ 完整训练历史（58 次训练 run 全部公开），透明度和可复现性罕见。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">报告信息密度大，部分评测与主流榜单不同期；合成数据占比高引发多样性/许可讨论；超大 MoE 的推理成本仍高。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">开源社区的重磅基础设施：受控 scaling 研究与全流程透明对预训练研究极有价值；约 10T 合成 token 的生产 pipeline 文档值得数据团队细读。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.15348" target="_blank">Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-11">2026-11-11</time></span>
+<span class="tag">时序基准</span>
+<span class="tag">医疗 AI</span>
+<span class="tag">评测方法</span>
+<span class="tag">预训练</span>
+<a href="https://arxiv.org/abs/2611.15348" target="_blank" rel="noopener">arXiv:2611.15348</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 33</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">首个电子鼻呼吸疾病筛查时序分类基准：基于最大公开临床 eNose 数据集 S-OH（1234 患者、9 诊断组、17 通道多变量时序），提供显式时间 train/test 划分以量化传感器漂移；系统评测 10 种方法（特征表格/卷积/图/时序架构四大家族）。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">时间验证下所有方法 AUC 下降 0.05–0.12，证实随机交叉验证严重高估；最佳方法对部分肺病 AUC 0.74–0.76，其余接近随机；循环架构最稳定、专用时序方法峰值最高；人口学混杂显著。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真实临床数据 + 时间外验证 + 泄漏分析，协议严谨并全面开放（数据、划分、代码）。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">单中心数据、类别不平衡；绝对性能距临床可用仍有距离；eNose 模态单一。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">时序基准工程范本：“时间外验证防泄漏”应成为所有时序评测的默认配置；医疗 AI 团队可复用其协议。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="后训练---Post-training">
+<h2 class="section-title">🎓 后训练 / Post-training<span class="section-count">2 篇</span></h2>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.11318" target="_blank">PROLA: Principal-Orthogonal Low-rank Adaptation for Predictive Spatiotemporal Weather Downscaling</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-08">2026-11-08</time></span>
+<span class="tag">PEFT</span>
+<span class="tag">LoRA</span>
+<span class="tag">气象</span>
+<span class="tag">后训练</span>
+<a href="https://arxiv.org/abs/2611.11318" target="_blank" rel="noopener">arXiv:2611.11318</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 27</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">定义预测性时空气象 downscaling（PSWD）任务：从近期粗分辨率状态联合精化时空分辨率并预测未来高分辨率轨迹；框架把预训练气象骨干 + 固定数值 scaffold + 轻量残差头分解为空间/时间两阶段；PROLA 在固定低秩预算下按预训练权重主方向与正交补分配，并用梯度信号重标定 rank-1 更新。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">PSWD 设定下 PROLA 超过代表性低秩适配基线；跨多数据集多任务的实验显示方法通用性。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">新任务 + 新方法 + 跨数据集验证，气象垂直领域评测充分。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">气象领域专用，对 LLM 的直接适用性弱；数值 scaffold 依赖领域知识；对 rank 预算敏感。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">PEFT 研究者可关注其“主方向 + 正交补”分配策略——对 LLM 低秩适配有启发；业务团队参考价值有限。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.24654" target="_blank">CurvDelta: Low-Curvature Delta Modeling For Surgical Learning and Unlearning</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-18">2026-11-18</time></span>
+<span class="tag">能力保持</span>
+<span class="tag">遗忘</span>
+<span class="tag">LoRA</span>
+<span class="tag">后训练</span>
+<a href="https://arxiv.org/abs/2611.24654" target="_blank" rel="noopener">arXiv:2611.24654</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 26</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">把能力保持约束直接参数化进模型更新：分析保持约束在预适应模型附近的局部几何，构造低曲率空间使参数更新近似保持损失不变；用 K-FAC + 因子化投影使其可扩展到 LLM；CurvLoRA 低秩变体适配更高效场景；适用于能力学习与选择性遗忘。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">数学推理与代码生成上在达成目标任务的同时更好保持通用能力（更好的 acquisition-retention 权衡）；TOFU/MUSE 遗忘基准上定向遗忘-知识保持平衡优于基线，保持性能接近从头重训参考。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">推理 + 代码 + 遗忘三类任务、多基线对照，覆盖两类 preservation-constrained 场景。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">K-FAC 近似在大模型上的精度损失未量化；计算开销高于 vanilla LoRA；保持度量的基准选择影响结论。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">做模型编辑/持续学习/合规遗忘的团队可借鉴其“几何约束参数化”思路——比事后正则更 principled，且即插即用。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="强化学习---RL">
+<h2 class="section-title">🎯 强化学习 / RL<span class="section-count">1 篇</span></h2>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.19937" target="_blank">AllocFlow: End-to-End Portfolio Trading Action Generation from Raw Market Data</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-15">2026-11-15</time></span>
+<span class="tag">决策</span>
+<span class="tag">金融</span>
+<span class="tag">Flow Matching</span>
+<span class="tag">强化学习</span>
+<a href="https://arxiv.org/abs/2611.19937" target="_blank" rel="noopener">arXiv:2611.19937</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 77</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">端到端 flow-matching 组合交易动作生成：跨资产 flow Transformer 以时序市场表示为条件，联合生成全部标的的连续带符号仓位权重（捕捉持仓依赖）；两阶段训练——策略监督模仿塑形候选组合分布，组相对 RL 以组合级金融奖励 + 冻结策略参考精炼联合决策。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">小时级加密永续合约上 RL 精炼将模仿策略年化净收益从 27.79% 提至 51.38%、Calmar 比率 0.955→4.043，全指标超过 teacher 策略；在 6 个月未见 2026 数据上 Calmar 达 4.90 且免重训。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真实市场数据 + 样本外验证（6 个月未见过数据），收益/Calmar 指标完整，两阶段消融合理。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">仅加密永续单一市场粒度；市场机制变化（流动性/费率）风险；flow-matching + RL 的训练稳定性未系统分析。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">生成式决策模型在金融的扎实落地：“模仿塑形分布 + RL 精炼”两阶段对决策类业务通用；金融团队可跟进，但需警惕对特定市场周期的过拟合。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="基础架构创新---Infrastructure-Innovation">
+<h2 class="section-title">⚙️ 基础架构创新 / Infrastructure Innovation<span class="section-count">6 篇</span></h2>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.22055" target="_blank">Weight-Space Programming Doesn't Need Transformers</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span class="tag">Weight-Space</span>
+<span class="tag">架构设计</span>
+<span class="tag">可解释性</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.22055" target="_blank" rel="noopener">arXiv:2611.22055</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 59</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">研究无梯度场景下是否还需要 Transformer：给三个前沿 LLM 极少指导、10 个标注样本与沙箱，让它们写固定架构权重或自行设计架构（多选题为任务）；LLM 自发收敛到“把纯文本事实编译成稀疏表 + 固定查询过程”的方案；据此提出 associative-memory 模型。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">LLM 设计的查表模型以约 1/1800 的参数达到比同一 LLM 所写 Transformer 更高的测试精度（多选任务至多 54.4%）；可解释性远超梯度模型——每个错误可定位到单行、删行只影响约一个答案；同尺寸推理比 Transformer 快至多 17 倍；预训练 LLM 仍更准确，结论仅关于“写权重时该选什么结构”。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">3 个 LLM × 多任务 × 生成式任务与预训练权重检验，现象跨模型一致。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">任务限小样本选择题类，绝对精度低；与预训练范式的比较不对等；稀疏表结构的可扩展性未知。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">weight-space programming 研究的必读启示：当监督来自 LLM 而非梯度时，架构先验应重新设计——对 test-time training 方向有启发。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.19800" target="_blank">Multi-Branch Transformer</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-15">2026-11-15</time></span>
+<span>🏢 Cornell University</span>
+<span class="tag">网络结构</span>
+<span class="tag">KV Cache</span>
+<span class="tag">推理加速</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.19800" target="_blank" rel="noopener">arXiv:2611.19800</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 47</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">探索 Transformer 的并行分支扩展：共享首层 → 独立参数化的分支 block 并行执行 → 输出融合 → 共享尾层；Wide-Shallow / Narrow-Deep / Balanced 三变体在等训练算力下系统研究；Joint-KV 用各深度分支表示构建共享 KV cache，配套利用分支分组与共享缓存复用的推理引擎。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">0.8B–2.1B 四个 MoE 规模上，2 分支 Wide-Shallow MBT 一致优于等参数等算力的顺序 Transformer；标准 Transformer 需至多 1.26 倍训练算力才能追平验证损失；KV cache 存储降低 34%，单 H200 解码吞吐提升 51.4%。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">受控预训练 + 拟合 scaling 曲线 + 消融（融合函数、分支位置），证据链完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">验证规模较小（≤2.1B）；分支结构对超参更敏感；大规模 MoE 与长上下文表现待验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">架构创新的清新方向：“分支并行”在质量与 KV 效率上双赢，Joint-KV 设计可直接被 serving 团队采用。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.18482" target="_blank">MMFlash: Faster Speculative Decoding for Vision-Language Models</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span class="tag">投机解码</span>
+<span class="tag">VLM</span>
+<span class="tag">推理加速</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.18482" target="_blank" rel="noopener">arXiv:2611.18482</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 43</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">多模态投机解码研究：定义 token 级视觉依赖度（有无视觉输入的下一 token 分布 KL），发现 drafter 接受率从最低依赖四分位的 46% 降至最高四分位的 22%，且多模态训练后差异仍在；MMFlash 自适应上采样视觉依赖 token 的损失；长视频输入用稀疏注意力减少冗余注意力计算。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">多模态基准上实现至多 3.58 倍无损解码加速，超过 EAGLE-3 至多 195.4%、DFlash 17.1%。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">机制分析（依赖度-接受率关系）+ 多基准无损验证（输出分布与目标模型一致），实验设计有洞察力。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖度启发式未必最优；KL 近似存在误差；稀疏注意力在长视频上的质量损失边界未细化。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">VLM serving 团队可直接落地的加速方案：“视觉依赖度”分析框架比方法本身更有迁移价值，值得精读其诊断部分。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.26629" target="_blank">Posterior Matching Distillation</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-19">2026-11-19</time></span>
+<span class="tag">扩散蒸馏</span>
+<span class="tag">生成加速</span>
+<span class="tag">损失函数</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.26629" target="_blank" rel="noopener">arXiv:2611.26629</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 39</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">分布蒸馏新成员：mode-covering 后验采样 + 任意步数生成；学生匹配指数重加权的样本均值与教师后验均值——高斯腐蚀下指数倾斜后验均值等于单次教师评估；零总体损失时恢复教师的完整后验；全程免辅助 student-score 网络。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">SDXL 与 FLUX.2 [klein] 4B 上取得 4-step 方法最优 FID，prompt 对齐与感知质量指标领先或持平。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">理论刻画（开邻域倾斜均值约束唯一确定后验）+ 两个代表性模型实验。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">训练实现较复杂；任意步采样限于训练时步网格；视频生成未验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">扩散蒸馏研究的理论前沿：“tilted mean 约束”是可直接采用的新工具，做生成加速的团队建议精读。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.07226" target="_blank">Loopback Transformer: Towards a Unified View of Residual Looped Transformers</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-04">2026-11-04</time></span>
+<span class="tag">网络结构</span>
+<span class="tag">参数共享</span>
+<span class="tag">循环 Transformer</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.07226" target="_blank" rel="noopener">arXiv:2611.07226</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 27</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">统一残差循环 Transformer 的视角：把残差连接看作深度记忆，分析每次 block 应用后存储什么表示、后续读取如何加权；Loopback Transformer 单独控制输入强度、总更新权重与跨更新的分配——几何衰减设定总更新权重并提供近因先验，attention 学习分配方式。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">ClimbMix 上 191M–3B 规模以标准 Transformer 40–75% 的参数（不含 embedding/头）取得更低验证损失；1.4B/3B 的 13 下游任务均值更高；191M/374M/778M 全面最优。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">多规模 + 与 7 种循环残差设计对比，训练 token 与执行深度均匹配，对照公平。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">收益依赖数据规模与配比；执行深度增加带来推理开销；下游任务集有限。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">参数高效架构方向的可行路径：对边缘部署与成本敏感团队有吸引力，值得跟踪其大规模验证。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.17600" target="_blank">LightTAR: Light and Fast Target-Aware Representations for Multimodal Tabular Learning</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-12">2026-11-12</time></span>
+<span>🏢 Technion（Roi Reichart 团队）</span>
+<span class="tag">表示学习</span>
+<span class="tag">表格学习</span>
+<span class="tag">多模态</span>
+<span class="tag">基础架构创新</span>
+<a href="https://arxiv.org/abs/2611.17600" target="_blank" rel="noopener">arXiv:2611.17600</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 23</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">指出多模态表格学习中 PCA 降维只重输入方差、忽视目标相关信息的问题；LightTAR 从编码器末层 + 中间层用正则化 PLS 抽取少量 target-aware 特征增强 PCA 表示，无需修改 encoder 或 learner，直接插入现有管线。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">21 个表格模型（树集成、神经网络、表格基础模型）在 MulTaBench 上平均预测性能全部提升，且几乎在每个数据集都有改进；相对 PCA 的运行时开销很小。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">大规模组合评测（21 模型 × 多数据集），成本-收益分析清楚。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">增益温和；PLS 特征数量需选择；仅验证文本+图像表格场景。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">表格建模团队几行代码即可收益的实用 trick：成本低、即插即用，适合作为表格管线的默认增强。</div></div>
+</div>
+</div>
+</section>
+<section class="section" id="Infra">
+<h2 class="section-title">🖥️ Infra / 训练与推理系统<span class="section-count">3 篇</span></h2>
+
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.17621" target="_blank">AscendGYM: A Cost-Aware Kernel Optimization Benchmark for Real-World Workloads on Ascend NPUs</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-13">2026-11-13</time></span>
+<span>🏢 AI Training Platform Team</span>
+<span class="tag">算子优化</span>
+<span class="tag">基准</span>
+<span class="tag">国产算力</span>
+<span class="tag">Infra</span>
+<a href="https://arxiv.org/abs/2611.17621" target="_blank" rel="noopener">arXiv:2611.17621</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 95</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">面向真实工作负载的 Ascend 算子优化基准：初始 48 算子 × 3 难度，测试用例的数据类型与张量形状取自真实训练/推理任务，优化收益直接映射到对应负载；支持模型评估与模型-harness 评估双模式，内置带搜索编排与经验积累的 harness；提出 Speedup-Token Score（STS）联合量化加速比与 token 成本。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">填补 Ascend 上“优化既有 kernel 实现”能力评测的空白，可在可接受预算内度量模型或代理的实用算子优化能力。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真实负载测试用例 + 双评估模式 + 完整执行环境复现实际调用方式。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">48 算子覆盖面有限；STS 的权重设计偏主观；经验积累机制可能对基准过拟合。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">国产算力 kernel 优化团队的实用基准：“收益直接映射真实负载”的设计思想优于纯合成 benchmark，同样适合评估 kernel 优化 agent。</div></div>
+</div>
+</div>
+<div class="paper-card important">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.14848" target="_blank">Tideway: Phase-Aware Tiered Memory Management for MoE Inference on Consumer Devices</a></div>
+    <div class="paper-meta">
+<span class="important-badge">🔴 重点精读</span>
+<span title="论文首次发布日期">📅 <time datetime="2026-11-10">2026-11-10</time></span>
+<span>🏢 Duke University</span>
+<span class="tag">推理系统</span>
+<span class="tag">MoE</span>
+<span class="tag">内存管理</span>
+<span class="tag">Infra</span>
+<a href="https://arxiv.org/abs/2611.14848" target="_blank" rel="noopener">arXiv:2611.14848</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 67</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">消费级设备上的 MoE 推理系统：把 host RAM 与 GPU VRAM 管理为统一内存池，而非独立缓存；池内耦合 prefill/decode 相位感知内存布局与专家分页下优化的 CUDA Graph 执行，避免层级间抖动。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">消费级硬件 + 前沿 MoE 模型上，端到端延迟平均加速 1.97 倍、TTFT 2.40 倍、TPOT 1.61 倍（对比最快基线）；代码开源。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">真实消费级硬件上的系统评测 + 多模型对比，指标（端到端/TTFT/TPOT）完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">SSD 层级带宽仍是硬瓶颈；相位切换有开销；仅覆盖 MoE，稠密大模型未验证。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">本地部署/隐私推理需求爆发背景下的及时工作：统一内存池 + 相位感知设计可被 llama.cpp/MLX 类生态吸收，端侧推理团队重点参考。</div></div>
+</div>
+</div>
+<div class="paper-card">
+  <div class="paper-header">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2611.23226" target="_blank">FastFrames: Video Generation at Interactive Latency</a></div>
+    <div class="paper-meta">
+<span title="论文首次发布日期">📅 <time datetime="2026-11-17">2026-11-17</time></span>
+<span>🏢 Apple</span>
+<span class="tag">视频生成</span>
+<span class="tag">推理加速</span>
+<span class="tag">交互式</span>
+<span class="tag">Infra</span>
+<a href="https://arxiv.org/abs/2611.23226" target="_blank" rel="noopener">arXiv:2611.23226</a>
+<span title="周报生成时的 HF 点赞数">HF 👍 33</span>
+</div>
+  </div>
+  <div class="paper-body">
+<div class="field"><span class="field-label">创新点</span><div class="field-content">交互延迟自回归视频扩散模型家族：profiling 发现 VAE 解码与 KV cache 更新等“实现细节”占端到端推理延迟一半以上，用轻量替代件逐个替换；1.3B 变体单 B200 36ms/帧（28 RPS）且质量匹配慢近 8 倍的 SOTA；14B 变体 8×B200 45ms/帧（22 RPS）视觉质量更好。</div></div>
+<div class="field"><span class="field-label">结论</span><div class="field-content">相机条件、物理条件等交互式视频生成首次达到实时，且质量不降。</div></div>
+<div class="field"><span class="field-label">结论支撑</span><div class="field-content">组件级 profiling + 与 SOTA 质量对标 + 交互应用演示，证据链完整。</div></div>
+<div class="field"><span class="field-label">局限性</span><div class="field-content">依赖 B200 级硬件；轻量替代件的通用性待更多模型验证；长视频一致性未细化。</div></div>
+<div class="field"><span class="field-label">点评与适用范围</span><div class="field-content">交互式世界模型产品化的关键拼图：“先 profiling 后替换”的工程方法论适用于所有生成服务，推理团队可立即套用。</div></div>
+</div>
+</div>
+</section>
+  <footer>由 VTM 小助手自动生成 | 2026-11-23</footer>
+</main>
+</body>
+</html>

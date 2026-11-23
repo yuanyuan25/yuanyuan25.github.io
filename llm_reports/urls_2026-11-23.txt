@@ -1,0 +1,50 @@
+[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks] | https://arxiv.org/abs/2611.22115
+[Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent] | https://arxiv.org/abs/2611.18397
+[Jeveration: System One Models Now Generate] | https://arxiv.org/abs/2611.24738
+[Envisioning Agentic Robotics: A New Era of Robotic Systems] | https://arxiv.org/abs/2611.18359
+[InclusionMed: Benchmarking AI for Inclusive Healthcare] | https://arxiv.org/abs/2611.21218
+[Sage S2.1 Flash Technical Report] | https://arxiv.org/abs/2611.21072
+[AscendGYM: A Cost-Aware Kernel Optimization Benchmark for Real-World Workloads on Ascend NPUs] | https://arxiv.org/abs/2611.17621
+[K2-Horizon: A Frontier Fleet of Open Source Language Models] | https://arxiv.org/abs/2611.21003
+[VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender] | https://arxiv.org/abs/2611.15789
+[AllocFlow: End-to-End Portfolio Trading Action Generation from Raw Market Data] | https://arxiv.org/abs/2611.19937
+[Tideway: Phase-Aware Tiered Memory Management for MoE Inference on Consumer Devices] | https://arxiv.org/abs/2611.14848
+[Weight-Space Programming Doesn't Need Transformers] | https://arxiv.org/abs/2611.22055
+[MIRIX-2.0: Multi-Agent Memory System] | https://arxiv.org/abs/2611.12068
+[WeVisForensics: Self-Evolving Agent for Omni AI-Generated Video Detection] | https://arxiv.org/abs/2611.21373
+[SWE-CoWork: Benchmarking Coding Agents as Digital Employees in Organizations] | https://arxiv.org/abs/2611.20218
+[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation] | https://arxiv.org/abs/2611.26444
+[SPILLWAY: Separating Target Admission from Sanitization to Defend Tool-Using Agents against Prompt Injection] | https://arxiv.org/abs/2611.07222
+[Multi-Branch Transformer] | https://arxiv.org/abs/2611.19800
+[ForceHarness: Turning Force into Action and Physics for Frozen Frontier Models] | https://arxiv.org/abs/2611.21099
+[WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding] | https://arxiv.org/abs/2611.26409
+[Probing the "Conscious" Mind: Selective Access and Global Workspace in Vision-Language Models] | https://arxiv.org/abs/2611.26590
+[MMFlash: Faster Speculative Decoding for Vision-Language Models] | https://arxiv.org/abs/2611.18482
+[ALIVE: Making Streaming Video Models Interactive] | https://arxiv.org/abs/2611.21366
+[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters] | https://arxiv.org/abs/2611.21607
+[The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements] | https://arxiv.org/abs/2611.23068
+[Coda-DaVinci: Reimagining Video Generation with Code2Video] | https://arxiv.org/abs/2611.26595
+[Posterior Matching Distillation] | https://arxiv.org/abs/2611.26629
+[Self-Improvement Memory Enables Continual Recursive Self-Improvement] | https://arxiv.org/abs/2611.18856
+[Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth] | https://arxiv.org/abs/2611.26603
+[PaperCritic: Training AI Reviewers to Assess the Soundness of Papers] | https://arxiv.org/abs/2611.17834
+[The Mask Is Not the Object: Volumetric Supervision for 3D Gaussian Segmentation] | https://arxiv.org/abs/2611.21383
+[Breath-Dx: A Time Series Classification Benchmark for Disease Screening with eNose] | https://arxiv.org/abs/2611.15348
+[FastFrames: Video Generation at Interactive Latency] | https://arxiv.org/abs/2611.23226
+[Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development] | https://arxiv.org/abs/2611.24154
+[V-JEPA-LM: Video-Language Models That Read Dynamics Beyond Static, Text-Aligned Representations] | https://arxiv.org/abs/2611.17831
+[PROLA: Principal-Orthogonal Low-rank Adaptation for Predictive Spatiotemporal Weather Downscaling] | https://arxiv.org/abs/2611.11318
+[Loopback Transformer: Towards a Unified View of Residual Looped Transformers] | https://arxiv.org/abs/2611.07226
+[CurvDelta: Low-Curvature Delta Modeling For Surgical Learning and Unlearning] | https://arxiv.org/abs/2611.24654
+[TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation] | https://arxiv.org/abs/2611.23143
+[EgoCaptioner: Towards Comprehensive and Fine-Grained Egocentric Video Captioning] | https://arxiv.org/abs/2611.26380
+[AltRA-Test: An Alternative Annotator Test for LLM Judges Without Shared Annotators] | https://arxiv.org/abs/2611.26073
+[LynnReal-Hand: Unlocking World Interaction with Hand Control] | https://arxiv.org/abs/2611.21479
+[Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration] | https://arxiv.org/abs/2611.22275
+[HiUni: Harmonizing Understanding and Generation in Shared Visual Space] | https://arxiv.org/abs/2611.26107
+[TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs] | https://arxiv.org/abs/2611.25387
+[LightTAR: Light and Fast Target-Aware Representations for Multimodal Tabular Learning] | https://arxiv.org/abs/2611.17600
+[HINT-WAM: Hindsight-Informed Training for World Action Models] | https://arxiv.org/abs/2611.24789
+[ZeroVLN: Learning to Navigate without Supervised Fine-Tuning of the VLM Brain] | https://arxiv.org/abs/2611.26414
+[G-CAST: Governed Continual Self-Training for E-Commerce Agents under Evolving Demands] | https://arxiv.org/abs/2611.17814
+[WorldRuler: Interactive World Modeling under Configurable Rules] | https://arxiv.org/abs/2611.24869
